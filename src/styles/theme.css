@@ -1,0 +1,436 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  --background: #ffffff;
+  --foreground: oklch(0.145 0 0);
+  --card: #ffffff;
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: #030213;
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.95 0.0058 264.53);
+  --secondary-foreground: #030213;
+  --muted: #ececf0;
+  --muted-foreground: #717182;
+  --accent: #e9ebef;
+  --accent-foreground: #030213;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: transparent;
+  --input-background: #f3f3f5;
+  --switch-background: #cbced4;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: #030213;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  /* Responsive Typography - Mobile First */
+  --text-h1-mobile: 1.5rem;      /* 24px */
+  --text-h1-tablet: 1.75rem;     /* 28px */
+  --text-h1-desktop: 2rem;       /* 32px */
+
+  --text-h2-mobile: 1.25rem;     /* 20px */
+  --text-h2-tablet: 1.375rem;    /* 22px */
+  --text-h2-desktop: 1.5rem;     /* 24px */
+
+  --text-h3-mobile: 1.125rem;    /* 18px */
+  --text-h3-tablet: 1.125rem;    /* 18px */
+  --text-h3-desktop: 1.25rem;    /* 20px */
+
+  --text-body-mobile: 1rem;      /* 16px */
+  --text-body-tablet: 1.0625rem; /* 17px */
+  --text-body-desktop: 1.125rem; /* 18px */
+
+  --text-small-mobile: 0.875rem;   /* 14px */
+  --text-small-tablet: 0.875rem;   /* 14px */
+  --text-small-desktop: 0.875rem;  /* 14px */
+
+  --text-caption-mobile: 0.75rem;  /* 12px */
+  --text-caption-tablet: 0.75rem;  /* 12px */
+  --text-caption-desktop: 0.75rem; /* 12px */
+
+  /* Line Heights */
+  --line-height-h1-mobile: 2rem;     /* 32px */
+  --line-height-h1-tablet: 2.25rem;  /* 36px */
+  --line-height-h1-desktop: 2.5rem;  /* 40px */
+
+  --line-height-h2-mobile: 1.75rem;  /* 28px */
+  --line-height-h2-tablet: 1.875rem; /* 30px */
+  --line-height-h2-desktop: 2rem;    /* 32px */
+
+  --line-height-h3-mobile: 1.5rem;   /* 24px */
+  --line-height-h3-tablet: 1.625rem; /* 26px */
+  --line-height-h3-desktop: 1.75rem; /* 28px */
+
+  --line-height-body-mobile: 1.5rem;   /* 24px */
+  --line-height-body-tablet: 1.5rem;   /* 24px */
+  --line-height-body-desktop: 1.625rem; /* 26px */
+
+  --line-height-small: 1.25rem;  /* 20px */
+  --line-height-caption: 1rem;   /* 16px */
+
+  /* 8pt Grid Spacing System */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.25rem;  /* 20px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-10: 2.5rem;  /* 40px */
+  --space-12: 3rem;    /* 48px */
+
+  /* Device-specific padding */
+  --padding-mobile: 1rem;    /* 16px */
+  --padding-tablet: 1.5rem;  /* 24px */
+  --padding-desktop: 2rem;   /* 32px */
+
+  /* Section spacing */
+  --section-spacing-mobile: 1.5rem;   /* 24px */
+  --section-spacing-tablet: 2rem;     /* 32px */
+  --section-spacing-desktop: 2.5rem;  /* 40px */
+
+  /* Card padding */
+  --card-padding-mobile: 1rem;    /* 16px */
+  --card-padding-tablet: 1.25rem; /* 20px */
+  --card-padding-desktop: 1.5rem; /* 24px */
+
+  /* Component heights */
+  --button-height-mobile: 3rem;   /* 48px */
+  --button-height-desktop: 3.25rem; /* 52px */
+  --input-height: 3rem; /* 48px */
+
+  /* Icon sizes */
+  --icon-size-mobile: 1.25rem; /* 20px */
+  --icon-size-desktop: 1.5rem; /* 24px */
+
+  /* Border radius */
+  --radius-card: 0.75rem;   /* 12px */
+  --radius-button: 0.75rem; /* 12px */
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /**
+  * Default typography styles for HTML elements (h1-h4, p, label, button, input).
+  * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.
+  */
+
+  html {
+    font-size: var(--font-size);
+  }
+
+  h1 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h2 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  label {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  button {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  input {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+  }
+}
+
+/* Bold Contemporary Luxury - Custom Utilities */
+@layer utilities {
+  .bg-gradient-radial {
+    background-image: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Safe area insets for mobile devices with notches */
+  .safe-area-inset-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .safe-area-inset-top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  /* Responsive Typography Classes */
+  .text-h1 {
+    font-size: var(--text-h1-mobile);
+    line-height: var(--line-height-h1-mobile);
+    font-weight: var(--font-weight-medium);
+  }
+
+  @media (min-width: 768px) {
+    .text-h1 {
+      font-size: var(--text-h1-tablet);
+      line-height: var(--line-height-h1-tablet);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .text-h1 {
+      font-size: var(--text-h1-desktop);
+      line-height: var(--line-height-h1-desktop);
+    }
+  }
+
+  .text-h2 {
+    font-size: var(--text-h2-mobile);
+    line-height: var(--line-height-h2-mobile);
+    font-weight: var(--font-weight-medium);
+  }
+
+  @media (min-width: 768px) {
+    .text-h2 {
+      font-size: var(--text-h2-tablet);
+      line-height: var(--line-height-h2-tablet);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .text-h2 {
+      font-size: var(--text-h2-desktop);
+      line-height: var(--line-height-h2-desktop);
+    }
+  }
+
+  .text-h3 {
+    font-size: var(--text-h3-mobile);
+    line-height: var(--line-height-h3-mobile);
+    font-weight: var(--font-weight-medium);
+  }
+
+  @media (min-width: 768px) {
+    .text-h3 {
+      font-size: var(--text-h3-tablet);
+      line-height: var(--line-height-h3-tablet);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .text-h3 {
+      font-size: var(--text-h3-desktop);
+      line-height: var(--line-height-h3-desktop);
+    }
+  }
+
+  .text-body {
+    font-size: var(--text-body-mobile);
+    line-height: var(--line-height-body-mobile);
+    font-weight: var(--font-weight-normal);
+  }
+
+  @media (min-width: 768px) {
+    .text-body {
+      font-size: var(--text-body-tablet);
+      line-height: var(--line-height-body-tablet);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .text-body {
+      font-size: var(--text-body-desktop);
+      line-height: var(--line-height-body-desktop);
+    }
+  }
+
+  .text-small {
+    font-size: var(--text-small-mobile);
+    line-height: var(--line-height-small);
+    font-weight: var(--font-weight-normal);
+  }
+
+  .text-caption {
+    font-size: var(--text-caption-mobile);
+    line-height: var(--line-height-caption);
+    font-weight: var(--font-weight-medium);
+  }
+
+  /* Responsive Container Padding */
+  .container-padding {
+    padding-left: var(--padding-mobile);
+    padding-right: var(--padding-mobile);
+  }
+
+  @media (min-width: 768px) {
+    .container-padding {
+      padding-left: var(--padding-tablet);
+      padding-right: var(--padding-tablet);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .container-padding {
+      padding-left: var(--padding-desktop);
+      padding-right: var(--padding-desktop);
+    }
+  }
+
+  /* Responsive Card Padding */
+  .card-padding {
+    padding: var(--card-padding-mobile);
+  }
+
+  @media (min-width: 768px) {
+    .card-padding {
+      padding: var(--card-padding-tablet);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .card-padding {
+      padding: var(--card-padding-desktop);
+    }
+  }
+
+  /* Section Spacing */
+  .section-spacing {
+    margin-bottom: var(--section-spacing-mobile);
+  }
+
+  @media (min-width: 768px) {
+    .section-spacing {
+      margin-bottom: var(--section-spacing-tablet);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .section-spacing {
+      margin-bottom: var(--section-spacing-desktop);
+    }
+  }
+}
