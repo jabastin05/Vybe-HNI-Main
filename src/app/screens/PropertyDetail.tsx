@@ -1051,7 +1051,7 @@ export function PropertyDetail() {
 
       {/* Document Upload Modal */}
       {showDocumentModal && (
-        <div className="fixed inset-0 bg-[#0B1F3A]/60 dark:bg-[#0B1F3A]/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-[#0B1F3A]/60 dark:bg-[#0B1F3A]/80 backdrop-blur-sm z-[60] flex items-center justify-center p-4">
           <div className="bg-white dark:bg-[#0d1b2e] rounded-xl border border-[#E2E8F0] dark:border-white/[0.06] max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.3)]">
             {/* Modal Header */}
             <div className="border-b border-[#E2E8F0] dark:border-white/[0.06] card-padding flex items-center justify-between">
@@ -1217,7 +1217,7 @@ export function PropertyDetail() {
 
       {/* Map Modal */}
       {showMapModal && (
-        <div className="fixed inset-0 bg-[#0B1F3A]/60 dark:bg-[#0B1F3A]/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-[#0B1F3A]/60 dark:bg-[#0B1F3A]/80 backdrop-blur-sm z-[60] flex items-center justify-center p-4">
           <div className="bg-white dark:bg-[#0d1b2e] rounded-xl border border-[#E2E8F0] dark:border-white/[0.06] max-w-6xl w-full max-h-[90vh] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.3)]">
             {/* Modal Header */}
             <div className="border-b border-[#E2E8F0] dark:border-white/[0.06] card-padding flex items-center justify-between">

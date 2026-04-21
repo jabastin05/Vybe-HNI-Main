@@ -1,15 +1,12 @@
 import { useState, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { ThemeToggle } from '../components/ThemeToggle';
 import { useProperties } from '../contexts/PropertiesContext';
-import { 
-  Shield, 
+import {
+  Shield,
   ArrowLeft,
   UploadCloud,
-  FileText,
   Building2,
   FolderOpen,
-  CheckCircle2,
   X,
   File
 } from 'lucide-react';
@@ -22,7 +19,7 @@ export function DocumentUpload() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [files, setFiles] = useState<File[]>([]);
   const [isDragging, setIsDragging] = useState(false);
-  
+
   const [uploadType, setUploadType] = useState<'property' | 'independent'>(id ? 'property' : 'property');
   const [selectedProperty, setSelectedProperty] = useState(id || '');
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -57,7 +54,7 @@ export function DocumentUpload() {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      setFiles(prev => [...prev, ...Array.from(e.target.files)]);
+      setFiles(prev => [...prev, ...Array.from(e.target.files!)]);
     }
     if (e.target) {
       e.target.value = '';
@@ -70,12 +67,12 @@ export function DocumentUpload() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (files.length === 0) {
       toast.error('Please select at least one file to upload');
       return;
     }
-    
+
     if (uploadType === 'property') {
       if (!selectedProperty) {
         toast.error('Please select a property');
@@ -87,11 +84,10 @@ export function DocumentUpload() {
       }
     }
 
-    // Simulate upload process
     toast.success(`${files.length > 1 ? 'Documents' : 'Document'} uploaded successfully!`, {
       description: `Your ${files.length > 1 ? 'documents have' : 'document has'} been securely stored in the vault.`
     });
-    
+
     setTimeout(() => {
       if (id) {
         navigate(`/property/${id}/documents`);
@@ -102,173 +98,210 @@ export function DocumentUpload() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0a0a0a]">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0a0a0a] transition-colors duration-300">
 
+      {/* ── Mobile Hero ── */}
+      <div className="md:hidden bg-[#0B1F3A] px-4 pt-5 pb-6 overflow-hidden relative">
+        {/* Subtle background orb */}
+        <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-[#C9A75D]/[0.07] blur-3xl pointer-events-none" />
 
-      {/* Header */}
-      <div className="lg:ml-[72px] border-b border-[#E2E8F0] dark:border-white/[0.06] bg-white dark:bg-[#0d1b2e] backdrop-blur-xl sticky top-[60px] md:top-0 z-40">
-        <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-6">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div className="flex items-center gap-4 md:gap-6">
+        {/* Back button */}
+        <button
+          onClick={() => navigate(id ? `/property/${id}/documents` : '/documents')}
+          className="flex items-center gap-1.5 text-white/60 hover:text-white/90 transition-colors mb-5"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          <span className="text-sm">Documents</span>
+        </button>
+
+        {/* Eyebrow */}
+        <div className="text-[10px] font-normal tracking-[0.14em] uppercase text-[#C9A75D]/80 mb-1.5">
+          Document Vault
+        </div>
+
+        {/* Title */}
+        <h1 className="text-2xl font-normal tracking-tight text-white leading-snug">
+          Upload Document
+        </h1>
+      </div>
+
+      {/* ── Desktop Header ── */}
+      <div className="hidden md:block border-b border-[#E2E8F0] dark:border-white/[0.06] bg-white dark:bg-[#0d1b2e]">
+        <div className="max-w-[1200px] mx-auto container-padding py-5 md:py-6">
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
               <button
                 onClick={() => navigate(id ? `/property/${id}/documents` : '/documents')}
-                className="w-10 h-10 rounded-xl bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.08] flex items-center justify-center hover:bg-[#0B1F3A]/[0.02] dark:hover:bg-white/[0.05] active:bg-[#0B1F3A]/[0.04] dark:active:bg-white/[0.08] transition-colors shadow-sm"
+                className="w-9 h-9 rounded-xl bg-[#0B1F3A]/[0.04] dark:bg-white/[0.04] hover:bg-[#0B1F3A]/[0.08] dark:hover:bg-white/[0.08] flex items-center justify-center transition-colors"
               >
-                <ArrowLeft className="w-5 h-5 text-[#475569] dark:text-white/50" />
+                <ArrowLeft className="w-4 h-4 text-[#475569] dark:text-white/50" />
               </button>
               <div>
-                <div className="text-caption tracking-[0.05em] uppercase text-[#94A3B8] dark:text-white/50 mb-2">
-                  Secure Document Upload
+                <div className="text-xs font-normal tracking-[0.12em] uppercase text-[#C9A75D] mb-1">
+                  Document Vault
                 </div>
-                <h1 className="text-h1 tracking-tight text-[#0F172A] dark:text-white">
+                <h1 className="text-h1 font-normal tracking-tight text-[#0F172A] dark:text-white">
                   Upload Document
                 </h1>
               </div>
             </div>
-            <div className="hidden md:block">
-              <ThemeToggle />
+
+            {/* Security badge */}
+            <div className="flex items-center gap-2 text-caption text-[#94A3B8] dark:text-white/40">
+              <Shield className="w-3.5 h-3.5" />
+              <span>Bank-grade encryption</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="lg:ml-[72px]">
-        <div className="max-w-[1200px] mx-auto container-padding py-6 md:py-8">
-          
-          <form onSubmit={handleSubmit} className="space-y-8">
-            {/* Upload Type Toggle */}
-            <div className="flex bg-[#0B1F3A]/[0.04] dark:bg-white/[0.04] p-1 rounded-xl w-full sm:w-fit mb-8">
-              <button
-                type="button"
-                onClick={() => setUploadType('property')}
-                className={`flex-1 sm:flex-initial px-4 sm:px-6 py-2.5 rounded-lg text-small font-normal transition-all flex items-center justify-center gap-2 ${
-                  uploadType === 'property'
-                    ? 'bg-white dark:bg-[#2A2A2A] text-[#0F172A] dark:text-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.4)]'
-                    : 'text-[#475569] dark:text-white/50 hover:text-[#0F172A] dark:hover:text-white'
-                }`}
-              >
-                <Building2 className="w-4 h-4" />
-                <span className="hidden sm:inline">Property Specific</span>
-                <span className="sm:hidden">Property</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setUploadType('independent')}
-                className={`flex-1 sm:flex-initial px-4 sm:px-6 py-2.5 rounded-lg text-small font-normal transition-all flex items-center justify-center gap-2 ${
-                  uploadType === 'independent'
-                    ? 'bg-white dark:bg-[#2A2A2A] text-[#0F172A] dark:text-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.4)]'
-                    : 'text-[#475569] dark:text-white/50 hover:text-[#0F172A] dark:hover:text-white'
-                }`}
-              >
-                <FolderOpen className="w-4 h-4" />
-                Independent
-              </button>
-            </div>
+      {/* ── Main Content ── */}
+      <div className="max-w-[1200px] mx-auto container-padding py-5 md:py-8">
+        <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
 
-            {/* File Upload Area */}
-            <div className="bg-white/80 dark:bg-[#0d1b2e]/80 backdrop-blur-xl border border-[#E2E8F0] dark:border-white/[0.08] rounded-xl p-4 md:p-5 lg:p-6 shadow-[0_8px_32px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
-              <h2 className="text-body font-normal text-[#0F172A] dark:text-white mb-6">File Selection</h2>
-              
-              <div 
-                className={`border-2 border-dashed rounded-xl p-12 text-center transition-all ${
-                  isDragging 
-                    ? 'border-emerald-500 bg-emerald-500/5 dark:bg-[#C9A75D]/10' 
-                    : 'border-[#E2E8F0] dark:border-white/[0.08] hover:border-[#C9A75D]/50 hover:bg-[#0B1F3A]/[0.02] dark:hover:bg-white/[0.02]'
-                }`}
-                onDragOver={handleDragOver}
-                onDragLeave={handleDragLeave}
-                onDrop={handleDrop}
-                onClick={() => fileInputRef.current?.click()}
-              >
-                <input 
-                  type="file" 
-                  ref={fileInputRef} 
-                  className="hidden" 
-                  onChange={handleFileChange}
-                  accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png"
-                  multiple
-                />
-                <div className="w-16 h-16 rounded-xl bg-[#0B1F3A]/5 dark:bg-white/5 flex items-center justify-center mx-auto mb-4">
-                  <UploadCloud className="w-8 h-8 text-[#94A3B8] dark:text-white/40" />
-                </div>
-                <h3 className="text-body font-normal text-[#0F172A] dark:text-white mb-2">
-                  Click or drag files to upload
-                </h3>
-                <p className="text-small text-[#94A3B8] dark:text-white/40 max-w-sm mx-auto">
-                  Supported formats: PDF, DOC, DOCX, XLS, XLSX, JPG, PNG. Multiple files allowed. Maximum file size 50MB per file.
-                </p>
+          {/* Upload Type Toggle */}
+          <div className="flex bg-[#0B1F3A]/[0.04] dark:bg-white/[0.04] p-1 rounded-xl w-full sm:w-fit">
+            <button
+              type="button"
+              onClick={() => setUploadType('property')}
+              className={`flex-1 sm:flex-initial px-4 sm:px-6 py-2.5 rounded-lg text-small font-normal transition-all flex items-center justify-center gap-2 ${
+                uploadType === 'property'
+                  ? 'bg-white dark:bg-[#0d1b2e] text-[#0F172A] dark:text-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.4)]'
+                  : 'text-[#475569] dark:text-white/50 hover:text-[#0F172A] dark:hover:text-white'
+              }`}
+            >
+              <Building2 className="w-4 h-4" />
+              <span className="hidden sm:inline">Property Specific</span>
+              <span className="sm:hidden">Property</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setUploadType('independent')}
+              className={`flex-1 sm:flex-initial px-4 sm:px-6 py-2.5 rounded-lg text-small font-normal transition-all flex items-center justify-center gap-2 ${
+                uploadType === 'independent'
+                  ? 'bg-white dark:bg-[#0d1b2e] text-[#0F172A] dark:text-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.4)]'
+                  : 'text-[#475569] dark:text-white/50 hover:text-[#0F172A] dark:hover:text-white'
+              }`}
+            >
+              <FolderOpen className="w-4 h-4" />
+              Independent
+            </button>
+          </div>
+
+          {/* File Upload Card */}
+          <div className="bg-white dark:bg-[#0d1b2e] border border-[#F1F5F9] dark:border-white/[0.06] rounded-2xl shadow-[0_2px_12px_rgba(11,31,58,0.06)] p-5 md:p-6">
+            <h2 className="text-base font-normal tracking-tight text-[#0F172A] dark:text-white mb-5">
+              File Selection
+            </h2>
+
+            {/* Drop zone */}
+            <div
+              className={`border-2 border-dashed rounded-xl p-10 md:p-12 text-center transition-all cursor-pointer ${
+                isDragging
+                  ? 'border-[#C9A75D] bg-[#0B1F3A]/[0.04] dark:bg-[#C9A75D]/[0.07]'
+                  : 'border-[#E2E8F0] dark:border-white/[0.08] hover:border-[#C9A75D]/50 hover:bg-[#0B1F3A]/[0.02] dark:hover:bg-[#C9A75D]/[0.03]'
+              }`}
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+              onClick={() => fileInputRef.current?.click()}
+            >
+              <input
+                type="file"
+                ref={fileInputRef}
+                className="hidden"
+                onChange={handleFileChange}
+                accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png"
+                multiple
+              />
+              <div className={`w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4 transition-colors ${
+                isDragging ? 'bg-[#C9A75D]/10' : 'bg-[#0B1F3A]/[0.04] dark:bg-white/[0.04]'
+              }`}>
+                <UploadCloud className={`w-7 h-7 transition-colors ${isDragging ? 'text-[#C9A75D]' : 'text-[#94A3B8] dark:text-white/40'}`} />
               </div>
-
-              {files.length > 0 && (
-                <div className="space-y-3 mt-6">
-                  {files.map((f, idx) => (
-                    <div key={`${f.name}-${idx}`} className="bg-emerald-500/5 dark:bg-[#C9A75D]/10 border border-[#C9A75D]/20 dark:border-[#C9A75D]/20 rounded-xl p-4 flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-xl bg-[#C9A75D]/20 dark:bg-emerald-500/30 flex items-center justify-center">
-                          <File className="w-5 h-5 text-[#C9A75D]" />
-                        </div>
-                        <div>
-                          <h4 className="text-small font-normal text-[#0F172A] dark:text-white mb-0.5 truncate max-w-[200px] md:max-w-xs">
-                            {f.name}
-                          </h4>
-                          <p className="text-caption text-[#94A3B8] dark:text-white/40">
-                            {(f.size / 1024 / 1024).toFixed(2)} MB
-                          </p>
-                        </div>
-                      </div>
-                      <button 
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleRemoveFile(idx);
-                        }}
-                        className="w-8 h-8 rounded-lg hover:bg-[#0B1F3A]/5 dark:hover:bg-white/5 flex items-center justify-center transition-colors text-[#94A3B8] dark:text-white/40 hover:text-red-500"
-                      >
-                        <X className="w-4 h-4" />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              )}
+              <h3 className="text-body font-normal text-[#0F172A] dark:text-white mb-1.5">
+                Click or drag files to upload
+              </h3>
+              <p className="text-small text-[#94A3B8] dark:text-white/40 max-w-sm mx-auto">
+                PDF, DOC, DOCX, XLS, XLSX, JPG, PNG · Multiple files · Max 50MB each
+              </p>
             </div>
 
-            {/* Document Details */}
-            {uploadType === 'property' && (
-              <div className="bg-white/80 dark:bg-[#0d1b2e]/80 backdrop-blur-xl border border-[#E2E8F0] dark:border-white/[0.08] rounded-xl p-4 md:p-5 lg:p-6 shadow-[0_8px_32px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
-                <h2 className="text-body font-normal text-[#0F172A] dark:text-white mb-6">Document Details</h2>
-                
-                <div className="space-y-6">
-                  {/* Property Selection */}
-                  <div>
-                    <label className="block text-small font-normal text-[#475569] dark:text-white/50 mb-2">
-                      Select Property
-                    </label>
-                    <select 
-                      value={selectedProperty}
-                      onChange={(e) => setSelectedProperty(e.target.value)}
-                      className="w-full px-4 py-3.5 bg-white/50 dark:bg-[#0B1F3A]/20 border border-[#E2E8F0] dark:border-white/[0.08] rounded-xl text-small text-[#0F172A] dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-[#E2E8F0] dark:focus:border-white/20/30 transition-all appearance-none"
+            {/* Selected files list */}
+            {files.length > 0 && (
+              <div className="space-y-2.5 mt-5">
+                {files.map((f, idx) => (
+                  <div
+                    key={`${f.name}-${idx}`}
+                    className="bg-[#0B1F3A]/[0.03] dark:bg-[#C9A75D]/[0.06] border border-[#C9A75D]/20 dark:border-[#C9A75D]/20 rounded-xl p-4 flex items-center justify-between"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-[#C9A75D]/10 flex items-center justify-center flex-shrink-0">
+                        <File className="w-5 h-5 text-[#C9A75D]" />
+                      </div>
+                      <div>
+                        <p className="text-small font-normal text-[#0F172A] dark:text-white mb-0.5 truncate max-w-[200px] md:max-w-xs">
+                          {f.name}
+                        </p>
+                        <p className="text-caption text-[#94A3B8] dark:text-white/40">
+                          {(f.size / 1024 / 1024).toFixed(2)} MB
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleRemoveFile(idx);
+                      }}
+                      className="w-8 h-8 rounded-lg hover:bg-[#0B1F3A]/[0.06] dark:hover:bg-white/[0.06] flex items-center justify-center transition-colors text-[#94A3B8] dark:text-white/40 hover:text-red-500"
                     >
-                      <option value="" disabled>Choose a property...</option>
-                      {properties.map(prop => (
-                        <option key={prop.id} value={prop.id}>
-                          {prop.name} {prop.address ? `- ${prop.address}` : ''}
-                        </option>
-                      ))}
-                    </select>
+                      <X className="w-4 h-4" />
+                    </button>
                   </div>
+                ))}
+              </div>
+            )}
+          </div>
 
-                  {/* Category Selection */}
+          {/* Document Details Card */}
+          {uploadType === 'property' && (
+            <div className="bg-white dark:bg-[#0d1b2e] border border-[#F1F5F9] dark:border-white/[0.06] rounded-2xl shadow-[0_2px_12px_rgba(11,31,58,0.06)] p-5 md:p-6">
+              <h2 className="text-base font-normal tracking-tight text-[#0F172A] dark:text-white mb-5">
+                Document Details
+              </h2>
+
+              <div className="space-y-5">
+                {/* Property Selection */}
                 <div>
-                  <label className="block text-small font-normal text-[#475569] dark:text-white/50 mb-2">
-                    Document Category
+                  <label className="block text-caption font-normal tracking-[0.05em] uppercase text-[#475569] dark:text-white/50 mb-2.5">
+                    Select Property *
                   </label>
-                  <select 
+                  <select
+                    value={selectedProperty}
+                    onChange={(e) => setSelectedProperty(e.target.value)}
+                    className="w-full px-4 py-3 bg-white dark:bg-white/[0.04] border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl text-small text-[#0F172A] dark:text-white focus:outline-none focus:border-[#C9A75D]/50 transition-all appearance-none"
+                  >
+                    <option value="" disabled>Choose a property…</option>
+                    {properties.map(prop => (
+                      <option key={prop.id} value={prop.id}>
+                        {prop.name} {prop.address ? `– ${prop.address}` : ''}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Category Selection */}
+                <div>
+                  <label className="block text-caption font-normal tracking-[0.05em] uppercase text-[#475569] dark:text-white/50 mb-2.5">
+                    Document Category *
+                  </label>
+                  <select
                     value={selectedCategory}
                     onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="w-full px-4 py-3.5 bg-white/50 dark:bg-[#0B1F3A]/20 border border-[#E2E8F0] dark:border-white/[0.08] rounded-xl text-small text-[#0F172A] dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-[#E2E8F0] dark:focus:border-white/20/30 transition-all appearance-none"
+                    className="w-full px-4 py-3 bg-white dark:bg-white/[0.04] border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl text-small text-[#0F172A] dark:text-white focus:outline-none focus:border-[#C9A75D]/50 transition-all appearance-none"
                   >
-                    <option value="" disabled>Select category...</option>
+                    <option value="" disabled>Select category…</option>
                     {categories.map(cat => (
                       <option key={cat} value={cat}>{cat}</option>
                     ))}
@@ -277,47 +310,46 @@ export function DocumentUpload() {
 
                 {/* Notes */}
                 <div>
-                  <label className="block text-small font-normal text-[#475569] dark:text-white/50 mb-2">
-                    Remarks / Notes (Optional)
+                  <label className="block text-caption font-normal tracking-[0.05em] uppercase text-[#475569] dark:text-white/50 mb-2.5">
+                    Remarks / Notes <span className="normal-case">(Optional)</span>
                   </label>
-                  <textarea 
+                  <textarea
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
-                    placeholder="Add any additional context or details about this document..."
+                    placeholder="Add any additional context or details about this document…"
                     rows={4}
-                    className="w-full px-4 py-3.5 bg-white/50 dark:bg-[#0B1F3A]/20 border border-[#E2E8F0] dark:border-white/[0.08] rounded-xl text-small text-[#0F172A] dark:text-white placeholder:text-[#94A3B8] dark:placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-[#E2E8F0] dark:focus:border-white/20/30 transition-all resize-none"
+                    className="w-full px-4 py-3 bg-white dark:bg-white/[0.04] border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl text-small text-[#0F172A] dark:text-white placeholder:text-[#94A3B8] dark:placeholder:text-white/30 focus:outline-none focus:border-[#C9A75D]/50 transition-all resize-none"
                   />
                 </div>
               </div>
             </div>
-            )}
+          )}
 
-            {/* Actions */}
-            <div className="flex flex-col-reverse sm:flex-row justify-end gap-3 md:gap-4">
-              <button
-                type="button"
-                onClick={() => navigate(id ? `/property/${id}/documents` : '/documents')}
-                className="w-full sm:w-auto px-6 py-3.5 rounded-xl border border-[#E2E8F0] dark:border-white/[0.08] text-small font-normal text-[#0F172A] dark:text-white hover:bg-[#0B1F3A]/5 dark:hover:bg-white/5 active:bg-[#0B1F3A]/[0.08] dark:active:bg-white/[0.08] transition-all"
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                className="w-full sm:w-auto container-padding py-3.5 bg-[#0B1F3A] dark:bg-white hover:bg-[#0B1F3A]/90 dark:hover:bg-white/90 active:bg-[#0B1F3A]/80 dark:active:bg-white/80 text-white rounded-lg transition-all shadow-[0_4px_16px_rgba(16,185,129,0.3)] hover:shadow-[0_8px_24px_rgba(16,185,129,0.4)] flex items-center justify-center gap-2 text-small font-normal"
-              >
-                <Shield className="w-4 h-4" />
-                Upload Securely
-              </button>
-            </div>
-            
-            {/* Secure Upload Footer Note */}
-            <div className="flex items-center justify-center gap-2 mt-8 text-caption text-[#94A3B8] dark:text-white/40">
-              <Shield className="w-3.5 h-3.5" />
-              <span>All documents are encrypted with bank-grade security before storage.</span>
-            </div>
-          </form>
+          {/* Action Buttons */}
+          <div className="flex flex-col-reverse sm:flex-row justify-end gap-3">
+            <button
+              type="button"
+              onClick={() => navigate(id ? `/property/${id}/documents` : '/documents')}
+              className="w-full sm:w-auto px-6 py-3 rounded-xl border border-[#E2E8F0] dark:border-white/[0.06] text-small font-normal text-[#0F172A] dark:text-white hover:bg-[#0B1F3A]/[0.04] dark:hover:bg-white/[0.04] active:bg-[#0B1F3A]/[0.07] dark:active:bg-white/[0.07] transition-all"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="w-full sm:w-auto px-6 py-3 bg-[#C9A75D] hover:bg-[#b8934f] active:scale-[0.98] text-[#0B1F3A] rounded-xl text-small font-normal transition-all shadow-[0_4px_12px_rgba(201,167,93,0.4)] flex items-center justify-center gap-2"
+            >
+              <Shield className="w-4 h-4" />
+              Upload Securely
+            </button>
+          </div>
 
-        </div>
+          {/* Security footnote */}
+          <div className="flex items-center justify-center gap-2 pb-2 text-caption text-[#94A3B8] dark:text-white/40">
+            <Shield className="w-3.5 h-3.5" />
+            <span>All documents are encrypted with bank-grade security before storage.</span>
+          </div>
+
+        </form>
       </div>
     </div>
   );

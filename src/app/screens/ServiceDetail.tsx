@@ -361,7 +361,7 @@ export function ServiceDetail() {
 
       {/* Service Request Modal */}
       {showRequestModal && (
-        <div className="fixed inset-0 bg-[#0B1F3A]/60 backdrop-blur-sm flex items-end sm:items-center justify-center z-50 p-0 sm:p-4">
+        <div className="fixed inset-0 bg-[#0B1F3A]/60 backdrop-blur-sm flex items-end sm:items-center justify-center z-[60] p-0 sm:p-4">
           <div className="bg-white dark:bg-[#0d1b2e] rounded-t-2xl sm:rounded-2xl w-full sm:max-w-lg max-h-[92vh] overflow-y-auto shadow-[0_20px_60px_rgba(0,0,0,0.3)] flex flex-col">
             {/* Modal Header */}
             <div className="sticky top-0 bg-white dark:bg-[#0d1b2e] border-b border-[#F1F5F9] dark:border-white/[0.06] px-5 py-4 rounded-t-2xl">
@@ -500,7 +500,7 @@ export function ServiceDetail() {
 
       {/* Success Modal */}
       {showSuccessModal && (
-        <div className="fixed inset-0 bg-[#0B1F3A]/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-[#0B1F3A]/60 backdrop-blur-sm flex items-center justify-center z-[60] p-4">
           <div className="bg-white dark:bg-[#0d1b2e] rounded-2xl max-w-md w-full shadow-[0_20px_60px_rgba(0,0,0,0.3)] text-center overflow-hidden">
             <div className="px-6 pt-8 pb-6">
               <div className="w-16 h-16 rounded-full bg-[#C9A75D]/10 flex items-center justify-center mx-auto mb-5">

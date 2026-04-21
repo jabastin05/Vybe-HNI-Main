@@ -103,7 +103,7 @@ export function PropertyIntelligence() {
 
       {/* Modal for HABU Report In Progress */}
       {showReportModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0B1F3A]/80 backdrop-blur-sm">
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-[#0B1F3A]/80 backdrop-blur-sm">
           <div className="bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-lg p-4 md:p-5 lg:p-6 max-w-md mx-4">
             <div className="text-center">
               <div className="w-16 h-16 rounded-full bg-yellow-500/10 flex items-center justify-center mx-auto mb-6">

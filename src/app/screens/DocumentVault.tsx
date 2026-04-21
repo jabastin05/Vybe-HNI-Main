@@ -709,8 +709,8 @@ export function DocumentVault() {
 
                   {showPropertyFilter && (
                     <>
-                      <div className="fixed inset-0 bg-[#0B1F3A]/40 z-40" onClick={() => setShowPropertyFilter(false)} />
-                      <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
+                      <div className="fixed inset-0 bg-[#0B1F3A]/40 z-[55]" onClick={() => setShowPropertyFilter(false)} />
+                      <div className="fixed inset-0 flex items-center justify-center z-[60] p-4">
                         <div className="bg-white/95 dark:bg-[#0d1b2e]/95 backdrop-blur-xl border border-[#E2E8F0] dark:border-white/[0.08] rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.12)] overflow-hidden w-full max-w-[400px]">
                           <div className="p-3 border-b border-[#E2E8F0] dark:border-white/[0.06]">
                             <div className="text-caption tracking-[0.1em] uppercase text-[#94A3B8] dark:text-white/40 font-normal mb-3 px-2">
@@ -771,7 +771,7 @@ export function DocumentVault() {
                   {showCategoryFilter && (
                     <>
                       <div className="fixed inset-0 bg-[#0B1F3A]/40 z-40" onClick={() => setShowCategoryFilter(false)} />
-                      <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
+                      <div className="fixed inset-0 flex items-center justify-center z-[60] p-4">
                         <div className="bg-white/95 dark:bg-[#0d1b2e]/95 backdrop-blur-xl border border-[#E2E8F0] dark:border-white/[0.08] rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.12)] overflow-hidden w-full max-w-[400px]">
                           <div className="p-3">
                             <div className="text-caption tracking-[0.1em] uppercase text-[#94A3B8] dark:text-white/40 font-normal mb-3 px-2">
@@ -1020,7 +1020,7 @@ export function DocumentVault() {
 
       {/* Document Viewer Modal (shared) */}
       {viewingDocument && (
-        <div className="fixed inset-0 z-50 flex items-end md:items-center justify-center md:p-4 bg-[#0B1F3A]/80 backdrop-blur-md">
+        <div className="fixed inset-0 z-[60] flex items-end md:items-center justify-center md:p-4 bg-[#0B1F3A]/80 backdrop-blur-md">
           <div className="relative bg-white/95 dark:bg-[#0d1b2e]/95 backdrop-blur-xl
                           rounded-t-3xl md:rounded-xl
                           w-full md:max-w-5xl
