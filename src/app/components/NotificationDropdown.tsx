@@ -94,7 +94,7 @@ export function NotificationDropdown() {
       case 'budget':
         return <TrendingUp className="w-4 h-4 text-purple-500" />;
       default:
-        return <Bell className="w-4 h-4 text-black/40" />;
+        return <Bell className="w-4 h-4 text-[#94A3B8]" />;
     }
   };
 
@@ -103,11 +103,11 @@ export function NotificationDropdown() {
       {/* Notification Bell Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative inline-flex items-center justify-center w-9 h-9 rounded-lg bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-black/60 dark:text-white/60"
+        className="relative inline-flex items-center justify-center w-9 h-9 rounded-lg bg-[#0B1F3A]/5 dark:bg-white/5 hover:bg-[#0B1F3A]/10 dark:hover:bg-white/10 transition-colors text-[#475569] dark:text-white/50"
       >
         <Bell className="w-4 h-4" />
         {unreadCount > 0 && (
-          <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-blue-500 rounded-full border border-white dark:border-black"></span>
+          <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-blue-500 rounded-full border border-white dark:border-[#0d1b2e]"></span>
         )}
       </button>
 
@@ -119,28 +119,28 @@ export function NotificationDropdown() {
           
           {/* Notification Panel */}
           <div className="fixed md:absolute inset-x-4 md:inset-x-auto top-16 md:top-12 md:right-0 md:w-[420px] z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-            <div className="bg-white/95 dark:bg-[#111111]/95 backdrop-blur-xl border border-black/10 dark:border-white/10 rounded-2xl shadow-2xl overflow-hidden max-h-[calc(100vh-5rem)]">
+            <div className="bg-white/95 dark:bg-[#111111]/95 backdrop-blur-xl border border-[#E2E8F0] dark:border-white/[0.06] rounded-2xl shadow-2xl overflow-hidden max-h-[calc(100vh-5rem)]">
               {/* Header */}
-              <div className="px-4 md:px-6 py-4 md:py-5 border-b border-black/5 dark:border-white/5">
+              <div className="px-4 md:px-6 py-4 md:py-5 border-b border-[#E2E8F0] dark:border-white/[0.05]">
                 <div className="flex items-center justify-between mb-1">
-                  <h3 className="text-body text-black dark:text-white/95">
+                  <h3 className="text-body text-[#0F172A] dark:text-white/95">
                     Notifications
                   </h3>
                   <button
                     onClick={() => setIsOpen(false)}
-                    className="w-7 h-7 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 flex items-center justify-center text-black/40 dark:text-white/40 transition-colors"
+                    className="w-7 h-7 rounded-lg hover:bg-[#0B1F3A]/5 dark:hover:bg-white/5 flex items-center justify-center text-[#94A3B8] dark:text-white/40 transition-colors"
                   >
                     <X className="w-4 h-4" />
                   </button>
                 </div>
                 {unreadCount > 0 && (
                   <div className="flex items-center justify-between">
-                    <div className="text-[12px] text-black/60 dark:text-white/60">
+                    <div className="text-xs text-[#475569] dark:text-white/50">
                       {unreadCount} unread notification{unreadCount !== 1 ? 's' : ''}
                     </div>
                     <button
                       onClick={markAllAsRead}
-                      className="text-[12px] text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium flex items-center gap-1.5 transition-colors"
+                      className="text-xs text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-normal flex items-center gap-1.5 transition-colors"
                     >
                       <Check className="w-3 h-3" />
                       Mark all as read
@@ -153,8 +153,8 @@ export function NotificationDropdown() {
               <div className="max-h-[60vh] md:max-h-[480px] overflow-y-auto">
                 {notifications.length === 0 ? (
                   <div className="px-6 py-12 text-center">
-                    <Bell className="w-8 h-8 text-black/20 dark:text-white/20 mx-auto mb-3" />
-                    <div className="text-[14px] text-black/40 dark:text-white/40">
+                    <Bell className="w-8 h-8 text-[#94A3B8]/60 dark:text-white/20 mx-auto mb-3" />
+                    <div className="text-sm text-[#94A3B8] dark:text-white/40">
                       No notifications yet
                     </div>
                   </div>
@@ -164,30 +164,30 @@ export function NotificationDropdown() {
                       <div
                         key={notification.id}
                         onClick={() => markAsRead(notification.id)}
-                        className={`px-4 md:px-6 py-3 md:py-4 hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors cursor-pointer active:bg-black/[0.04] dark:active:bg-white/[0.04] ${
+                        className={`px-4 md:px-6 py-3 md:py-4 hover:bg-[#0B1F3A]/[0.02] dark:hover:bg-white/[0.02] transition-colors cursor-pointer active:bg-[#0B1F3A]/[0.04] dark:active:bg-white/[0.04] ${
                           !notification.read ? 'bg-blue-500/[0.03] dark:bg-blue-400/[0.03]' : ''
                         }`}
                       >
                         <div className="flex gap-3">
                           {/* Icon */}
-                          <div className="w-9 h-9 rounded-lg bg-black/5 dark:bg-white/5 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <div className="w-9 h-9 rounded-lg bg-[#0B1F3A]/5 dark:bg-white/5 flex items-center justify-center flex-shrink-0 mt-0.5">
                             {getNotificationIcon(notification.type)}
                           </div>
 
                           {/* Content */}
                           <div className="flex-1 min-w-0">
                             <div className="flex items-start justify-between gap-2 mb-1">
-                              <h4 className="text-[13px] font-medium text-black dark:text-white/95">
+                              <h4 className="text-sm font-normal text-[#0F172A] dark:text-white/95">
                                 {notification.title}
                               </h4>
                               {!notification.read && (
                                 <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0 mt-1.5"></div>
                               )}
                             </div>
-                            <p className="text-[13px] text-black/60 dark:text-white/60 leading-relaxed mb-2">
+                            <p className="text-sm text-[#475569] dark:text-white/50 leading-relaxed mb-2">
                               {notification.message}
                             </p>
-                            <div className="text-[11px] text-black/40 dark:text-white/40">
+                            <div className="text-xs text-[#94A3B8] dark:text-white/40">
                               {notification.time}
                             </div>
                           </div>
@@ -200,8 +200,8 @@ export function NotificationDropdown() {
 
               {/* Footer */}
               {notifications.length > 0 && (
-                <div className="px-6 py-4 border-t border-black/5 dark:border-white/5 bg-black/[0.01] dark:bg-white/[0.01]">
-                  <button className="w-full text-center text-[13px] font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
+                <div className="px-6 py-4 border-t border-[#E2E8F0] dark:border-white/[0.05] bg-[#0B1F3A]/[0.01] dark:bg-white/[0.01]">
+                  <button className="w-full text-center text-sm font-normal text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
                     View All Notifications
                   </button>
                 </div>

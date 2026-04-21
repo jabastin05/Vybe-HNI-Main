@@ -78,7 +78,7 @@ function Container16() {
     <div className="bg-black h-[34px] relative shrink-0 w-[171.18px]" data-name="Container">
       <div aria-hidden="true" className="absolute border border-black border-solid inset-0 pointer-events-none" />
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[16px] left-[17px] not-italic text-[10px] text-white top-[9px] tracking-[0.6172px] whitespace-nowrap">STRICTLY CONFIDENTIAL</p>
+        <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[16px] left-[17px] not-italic text-[10px] text-white top-[9px] tracking-[0.6172px] whitespace-nowrap">STRICTLY CONFIDENTIAL</p>
       </div>
     </div>
   );
@@ -100,7 +100,7 @@ function Text() {
   return (
     <div className="h-[16px] relative shrink-0 w-[180.477px]" data-name="Text">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="-translate-x-1/2 absolute font-['Inter:Medium',sans-serif] font-medium leading-[16px] left-[90px] not-italic text-[#6a7282] text-[10px] text-center top-0 tracking-[1.1172px] uppercase whitespace-nowrap">Strategic Advisory Report</p>
+        <p className="-translate-x-1/2 absolute font-['Inter:Medium',sans-serif] font-normal leading-[16px] left-[90px] not-italic text-[#6a7282] text-[10px] text-center top-0 tracking-[1.1172px] uppercase whitespace-nowrap">Strategic Advisory Report</p>
       </div>
     </div>
   );
@@ -123,7 +123,7 @@ function Container18() {
 function Heading() {
   return (
     <div className="content-stretch flex h-[38.398px] items-start relative shrink-0 w-full" data-name="Heading 1">
-      <p className="bg-clip-text font-['Inter:Medium',sans-serif] font-medium leading-[38.4px] not-italic relative shrink-0 text-[32px] text-[transparent] text-center tracking-[-0.2338px] whitespace-nowrap" style={{ backgroundImage: "linear-gradient(90deg, rgb(10, 10, 10) 0%, rgb(10, 10, 10) 100%), linear-gradient(rgb(16, 24, 40) 0%, rgb(54, 65, 83) 100%)" }}>{`Highest & Best Use`}</p>
+      <p className="bg-clip-text font-['Inter:Medium',sans-serif] font-normal leading-[38.4px] not-italic relative shrink-0 text-[32px] text-[transparent] text-center tracking-[-0.2338px] whitespace-nowrap" style={{ backgroundImage: "linear-gradient(90deg, rgb(10, 10, 10) 0%, rgb(10, 10, 10) 100%), linear-gradient(rgb(16, 24, 40) 0%, rgb(54, 65, 83) 100%)" }}>{`Highest & Best Use`}</p>
     </div>
   );
 }
@@ -131,7 +131,7 @@ function Heading() {
 function Container22() {
   return (
     <div className="h-[28.797px] relative shrink-0 w-full" data-name="Container">
-      <p className="-translate-x-1/2 absolute font-['Inter:Light',sans-serif] font-light leading-[28.8px] left-[130.71px] not-italic text-[#4a5565] text-[18px] text-center top-[0.5px] tracking-[1.3605px] whitespace-nowrap">HABU ANALYSIS</p>
+      <p className="-translate-x-1/2 absolute font-['Inter:Light',sans-serif] font-light leading-[28.8px] left-[130.71px] not-italic text-[#4a5565] text-lg text-center top-[0.5px] tracking-[1.3605px] whitespace-nowrap">HABU ANALYSIS</p>
     </div>
   );
 }
@@ -152,7 +152,7 @@ function Container23() {
 function Container28() {
   return (
     <div className="h-[16px] relative shrink-0 w-full" data-name="Container">
-      <p className="-translate-x-1/2 absolute font-['Inter:Medium',sans-serif] font-medium leading-[16px] left-[103.95px] not-italic text-[#6a7282] text-[10px] text-center top-0 tracking-[0.6172px] uppercase whitespace-nowrap">Property Identifier</p>
+      <p className="-translate-x-1/2 absolute font-['Inter:Medium',sans-serif] font-normal leading-[16px] left-[103.95px] not-italic text-[#6a7282] text-[10px] text-center top-0 tracking-[0.6172px] uppercase whitespace-nowrap">Property Identifier</p>
     </div>
   );
 }
@@ -160,7 +160,7 @@ function Container28() {
 function Container29() {
   return (
     <div className="h-[20.797px] relative shrink-0 w-full" data-name="Container">
-      <p className="-translate-x-1/2 absolute font-['Inter:Regular',sans-serif] font-normal leading-[20.8px] left-[103.27px] not-italic text-[#101828] text-[13px] text-center top-[0.5px] tracking-[-0.0762px] whitespace-nowrap">Parcel ID: WHF-2024-0847</p>
+      <p className="-translate-x-1/2 absolute font-['Inter:Regular',sans-serif] font-normal leading-[20.8px] left-[103.27px] not-italic text-[#101828] text-sm text-center top-[0.5px] tracking-[-0.0762px] whitespace-nowrap">Parcel ID: WHF-2024-0847</p>
     </div>
   );
 }
@@ -177,7 +177,7 @@ function Container27() {
 function Container31() {
   return (
     <div className="h-[16px] relative shrink-0 w-full" data-name="Container">
-      <p className="-translate-x-1/2 absolute font-['Inter:Medium',sans-serif] font-medium leading-[16px] left-[103.54px] not-italic text-[#6a7282] text-[10px] text-center top-0 tracking-[0.6172px] uppercase whitespace-nowrap">Location</p>
+      <p className="-translate-x-1/2 absolute font-['Inter:Medium',sans-serif] font-normal leading-[16px] left-[103.54px] not-italic text-[#6a7282] text-[10px] text-center top-0 tracking-[0.6172px] uppercase whitespace-nowrap">Location</p>
     </div>
   );
 }
@@ -185,7 +185,7 @@ function Container31() {
 function Container32() {
   return (
     <div className="h-[20.797px] relative shrink-0 w-full" data-name="Container">
-      <p className="-translate-x-1/2 absolute font-['Inter:Regular',sans-serif] font-normal leading-[20.8px] left-[103.45px] not-italic text-[#101828] text-[13px] text-center top-[0.5px] tracking-[-0.0762px] whitespace-nowrap">Whitefield, Bengaluru</p>
+      <p className="-translate-x-1/2 absolute font-['Inter:Regular',sans-serif] font-normal leading-[20.8px] left-[103.45px] not-italic text-[#101828] text-sm text-center top-[0.5px] tracking-[-0.0762px] whitespace-nowrap">Whitefield, Bengaluru</p>
     </div>
   );
 }
@@ -202,7 +202,7 @@ function Container30() {
 function Container34() {
   return (
     <div className="h-[16px] relative shrink-0 w-full" data-name="Container">
-      <p className="-translate-x-1/2 absolute font-['Inter:Medium',sans-serif] font-medium leading-[16px] left-[103.87px] not-italic text-[#6a7282] text-[10px] text-center top-0 tracking-[0.6172px] uppercase whitespace-nowrap">Parcel Size</p>
+      <p className="-translate-x-1/2 absolute font-['Inter:Medium',sans-serif] font-normal leading-[16px] left-[103.87px] not-italic text-[#6a7282] text-[10px] text-center top-0 tracking-[0.6172px] uppercase whitespace-nowrap">Parcel Size</p>
     </div>
   );
 }
@@ -210,7 +210,7 @@ function Container34() {
 function Container35() {
   return (
     <div className="h-[20.797px] relative shrink-0 w-full" data-name="Container">
-      <p className="-translate-x-1/2 absolute font-['Inter:Regular',sans-serif] font-normal leading-[20.8px] left-[103.75px] not-italic text-[#101828] text-[13px] text-center top-[0.5px] tracking-[-0.0762px] whitespace-nowrap">2.47 Acres (10,764 sq.m)</p>
+      <p className="-translate-x-1/2 absolute font-['Inter:Regular',sans-serif] font-normal leading-[20.8px] left-[103.75px] not-italic text-[#101828] text-sm text-center top-[0.5px] tracking-[-0.0762px] whitespace-nowrap">2.47 Acres (10,764 sq.m)</p>
     </div>
   );
 }
@@ -227,7 +227,7 @@ function Container33() {
 function Container37() {
   return (
     <div className="h-[16px] relative shrink-0 w-full" data-name="Container">
-      <p className="-translate-x-1/2 absolute font-['Inter:Medium',sans-serif] font-medium leading-[16px] left-[103.91px] not-italic text-[#6a7282] text-[10px] text-center top-0 tracking-[0.6172px] uppercase whitespace-nowrap">Report Date</p>
+      <p className="-translate-x-1/2 absolute font-['Inter:Medium',sans-serif] font-normal leading-[16px] left-[103.91px] not-italic text-[#6a7282] text-[10px] text-center top-0 tracking-[0.6172px] uppercase whitespace-nowrap">Report Date</p>
     </div>
   );
 }
@@ -235,7 +235,7 @@ function Container37() {
 function Container38() {
   return (
     <div className="h-[20.797px] relative shrink-0 w-full" data-name="Container">
-      <p className="-translate-x-1/2 absolute font-['Inter:Regular',sans-serif] font-normal leading-[20.8px] left-[103.88px] not-italic text-[#101828] text-[13px] text-center top-[0.5px] tracking-[-0.0762px] whitespace-nowrap">February 24, 2026</p>
+      <p className="-translate-x-1/2 absolute font-['Inter:Regular',sans-serif] font-normal leading-[20.8px] left-[103.88px] not-italic text-[#101828] text-sm text-center top-[0.5px] tracking-[-0.0762px] whitespace-nowrap">February 24, 2026</p>
     </div>
   );
 }
@@ -304,7 +304,7 @@ function Container42() {
 
 function Paragraph() {
   return (
-    <div className="absolute font-['Inter:Regular',sans-serif] font-normal h-[29.25px] leading-[14.625px] left-0 not-italic text-[#6a7282] text-[9px] text-center top-[17px] tracking-[0.167px] w-[642.523px] whitespace-nowrap" data-name="Paragraph">
+    <div className="absolute font-['Inter:Regular',sans-serif] font-normal h-[29.25px] leading-[14.625px] left-0 not-italic text-[#6a7282] text-[10px] text-center top-[17px] tracking-[0.167px] w-[642.523px] whitespace-nowrap" data-name="Paragraph">
       <p className="-translate-x-1/2 absolute left-[321.49px] top-0">This document contains proprietary information prepared exclusively for the recipient.</p>
       <p className="-translate-x-1/2 absolute left-[321.85px] top-[14.63px]">Distribution or disclosure to third parties without written consent is prohibited.</p>
     </div>
@@ -314,7 +314,7 @@ function Paragraph() {
 function Container43() {
   return (
     <div className="absolute h-[14.398px] left-0 top-[62.25px] w-[642.523px]" data-name="Container">
-      <p className="-translate-x-1/2 absolute font-['Inter:Medium',sans-serif] font-medium leading-[14.4px] left-[321.73px] not-italic text-[#99a1af] text-[9px] text-center top-[0.5px] tracking-[0.617px] whitespace-nowrap">PREPARED BY VYBE REALTY</p>
+      <p className="-translate-x-1/2 absolute font-['Inter:Medium',sans-serif] font-normal leading-[14.4px] left-[321.73px] not-italic text-[#99a1af] text-[10px] text-center top-[0.5px] tracking-[0.617px] whitespace-nowrap">PREPARED BY VYBE REALTY</p>
     </div>
   );
 }
@@ -351,7 +351,7 @@ function TitlePage() {
 function Container45() {
   return (
     <div className="absolute h-[16px] left-0 top-0 w-[642.523px]" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[16px] left-0 not-italic text-[#6a7282] text-[10px] top-0 tracking-[1.1172px] uppercase whitespace-nowrap">Section 02</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[16px] left-0 not-italic text-[#6a7282] text-[10px] top-0 tracking-[1.1172px] uppercase whitespace-nowrap">Section 02</p>
     </div>
   );
 }
@@ -359,7 +359,7 @@ function Container45() {
 function Heading1() {
   return (
     <div className="absolute h-[31.195px] left-0 top-[24px] w-[642.523px]" data-name="Heading 2">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[31.2px] left-0 not-italic text-[#0a0a0a] text-[24px] top-[0.5px] tracking-[-0.4097px] whitespace-nowrap">Executive Summary</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[31.2px] left-0 not-italic text-[#0a0a0a] text-[24px] top-[0.5px] tracking-[-0.4097px] whitespace-nowrap">Executive Summary</p>
     </div>
   );
 }
@@ -381,7 +381,7 @@ function Container44() {
 function Container48() {
   return (
     <div className="h-[20.797px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[20.8px] left-0 not-italic text-[#101828] text-[13px] top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">HABU Scores</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[20.8px] left-0 not-italic text-[#101828] text-sm top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">HABU Scores</p>
     </div>
   );
 }
@@ -389,7 +389,7 @@ function Container48() {
 function HeaderCell() {
   return (
     <div className="absolute h-[41.594px] left-0 top-0 w-[425.82px]" data-name="Header Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12px] tracking-[0.3395px] uppercase whitespace-nowrap">Metric</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12px] tracking-[0.3395px] uppercase whitespace-nowrap">Metric</p>
     </div>
   );
 }
@@ -397,7 +397,7 @@ function HeaderCell() {
 function HeaderCell1() {
   return (
     <div className="absolute h-[41.594px] left-[425.82px] top-0 w-[214.703px]" data-name="Header Cell">
-      <p className="-translate-x-full absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[199.36px] not-italic text-[#364153] text-[11px] text-right top-[12px] tracking-[0.3395px] uppercase whitespace-nowrap">Score</p>
+      <p className="-translate-x-full absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[199.36px] not-italic text-[#364153] text-xs text-right top-[12px] tracking-[0.3395px] uppercase whitespace-nowrap">Score</p>
     </div>
   );
 }
@@ -422,7 +422,7 @@ function TableHeader() {
 function TableCell() {
   return (
     <div className="absolute h-[45.297px] left-0 top-0 w-[425.82px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[13.6px] tracking-[0.0645px] whitespace-nowrap">Overall HABU Score</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[13.6px] tracking-[0.0645px] whitespace-nowrap">Overall HABU Score</p>
     </div>
   );
 }
@@ -430,7 +430,7 @@ function TableCell() {
 function TableCell1() {
   return (
     <div className="absolute h-[45.297px] left-[425.82px] top-0 w-[214.703px]" data-name="Table Cell">
-      <p className="-translate-x-full absolute font-['Inter:Medium',sans-serif] font-medium leading-[20.8px] left-[198.86px] not-italic text-[#096] text-[13px] text-right top-[12.5px] tracking-[-0.0762px] whitespace-nowrap">84/100</p>
+      <p className="-translate-x-full absolute font-['Inter:Medium',sans-serif] font-normal leading-[20.8px] left-[198.86px] not-italic text-[#096] text-sm text-right top-[12.5px] tracking-[-0.0762px] whitespace-nowrap">84/100</p>
     </div>
   );
 }
@@ -447,7 +447,7 @@ function TableRow1() {
 function TableCell2() {
   return (
     <div className="absolute h-[45.797px] left-0 top-0 w-[425.82px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[14.1px] tracking-[0.0645px] whitespace-nowrap">Legal Score</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[14.1px] tracking-[0.0645px] whitespace-nowrap">Legal Score</p>
     </div>
   );
 }
@@ -455,7 +455,7 @@ function TableCell2() {
 function TableCell3() {
   return (
     <div className="absolute h-[45.797px] left-[425.82px] top-0 w-[214.703px]" data-name="Table Cell">
-      <p className="-translate-x-full absolute font-['Inter:Medium',sans-serif] font-medium leading-[20.8px] left-[199.21px] not-italic text-[#101828] text-[13px] text-right top-[13px] tracking-[-0.0762px] whitespace-nowrap">87/100</p>
+      <p className="-translate-x-full absolute font-['Inter:Medium',sans-serif] font-normal leading-[20.8px] left-[199.21px] not-italic text-[#101828] text-sm text-right top-[13px] tracking-[-0.0762px] whitespace-nowrap">87/100</p>
     </div>
   );
 }
@@ -472,7 +472,7 @@ function TableRow2() {
 function TableCell4() {
   return (
     <div className="absolute h-[45.797px] left-0 top-0 w-[425.82px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[14.1px] tracking-[0.0645px] whitespace-nowrap">Market Score</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[14.1px] tracking-[0.0645px] whitespace-nowrap">Market Score</p>
     </div>
   );
 }
@@ -480,7 +480,7 @@ function TableCell4() {
 function TableCell5() {
   return (
     <div className="absolute h-[45.797px] left-[425.82px] top-0 w-[214.703px]" data-name="Table Cell">
-      <p className="-translate-x-full absolute font-['Inter:Medium',sans-serif] font-medium leading-[20.8px] left-[198.95px] not-italic text-[#101828] text-[13px] text-right top-[13px] tracking-[-0.0762px] whitespace-nowrap">89/100</p>
+      <p className="-translate-x-full absolute font-['Inter:Medium',sans-serif] font-normal leading-[20.8px] left-[198.95px] not-italic text-[#101828] text-sm text-right top-[13px] tracking-[-0.0762px] whitespace-nowrap">89/100</p>
     </div>
   );
 }
@@ -497,7 +497,7 @@ function TableRow3() {
 function TableCell6() {
   return (
     <div className="absolute h-[45.297px] left-0 top-0 w-[425.82px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[14.1px] tracking-[0.0645px] whitespace-nowrap">Development Potential</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[14.1px] tracking-[0.0645px] whitespace-nowrap">Development Potential</p>
     </div>
   );
 }
@@ -505,7 +505,7 @@ function TableCell6() {
 function TableCell7() {
   return (
     <div className="absolute h-[45.297px] left-[425.82px] top-0 w-[214.703px]" data-name="Table Cell">
-      <p className="-translate-x-full absolute font-['Inter:Medium',sans-serif] font-medium leading-[20.8px] left-[199.4px] not-italic text-[#101828] text-[13px] text-right top-[13px] tracking-[-0.0762px] whitespace-nowrap">82/100</p>
+      <p className="-translate-x-full absolute font-['Inter:Medium',sans-serif] font-normal leading-[20.8px] left-[199.4px] not-italic text-[#101828] text-sm text-right top-[13px] tracking-[-0.0762px] whitespace-nowrap">82/100</p>
     </div>
   );
 }
@@ -564,7 +564,7 @@ function Container47() {
 function Container51() {
   return (
     <div className="h-[20.797px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[20.8px] left-0 not-italic text-[#101828] text-[13px] top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">Strategic Recommendation</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[20.8px] left-0 not-italic text-[#101828] text-sm top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">Strategic Recommendation</p>
     </div>
   );
 }
@@ -572,7 +572,7 @@ function Container51() {
 function Container53() {
   return (
     <div className="absolute bg-[#096] h-[24px] left-[25px] rounded-[4px] top-[25px] w-[171.031px]" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[16px] left-[12px] not-italic text-[10px] text-white top-[4px] tracking-[0.6172px] whitespace-nowrap">RECOMMENDED STRATEGY</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[16px] left-[12px] not-italic text-[10px] text-white top-[4px] tracking-[0.6172px] whitespace-nowrap">RECOMMENDED STRATEGY</p>
     </div>
   );
 }
@@ -588,7 +588,7 @@ function Container56() {
 function Container57() {
   return (
     <div className="h-[25.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[25.6px] left-0 not-italic text-[#101828] text-[16px] top-[-1px] tracking-[-0.3125px] whitespace-nowrap">Land Banking</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[25.6px] left-0 not-italic text-[#101828] text-base top-[-1px] tracking-[-0.3125px] whitespace-nowrap">Land Banking</p>
     </div>
   );
 }
@@ -613,7 +613,7 @@ function Container59() {
 function Container60() {
   return (
     <div className="h-[25.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[25.6px] left-0 not-italic text-[#096] text-[16px] top-[-1px] tracking-[-0.3125px] whitespace-nowrap">18.2% CAGR</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[25.6px] left-0 not-italic text-[#096] text-base top-[-1px] tracking-[-0.3125px] whitespace-nowrap">18.2% CAGR</p>
     </div>
   );
 }
@@ -638,7 +638,7 @@ function Container62() {
 function Container63() {
   return (
     <div className="h-[25.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[25.6px] left-0 not-italic text-[#101828] text-[16px] top-[-1px] tracking-[-0.3125px] whitespace-nowrap">3-5 Years</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[25.6px] left-0 not-italic text-[#101828] text-base top-[-1px] tracking-[-0.3125px] whitespace-nowrap">3-5 Years</p>
     </div>
   );
 }
@@ -663,7 +663,7 @@ function Container65() {
 function Container66() {
   return (
     <div className="h-[25.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[25.6px] left-0 not-italic text-[#e17100] text-[16px] top-[-1px] tracking-[-0.3125px] whitespace-nowrap">Low-Medium</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[25.6px] left-0 not-italic text-[#e17100] text-base top-[-1px] tracking-[-0.3125px] whitespace-nowrap">Low-Medium</p>
     </div>
   );
 }
@@ -710,7 +710,7 @@ function Container50() {
 function Container68() {
   return (
     <div className="h-[20.797px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[20.8px] left-0 not-italic text-[#101828] text-[13px] top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">Quick Summary</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[20.8px] left-0 not-italic text-[#101828] text-sm top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">Quick Summary</p>
     </div>
   );
 }
@@ -718,9 +718,9 @@ function Container68() {
 function Paragraph1() {
   return (
     <div className="h-[89.375px] relative shrink-0 w-full" data-name="Paragraph">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[0] left-0 not-italic text-[#364153] text-[0px] text-[11px] top-0 tracking-[0.0645px] w-[583px]">
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[0] left-0 not-italic text-[#364153] text-[0px] text-xs top-0 tracking-[0.0645px] w-[583px]">
         <span className="leading-[17.875px]">{`Based on metro infrastructure catalyst (Phase III completion Q2 2028), strong historical appreciation (9.3% CAGR), and superior risk-adjusted returns, the optimal strategy for this Whitefield parcel is `}</span>
-        <span className="font-['Inter:Medium',sans-serif] font-medium leading-[17.875px] text-[#101828]">land banking with a 3-5 year hold period</span>
+        <span className="font-['Inter:Medium',sans-serif] font-normal leading-[17.875px] text-[#101828]">land banking with a 3-5 year hold period</span>
         <span className="leading-[17.875px]">. This approach requires minimal capital (₹85 Cr vs ₹272 Cr for development) while delivering higher returns (18.2% CAGR) with significantly lower execution risk compared to immediate development options.</span>
       </p>
     </div>
@@ -763,7 +763,7 @@ function ExecutiveSummary() {
 function Container71() {
   return (
     <div className="absolute h-[16px] left-0 top-0 w-[642.523px]" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[16px] left-0 not-italic text-[#6a7282] text-[10px] top-0 tracking-[1.1172px] uppercase whitespace-nowrap">Section 03</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[16px] left-0 not-italic text-[#6a7282] text-[10px] top-0 tracking-[1.1172px] uppercase whitespace-nowrap">Section 03</p>
     </div>
   );
 }
@@ -771,7 +771,7 @@ function Container71() {
 function Heading2() {
   return (
     <div className="absolute h-[31.195px] left-0 top-[24px] w-[642.523px]" data-name="Heading 2">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[31.2px] left-0 not-italic text-[#0a0a0a] text-[24px] top-[0.5px] tracking-[-0.4097px] whitespace-nowrap">Property Snapshot</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[31.2px] left-0 not-italic text-[#0a0a0a] text-[24px] top-[0.5px] tracking-[-0.4097px] whitespace-nowrap">Property Snapshot</p>
     </div>
   );
 }
@@ -793,7 +793,7 @@ function Container70() {
 function TableCell8() {
   return (
     <div className="absolute h-[42.094px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12px] tracking-[0.0645px] whitespace-nowrap">Address</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12px] tracking-[0.0645px] whitespace-nowrap">Address</p>
     </div>
   );
 }
@@ -801,7 +801,7 @@ function TableCell8() {
 function TableCell9() {
   return (
     <div className="absolute h-[42.094px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12px] tracking-[0.0645px] whitespace-nowrap">Whitefield Main Road, Bengaluru - 560066</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12px] tracking-[0.0645px] whitespace-nowrap">Whitefield Main Road, Bengaluru - 560066</p>
     </div>
   );
 }
@@ -818,7 +818,7 @@ function TableRow5() {
 function TableCell10() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Survey Number</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Survey Number</p>
     </div>
   );
 }
@@ -826,7 +826,7 @@ function TableCell10() {
 function TableCell11() {
   return (
     <div className="absolute h-[42.594px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Survey No. 42/3, Ward 156</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Survey No. 42/3, Ward 156</p>
     </div>
   );
 }
@@ -843,7 +843,7 @@ function TableRow6() {
 function TableCell12() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Plot Size</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Plot Size</p>
     </div>
   );
 }
@@ -851,7 +851,7 @@ function TableCell12() {
 function TableCell13() {
   return (
     <div className="absolute h-[42.594px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">2.47 Acres (10,764 sq.m / 1,07,640 sq.ft)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">2.47 Acres (10,764 sq.m / 1,07,640 sq.ft)</p>
     </div>
   );
 }
@@ -868,7 +868,7 @@ function TableRow7() {
 function TableCell14() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Shape</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Shape</p>
     </div>
   );
 }
@@ -876,7 +876,7 @@ function TableCell14() {
 function TableCell15() {
   return (
     <div className="absolute h-[42.594px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Near-rectangular (optimal for development)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Near-rectangular (optimal for development)</p>
     </div>
   );
 }
@@ -893,7 +893,7 @@ function TableRow8() {
 function TableCell16() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Road Access</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Road Access</p>
     </div>
   );
 }
@@ -901,7 +901,7 @@ function TableCell16() {
 function TableCell17() {
   return (
     <div className="absolute h-[42.594px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">42m frontage on paved main road</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">42m frontage on paved main road</p>
     </div>
   );
 }
@@ -918,7 +918,7 @@ function TableRow9() {
 function TableCell18() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Zoning</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Zoning</p>
     </div>
   );
 }
@@ -926,7 +926,7 @@ function TableCell18() {
 function TableCell19() {
   return (
     <div className="absolute h-[42.594px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Residential (R1) - Approved by BBMP</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Residential (R1) - Approved by BBMP</p>
     </div>
   );
 }
@@ -943,7 +943,7 @@ function TableRow10() {
 function TableCell20() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Current Construction</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Current Construction</p>
     </div>
   );
 }
@@ -951,7 +951,7 @@ function TableCell20() {
 function TableCell21() {
   return (
     <div className="absolute h-[42.594px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Vacant land - No existing structures</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Vacant land - No existing structures</p>
     </div>
   );
 }
@@ -968,7 +968,7 @@ function TableRow11() {
 function TableCell22() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Utilities</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Utilities</p>
     </div>
   );
 }
@@ -976,7 +976,7 @@ function TableCell22() {
 function TableCell23() {
   return (
     <div className="absolute h-[42.594px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Water, electricity, sewage - All available</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Water, electricity, sewage - All available</p>
     </div>
   );
 }
@@ -993,7 +993,7 @@ function TableRow12() {
 function TableCell24() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Metro Distance</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Metro Distance</p>
     </div>
   );
 }
@@ -1001,7 +1001,7 @@ function TableCell24() {
 function TableCell25() {
   return (
     <div className="absolute h-[42.594px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">3.2 km to nearest Phase III station (Whitefield)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">3.2 km to nearest Phase III station (Whitefield)</p>
     </div>
   );
 }
@@ -1018,7 +1018,7 @@ function TableRow13() {
 function TableCell26() {
   return (
     <div className="absolute h-[42.094px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Airport Distance</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Airport Distance</p>
     </div>
   );
 }
@@ -1026,7 +1026,7 @@ function TableCell26() {
 function TableCell27() {
   return (
     <div className="absolute h-[42.094px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">28 km to Kempegowda International Airport</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">28 km to Kempegowda International Airport</p>
     </div>
   );
 }
@@ -1081,7 +1081,7 @@ function Container74() {
 function Container76() {
   return (
     <div className="h-[20.797px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[20.8px] left-0 not-italic text-[#101828] text-[13px] top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">{`Legal & Regulatory Check`}</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[20.8px] left-0 not-italic text-[#101828] text-sm top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">{`Legal & Regulatory Check`}</p>
     </div>
   );
 }
@@ -1089,7 +1089,7 @@ function Container76() {
 function TableCell28() {
   return (
     <div className="absolute h-[42.094px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12px] tracking-[0.0645px] whitespace-nowrap">Title Verification</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12px] tracking-[0.0645px] whitespace-nowrap">Title Verification</p>
     </div>
   );
 }
@@ -1116,7 +1116,7 @@ function Text1() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-[149.539px]" data-name="Text">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Clear title - 22 years verified</p>
+        <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Clear title - 22 years verified</p>
       </div>
     </div>
   );
@@ -1151,7 +1151,7 @@ function TableRow15() {
 function TableCell30() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Khata Status</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Khata Status</p>
     </div>
   );
 }
@@ -1178,7 +1178,7 @@ function Text2() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-[138.023px]" data-name="Text">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">A-Khata (BBMP approved)</p>
+        <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">A-Khata (BBMP approved)</p>
       </div>
     </div>
   );
@@ -1213,7 +1213,7 @@ function TableRow16() {
 function TableCell32() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Encumbrance Certificate</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Encumbrance Certificate</p>
     </div>
   );
 }
@@ -1240,7 +1240,7 @@ function Text3() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-[211.313px]" data-name="Text">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">No encumbrances - Clean EC (30 years)</p>
+        <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">No encumbrances - Clean EC (30 years)</p>
       </div>
     </div>
   );
@@ -1275,7 +1275,7 @@ function TableRow17() {
 function TableCell34() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Land Use Zoning</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Land Use Zoning</p>
     </div>
   );
 }
@@ -1302,7 +1302,7 @@ function Text4() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-[222.508px]" data-name="Text">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Residential (R1) - Converted and approved</p>
+        <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Residential (R1) - Converted and approved</p>
       </div>
     </div>
   );
@@ -1337,7 +1337,7 @@ function TableRow18() {
 function TableCell36() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Building Bylaws</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Building Bylaws</p>
     </div>
   );
 }
@@ -1364,7 +1364,7 @@ function Text5() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-[140.664px]" data-name="Text">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Compliant - G+7 permitted</p>
+        <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Compliant - G+7 permitted</p>
       </div>
     </div>
   );
@@ -1399,7 +1399,7 @@ function TableRow19() {
 function TableCell38() {
   return (
     <div className="absolute h-[42.094px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">FSI / FAR</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">FSI / FAR</p>
     </div>
   );
 }
@@ -1426,7 +1426,7 @@ function Text6() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-[203.953px]" data-name="Text">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">1.75 FSI - Max buildable: 1,88,368 sq.ft</p>
+        <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">1.75 FSI - Max buildable: 1,88,368 sq.ft</p>
       </div>
     </div>
   );
@@ -1496,7 +1496,7 @@ function Container85() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-[88.883px]" data-name="Container">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Legal Risk Level:</p>
+        <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Legal Risk Level:</p>
       </div>
     </div>
   );
@@ -1507,7 +1507,7 @@ function Container86() {
     <div className="bg-[#ecfdf5] h-[27.594px] relative rounded-[4px] shrink-0 w-[51.289px]" data-name="Container">
       <div aria-hidden="true" className="absolute border border-[#a4f4cf] border-solid inset-0 pointer-events-none rounded-[4px]" />
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[13px] not-italic text-[#007a55] text-[11px] top-[5px] tracking-[0.0645px] whitespace-nowrap">LOW</p>
+        <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[13px] not-italic text-[#007a55] text-xs top-[5px] tracking-[0.0645px] whitespace-nowrap">LOW</p>
       </div>
     </div>
   );
@@ -1555,7 +1555,7 @@ function PropertyOverview() {
 function Container88() {
   return (
     <div className="absolute h-[16px] left-0 top-0 w-[642.523px]" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[16px] left-0 not-italic text-[#6a7282] text-[10px] top-0 tracking-[1.1172px] uppercase whitespace-nowrap">Section 04</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[16px] left-0 not-italic text-[#6a7282] text-[10px] top-0 tracking-[1.1172px] uppercase whitespace-nowrap">Section 04</p>
     </div>
   );
 }
@@ -1563,7 +1563,7 @@ function Container88() {
 function Heading3() {
   return (
     <div className="absolute h-[31.195px] left-0 top-[24px] w-[642.523px]" data-name="Heading 2">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[31.2px] left-0 not-italic text-[#0a0a0a] text-[24px] top-[0.5px] tracking-[-0.4097px] whitespace-nowrap">Market Analysis</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[31.2px] left-0 not-italic text-[#0a0a0a] text-[24px] top-[0.5px] tracking-[-0.4097px] whitespace-nowrap">Market Analysis</p>
     </div>
   );
 }
@@ -1585,7 +1585,7 @@ function Container87() {
 function Container92() {
   return (
     <div className="absolute h-[20.797px] left-0 top-0 w-[642.523px]" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[20.8px] left-0 not-italic text-[#101828] text-[13px] top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">Market Snapshot</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[20.8px] left-0 not-italic text-[#101828] text-sm top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">Market Snapshot</p>
     </div>
   );
 }
@@ -1593,7 +1593,7 @@ function Container92() {
 function TableCell40() {
   return (
     <div className="absolute h-[42.094px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12px] tracking-[0.0645px] whitespace-nowrap">Average Land Price</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12px] tracking-[0.0645px] whitespace-nowrap">Average Land Price</p>
     </div>
   );
 }
@@ -1601,7 +1601,7 @@ function TableCell40() {
 function TableCell41() {
   return (
     <div className="absolute h-[42.094px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12px] tracking-[0.0645px] whitespace-nowrap">₹34,400/sq.ft (Whitefield residential)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12px] tracking-[0.0645px] whitespace-nowrap">₹34,400/sq.ft (Whitefield residential)</p>
     </div>
   );
 }
@@ -1618,7 +1618,7 @@ function TableRow21() {
 function TableCell42() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Annual Appreciation (10Y)</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Annual Appreciation (10Y)</p>
     </div>
   );
 }
@@ -1626,7 +1626,7 @@ function TableCell42() {
 function TableCell43() {
   return (
     <div className="absolute h-[42.594px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">9.3% CAGR (2016-2026)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">9.3% CAGR (2016-2026)</p>
     </div>
   );
 }
@@ -1643,7 +1643,7 @@ function TableRow22() {
 function TableCell44() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Rental Yield</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Rental Yield</p>
     </div>
   );
 }
@@ -1651,7 +1651,7 @@ function TableCell44() {
 function TableCell45() {
   return (
     <div className="absolute h-[42.594px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">3.2-3.8% (residential apartments)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">3.2-3.8% (residential apartments)</p>
     </div>
   );
 }
@@ -1668,7 +1668,7 @@ function TableRow23() {
 function TableCell46() {
   return (
     <div className="absolute h-[42.094px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Demand Segment</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Demand Segment</p>
     </div>
   );
 }
@@ -1676,7 +1676,7 @@ function TableCell46() {
 function TableCell47() {
   return (
     <div className="absolute h-[42.094px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">IT professionals, young families (2-3 BHK strong demand)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">IT professionals, young families (2-3 BHK strong demand)</p>
     </div>
   );
 }
@@ -1723,7 +1723,7 @@ function Container93() {
 function Container95() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-0 not-italic text-[#101828] text-[11px] top-0 tracking-[0.3395px] uppercase whitespace-nowrap">Market Commentary</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-xs top-0 tracking-[0.3395px] uppercase whitespace-nowrap">Market Commentary</p>
     </div>
   );
 }
@@ -1731,7 +1731,7 @@ function Container95() {
 function Text7() {
   return (
     <div className="absolute h-[17.594px] left-0 top-[4px] w-[5.258px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#096] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#096] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
     </div>
   );
 }
@@ -1739,7 +1739,7 @@ function Text7() {
 function Text8() {
   return (
     <div className="absolute h-[17.594px] left-[13.26px] top-0 w-[477.641px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Strong demand driven by IT corridor expansion (Whitefield Tech Park, ITPL, RMZ Ecoworld)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Strong demand driven by IT corridor expansion (Whitefield Tech Park, ITPL, RMZ Ecoworld)</p>
     </div>
   );
 }
@@ -1756,7 +1756,7 @@ function ListItem() {
 function Text9() {
   return (
     <div className="absolute h-[17.594px] left-0 top-[4px] w-[5.258px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#096] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#096] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
     </div>
   );
 }
@@ -1764,7 +1764,7 @@ function Text9() {
 function Text10() {
   return (
     <div className="absolute h-[17.594px] left-[13.26px] top-0 w-[421.836px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Robust absorption of 2-3 BHK units (avg 180-220 units/quarter in micro-market)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Robust absorption of 2-3 BHK units (avg 180-220 units/quarter in micro-market)</p>
     </div>
   );
 }
@@ -1781,7 +1781,7 @@ function ListItem1() {
 function Text11() {
   return (
     <div className="absolute h-[17.594px] left-0 top-[4px] w-[5.258px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#096] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#096] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
     </div>
   );
 }
@@ -1789,7 +1789,7 @@ function Text11() {
 function Text12() {
   return (
     <div className="absolute h-[17.594px] left-[13.26px] top-0 w-[476.773px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Infrastructure pipeline improving connectivity (Metro Phase III, elevated highway to airport)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Infrastructure pipeline improving connectivity (Metro Phase III, elevated highway to airport)</p>
     </div>
   );
 }
@@ -1806,7 +1806,7 @@ function ListItem2() {
 function Text13() {
   return (
     <div className="absolute h-[17.594px] left-0 top-[4px] w-[5.258px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#096] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#096] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
     </div>
   );
 }
@@ -1814,7 +1814,7 @@ function Text13() {
 function Text14() {
   return (
     <div className="absolute h-[17.594px] left-[13.26px] top-0 w-[368.398px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Historical outperformance vs Bengaluru average (9.3% vs 7.8% CAGR)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Historical outperformance vs Bengaluru average (9.3% vs 7.8% CAGR)</p>
     </div>
   );
 }
@@ -1862,7 +1862,7 @@ function Container91() {
 function Container97() {
   return (
     <div className="h-[20.797px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[20.8px] left-0 not-italic text-[#101828] text-[13px] top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">Infrastructure Catalysts</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[20.8px] left-0 not-italic text-[#101828] text-sm top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">Infrastructure Catalysts</p>
     </div>
   );
 }
@@ -1870,7 +1870,7 @@ function Container97() {
 function Container99() {
   return (
     <div className="absolute bg-[#096] h-[24px] left-[25px] rounded-[4px] top-[25px] w-[155.5px]" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[16px] left-[12px] not-italic text-[10px] text-white top-[4px] tracking-[0.6172px] whitespace-nowrap">PRIMARY VALUE DRIVER</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[16px] left-[12px] not-italic text-[10px] text-white top-[4px] tracking-[0.6172px] whitespace-nowrap">PRIMARY VALUE DRIVER</p>
     </div>
   );
 }
@@ -1878,7 +1878,7 @@ function Container99() {
 function Container100() {
   return (
     <div className="absolute h-[25.594px] left-[25px] top-[65px] w-[592.523px]" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[25.6px] left-0 not-italic text-[#101828] text-[16px] top-[-1px] tracking-[-0.3125px] whitespace-nowrap">Metro Phase III Completion</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[25.6px] left-0 not-italic text-[#101828] text-base top-[-1px] tracking-[-0.3125px] whitespace-nowrap">Metro Phase III Completion</p>
     </div>
   );
 }
@@ -1886,9 +1886,9 @@ function Container100() {
 function Container102() {
   return (
     <div className="absolute h-[17.594px] left-0 top-0 w-[288.258px]" data-name="Container">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[0] left-0 not-italic text-[#4a5565] text-[0px] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[0] left-0 not-italic text-[#4a5565] text-[0px] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">
         <span className="leading-[17.6px]">Distance:</span>
-        <span className="font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] text-[#101828]">3.2 km from property</span>
+        <span className="font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] text-[#101828]">3.2 km from property</span>
       </p>
     </div>
   );
@@ -1897,9 +1897,9 @@ function Container102() {
 function Container103() {
   return (
     <div className="absolute h-[17.594px] left-[304.26px] top-0 w-[288.266px]" data-name="Container">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[0] left-0 not-italic text-[#4a5565] text-[0px] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[0] left-0 not-italic text-[#4a5565] text-[0px] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">
         <span className="leading-[17.6px]">Expected Completion:</span>
-        <span className="font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] text-[#101828]">Q2 2028</span>
+        <span className="font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] text-[#101828]">Q2 2028</span>
       </p>
     </div>
   );
@@ -1908,9 +1908,9 @@ function Container103() {
 function Container104() {
   return (
     <div className="absolute h-[17.594px] left-0 top-[33.59px] w-[288.258px]" data-name="Container">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[0] left-0 not-italic text-[#4a5565] text-[0px] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[0] left-0 not-italic text-[#4a5565] text-[0px] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">
         <span className="leading-[17.6px]">Current Status:</span>
-        <span className="font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] text-[#101828]">72% complete</span>
+        <span className="font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] text-[#101828]">72% complete</span>
       </p>
     </div>
   );
@@ -1919,9 +1919,9 @@ function Container104() {
 function Container105() {
   return (
     <div className="absolute h-[17.594px] left-[304.26px] top-[33.59px] w-[288.266px]" data-name="Container">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[0] left-0 not-italic text-[#4a5565] text-[0px] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[0] left-0 not-italic text-[#4a5565] text-[0px] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">
         <span className="leading-[17.6px]">Impact:</span>
-        <span className="font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] text-[#007a55]">-40 min to Indiranagar</span>
+        <span className="font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] text-[#007a55]">-40 min to Indiranagar</span>
       </p>
     </div>
   );
@@ -1961,7 +1961,7 @@ function Container98() {
 function TableCell48() {
   return (
     <div className="absolute h-[42.094px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12px] tracking-[0.0645px] whitespace-nowrap">Highway</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12px] tracking-[0.0645px] whitespace-nowrap">Highway</p>
     </div>
   );
 }
@@ -1969,7 +1969,7 @@ function TableCell48() {
 function TableCell49() {
   return (
     <div className="absolute h-[42.094px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12px] tracking-[0.0645px] whitespace-nowrap">Elevated highway to airport (2028) - 22 km connectivity</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12px] tracking-[0.0645px] whitespace-nowrap">Elevated highway to airport (2028) - 22 km connectivity</p>
     </div>
   );
 }
@@ -1986,7 +1986,7 @@ function TableRow25() {
 function TableCell50() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">IT Parks</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">IT Parks</p>
     </div>
   );
 }
@@ -1994,7 +1994,7 @@ function TableCell50() {
 function TableCell51() {
   return (
     <div className="absolute h-[42.594px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">3.8 km avg to major tech parks (ITPL, Embassy Tech Village, RMZ)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">3.8 km avg to major tech parks (ITPL, Embassy Tech Village, RMZ)</p>
     </div>
   );
 }
@@ -2011,7 +2011,7 @@ function TableRow26() {
 function TableCell52() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Schools</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Schools</p>
     </div>
   );
 }
@@ -2019,7 +2019,7 @@ function TableCell52() {
 function TableCell53() {
   return (
     <div className="absolute h-[42.594px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">{`Phoenix Greens, Ryan Int'l, VIBGYOR within 4 km`}</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">{`Phoenix Greens, Ryan Int'l, VIBGYOR within 4 km`}</p>
     </div>
   );
 }
@@ -2036,7 +2036,7 @@ function TableRow27() {
 function TableCell54() {
   return (
     <div className="absolute h-[42.094px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Hospitals</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Hospitals</p>
     </div>
   );
 }
@@ -2044,7 +2044,7 @@ function TableCell54() {
 function TableCell55() {
   return (
     <div className="absolute h-[42.094px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Manipal Hospital (2.1 km), Columbia Asia (3.4 km)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Manipal Hospital (2.1 km), Columbia Asia (3.4 km)</p>
     </div>
   );
 }
@@ -2103,7 +2103,7 @@ function Container96() {
 function Container109() {
   return (
     <div className="h-[20.797px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[20.8px] left-0 not-italic text-[#101828] text-[13px] top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">Demand Drivers</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[20.8px] left-0 not-italic text-[#101828] text-sm top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">Demand Drivers</p>
     </div>
   );
 }
@@ -2127,7 +2127,7 @@ function Container113() {
   return (
     <div className="h-[20.797px] relative shrink-0 w-[130.508px]" data-name="Container">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[20.8px] left-0 not-italic text-[#101828] text-[13px] top-[0.5px] tracking-[-0.0762px] whitespace-nowrap">Demographic Drivers</p>
+        <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[20.8px] left-0 not-italic text-[#101828] text-sm top-[0.5px] tracking-[-0.0762px] whitespace-nowrap">Demographic Drivers</p>
       </div>
     </div>
   );
@@ -2145,7 +2145,7 @@ function Container112() {
 function Text15() {
   return (
     <div className="absolute h-[17.594px] left-0 top-[4px] w-[5.258px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#155dfc] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#155dfc] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
     </div>
   );
 }
@@ -2153,7 +2153,7 @@ function Text15() {
 function Text16() {
   return (
     <div className="absolute h-[17.594px] left-[13.26px] top-0 w-[250.805px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">IT workforce: 180K+ professionals in 5km radius</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">IT workforce: 180K+ professionals in 5km radius</p>
     </div>
   );
 }
@@ -2170,7 +2170,7 @@ function ListItem4() {
 function Text17() {
   return (
     <div className="absolute h-[17.594px] left-0 top-[4px] w-[5.258px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#155dfc] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#155dfc] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
     </div>
   );
 }
@@ -2178,7 +2178,7 @@ function Text17() {
 function Text18() {
   return (
     <div className="absolute h-[35.188px] left-[13.26px] top-0 w-[254px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] w-[231px]">Migration trends: 12K+ net migration/year to Whitefield</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] w-[231px]">Migration trends: 12K+ net migration/year to Whitefield</p>
     </div>
   );
 }
@@ -2195,7 +2195,7 @@ function ListItem5() {
 function Text19() {
   return (
     <div className="absolute h-[17.594px] left-0 top-[4px] w-[5.258px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#155dfc] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#155dfc] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
     </div>
   );
 }
@@ -2203,7 +2203,7 @@ function Text19() {
 function Text20() {
   return (
     <div className="absolute h-[35.188px] left-[13.26px] top-0 w-[254px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] w-[245px]">Family housing demand: 65% buyers aged 28-42</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] w-[245px]">Family housing demand: 65% buyers aged 28-42</p>
     </div>
   );
 }
@@ -2264,7 +2264,7 @@ function Container116() {
   return (
     <div className="h-[20.797px] relative shrink-0 w-[121.367px]" data-name="Container">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[20.8px] left-0 not-italic text-[#101828] text-[13px] top-[0.5px] tracking-[-0.0762px] whitespace-nowrap">Commercial Drivers</p>
+        <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[20.8px] left-0 not-italic text-[#101828] text-sm top-[0.5px] tracking-[-0.0762px] whitespace-nowrap">Commercial Drivers</p>
       </div>
     </div>
   );
@@ -2282,7 +2282,7 @@ function Container115() {
 function Text21() {
   return (
     <div className="absolute h-[17.594px] left-0 top-[4px] w-[5.258px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#e17100] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#e17100] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
     </div>
   );
 }
@@ -2290,7 +2290,7 @@ function Text21() {
 function Text22() {
   return (
     <div className="absolute h-[35.188px] left-[13.26px] top-0 w-[254.008px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] w-[248px]">Office demand: 3 new tech parks (45K jobs) by 2028</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] w-[248px]">Office demand: 3 new tech parks (45K jobs) by 2028</p>
     </div>
   );
 }
@@ -2307,7 +2307,7 @@ function ListItem7() {
 function Text23() {
   return (
     <div className="absolute h-[17.594px] left-0 top-[4px] w-[5.258px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#e17100] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#e17100] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
     </div>
   );
 }
@@ -2315,7 +2315,7 @@ function Text23() {
 function Text24() {
   return (
     <div className="absolute h-[35.188px] left-[13.26px] top-0 w-[254.008px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] w-[238px]">Retail demand: Phoenix Marketcity expansion (+2L sq.ft)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] w-[238px]">Retail demand: Phoenix Marketcity expansion (+2L sq.ft)</p>
     </div>
   );
 }
@@ -2332,7 +2332,7 @@ function ListItem8() {
 function Text25() {
   return (
     <div className="absolute h-[17.594px] left-0 top-[4px] w-[5.258px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#e17100] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#e17100] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
     </div>
   );
 }
@@ -2340,7 +2340,7 @@ function Text25() {
 function Text26() {
   return (
     <div className="absolute h-[35.188px] left-[13.26px] top-0 w-[254.008px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] w-[217px]">Tech parks: 22M sq.ft under construction (2026-2029)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] w-[217px]">Tech parks: 22M sq.ft under construction (2026-2029)</p>
     </div>
   );
 }
@@ -2416,7 +2416,7 @@ function MarketCatalyst() {
 function Container118() {
   return (
     <div className="absolute h-[16px] left-0 top-0 w-[642.523px]" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[16px] left-0 not-italic text-[#6a7282] text-[10px] top-0 tracking-[1.1172px] uppercase whitespace-nowrap">Section 05</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[16px] left-0 not-italic text-[#6a7282] text-[10px] top-0 tracking-[1.1172px] uppercase whitespace-nowrap">Section 05</p>
     </div>
   );
 }
@@ -2424,7 +2424,7 @@ function Container118() {
 function Heading4() {
   return (
     <div className="absolute h-[31.195px] left-0 top-[24px] w-[642.523px]" data-name="Heading 2">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[31.2px] left-0 not-italic text-[#0a0a0a] text-[24px] top-[0.5px] tracking-[-0.4097px] whitespace-nowrap">Development Options (Core HABU)</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[31.2px] left-0 not-italic text-[#0a0a0a] text-[24px] top-[0.5px] tracking-[-0.4097px] whitespace-nowrap">Development Options (Core HABU)</p>
     </div>
   );
 }
@@ -2446,7 +2446,7 @@ function Container117() {
 function Container122() {
   return (
     <div className="absolute bg-[#096] h-[24px] left-[25px] rounded-[4px] top-[25px] w-[110.477px]" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[16px] left-[12px] not-italic text-[10px] text-white top-[4px] tracking-[0.6172px] whitespace-nowrap">RECOMMENDED</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[16px] left-[12px] not-italic text-[10px] text-white top-[4px] tracking-[0.6172px] whitespace-nowrap">RECOMMENDED</p>
     </div>
   );
 }
@@ -2454,7 +2454,7 @@ function Container122() {
 function Container123() {
   return (
     <div className="absolute h-[25.594px] left-[25px] top-[65px] w-[592.523px]" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[25.6px] left-0 not-italic text-[#101828] text-[16px] top-[-1px] tracking-[-0.3125px] whitespace-nowrap">Option 1 — Land Banking</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[25.6px] left-0 not-italic text-[#101828] text-base top-[-1px] tracking-[-0.3125px] whitespace-nowrap">Option 1 — Land Banking</p>
     </div>
   );
 }
@@ -2462,7 +2462,7 @@ function Container123() {
 function TableCell56() {
   return (
     <div className="absolute h-[42.094px] left-0 top-0 w-[196.836px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12px] tracking-[0.0645px] whitespace-nowrap">Investment</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12px] tracking-[0.0645px] whitespace-nowrap">Investment</p>
     </div>
   );
 }
@@ -2470,7 +2470,7 @@ function TableCell56() {
 function TableCell57() {
   return (
     <div className="absolute h-[42.094px] left-[196.84px] top-0 w-[393.688px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12px] tracking-[0.0645px] whitespace-nowrap">₹85 Crores</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12px] tracking-[0.0645px] whitespace-nowrap">₹85 Crores</p>
     </div>
   );
 }
@@ -2487,7 +2487,7 @@ function TableRow29() {
 function TableCell58() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[196.836px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Expected ROI</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Expected ROI</p>
     </div>
   );
 }
@@ -2495,7 +2495,7 @@ function TableCell58() {
 function TableCell59() {
   return (
     <div className="absolute h-[42.594px] left-[196.84px] top-0 w-[393.688px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#096] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">18.2% CAGR</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#096] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">18.2% CAGR</p>
     </div>
   );
 }
@@ -2512,7 +2512,7 @@ function TableRow30() {
 function TableCell60() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[196.836px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Timeline</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Timeline</p>
     </div>
   );
 }
@@ -2520,7 +2520,7 @@ function TableCell60() {
 function TableCell61() {
   return (
     <div className="absolute h-[42.594px] left-[196.84px] top-0 w-[393.688px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">3-5 Years</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">3-5 Years</p>
     </div>
   );
 }
@@ -2537,7 +2537,7 @@ function TableRow31() {
 function TableCell62() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[196.836px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Risk</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Risk</p>
     </div>
   );
 }
@@ -2545,7 +2545,7 @@ function TableCell62() {
 function TableCell63() {
   return (
     <div className="absolute h-[42.594px] left-[196.84px] top-0 w-[393.688px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#e17100] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Low-Medium</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#e17100] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Low-Medium</p>
     </div>
   );
 }
@@ -2562,7 +2562,7 @@ function TableRow32() {
 function TableCell64() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[196.836px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">3-Year Value</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">3-Year Value</p>
     </div>
   );
 }
@@ -2570,7 +2570,7 @@ function TableCell64() {
 function TableCell65() {
   return (
     <div className="absolute h-[42.594px] left-[196.84px] top-0 w-[393.688px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">₹135 Cr (+59%)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">₹135 Cr (+59%)</p>
     </div>
   );
 }
@@ -2587,7 +2587,7 @@ function TableRow33() {
 function TableCell66() {
   return (
     <div className="absolute h-[42.094px] left-0 top-0 w-[196.836px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">5-Year Value</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">5-Year Value</p>
     </div>
   );
 }
@@ -2595,7 +2595,7 @@ function TableCell66() {
 function TableCell67() {
   return (
     <div className="absolute h-[42.094px] left-[196.84px] top-0 w-[393.688px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">₹195 Cr (+129%)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">₹195 Cr (+129%)</p>
     </div>
   );
 }
@@ -2655,7 +2655,7 @@ function Container121() {
 function Container126() {
   return (
     <div className="h-[25.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[25.6px] left-0 not-italic text-[#101828] text-[16px] top-[-1px] tracking-[-0.3125px] whitespace-nowrap">Option 2 — Residential Development</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[25.6px] left-0 not-italic text-[#101828] text-base top-[-1px] tracking-[-0.3125px] whitespace-nowrap">Option 2 — Residential Development</p>
     </div>
   );
 }
@@ -2663,7 +2663,7 @@ function Container126() {
 function TableCell68() {
   return (
     <div className="absolute h-[42.094px] left-0 top-0 w-[196.836px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12px] tracking-[0.0645px] whitespace-nowrap">Development Type</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12px] tracking-[0.0645px] whitespace-nowrap">Development Type</p>
     </div>
   );
 }
@@ -2671,7 +2671,7 @@ function TableCell68() {
 function TableCell69() {
   return (
     <div className="absolute h-[42.094px] left-[196.84px] top-0 w-[393.688px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12px] tracking-[0.0645px] whitespace-nowrap">Mid-rise residential towers (G+7)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12px] tracking-[0.0645px] whitespace-nowrap">Mid-rise residential towers (G+7)</p>
     </div>
   );
 }
@@ -2688,7 +2688,7 @@ function TableRow35() {
 function TableCell70() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[196.836px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Units</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Units</p>
     </div>
   );
 }
@@ -2696,7 +2696,7 @@ function TableCell70() {
 function TableCell71() {
   return (
     <div className="absolute h-[42.594px] left-[196.84px] top-0 w-[393.688px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">{`~370 units (2 & 3 BHK)`}</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">{`~370 units (2 & 3 BHK)`}</p>
     </div>
   );
 }
@@ -2713,7 +2713,7 @@ function TableRow36() {
 function TableCell72() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[196.836px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Cost</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Cost</p>
     </div>
   );
 }
@@ -2721,7 +2721,7 @@ function TableCell72() {
 function TableCell73() {
   return (
     <div className="absolute h-[42.594px] left-[196.84px] top-0 w-[393.688px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">₹272 Crores (total)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">₹272 Crores (total)</p>
     </div>
   );
 }
@@ -2738,7 +2738,7 @@ function TableRow37() {
 function TableCell74() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[196.836px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Revenue</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Revenue</p>
     </div>
   );
 }
@@ -2746,7 +2746,7 @@ function TableCell74() {
 function TableCell75() {
   return (
     <div className="absolute h-[42.594px] left-[196.84px] top-0 w-[393.688px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">₹338 Crores</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">₹338 Crores</p>
     </div>
   );
 }
@@ -2763,7 +2763,7 @@ function TableRow38() {
 function TableCell76() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[196.836px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">ROI (IRR)</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">ROI (IRR)</p>
     </div>
   );
 }
@@ -2771,7 +2771,7 @@ function TableCell76() {
 function TableCell77() {
   return (
     <div className="absolute h-[42.594px] left-[196.84px] top-0 w-[393.688px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#155dfc] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">16.8%</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#155dfc] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">16.8%</p>
     </div>
   );
 }
@@ -2788,7 +2788,7 @@ function TableRow39() {
 function TableCell78() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[196.836px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Risk</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Risk</p>
     </div>
   );
 }
@@ -2796,7 +2796,7 @@ function TableCell78() {
 function TableCell79() {
   return (
     <div className="absolute h-[42.594px] left-[196.84px] top-0 w-[393.688px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#e7000b] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Medium-High</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#e7000b] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Medium-High</p>
     </div>
   );
 }
@@ -2813,7 +2813,7 @@ function TableRow40() {
 function TableCell80() {
   return (
     <div className="absolute h-[42.094px] left-0 top-0 w-[196.836px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Timeline</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Timeline</p>
     </div>
   );
 }
@@ -2821,7 +2821,7 @@ function TableCell80() {
 function TableCell81() {
   return (
     <div className="absolute h-[42.094px] left-[196.84px] top-0 w-[393.688px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">4.2 years</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">4.2 years</p>
     </div>
   );
 }
@@ -2885,7 +2885,7 @@ function Container125() {
 function Container129() {
   return (
     <div className="h-[25.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[25.6px] left-0 not-italic text-[#101828] text-[16px] top-[-1px] tracking-[-0.3125px] whitespace-nowrap">Option 3 — Villa Development (Premium Community)</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[25.6px] left-0 not-italic text-[#101828] text-base top-[-1px] tracking-[-0.3125px] whitespace-nowrap">Option 3 — Villa Development (Premium Community)</p>
     </div>
   );
 }
@@ -2893,7 +2893,7 @@ function Container129() {
 function TableCell82() {
   return (
     <div className="absolute h-[42.094px] left-0 top-0 w-[196.836px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12px] tracking-[0.0645px] whitespace-nowrap">Villa Units</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12px] tracking-[0.0645px] whitespace-nowrap">Villa Units</p>
     </div>
   );
 }
@@ -2901,7 +2901,7 @@ function TableCell82() {
 function TableCell83() {
   return (
     <div className="absolute h-[42.094px] left-[196.84px] top-0 w-[393.688px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12px] tracking-[0.0645px] whitespace-nowrap">50 premium villas (4000-5000 sq.ft each)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12px] tracking-[0.0645px] whitespace-nowrap">50 premium villas (4000-5000 sq.ft each)</p>
     </div>
   );
 }
@@ -2918,7 +2918,7 @@ function TableRow42() {
 function TableCell84() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[196.836px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Cost</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Cost</p>
     </div>
   );
 }
@@ -2926,7 +2926,7 @@ function TableCell84() {
 function TableCell85() {
   return (
     <div className="absolute h-[42.594px] left-[196.84px] top-0 w-[393.688px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">₹168 Crores</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">₹168 Crores</p>
     </div>
   );
 }
@@ -2943,7 +2943,7 @@ function TableRow43() {
 function TableCell86() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[196.836px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Estimated Revenue</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Estimated Revenue</p>
     </div>
   );
 }
@@ -2951,7 +2951,7 @@ function TableCell86() {
 function TableCell87() {
   return (
     <div className="absolute h-[42.594px] left-[196.84px] top-0 w-[393.688px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">₹210 Crores</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">₹210 Crores</p>
     </div>
   );
 }
@@ -2968,7 +2968,7 @@ function TableRow44() {
 function TableCell88() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[196.836px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">ROI (IRR)</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">ROI (IRR)</p>
     </div>
   );
 }
@@ -2976,7 +2976,7 @@ function TableCell88() {
 function TableCell89() {
   return (
     <div className="absolute h-[42.594px] left-[196.84px] top-0 w-[393.688px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#e17100] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">19.2%</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#e17100] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">19.2%</p>
     </div>
   );
 }
@@ -2993,7 +2993,7 @@ function TableRow45() {
 function TableCell90() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[196.836px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Risk</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Risk</p>
     </div>
   );
 }
@@ -3001,7 +3001,7 @@ function TableCell90() {
 function TableCell91() {
   return (
     <div className="absolute h-[42.594px] left-[196.84px] top-0 w-[393.688px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#e17100] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Medium</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#e17100] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Medium</p>
     </div>
   );
 }
@@ -3018,7 +3018,7 @@ function TableRow46() {
 function TableCell92() {
   return (
     <div className="absolute h-[42.094px] left-0 top-0 w-[196.836px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Timeline</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Timeline</p>
     </div>
   );
 }
@@ -3026,7 +3026,7 @@ function TableCell92() {
 function TableCell93() {
   return (
     <div className="absolute h-[42.094px] left-[196.84px] top-0 w-[393.688px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">3.8 years</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">3.8 years</p>
     </div>
   );
 }
@@ -3110,7 +3110,7 @@ function StrategyOptions() {
 function Container132() {
   return (
     <div className="absolute h-[16px] left-0 top-0 w-[642.523px]" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[16px] left-0 not-italic text-[#6a7282] text-[10px] top-0 tracking-[1.1172px] uppercase whitespace-nowrap">Section 06</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[16px] left-0 not-italic text-[#6a7282] text-[10px] top-0 tracking-[1.1172px] uppercase whitespace-nowrap">Section 06</p>
     </div>
   );
 }
@@ -3118,7 +3118,7 @@ function Container132() {
 function Heading5() {
   return (
     <div className="absolute h-[31.195px] left-0 top-[24px] w-[642.523px]" data-name="Heading 2">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[31.2px] left-0 not-italic text-[#0a0a0a] text-[24px] top-[0.5px] tracking-[-0.4097px] whitespace-nowrap">{`Risk Analysis & Recommendation`}</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[31.2px] left-0 not-italic text-[#0a0a0a] text-[24px] top-[0.5px] tracking-[-0.4097px] whitespace-nowrap">{`Risk Analysis & Recommendation`}</p>
     </div>
   );
 }
@@ -3140,7 +3140,7 @@ function Container131() {
 function Container136() {
   return (
     <div className="h-[20.797px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[20.8px] left-0 not-italic text-[#101828] text-[13px] top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">Risk Analysis</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[20.8px] left-0 not-italic text-[#101828] text-sm top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">Risk Analysis</p>
     </div>
   );
 }
@@ -3148,7 +3148,7 @@ function Container136() {
 function HeaderCell2() {
   return (
     <div className="absolute h-[41.594px] left-0 top-0 w-[213.508px]" data-name="Header Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12px] tracking-[0.3395px] uppercase whitespace-nowrap">Risk</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12px] tracking-[0.3395px] uppercase whitespace-nowrap">Risk</p>
     </div>
   );
 }
@@ -3156,7 +3156,7 @@ function HeaderCell2() {
 function HeaderCell3() {
   return (
     <div className="absolute h-[41.594px] left-[213.51px] top-0 w-[427.016px]" data-name="Header Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12px] tracking-[0.3395px] uppercase whitespace-nowrap">Impact</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12px] tracking-[0.3395px] uppercase whitespace-nowrap">Impact</p>
     </div>
   );
 }
@@ -3181,7 +3181,7 @@ function TableHeader1() {
 function TableCell94() {
   return (
     <div className="absolute h-[48.5px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[15.2px] tracking-[0.0645px] whitespace-nowrap">Regulatory delays</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[15.2px] tracking-[0.0645px] whitespace-nowrap">Regulatory delays</p>
     </div>
   );
 }
@@ -3198,7 +3198,7 @@ function TableCell95() {
   return (
     <div className="absolute h-[48.5px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
       <Text27 />
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[81.46px] not-italic text-[#364153] text-[11px] top-[15px] tracking-[0.0645px] whitespace-nowrap">FSI changes (24-36 mo timeline) - Low probability</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[81.46px] not-italic text-[#364153] text-xs top-[15px] tracking-[0.0645px] whitespace-nowrap">FSI changes (24-36 mo timeline) - Low probability</p>
     </div>
   );
 }
@@ -3215,7 +3215,7 @@ function TableRow49() {
 function TableCell96() {
   return (
     <div className="absolute h-[49px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[15.7px] tracking-[0.0645px] whitespace-nowrap">Cost inflation</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[15.7px] tracking-[0.0645px] whitespace-nowrap">Cost inflation</p>
     </div>
   );
 }
@@ -3232,7 +3232,7 @@ function TableCell97() {
   return (
     <div className="absolute h-[49px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
       <Text28 />
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[62.84px] not-italic text-[#364153] text-[11px] top-[15.5px] tracking-[0.0645px] whitespace-nowrap">Holding costs minimal for land banking (₹1.2 Cr/year)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[62.84px] not-italic text-[#364153] text-xs top-[15.5px] tracking-[0.0645px] whitespace-nowrap">Holding costs minimal for land banking (₹1.2 Cr/year)</p>
     </div>
   );
 }
@@ -3249,7 +3249,7 @@ function TableRow50() {
 function TableCell98() {
   return (
     <div className="absolute h-[49px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[15.7px] tracking-[0.0645px] whitespace-nowrap">Market downturn</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[15.7px] tracking-[0.0645px] whitespace-nowrap">Market downturn</p>
     </div>
   );
 }
@@ -3266,7 +3266,7 @@ function TableCell99() {
   return (
     <div className="absolute h-[49px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
       <Text29 />
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[81.46px] not-italic text-[#364153] text-[11px] top-[15.5px] tracking-[0.0645px] whitespace-nowrap">Whitefield historically resilient (9.3% CAGR maintained)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[81.46px] not-italic text-[#364153] text-xs top-[15.5px] tracking-[0.0645px] whitespace-nowrap">Whitefield historically resilient (9.3% CAGR maintained)</p>
     </div>
   );
 }
@@ -3283,7 +3283,7 @@ function TableRow51() {
 function TableCell100() {
   return (
     <div className="absolute h-[49px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[15.7px] tracking-[0.0645px] whitespace-nowrap">Approval complexity</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[15.7px] tracking-[0.0645px] whitespace-nowrap">Approval complexity</p>
     </div>
   );
 }
@@ -3300,7 +3300,7 @@ function TableCell101() {
   return (
     <div className="absolute h-[49px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
       <Text30 />
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[62.84px] not-italic text-[#364153] text-[11px] top-[15.5px] tracking-[0.0645px] whitespace-nowrap">Not applicable for land banking strategy</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[62.84px] not-italic text-[#364153] text-xs top-[15.5px] tracking-[0.0645px] whitespace-nowrap">Not applicable for land banking strategy</p>
     </div>
   );
 }
@@ -3317,7 +3317,7 @@ function TableRow52() {
 function TableCell102() {
   return (
     <div className="absolute h-[48.5px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[15.7px] tracking-[0.0645px] whitespace-nowrap">Metro delays</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[15.7px] tracking-[0.0645px] whitespace-nowrap">Metro delays</p>
     </div>
   );
 }
@@ -3334,7 +3334,7 @@ function TableCell103() {
   return (
     <div className="absolute h-[48.5px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
       <Text31 />
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[81.46px] not-italic text-[#364153] text-[11px] top-[15.5px] tracking-[0.0645px] whitespace-nowrap">6-9 mo delay possible (72% complete) - Extend hold period</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[81.46px] not-italic text-[#364153] text-xs top-[15.5px] tracking-[0.0645px] whitespace-nowrap">6-9 mo delay possible (72% complete) - Extend hold period</p>
     </div>
   );
 }
@@ -3394,7 +3394,7 @@ function Container135() {
 function Container139() {
   return (
     <div className="h-[20.797px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[20.8px] left-0 not-italic text-[#101828] text-[13px] top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">Comparable Projects</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[20.8px] left-0 not-italic text-[#101828] text-sm top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">Comparable Projects</p>
     </div>
   );
 }
@@ -3402,7 +3402,7 @@ function Container139() {
 function HeaderCell4() {
   return (
     <div className="absolute h-[41.594px] left-0 top-0 w-[232.234px]" data-name="Header Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12px] tracking-[0.3395px] uppercase whitespace-nowrap">Project</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12px] tracking-[0.3395px] uppercase whitespace-nowrap">Project</p>
     </div>
   );
 }
@@ -3410,7 +3410,7 @@ function HeaderCell4() {
 function HeaderCell5() {
   return (
     <div className="absolute h-[41.594px] left-[232.23px] top-0 w-[117.016px]" data-name="Header Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12px] tracking-[0.3395px] uppercase whitespace-nowrap">Distance</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12px] tracking-[0.3395px] uppercase whitespace-nowrap">Distance</p>
     </div>
   );
 }
@@ -3418,7 +3418,7 @@ function HeaderCell5() {
 function HeaderCell6() {
   return (
     <div className="absolute h-[41.594px] left-[349.25px] top-0 w-[126px]" data-name="Header Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12px] tracking-[0.3395px] uppercase whitespace-nowrap">Pricing</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12px] tracking-[0.3395px] uppercase whitespace-nowrap">Pricing</p>
     </div>
   );
 }
@@ -3426,7 +3426,7 @@ function HeaderCell6() {
 function HeaderCell7() {
   return (
     <div className="absolute h-[41.594px] left-[475.25px] top-0 w-[165.273px]" data-name="Header Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12px] tracking-[0.3395px] uppercase whitespace-nowrap">Absorption</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12px] tracking-[0.3395px] uppercase whitespace-nowrap">Absorption</p>
     </div>
   );
 }
@@ -3453,7 +3453,7 @@ function TableHeader2() {
 function TableCell104() {
   return (
     <div className="absolute h-[42.094px] left-0 top-0 w-[232.234px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12px] tracking-[0.0645px] whitespace-nowrap">Brigade Cornerstone Utopia</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12px] tracking-[0.0645px] whitespace-nowrap">Brigade Cornerstone Utopia</p>
     </div>
   );
 }
@@ -3461,7 +3461,7 @@ function TableCell104() {
 function TableCell105() {
   return (
     <div className="absolute h-[42.094px] left-[232.23px] top-0 w-[117.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12px] tracking-[0.0645px] whitespace-nowrap">1.8 km</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12px] tracking-[0.0645px] whitespace-nowrap">1.8 km</p>
     </div>
   );
 }
@@ -3469,7 +3469,7 @@ function TableCell105() {
 function TableCell106() {
   return (
     <div className="absolute h-[42.094px] left-[349.25px] top-0 w-[126px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12px] tracking-[0.0645px] whitespace-nowrap">₹6,200/sq.ft</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12px] tracking-[0.0645px] whitespace-nowrap">₹6,200/sq.ft</p>
     </div>
   );
 }
@@ -3477,7 +3477,7 @@ function TableCell106() {
 function TableCell107() {
   return (
     <div className="absolute h-[42.094px] left-[475.25px] top-0 w-[165.273px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12px] tracking-[0.0645px] whitespace-nowrap">85% in 18 months</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12px] tracking-[0.0645px] whitespace-nowrap">85% in 18 months</p>
     </div>
   );
 }
@@ -3496,7 +3496,7 @@ function TableRow55() {
 function TableCell108() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[232.234px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Prestige Song of the South</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Prestige Song of the South</p>
     </div>
   );
 }
@@ -3504,7 +3504,7 @@ function TableCell108() {
 function TableCell109() {
   return (
     <div className="absolute h-[42.594px] left-[232.23px] top-0 w-[117.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">2.4 km</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">2.4 km</p>
     </div>
   );
 }
@@ -3512,7 +3512,7 @@ function TableCell109() {
 function TableCell110() {
   return (
     <div className="absolute h-[42.594px] left-[349.25px] top-0 w-[126px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">₹5,800/sq.ft</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">₹5,800/sq.ft</p>
     </div>
   );
 }
@@ -3520,7 +3520,7 @@ function TableCell110() {
 function TableCell111() {
   return (
     <div className="absolute h-[42.594px] left-[475.25px] top-0 w-[165.273px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">78% in 22 months</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">78% in 22 months</p>
     </div>
   );
 }
@@ -3539,7 +3539,7 @@ function TableRow56() {
 function TableCell112() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[232.234px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Sobha Dream Acres</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Sobha Dream Acres</p>
     </div>
   );
 }
@@ -3547,7 +3547,7 @@ function TableCell112() {
 function TableCell113() {
   return (
     <div className="absolute h-[42.594px] left-[232.23px] top-0 w-[117.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">3.1 km</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">3.1 km</p>
     </div>
   );
 }
@@ -3555,7 +3555,7 @@ function TableCell113() {
 function TableCell114() {
   return (
     <div className="absolute h-[42.594px] left-[349.25px] top-0 w-[126px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">₹6,500/sq.ft</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">₹6,500/sq.ft</p>
     </div>
   );
 }
@@ -3563,7 +3563,7 @@ function TableCell114() {
 function TableCell115() {
   return (
     <div className="absolute h-[42.594px] left-[475.25px] top-0 w-[165.273px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">92% in 14 months</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">92% in 14 months</p>
     </div>
   );
 }
@@ -3582,7 +3582,7 @@ function TableRow57() {
 function TableCell116() {
   return (
     <div className="absolute h-[42.094px] left-0 top-0 w-[232.234px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Puravankara Purva Venezia</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Puravankara Purva Venezia</p>
     </div>
   );
 }
@@ -3590,7 +3590,7 @@ function TableCell116() {
 function TableCell117() {
   return (
     <div className="absolute h-[42.094px] left-[232.23px] top-0 w-[117.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">2.9 km</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">2.9 km</p>
     </div>
   );
 }
@@ -3598,7 +3598,7 @@ function TableCell117() {
 function TableCell118() {
   return (
     <div className="absolute h-[42.094px] left-[349.25px] top-0 w-[126px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">₹5,900/sq.ft</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">₹5,900/sq.ft</p>
     </div>
   );
 }
@@ -3606,7 +3606,7 @@ function TableCell118() {
 function TableCell119() {
   return (
     <div className="absolute h-[42.094px] left-[475.25px] top-0 w-[165.273px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">88% in 16 months</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">88% in 16 months</p>
     </div>
   );
 }
@@ -3667,7 +3667,7 @@ function Container138() {
 function Container142() {
   return (
     <div className="h-[20.797px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[20.8px] left-0 not-italic text-[#101828] text-[13px] top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">Strategic Recommendation</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[20.8px] left-0 not-italic text-[#101828] text-sm top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">Strategic Recommendation</p>
     </div>
   );
 }
@@ -3675,7 +3675,7 @@ function Container142() {
 function Container144() {
   return (
     <div className="absolute bg-[#096] h-[24px] left-[25px] rounded-[4px] top-[25px] w-[171.031px]" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[16px] left-[12px] not-italic text-[10px] text-white top-[4px] tracking-[0.6172px] whitespace-nowrap">RECOMMENDED STRATEGY</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[16px] left-[12px] not-italic text-[10px] text-white top-[4px] tracking-[0.6172px] whitespace-nowrap">RECOMMENDED STRATEGY</p>
     </div>
   );
 }
@@ -3683,7 +3683,7 @@ function Container144() {
 function Container145() {
   return (
     <div className="absolute h-[28.797px] left-[25px] top-[65px] w-[592.523px]" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[28.8px] left-0 not-italic text-[#101828] text-[18px] top-[0.5px] tracking-[-0.4395px] whitespace-nowrap">Land Banking (3–5 Year Hold)</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[28.8px] left-0 not-italic text-[#101828] text-lg top-[0.5px] tracking-[-0.4395px] whitespace-nowrap">Land Banking (3–5 Year Hold)</p>
     </div>
   );
 }
@@ -3691,7 +3691,7 @@ function Container145() {
 function Container147() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-0 not-italic text-[#101828] text-[11px] top-0 tracking-[0.3395px] uppercase whitespace-nowrap">Why This Works</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-xs top-0 tracking-[0.3395px] uppercase whitespace-nowrap">Why This Works</p>
     </div>
   );
 }
@@ -3699,7 +3699,7 @@ function Container147() {
 function Text32() {
   return (
     <div className="absolute h-[17.594px] left-0 top-[4px] w-[5.258px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#096] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#096] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
     </div>
   );
 }
@@ -3707,7 +3707,7 @@ function Text32() {
 function Text33() {
   return (
     <div className="absolute h-[17.594px] left-[13.26px] top-0 w-[450.906px]" data-name="Text">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[0] left-0 not-italic text-[#0a0a0a] text-[0px] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[0] left-0 not-italic text-[#0a0a0a] text-[0px] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">
         <span className="leading-[17.6px]">Superior risk-adjusted returns:</span>
         <span className="font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] text-[#364153]">{` 18.2% CAGR vs 16.8% (apartments) and 19.2% (villas)`}</span>
       </p>
@@ -3727,7 +3727,7 @@ function ListItem10() {
 function Text34() {
   return (
     <div className="absolute h-[17.594px] left-0 top-[4px] w-[5.258px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#096] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#096] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
     </div>
   );
 }
@@ -3735,7 +3735,7 @@ function Text34() {
 function Text35() {
   return (
     <div className="absolute h-[17.594px] left-[13.26px] top-0 w-[408.234px]" data-name="Text">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[0] left-0 not-italic text-[#0a0a0a] text-[0px] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[0] left-0 not-italic text-[#0a0a0a] text-[0px] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">
         <span className="leading-[17.6px]">Minimal capital requirement:</span>
         <span className="font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] text-[#364153]">{` ₹85 Cr vs ₹272 Cr (3.2× less than development)`}</span>
       </p>
@@ -3755,7 +3755,7 @@ function ListItem11() {
 function Text36() {
   return (
     <div className="absolute h-[17.594px] left-0 top-[4px] w-[5.258px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#096] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#096] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
     </div>
   );
 }
@@ -3763,7 +3763,7 @@ function Text36() {
 function Text37() {
   return (
     <div className="absolute h-[17.594px] left-[13.26px] top-0 w-[458.125px]" data-name="Text">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[0] left-0 not-italic text-[#0a0a0a] text-[0px] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[0] left-0 not-italic text-[#0a0a0a] text-[0px] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">
         <span className="leading-[17.6px]">Clear value catalyst:</span>
         <span className="font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] text-[#364153]">{` Metro Phase III completion (Q2 2028) drives 25-35% appreciation`}</span>
       </p>
@@ -3783,7 +3783,7 @@ function ListItem12() {
 function Text38() {
   return (
     <div className="absolute h-[17.594px] left-0 top-[4px] w-[5.258px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#096] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#096] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">•</p>
     </div>
   );
 }
@@ -3791,7 +3791,7 @@ function Text38() {
 function Text39() {
   return (
     <div className="absolute h-[17.594px] left-[13.26px] top-0 w-[383.344px]" data-name="Text">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[0] left-0 not-italic text-[#0a0a0a] text-[0px] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[0] left-0 not-italic text-[#0a0a0a] text-[0px] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">
         <span className="leading-[17.6px]">Low execution risk:</span>
         <span className="font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] text-[#364153]">{` No construction, approvals, or absorption challenges`}</span>
       </p>
@@ -3832,7 +3832,7 @@ function Container146() {
 function Container150() {
   return (
     <div className="absolute h-[17.594px] left-[12px] top-[12px] w-[262.258px]" data-name="Container">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">3-Year Exit Value</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">3-Year Exit Value</p>
     </div>
   );
 }
@@ -3840,7 +3840,7 @@ function Container150() {
 function Container151() {
   return (
     <div className="absolute h-[25.594px] left-[12px] top-[33.59px] w-[262.258px]" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[25.6px] left-0 not-italic text-[#096] text-[16px] top-[-1px] tracking-[-0.3125px] whitespace-nowrap">₹135 Crores</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[25.6px] left-0 not-italic text-[#096] text-base top-[-1px] tracking-[-0.3125px] whitespace-nowrap">₹135 Crores</p>
     </div>
   );
 }
@@ -3866,7 +3866,7 @@ function Container149() {
 function Container154() {
   return (
     <div className="absolute h-[17.594px] left-[12px] top-[12px] w-[262.266px]" data-name="Container">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">5-Year Exit Value</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">5-Year Exit Value</p>
     </div>
   );
 }
@@ -3874,7 +3874,7 @@ function Container154() {
 function Container155() {
   return (
     <div className="absolute h-[25.594px] left-[12px] top-[33.59px] w-[262.266px]" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[25.6px] left-0 not-italic text-[#096] text-[16px] top-[-1px] tracking-[-0.3125px] whitespace-nowrap">₹195 Crores</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[25.6px] left-0 not-italic text-[#096] text-base top-[-1px] tracking-[-0.3125px] whitespace-nowrap">₹195 Crores</p>
     </div>
   );
 }
@@ -3951,7 +3951,7 @@ function RecommendationLogic() {
 function Container158() {
   return (
     <div className="absolute h-[16px] left-0 top-0 w-[642.523px]" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[16px] left-0 not-italic text-[#6a7282] text-[10px] top-0 tracking-[1.1172px] uppercase whitespace-nowrap">Section 07</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[16px] left-0 not-italic text-[#6a7282] text-[10px] top-0 tracking-[1.1172px] uppercase whitespace-nowrap">Section 07</p>
     </div>
   );
 }
@@ -3959,7 +3959,7 @@ function Container158() {
 function Heading6() {
   return (
     <div className="absolute h-[31.195px] left-0 top-[24px] w-[642.523px]" data-name="Heading 2">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[31.2px] left-0 not-italic text-[#0a0a0a] text-[24px] top-[0.5px] tracking-[-0.4097px] whitespace-nowrap">{`Financial Snapshot & Implementation`}</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[31.2px] left-0 not-italic text-[#0a0a0a] text-[24px] top-[0.5px] tracking-[-0.4097px] whitespace-nowrap">{`Financial Snapshot & Implementation`}</p>
     </div>
   );
 }
@@ -3981,7 +3981,7 @@ function Container157() {
 function Container162() {
   return (
     <div className="h-[20.797px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[20.8px] left-0 not-italic text-[#101828] text-[13px] top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">Financial Snapshot</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[20.8px] left-0 not-italic text-[#101828] text-sm top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">Financial Snapshot</p>
     </div>
   );
 }
@@ -3989,7 +3989,7 @@ function Container162() {
 function TableCell120() {
   return (
     <div className="absolute h-[42.094px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12px] tracking-[0.0645px] whitespace-nowrap">Construction Cost (per sq.ft)</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12px] tracking-[0.0645px] whitespace-nowrap">Construction Cost (per sq.ft)</p>
     </div>
   );
 }
@@ -3997,7 +3997,7 @@ function TableCell120() {
 function TableCell121() {
   return (
     <div className="absolute h-[42.094px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12px] tracking-[0.0645px] whitespace-nowrap">₹1,600/sq.ft (mid-rise residential)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12px] tracking-[0.0645px] whitespace-nowrap">₹1,600/sq.ft (mid-rise residential)</p>
     </div>
   );
 }
@@ -4014,7 +4014,7 @@ function TableRow59() {
 function TableCell122() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Developer Margin</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Developer Margin</p>
     </div>
   );
 }
@@ -4022,7 +4022,7 @@ function TableCell122() {
 function TableCell123() {
   return (
     <div className="absolute h-[42.594px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">18-22% (typical for Whitefield)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">18-22% (typical for Whitefield)</p>
     </div>
   );
 }
@@ -4039,7 +4039,7 @@ function TableRow60() {
 function TableCell124() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">ROI Potential (Land Banking)</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">ROI Potential (Land Banking)</p>
     </div>
   );
 }
@@ -4047,7 +4047,7 @@ function TableCell124() {
 function TableCell125() {
   return (
     <div className="absolute h-[42.594px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#096] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">18.2% CAGR (3-5 years)</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#096] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">18.2% CAGR (3-5 years)</p>
     </div>
   );
 }
@@ -4064,7 +4064,7 @@ function TableRow61() {
 function TableCell126() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Discount Rate (WACC)</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Discount Rate (WACC)</p>
     </div>
   );
 }
@@ -4072,7 +4072,7 @@ function TableCell126() {
 function TableCell127() {
   return (
     <div className="absolute h-[42.594px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">12-14% (real estate sector)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">12-14% (real estate sector)</p>
     </div>
   );
 }
@@ -4089,7 +4089,7 @@ function TableRow62() {
 function TableCell128() {
   return (
     <div className="absolute h-[42.594px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Holding Costs (Annual)</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Holding Costs (Annual)</p>
     </div>
   );
 }
@@ -4097,7 +4097,7 @@ function TableCell128() {
 function TableCell129() {
   return (
     <div className="absolute h-[42.594px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">₹1.2 Crores (property tax, maintenance, security)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">₹1.2 Crores (property tax, maintenance, security)</p>
     </div>
   );
 }
@@ -4114,7 +4114,7 @@ function TableRow63() {
 function TableCell130() {
   return (
     <div className="absolute h-[42.094px] left-0 top-0 w-[213.508px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-[16px] not-italic text-[#364153] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Exit Tax (LTCG)</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#364153] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">Exit Tax (LTCG)</p>
     </div>
   );
 }
@@ -4122,7 +4122,7 @@ function TableCell130() {
 function TableCell131() {
   return (
     <div className="absolute h-[42.094px] left-[213.51px] top-0 w-[427.016px]" data-name="Table Cell">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-[11px] top-[12.5px] tracking-[0.0645px] whitespace-nowrap">{`20% on gains (>2 years holding)`}</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-[16px] not-italic text-[#101828] text-xs top-[12.5px] tracking-[0.0645px] whitespace-nowrap">{`20% on gains (>2 years holding)`}</p>
     </div>
   );
 }
@@ -4182,7 +4182,7 @@ function Container161() {
 function Container165() {
   return (
     <div className="h-[20.797px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[20.8px] left-0 not-italic text-[#101828] text-[13px] top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">Key Assumptions</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[20.8px] left-0 not-italic text-[#101828] text-sm top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">Key Assumptions</p>
     </div>
   );
 }
@@ -4190,7 +4190,7 @@ function Container165() {
 function Container168() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-0 not-italic text-[#101828] text-[11px] top-0 tracking-[0.3395px] uppercase whitespace-nowrap">Land Banking</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-xs top-0 tracking-[0.3395px] uppercase whitespace-nowrap">Land Banking</p>
     </div>
   );
 }
@@ -4198,7 +4198,7 @@ function Container168() {
 function Container171() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Acquisition</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Acquisition</p>
     </div>
   );
 }
@@ -4206,7 +4206,7 @@ function Container171() {
 function Container172() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-0 not-italic text-[#101828] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">₹85 Crores</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">₹85 Crores</p>
     </div>
   );
 }
@@ -4223,7 +4223,7 @@ function Container170() {
 function Container174() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">CAGR</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">CAGR</p>
     </div>
   );
 }
@@ -4231,7 +4231,7 @@ function Container174() {
 function Container175() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-0 not-italic text-[#096] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">18%</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#096] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">18%</p>
     </div>
   );
 }
@@ -4248,7 +4248,7 @@ function Container173() {
 function Container177() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">5Y Value</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">5Y Value</p>
     </div>
   );
 }
@@ -4256,7 +4256,7 @@ function Container177() {
 function Container178() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-0 not-italic text-[#101828] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">₹195 Cr</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">₹195 Cr</p>
     </div>
   );
 }
@@ -4273,7 +4273,7 @@ function Container176() {
 function Container180() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Hold Cost</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Hold Cost</p>
     </div>
   );
 }
@@ -4281,7 +4281,7 @@ function Container180() {
 function Container181() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-0 not-italic text-[#101828] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">₹1.2 Cr/year</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">₹1.2 Cr/year</p>
     </div>
   );
 }
@@ -4319,7 +4319,7 @@ function Container167() {
 function Container183() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-0 not-italic text-[#101828] text-[11px] top-0 tracking-[0.3395px] uppercase whitespace-nowrap">Develop Now</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-xs top-0 tracking-[0.3395px] uppercase whitespace-nowrap">Develop Now</p>
     </div>
   );
 }
@@ -4327,7 +4327,7 @@ function Container183() {
 function Container186() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Total Cost</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Total Cost</p>
     </div>
   );
 }
@@ -4335,7 +4335,7 @@ function Container186() {
 function Container187() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-0 not-italic text-[#101828] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">₹272 Crores</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">₹272 Crores</p>
     </div>
   );
 }
@@ -4352,7 +4352,7 @@ function Container185() {
 function Container189() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Construction</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Construction</p>
     </div>
   );
 }
@@ -4360,7 +4360,7 @@ function Container189() {
 function Container190() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-0 not-italic text-[#101828] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">₹1,600/sq.ft</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">₹1,600/sq.ft</p>
     </div>
   );
 }
@@ -4377,7 +4377,7 @@ function Container188() {
 function Container192() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">IRR</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">IRR</p>
     </div>
   );
 }
@@ -4385,7 +4385,7 @@ function Container192() {
 function Container193() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-0 not-italic text-[#155dfc] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">16.8%</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#155dfc] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">16.8%</p>
     </div>
   );
 }
@@ -4402,7 +4402,7 @@ function Container191() {
 function Container195() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Payback</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Payback</p>
     </div>
   );
 }
@@ -4410,7 +4410,7 @@ function Container195() {
 function Container196() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-0 not-italic text-[#101828] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">4.2 years</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">4.2 years</p>
     </div>
   );
 }
@@ -4448,7 +4448,7 @@ function Container182() {
 function Container198() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-0 not-italic text-[#101828] text-[11px] top-0 tracking-[0.3395px] uppercase whitespace-nowrap">Villa Development</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-xs top-0 tracking-[0.3395px] uppercase whitespace-nowrap">Villa Development</p>
     </div>
   );
 }
@@ -4456,7 +4456,7 @@ function Container198() {
 function Container201() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Total Cost</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Total Cost</p>
     </div>
   );
 }
@@ -4464,7 +4464,7 @@ function Container201() {
 function Container202() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-0 not-italic text-[#101828] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">₹168 Crores</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">₹168 Crores</p>
     </div>
   );
 }
@@ -4481,7 +4481,7 @@ function Container200() {
 function Container204() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Avg Price</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Avg Price</p>
     </div>
   );
 }
@@ -4489,7 +4489,7 @@ function Container204() {
 function Container205() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-0 not-italic text-[#101828] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">₹4.2 Cr/villa</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">₹4.2 Cr/villa</p>
     </div>
   );
 }
@@ -4506,7 +4506,7 @@ function Container203() {
 function Container207() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">IRR</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">IRR</p>
     </div>
   );
 }
@@ -4514,7 +4514,7 @@ function Container207() {
 function Container208() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-0 not-italic text-[#e17100] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">19.2%</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#e17100] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">19.2%</p>
     </div>
   );
 }
@@ -4531,7 +4531,7 @@ function Container206() {
 function Container210() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Payback</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#4a5565] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Payback</p>
     </div>
   );
 }
@@ -4539,7 +4539,7 @@ function Container210() {
 function Container211() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-0 not-italic text-[#101828] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">3.8 years</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">3.8 years</p>
     </div>
   );
 }
@@ -4596,7 +4596,7 @@ function Container164() {
 function Container213() {
   return (
     <div className="h-[20.797px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[20.8px] left-0 not-italic text-[#101828] text-[13px] top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">Implementation Roadmap</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[20.8px] left-0 not-italic text-[#101828] text-sm top-[0.5px] tracking-[0.2488px] uppercase whitespace-nowrap">Implementation Roadmap</p>
     </div>
   );
 }
@@ -4605,7 +4605,7 @@ function Container217() {
   return (
     <div className="bg-[#096] relative rounded-[8px] shrink-0 size-[48px]" data-name="Container">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
-        <p className="font-['Inter:Medium',sans-serif] font-medium leading-[25.6px] not-italic relative shrink-0 text-[16px] text-white tracking-[-0.3125px] whitespace-nowrap">1</p>
+        <p className="font-['Inter:Medium',sans-serif] font-normal leading-[25.6px] not-italic relative shrink-0 text-base text-white tracking-[-0.3125px] whitespace-nowrap">1</p>
       </div>
     </div>
   );
@@ -4614,7 +4614,7 @@ function Container217() {
 function Container219() {
   return (
     <div className="h-[20.797px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[20.8px] left-0 not-italic text-[#101828] text-[13px] top-[0.5px] tracking-[-0.0762px] whitespace-nowrap">{`Acquisition & Legal Closure (Q1 2026 - 60 days)`}</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[20.8px] left-0 not-italic text-[#101828] text-sm top-[0.5px] tracking-[-0.0762px] whitespace-nowrap">{`Acquisition & Legal Closure (Q1 2026 - 60 days)`}</p>
     </div>
   );
 }
@@ -4640,7 +4640,7 @@ function Icon8() {
 function Text40() {
   return (
     <div className="absolute h-[17.594px] left-[20px] top-0 w-[238.477px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Complete due diligence verification (30 days)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Complete due diligence verification (30 days)</p>
     </div>
   );
 }
@@ -4675,7 +4675,7 @@ function Icon9() {
 function Text41() {
   return (
     <div className="absolute h-[17.594px] left-[20px] top-0 w-[254.375px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">{`Execute sale agreement & register title (15 days)`}</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">{`Execute sale agreement & register title (15 days)`}</p>
     </div>
   );
 }
@@ -4710,7 +4710,7 @@ function Icon10() {
 function Text42() {
   return (
     <div className="absolute h-[17.594px] left-[20px] top-0 w-[281.922px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Secure property (fencing, security, signage) (15 days)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Secure property (fencing, security, signage) (15 days)</p>
     </div>
   );
 }
@@ -4769,7 +4769,7 @@ function Container222() {
   return (
     <div className="bg-[#155dfc] relative rounded-[8px] shrink-0 size-[48px]" data-name="Container">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
-        <p className="font-['Inter:Medium',sans-serif] font-medium leading-[25.6px] not-italic relative shrink-0 text-[16px] text-white tracking-[-0.3125px] whitespace-nowrap">2</p>
+        <p className="font-['Inter:Medium',sans-serif] font-normal leading-[25.6px] not-italic relative shrink-0 text-base text-white tracking-[-0.3125px] whitespace-nowrap">2</p>
       </div>
     </div>
   );
@@ -4778,7 +4778,7 @@ function Container222() {
 function Container224() {
   return (
     <div className="h-[20.797px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[20.8px] left-0 not-italic text-[#101828] text-[13px] top-[0.5px] tracking-[-0.0762px] whitespace-nowrap">Holding Period Management (Q2 2026 - Q4 2028)</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[20.8px] left-0 not-italic text-[#101828] text-sm top-[0.5px] tracking-[-0.0762px] whitespace-nowrap">Holding Period Management (Q2 2026 - Q4 2028)</p>
     </div>
   );
 }
@@ -4804,7 +4804,7 @@ function Icon11() {
 function Text43() {
   return (
     <div className="absolute h-[17.594px] left-[20px] top-0 w-[184.336px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Quarterly market valuation updates</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Quarterly market valuation updates</p>
     </div>
   );
 }
@@ -4839,7 +4839,7 @@ function Icon12() {
 function Text44() {
   return (
     <div className="absolute h-[17.594px] left-[20px] top-0 w-[224.633px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Monitor Metro Phase III progress (monthly)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Monitor Metro Phase III progress (monthly)</p>
     </div>
   );
 }
@@ -4874,7 +4874,7 @@ function Icon13() {
 function Text45() {
   return (
     <div className="absolute h-[17.594px] left-[20px] top-0 w-[245.898px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Track regulatory changes (FSI, zoning policies)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Track regulatory changes (FSI, zoning policies)</p>
     </div>
   );
 }
@@ -4909,7 +4909,7 @@ function Icon14() {
 function Text46() {
   return (
     <div className="absolute h-[17.594px] left-[20px] top-0 w-[258.859px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">{`Annual property tax & maintenance (₹1.2 Cr/year)`}</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">{`Annual property tax & maintenance (₹1.2 Cr/year)`}</p>
     </div>
   );
 }
@@ -4969,7 +4969,7 @@ function Container227() {
   return (
     <div className="bg-[#e17100] relative rounded-[8px] shrink-0 size-[48px]" data-name="Container">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
-        <p className="font-['Inter:Medium',sans-serif] font-medium leading-[25.6px] not-italic relative shrink-0 text-[16px] text-white tracking-[-0.3125px] whitespace-nowrap">3</p>
+        <p className="font-['Inter:Medium',sans-serif] font-normal leading-[25.6px] not-italic relative shrink-0 text-base text-white tracking-[-0.3125px] whitespace-nowrap">3</p>
       </div>
     </div>
   );
@@ -4978,7 +4978,7 @@ function Container227() {
 function Container229() {
   return (
     <div className="h-[20.797px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[20.8px] left-0 not-italic text-[#101828] text-[13px] top-[0.5px] tracking-[-0.0762px] whitespace-nowrap">{`Decision Point & Exit Evaluation (Q2 2028 - Q4 2028)`}</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[20.8px] left-0 not-italic text-[#101828] text-sm top-[0.5px] tracking-[-0.0762px] whitespace-nowrap">{`Decision Point & Exit Evaluation (Q2 2028 - Q4 2028)`}</p>
     </div>
   );
 }
@@ -5004,7 +5004,7 @@ function Icon15() {
 function Text47() {
   return (
     <div className="absolute h-[17.594px] left-[20px] top-0 w-[262.82px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Metro completion verification (expected Q2 2028)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Metro completion verification (expected Q2 2028)</p>
     </div>
   );
 }
@@ -5039,7 +5039,7 @@ function Icon16() {
 function Text48() {
   return (
     <div className="absolute h-[17.594px] left-[20px] top-0 w-[230.211px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Market assessment: Hold vs Sell vs Develop</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Market assessment: Hold vs Sell vs Develop</p>
     </div>
   );
 }
@@ -5074,7 +5074,7 @@ function Icon17() {
 function Text49() {
   return (
     <div className="absolute h-[17.594px] left-[20px] top-0 w-[243.32px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Engage buyer pool (developers, funds, UHNIs)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Engage buyer pool (developers, funds, UHNIs)</p>
     </div>
   );
 }
@@ -5109,7 +5109,7 @@ function Icon18() {
 function Text50() {
   return (
     <div className="absolute h-[17.594px] left-[20px] top-0 w-[261.547px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">NPV comparison: Exit now vs extend hold to 2030</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">NPV comparison: Exit now vs extend hold to 2030</p>
     </div>
   );
 }
@@ -5169,7 +5169,7 @@ function Container232() {
   return (
     <div className="bg-[#9810fa] relative rounded-[8px] shrink-0 size-[48px]" data-name="Container">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center relative size-full">
-        <p className="font-['Inter:Medium',sans-serif] font-medium leading-[25.6px] not-italic relative shrink-0 text-[16px] text-white tracking-[-0.3125px] whitespace-nowrap">4</p>
+        <p className="font-['Inter:Medium',sans-serif] font-normal leading-[25.6px] not-italic relative shrink-0 text-base text-white tracking-[-0.3125px] whitespace-nowrap">4</p>
       </div>
     </div>
   );
@@ -5178,7 +5178,7 @@ function Container232() {
 function Container234() {
   return (
     <div className="h-[20.797px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[20.8px] left-0 not-italic text-[#101828] text-[13px] top-[0.5px] tracking-[-0.0762px] whitespace-nowrap">Exit Execution (Q1 2029 - Q4 2029)</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[20.8px] left-0 not-italic text-[#101828] text-sm top-[0.5px] tracking-[-0.0762px] whitespace-nowrap">Exit Execution (Q1 2029 - Q4 2029)</p>
     </div>
   );
 }
@@ -5204,7 +5204,7 @@ function Icon19() {
 function Text51() {
   return (
     <div className="absolute h-[17.594px] left-[20px] top-0 w-[224.594px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Finalize exit strategy (outright sale vs JDA)</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Finalize exit strategy (outright sale vs JDA)</p>
     </div>
   );
 }
@@ -5239,7 +5239,7 @@ function Icon20() {
 function Text52() {
   return (
     <div className="absolute h-[17.594px] left-[20px] top-0 w-[220.211px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">Legal refresh: Title verification, EC update</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">Legal refresh: Title verification, EC update</p>
     </div>
   );
 }
@@ -5274,7 +5274,7 @@ function Icon21() {
 function Text53() {
   return (
     <div className="absolute h-[17.594px] left-[20px] top-0 w-[170.406px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">{`Close transaction & transfer title`}</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">{`Close transaction & transfer title`}</p>
     </div>
   );
 }
@@ -5309,7 +5309,7 @@ function Icon22() {
 function Text54() {
   return (
     <div className="absolute h-[17.594px] left-[20px] top-0 w-[213.883px]" data-name="Text">
-      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-[11px] top-0 tracking-[0.0645px] whitespace-nowrap">{`Tax planning & capital gains optimization`}</p>
+      <p className="absolute font-['Inter:Regular',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#364153] text-xs top-0 tracking-[0.0645px] whitespace-nowrap">{`Tax planning & capital gains optimization`}</p>
     </div>
   );
 }
@@ -5388,7 +5388,7 @@ function Container212() {
 function Container236() {
   return (
     <div className="h-[17.594px] relative shrink-0 w-full" data-name="Container">
-      <p className="absolute font-['Inter:Medium',sans-serif] font-medium leading-[17.6px] left-0 not-italic text-[#101828] text-[11px] top-0 tracking-[0.3395px] uppercase whitespace-nowrap">Disclaimer</p>
+      <p className="absolute font-['Inter:Medium',sans-serif] font-normal leading-[17.6px] left-0 not-italic text-[#101828] text-xs top-0 tracking-[0.3395px] uppercase whitespace-nowrap">Disclaimer</p>
     </div>
   );
 }
@@ -5422,7 +5422,7 @@ function Container238() {
 function Container239() {
   return (
     <div className="h-[16px] relative shrink-0 w-full" data-name="Container">
-      <p className="-translate-x-1/2 absolute font-['Inter:Medium',sans-serif] font-medium leading-[16px] left-[321.65px] not-italic text-[#99a1af] text-[10px] text-center top-0 tracking-[0.6172px] whitespace-nowrap">{`February 24, 2026 • Confidential & Proprietary`}</p>
+      <p className="-translate-x-1/2 absolute font-['Inter:Medium',sans-serif] font-normal leading-[16px] left-[321.65px] not-italic text-[#99a1af] text-[10px] text-center top-0 tracking-[0.6172px] whitespace-nowrap">{`February 24, 2026 • Confidential & Proprietary`}</p>
     </div>
   );
 }

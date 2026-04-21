@@ -347,10 +347,10 @@ export const components = {
 
 export const tailwindClasses = {
   // CTA Button Classes (from SignUp reference)
-  ctaPrimary: 'w-full bg-black dark:bg-white text-white dark:text-black px-6 py-2.5 rounded-lg hover:bg-black/90 dark:hover:bg-white/90 transition-all text-small font-medium shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2',
+  ctaPrimary: 'w-full bg-black dark:bg-white text-white dark:text-black px-6 py-2.5 rounded-lg hover:bg-black/90 dark:hover:bg-white/90 transition-all text-small font-normal shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2',
 
   // Button Classes
-  buttonPrimary: 'bg-black dark:bg-white text-white dark:text-black px-6 py-2.5 rounded-lg hover:bg-black/90 dark:hover:bg-white/90 transition-all text-small font-medium shadow-lg',
+  buttonPrimary: 'bg-black dark:bg-white text-white dark:text-black px-6 py-2.5 rounded-lg hover:bg-black/90 dark:hover:bg-white/90 transition-all text-small font-normal shadow-lg',
   buttonSecondary: 'bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-lg px-4 py-2.5 text-small text-black dark:text-white hover:bg-black/[0.02] dark:hover:bg-white/[0.05] transition-all',
   buttonDisabled: 'disabled:opacity-50 disabled:cursor-not-allowed',
 

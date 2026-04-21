@@ -1,69 +1,90 @@
-import { ChevronDown } from 'lucide-react';
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
+import { useState, useEffect } from 'react';
 import { NotificationDropdown } from './NotificationDropdown';
 import { ThemeToggle } from './ThemeToggle';
 
-export function MobileHeader() {
+function useProfileData() {
+  const [profile, setProfile] = useState({ firstName: 'Alexander', lastName: 'Sterling', avatarUrl: '' });
 
-  // Mock user data - would come from context in real app
-  const user = {
-    firstName: 'Alexander',
-    lastName: 'Sterling',
-    initials: 'AS',
-    avatarUrl: '',
-  };
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('vybeOnboardingData');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        setProfile({
+          firstName: parsed.firstName || 'Alexander',
+          lastName:  parsed.lastName  || 'Sterling',
+          avatarUrl: parsed.avatarUrl || '',
+        });
+      }
+    } catch {}
+  }, []);
+
+  return profile;
+}
+
+export function MobileHeader() {
+  const { pathname } = useLocation();
+  const profile = useProfileData();
+
+  // Derive a short display name  (first name only, max 12 chars)
+  const displayName = profile.firstName.length > 12
+    ? profile.firstName.substring(0, 12)
+    : profile.firstName;
+
+  const initial = profile.firstName.charAt(0).toUpperCase() || 'A';
 
   return (
-    <div className="md:hidden fixed top-0 left-0 right-0 z-40 bg-white/95 dark:bg-[#1A1A1A]/95 backdrop-blur-[40px] border-b border-black/[0.08] dark:border-white/[0.08] shadow-sm">
-      {/* Top Highlight */}
-      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/60 dark:via-white/20 to-transparent" />
+    <header className="
+      md:hidden fixed top-0 left-0 right-0 z-40 h-16
+      bg-white/96 dark:bg-[#0a0a0a]/96
+      backdrop-blur-xl
+      border-b border-[#F1F5F9] dark:border-white/[0.05]
+      shadow-[0_1px_0_rgba(11,31,58,0.04)]
+    ">
+      <div className="flex items-center justify-between h-full px-4">
 
-      <div className="flex items-center justify-between px-4 py-3 safe-area-inset-top">
-        {/* Left: Profile Avatar and Name */}
-        <Link
-          to="/settings"
-          className="flex items-center gap-3 active:bg-black/5 dark:active:bg-white/5 rounded-xl px-2 py-1.5 transition-colors -ml-2"
-        >
+        {/* Left: user profile → taps to Settings */}
+        <Link to="/settings" className="flex items-center gap-2.5 min-w-0">
           {/* Avatar */}
-          <div className="relative">
-            {user.avatarUrl ? (
-              <img
-                src={user.avatarUrl}
-                alt={`${user.firstName} ${user.lastName}`}
-                className="w-10 h-10 rounded-full object-cover border-2 border-emerald-500/30"
-              />
-            ) : (
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-[0_4px_16px_rgba(16,185,129,0.25)]">
-                <div className="absolute inset-[1px] rounded-full bg-gradient-to-b from-white/20 to-transparent" />
-                <span className="text-[14px] font-bold text-white relative z-10">
-                  {user.initials}
-                </span>
-              </div>
-            )}
-            {/* Active indicator */}
-            <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-500 border-2 border-white dark:border-[#1A1A1A] rounded-full" />
+          <div className="relative flex-shrink-0">
+            <div className="w-9 h-9 rounded-full overflow-hidden border-[1.5px] border-[#C9A75D]/50">
+              {profile.avatarUrl ? (
+                <img
+                  src={profile.avatarUrl}
+                  alt={displayName}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-br from-[#0B1F3A] to-[#162d52] flex items-center justify-center">
+                  <span className="text-sm font-normal text-[#C9A75D] leading-none">
+                    {initial}
+                  </span>
+                </div>
+              )}
+            </div>
+            {/* Online / verified dot */}
+            <div className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-[#C9A75D] border-2 border-white dark:border-[#0a0a0a]" />
           </div>
 
-          {/* Name */}
-          <div className="flex items-center gap-1.5">
-            <div className="text-left">
-              <div className="text-[14px] font-bold text-black dark:text-white leading-tight">
-                {user.firstName}
-              </div>
-              <div className="text-[11px] text-black/50 dark:text-white/50 leading-tight">
-                View Profile
-              </div>
-            </div>
-            <ChevronDown className="w-4 h-4 text-black/40 dark:text-white/40" />
+          {/* Name + greeting */}
+          <div className="flex flex-col justify-center gap-[2px] min-w-0">
+            <span className="text-[10px] font-normal tracking-[0.12em] uppercase text-[#C9A75D] leading-none">
+              Welcome back
+            </span>
+            <span className="text-sm font-normal text-[#0F172A] dark:text-white tracking-[-0.02em] leading-none truncate">
+              {displayName}
+            </span>
           </div>
         </Link>
 
-        {/* Right: Theme Toggle and Notification Dropdown */}
-        <div className="flex items-center gap-2">
+        {/* Right: actions */}
+        <div className="flex items-center gap-1">
           <ThemeToggle />
           <NotificationDropdown />
         </div>
+
       </div>
-    </div>
+    </header>
   );
 }

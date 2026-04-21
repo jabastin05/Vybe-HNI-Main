@@ -1,6 +1,47 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  /* ── Vybe HNI Design Tokens ─────────────────────────────── */
+  /* Global colours */
+  --token-navy:           #0B1F3A;
+  --token-gold:           #C9A75D;
+  --token-white:          #FFFFFF;
+  --token-gray-50:        #F8FAFC;
+  --token-gray-100:       #F1F5F9;
+  --token-gray-200:       #E2E8F0;
+  --token-gray-400:       #94A3B8;
+  --token-gray-600:       #475569;
+  --token-gray-900:       #0F172A;
+  --token-green:          #16A34A;
+  --token-yellow:         #F59E0B;
+  --token-red:            #DC2626;
+  --token-blue:           #2563EB;
+
+  /* Alias colours */
+  --token-bg:             #F8FAFC;
+  --token-surface:        #FFFFFF;
+  --token-text-primary:   #0F172A;
+  --token-text-secondary: #475569;
+  --token-text-tertiary:  #94A3B8;
+  --token-text-inverse:   #FFFFFF;
+  --token-border:         #E2E8F0;
+  --token-border-subtle:  #F1F5F9;
+  --token-primary:        #0B1F3A;
+  --token-secondary:      #C9A75D;
+
+  /* Component tokens */
+  --token-btn-h:          48px;
+  --token-btn-radius:     12px;
+  --token-card-radius:    16px;
+  --token-input-h:        48px;
+  --token-nav-h:          64px;
+
+  /* Motion */
+  --token-fast:   150ms;
+  --token-normal: 250ms;
+  --token-slow:   350ms;
+  /* ──────────────────────────────────────────────────────── */
+
   --font-size: 16px;
   --background: #ffffff;
   --foreground: oklch(0.145 0 0);
@@ -9,7 +50,7 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
   --primary: #030213;
-  --primary-foreground: oklch(1 0 0);
+  --primary-foreground: #ffffff;
   --secondary: oklch(0.95 0.0058 264.53);
   --secondary-foreground: #030213;
   --muted: #ececf0;
@@ -22,7 +63,7 @@
   --input: transparent;
   --input-background: #f3f3f5;
   --switch-background: #cbced4;
-  --font-weight-medium: 500;
+  --font-weight-medium: 400;
   --font-weight-normal: 400;
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.646 0.222 41.116);
@@ -145,7 +186,7 @@
   --border: oklch(0.269 0 0);
   --input: oklch(0.269 0 0);
   --ring: oklch(0.439 0 0);
-  --font-weight-medium: 500;
+  --font-weight-medium: 400;
   --font-weight-normal: 400;
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
@@ -210,6 +251,8 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
+    font-weight: 400;
   }
 
   /**

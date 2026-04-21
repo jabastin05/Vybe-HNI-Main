@@ -43,22 +43,22 @@ export function HabuReportView() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F2F2F2] dark:bg-[#0a0a0a] flex flex-col">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0a0a0a] flex flex-col">
       {/* Header */}
-      <div className="sticky top-0 z-50 border-b border-black/5 dark:border-white/10 bg-white dark:bg-[#1A1A1A] backdrop-blur-md">
+      <div className="sticky top-0 z-50 border-b border-[#E2E8F0] dark:border-white/[0.06] bg-white dark:bg-[#0d1b2e] backdrop-blur-md">
         <div className="max-w-[1200px] mx-auto container-padding h-16 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <button 
               onClick={() => navigate(-1)} 
-              className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-black/60 dark:text-white/60"
+              className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-[#0B1F3A]/5 dark:bg-white/5 hover:bg-[#0B1F3A]/10 dark:hover:bg-white/10 transition-colors text-[#475569] dark:text-white/50"
             >
               <ArrowLeft className="w-4 h-4" />
             </button>
             <div>
-              <h1 className="text-small font-medium text-black dark:text-white">
+              <h1 className="text-small font-normal text-[#0F172A] dark:text-white">
                 HABU Report
               </h1>
-              <p className="text-caption text-black/50 dark:text-white/50">
+              <p className="text-caption text-[#475569] dark:text-white/50">
                 WHF-2024-0847
               </p>
             </div>
@@ -67,12 +67,12 @@ export function HabuReportView() {
           <div className="flex items-center gap-3">
             <button 
               onClick={handleShare}
-              className="inline-flex items-center gap-2 px-4 py-2.5  bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10 text-black dark:text-white rounded-xl text-small font-medium transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2.5  bg-[#0B1F3A]/5 hover:bg-[#0B1F3A]/10 dark:bg-white/5 dark:hover:bg-white/10 text-[#0F172A] dark:text-white rounded-xl text-small font-normal transition-colors"
             >
               {copied ? <Check className="w-4 h-4 text-emerald-500" /> : <Share2 className="w-4 h-4" />}
               {copied ? 'Link Copied!' : 'Share Link'}
             </button>
-            <button className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#1A1A1A] hover:bg-black dark:bg-white dark:hover:bg-[#F2F2F2] dark:bg-[#0a0a0a] text-white dark:text-[#1A1A1A] rounded-lg text-small font-medium transition-colors">
+            <button className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#1A1A1A] hover:bg-[#0B1F3A] dark:bg-white dark:hover:bg-[#F8FAFC] dark:bg-[#0a0a0a] text-white dark:text-[#1A1A1A] rounded-lg text-small font-normal transition-colors">
               <Download className="w-4 h-4" />
               Download PDF
             </button>

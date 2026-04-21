@@ -54,15 +54,15 @@ export function Landing() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F2F2F2] dark:bg-[#0a0a0a] text-slate-900 font-sans selection:bg-emerald-500/30">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0a0a0a] text-slate-900 font-sans selection:bg-emerald-500/30">
       {/* Navbar */}
       <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-[1200px] bg-white/80 backdrop-blur-xl border border-white/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-full px-6 py-3 flex items-center justify-between">
-        <Link to="/" className="text-2xl font-medium tracking-tight text-slate-900">
+        <Link to="/" className="text-2xl font-normal tracking-tight text-slate-900">
           VYBE
         </Link>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <div className="hidden md:flex items-center gap-8 text-sm font-normal text-slate-600">
           <a href="#platform" className="hover:text-emerald-600 transition-colors">Platform</a>
           <a href="#features" className="hover:text-emerald-600 transition-colors">Features</a>
           <a href="#insights" className="hover:text-emerald-600 transition-colors">Market Insights</a>
@@ -71,10 +71,10 @@ export function Landing() {
 
         {/* Auth Buttons */}
         <div className="hidden md:flex items-center gap-4">
-          <Link to="/signin" className="text-sm font-medium text-slate-900 hover:text-emerald-600 transition-colors">
+          <Link to="/signin" className="text-sm font-normal text-slate-900 hover:text-emerald-600 transition-colors">
             Login
           </Link>
-          <Link to="/signup" className="flex items-center gap-2 dark:bg-[#0a0a0a] hover:bg-black/90 dark:hover:bg-white/90 text-white px-5 py-2.5 rounded-full text-sm font-medium transition-all shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40">
+          <Link to="/signup" className="flex items-center gap-2 dark:bg-[#0a0a0a] hover:bg-black/90 dark:hover:bg-white/90 text-black px-5 py-2.5 rounded-full text-sm font-normal transition-all shadow-lg shadow-[#C9A75D]/20 hover:shadow-[#C9A75D]/40">
             Get Started
             <ArrowRight className="w-4 h-4" />
           </Link>
@@ -98,17 +98,17 @@ export function Landing() {
             exit={{ opacity: 0, y: -20 }}
             className="fixed inset-0 z-40 bg-white/95 backdrop-blur-xl pt-24 px-6 md:hidden flex flex-col"
           >
-            <div className="flex flex-col gap-6 text-xl font-medium text-slate-900 mb-6 md:mb-8 lg:mb-10">
+            <div className="flex flex-col gap-6 text-xl font-normal text-slate-900 mb-6 md:mb-8 lg:mb-10">
               <a href="#platform" onClick={() => setIsMobileMenuOpen(false)}>Platform</a>
               <a href="#features" onClick={() => setIsMobileMenuOpen(false)}>Features</a>
               <a href="#insights" onClick={() => setIsMobileMenuOpen(false)}>Market Insights</a>
               <a href="#how-it-works" onClick={() => setIsMobileMenuOpen(false)}>How It Works</a>
             </div>
             <div className="flex flex-col gap-4 mt-auto pb-12">
-              <Link to="/signin" className="w-full py-4 text-center border border-slate-200 rounded-xl text-lg font-medium">
+              <Link to="/signin" className="w-full py-4 text-center border border-slate-200 rounded-xl text-lg font-normal">
                 Login
               </Link>
-              <Link to="/signup" className="w-full py-4 text-center dark:bg-[#0a0a0a] text-white rounded-xl text-lg font-medium">
+              <Link to="/signup" className="w-full py-4 text-center dark:bg-[#0a0a0a] text-black rounded-xl text-lg font-normal">
                 Get Started
               </Link>
             </div>
@@ -125,7 +125,7 @@ export function Landing() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-2.5  rounded-full bg-white/50 border border-slate-200 backdrop-blur-md mb-8 text-sm font-medium text-slate-600 shadow-sm"
+            className="inline-flex items-center gap-2 px-4 py-2.5  rounded-full bg-white/50 border border-slate-200 backdrop-blur-md mb-8 text-sm font-normal text-slate-600 shadow-sm"
           >
             <span className="w-2 h-2 rounded-full bg-black dark:bg-white animate-pulse" />
             Institutional Intelligence for Real Estate owners.
@@ -135,7 +135,7 @@ export function Landing() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-[84px] font-medium tracking-tight text-slate-500 leading-[1.1] mb-8"
+            className="text-5xl md:text-7xl lg:text-[84px] font-normal tracking-tight text-slate-500 leading-[1.1] mb-8"
           >
             Monetize <span className="text-slate-900">Land</span><br />
             With Precise <span className="text-slate-900">Strategy & Execution.</span>
@@ -158,21 +158,21 @@ export function Landing() {
             className="w-full max-w-4xl relative z-10 bg-white/80 backdrop-blur-2xl border border-white/40 p-4 md:p-5 lg:p-6 md:p-4 md:p-5 lg:p-6 rounded-[32px] shadow-[0_20px_60px_rgb(0,0,0,0.08)] flex flex-col md:flex-row items-center justify-between gap-6"
           >
             <div className="text-left flex-1">
-              <h3 className="text-xl font-medium text-slate-900 mb-1">Check Real time Market Value</h3>
+              <h3 className="text-xl font-normal text-slate-900 mb-1">Check Real time Market Value</h3>
               <p className="text-sm text-slate-500">Enter details to generate AI-backed initial estimates</p>
             </div>
             <div className="flex w-full md:w-auto flex-col sm:flex-row gap-3 flex-1">
               <input 
                 type="text" 
                 placeholder="Name" 
-                className="px-4 py-2.5 bg-[#F2F2F2] dark:bg-[#0a0a0a] border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 w-full sm:w-1/2"
+                className="px-4 py-2.5 bg-[#F8FAFC] dark:bg-[#0a0a0a] border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 w-full sm:w-1/2"
               />
               <input 
                 type="tel" 
                 placeholder="Phone number" 
-                className="px-4 py-2.5 bg-[#F2F2F2] dark:bg-[#0a0a0a] border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 w-full sm:w-1/2"
+                className="px-4 py-2.5 bg-[#F8FAFC] dark:bg-[#0a0a0a] border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 w-full sm:w-1/2"
               />
-              <button className="bg-black dark:bg-white hover:bg-black/90 dark:hover:bg-white/90 text-white font-medium px-6 py-2.5 rounded-lg transition-colors shadow-lg shadow-emerald-500/20 whitespace-nowrap">
+              <button className="bg-black dark:bg-white hover:bg-black/90 dark:hover:bg-white/90 text-white font-normal px-6 py-2.5 rounded-lg transition-colors shadow-lg shadow-[#C9A75D]/20 whitespace-nowrap">
                 Analyze
               </button>
             </div>
@@ -201,12 +201,12 @@ export function Landing() {
       <section id="features" className="py-24 px-6 bg-white relative">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-slate-900">
+            <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-slate-900">
               Everything You Need <span className="text-slate-400">in One Platform</span>
             </h2>
           </div>
 
-          <div className="bg-[#F2F2F2] dark:bg-[#0a0a0a] rounded-[32px] border border-slate-200 overflow-hidden flex flex-col lg:flex-row">
+          <div className="bg-[#F8FAFC] dark:bg-[#0a0a0a] rounded-[32px] border border-slate-200 overflow-hidden flex flex-col lg:flex-row">
             {/* Sidebar */}
             <div className="w-full lg:w-2/5 flex flex-col border-b lg:border-b-0 lg:border-r border-slate-200 bg-white/50 backdrop-blur-sm">
               {features.map((feature, idx) => (
@@ -216,7 +216,7 @@ export function Landing() {
                   className={`p-4 md:p-5 lg:p-6 text-left transition-all relative ${
                     activeFeature === idx 
                       ? 'bg-white shadow-[0_0_40px_rgb(0,0,0,0.05)] z-10' 
-                      : 'hover:bg-[#F2F2F2] dark:bg-[#0a0a0a]'
+                      : 'hover:bg-[#F8FAFC] dark:bg-[#0a0a0a]'
                   }`}
                 >
                   {activeFeature === idx && (
@@ -225,10 +225,10 @@ export function Landing() {
                       className="absolute left-0 top-0 bottom-0 w-1 bg-emerald-500"
                     />
                   )}
-                  <div className={`mb-4 inline-flex p-3 rounded-xl ${activeFeature === idx ? 'bg-emerald-50 text-emerald-600' : 'bg-[#F2F2F2] dark:bg-[#0a0a0a] text-slate-500'}`}>
+                  <div className={`mb-4 inline-flex p-3 rounded-xl ${activeFeature === idx ? 'bg-emerald-50 text-emerald-600' : 'bg-[#F8FAFC] dark:bg-[#0a0a0a] text-slate-500'}`}>
                     {feature.icon}
                   </div>
-                  <h3 className={`text-2xl font-medium mb-3 tracking-tight ${activeFeature === idx ? 'text-slate-900' : 'text-slate-600'}`}>
+                  <h3 className={`text-2xl font-normal mb-3 tracking-tight ${activeFeature === idx ? 'text-slate-900' : 'text-slate-600'}`}>
                     {feature.title}
                   </h3>
                   <p className="text-slate-500 leading-relaxed text-sm md:text-base mb-6">
@@ -244,7 +244,7 @@ export function Landing() {
                         className="grid grid-cols-2 gap-3"
                       >
                         {feature.tags.map((tag, tagIdx) => (
-                          <div key={tagIdx} className="bg-[#F2F2F2] dark:bg-[#0a0a0a]/80 border border-slate-200 rounded-xl p-3 text-xs font-medium text-slate-700">
+                          <div key={tagIdx} className="bg-[#F8FAFC] dark:bg-[#0a0a0a]/80 border border-slate-200 rounded-xl p-3 text-xs font-normal text-slate-700">
                             {tag}
                           </div>
                         ))}
@@ -256,7 +256,7 @@ export function Landing() {
             </div>
 
             {/* Content Display */}
-            <div className="w-full lg:w-3/5 p-4 md:p-5 lg:p-6 md:p-12 flex items-center justify-center bg-[#F2F2F2] dark:bg-[#0a0a0a]">
+            <div className="w-full lg:w-3/5 p-4 md:p-5 lg:p-6 md:p-12 flex items-center justify-center bg-[#F8FAFC] dark:bg-[#0a0a0a]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeFeature}
@@ -280,10 +280,10 @@ export function Landing() {
       </section>
 
       {/* Role Selection Section */}
-      <section className="py-24 px-6 bg-[#F2F2F2] dark:bg-[#0a0a0a] relative">
+      <section className="py-24 px-6 bg-[#F8FAFC] dark:bg-[#0a0a0a] relative">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-slate-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-slate-900 mb-4">
               Choose Your Role
             </h2>
             <p className="text-lg text-slate-500 max-w-2xl mx-auto">
@@ -301,7 +301,7 @@ export function Landing() {
                 <Eye className="w-8 h-8 text-white/90" strokeWidth={1.5} />
                 <div className="w-6 h-6 rounded-full bg-white/20" />
               </div>
-              <h3 className="text-2xl font-medium mb-4">Casual User</h3>
+              <h3 className="text-2xl font-normal mb-4">Casual User</h3>
               <div className="space-y-4 text-white/90 text-sm md:text-base leading-relaxed">
                 <p>Stay informed on real estate trends</p>
                 <p>Access market insights, trends, and expert analysis to understand the real estate landscape.</p>
@@ -317,7 +317,7 @@ export function Landing() {
                 <Building2 className="w-8 h-8 text-white/90" strokeWidth={1.5} />
                 <div className="w-6 h-6 rounded-full bg-white/20" />
               </div>
-              <h3 className="text-2xl font-medium mb-4">Asset Owner</h3>
+              <h3 className="text-2xl font-normal mb-4">Asset Owner</h3>
               <div className="space-y-4 text-white/90 text-sm md:text-base leading-relaxed">
                 <p>Maximize property value and performance</p>
                 <p>Get feasibility reports, optimization insights, and tools to unlock the full potential of your assets.</p>
@@ -327,7 +327,7 @@ export function Landing() {
 
           <div className="mt-12 text-center flex items-center justify-center gap-2 text-sm text-slate-400">
             <span className="text-yellow-500 text-lg leading-none">💡</span>
-            <p><span className="font-medium text-slate-500">Pro tip:</span> Start with "Casual User" mode to explore without commitment</p>
+            <p><span className="font-normal text-slate-500">Pro tip:</span> Start with "Casual User" mode to explore without commitment</p>
           </div>
         </div>
       </section>
@@ -341,8 +341,8 @@ export function Landing() {
 
         <div className="max-w-[1200px] mx-auto relative z-10">
           <div className="mb-20">
-            <h2 className="text-4xl md:text-5xl font-medium tracking-tight">
-              The VYBE <span className="text-emerald-400">Lifecycle</span>
+            <h2 className="text-4xl md:text-5xl font-normal tracking-tight">
+              The VYBE <span className="text-[#C9A75D]">Lifecycle</span>
             </h2>
           </div>
 
@@ -366,12 +366,12 @@ export function Landing() {
                     whileInView={{ scale: 1 }}
                     transition={{ delay: idx * 0.2, type: "spring", stiffness: 200 }}
                     viewport={{ once: true }}
-                    className="w-14 h-14 rounded-full bg-black dark:bg-white border-2 border-emerald-500 flex items-center justify-center text-xl font-medium text-emerald-400 mb-6 relative z-10 shadow-[0_0_20px_rgba(16,185,129,0.3)]"
+                    className="w-14 h-14 rounded-full bg-black dark:bg-white border-2 border-[#C9A75D] flex items-center justify-center text-xl font-normal text-[#C9A75D] mb-6 relative z-10 shadow-[0_0_20px_rgba(201,167,93,0.30)]"
                   >
                     {step.num}
                   </motion.div>
                   <div className="md:text-center">
-                    <h4 className="text-xl font-medium mb-3">{step.title}</h4>
+                    <h4 className="text-xl font-normal mb-3">{step.title}</h4>
                     <p className="text-slate-400 leading-relaxed text-sm">{step.desc}</p>
                   </div>
                 </div>
@@ -382,17 +382,17 @@ export function Landing() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 px-6 bg-[#F2F2F2] dark:bg-[#0a0a0a]">
+      <section className="py-32 px-6 bg-[#F8FAFC] dark:bg-[#0a0a0a]">
         <div className="max-w-4xl mx-auto bg-white rounded-[40px] p-10 md:p-16 text-center shadow-[0_20px_60px_rgb(0,0,0,0.06)] border border-slate-100 relative overflow-hidden">
           {/* Decorative glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/10 blur-[80px] rounded-full pointer-events-none" />
           
           <div className="relative z-10">
-            <div className="inline-flex items-center px-4 py-2.5  rounded-full bg-[#F2F2F2] dark:bg-[#0a0a0a] text-sm font-medium text-slate-600 mb-8">
+            <div className="inline-flex items-center px-4 py-2.5  rounded-full bg-[#F8FAFC] dark:bg-[#0a0a0a] text-sm font-normal text-slate-600 mb-8">
               ✨ Start Your Journey
             </div>
             
-            <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-slate-900 mb-8 leading-[1.2]">
+            <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-slate-900 mb-8 leading-[1.2]">
               Ready to Unlock <span className="text-slate-400">Your Land's Potential?</span>
             </h2>
             
@@ -401,7 +401,7 @@ export function Landing() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
-              <Link to="/signup" className="w-full sm:w-auto container-padding py-4 md:py-6 dark:bg-[#0a0a0a] hover:bg-black/90 dark:hover:bg-white/90 text-white rounded-full text-base font-medium transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+              <Link to="/signup" className="w-full sm:w-auto container-padding py-4 md:py-6 dark:bg-[#0a0a0a] hover:bg-black/90 dark:hover:bg-white/90 text-black rounded-full text-base font-normal transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
                 Get Started Now <ArrowRight className="w-4 h-4" />
               </Link>
               
@@ -409,16 +409,16 @@ export function Landing() {
             
             <div className="grid grid-cols-2 md:grid-cols-3 gap-8 pt-12 border-t border-slate-100">
               <div>
-                <div className="text-3xl font-medium text-slate-900 mb-1">10K+</div>
-                <div className="text-sm text-slate-500 uppercase tracking-wider font-medium">Acres Analyzed</div>
+                <div className="text-3xl font-normal text-slate-900 mb-1">10K+</div>
+                <div className="text-sm text-slate-500 uppercase tracking-wider font-normal">Acres Analyzed</div>
               </div>
               <div>
-                <div className="text-3xl font-medium text-slate-900 mb-1">99.9%</div>
-                <div className="text-sm text-slate-500 uppercase tracking-wider font-medium">Uptime</div>
+                <div className="text-3xl font-normal text-slate-900 mb-1">99.9%</div>
+                <div className="text-sm text-slate-500 uppercase tracking-wider font-normal">Uptime</div>
               </div>
               <div className="col-span-2 md:col-span-1">
-                <div className="text-3xl font-medium text-slate-900 mb-1">18M+</div>
-                <div className="text-sm text-slate-500 uppercase tracking-wider font-medium">USD Value Unlocked</div>
+                <div className="text-3xl font-normal text-slate-900 mb-1">18M+</div>
+                <div className="text-sm text-slate-500 uppercase tracking-wider font-normal">USD Value Unlocked</div>
               </div>
             </div>
           </div>
@@ -430,7 +430,7 @@ export function Landing() {
         <div className="max-w-[1200px] mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-12 mb-20">
             <div className="col-span-2">
-              <Link to="/" className="text-3xl font-medium tracking-tight mb-6 inline-block">
+              <Link to="/" className="text-3xl font-normal tracking-tight mb-6 inline-block">
                 VYBE
               </Link>
               <p className="text-slate-400 max-w-sm mb-8">
@@ -450,32 +450,32 @@ export function Landing() {
             </div>
             
             <div>
-              <h5 className="font-medium text-white mb-6 uppercase tracking-wider text-xs">Platform</h5>
+              <h5 className="font-normal text-white mb-6 uppercase tracking-wider text-xs">Platform</h5>
               <ul className="flex flex-col gap-4 text-sm text-slate-400">
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Features</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Pricing</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Security</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Integration</a></li>
+                <li><a href="#" className="hover:text-[#C9A75D] transition-colors">Features</a></li>
+                <li><a href="#" className="hover:text-[#C9A75D] transition-colors">Pricing</a></li>
+                <li><a href="#" className="hover:text-[#C9A75D] transition-colors">Security</a></li>
+                <li><a href="#" className="hover:text-[#C9A75D] transition-colors">Integration</a></li>
               </ul>
             </div>
             
             <div>
-              <h5 className="font-medium text-white mb-6 uppercase tracking-wider text-xs">Resources</h5>
+              <h5 className="font-normal text-white mb-6 uppercase tracking-wider text-xs">Resources</h5>
               <ul className="flex flex-col gap-4 text-sm text-slate-400">
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Documentation</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">API Reference</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Blog</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Case Studies</a></li>
+                <li><a href="#" className="hover:text-[#C9A75D] transition-colors">Documentation</a></li>
+                <li><a href="#" className="hover:text-[#C9A75D] transition-colors">API Reference</a></li>
+                <li><a href="#" className="hover:text-[#C9A75D] transition-colors">Blog</a></li>
+                <li><a href="#" className="hover:text-[#C9A75D] transition-colors">Case Studies</a></li>
               </ul>
             </div>
             
             <div>
-              <h5 className="font-medium text-white mb-6 uppercase tracking-wider text-xs">Company</h5>
+              <h5 className="font-normal text-white mb-6 uppercase tracking-wider text-xs">Company</h5>
               <ul className="flex flex-col gap-4 text-sm text-slate-400">
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Contact</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Partners</a></li>
+                <li><a href="#" className="hover:text-[#C9A75D] transition-colors">About Us</a></li>
+                <li><a href="#" className="hover:text-[#C9A75D] transition-colors">Careers</a></li>
+                <li><a href="#" className="hover:text-[#C9A75D] transition-colors">Contact</a></li>
+                <li><a href="#" className="hover:text-[#C9A75D] transition-colors">Partners</a></li>
               </ul>
             </div>
           </div>

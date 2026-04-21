@@ -184,7 +184,7 @@ function HouseSearchingBro() {
 function PrimitiveLabel() {
   return (
     <div className="content-stretch flex items-center justify-center relative shrink-0 w-full" data-name="Primitive.label">
-      <p className="font-['Inter:Medium',sans-serif] font-medium leading-[1.4] not-italic relative shrink-0 text-[#0e1520] text-[12px] whitespace-nowrap">Residential</p>
+      <p className="font-['Inter:Medium',sans-serif] font-normal leading-[1.4] not-italic relative shrink-0 text-[#0e1520] text-xs whitespace-nowrap">Residential</p>
     </div>
   );
 }
@@ -388,7 +388,7 @@ function BuildingPermitBro() {
 function PrimitiveLabel1() {
   return (
     <div className="content-stretch flex items-center justify-center relative shrink-0 w-full" data-name="Primitive.label">
-      <p className="font-['Inter:Medium',sans-serif] font-medium leading-[1.4] not-italic relative shrink-0 text-[#0e1520] text-[12px] whitespace-nowrap">Commercial</p>
+      <p className="font-['Inter:Medium',sans-serif] font-normal leading-[1.4] not-italic relative shrink-0 text-[#0e1520] text-xs whitespace-nowrap">Commercial</p>
     </div>
   );
 }
@@ -2973,7 +2973,7 @@ function BuildingBro() {
 function PrimitiveLabel2() {
   return (
     <div className="content-stretch flex items-center justify-center relative shrink-0 w-full" data-name="Primitive.label">
-      <p className="font-['Inter:Medium',sans-serif] font-medium h-[14px] leading-[1.4] not-italic relative shrink-0 text-[#0e1520] text-[12px] w-[73px]">International</p>
+      <p className="font-['Inter:Medium',sans-serif] font-normal h-[14px] leading-[1.4] not-italic relative shrink-0 text-[#0e1520] text-xs w-[73px]">International</p>
     </div>
   );
 }
@@ -3177,7 +3177,7 @@ function BuildingBlocksBro() {
 function PrimitiveLabel3() {
   return (
     <div className="content-stretch flex h-[17px] items-center justify-center relative shrink-0 w-full" data-name="Primitive.label">
-      <p className="font-['Inter:Medium',sans-serif] font-medium h-full leading-[1.4] not-italic relative shrink-0 text-[#0e1520] text-[12px] w-[85px]">Holiday homes</p>
+      <p className="font-['Inter:Medium',sans-serif] font-normal h-full leading-[1.4] not-italic relative shrink-0 text-[#0e1520] text-xs w-[85px]">Holiday homes</p>
     </div>
   );
 }
@@ -3357,7 +3357,7 @@ function ReforestationBro() {
 function PrimitiveLabel4() {
   return (
     <div className="content-stretch flex h-[17px] items-center justify-center relative shrink-0 w-full" data-name="Primitive.label">
-      <p className="font-['Inter:Medium',sans-serif] font-medium h-full leading-[1.4] not-italic relative shrink-0 text-[#0e1520] text-[12px] w-[85px]">Land</p>
+      <p className="font-['Inter:Medium',sans-serif] font-normal h-full leading-[1.4] not-italic relative shrink-0 text-[#0e1520] text-xs w-[85px]">Land</p>
     </div>
   );
 }

@@ -38,7 +38,7 @@ function Text() {
   return (
     <div className="h-[10.951px] relative shrink-0 w-[32.544px]" data-name="Text">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="absolute font-['Inter:Bold',sans-serif] font-bold leading-[10.951px] left-0 not-italic text-[7.3px] text-[rgba(255,255,255,0.6)] top-[0.37px] tracking-[0.4506px] uppercase whitespace-nowrap">Scroll</p>
+        <p className="absolute font-['Inter:Bold',sans-serif] font-normal leading-[10.951px] left-0 not-italic text-[7.3px] text-[rgba(255,255,255,0.6)] top-[0.37px] tracking-[0.4506px] uppercase whitespace-nowrap">Scroll</p>
       </div>
     </div>
   );
@@ -79,7 +79,7 @@ function Container3() {
 
 function NavigationLinks() {
   return (
-    <div className="absolute content-stretch flex font-['Satoshi_Variable:Regular',sans-serif] font-normal gap-[24px] items-center leading-none left-[-98.46px] text-[#595959] text-[14px] top-0 whitespace-nowrap" data-name="Navigation Links">
+    <div className="absolute content-stretch flex font-['Satoshi_Variable:Regular',sans-serif] font-normal gap-[24px] items-center leading-none left-[-98.46px] text-[#595959] text-sm top-0 whitespace-nowrap" data-name="Navigation Links">
       <p className="relative shrink-0">Platform</p>
       <p className="relative shrink-0">Features</p>
       <p className="relative shrink-0">Market Insights</p>
@@ -101,7 +101,7 @@ function Link() {
 function Link1() {
   return (
     <div className="content-stretch flex items-center justify-center px-[12px] py-[7px] relative shrink-0" data-name="Link">
-      <p className="font-['Satoshi_Variable:Medium',sans-serif] font-medium leading-[15.331px] relative shrink-0 text-[#060e20] text-[14px] text-center tracking-[-0.1098px] whitespace-nowrap">Login</p>
+      <p className="font-['Satoshi_Variable:Medium',sans-serif] font-normal leading-[15.331px] relative shrink-0 text-[#060e20] text-sm text-center tracking-[-0.1098px] whitespace-nowrap">Login</p>
     </div>
   );
 }
@@ -122,7 +122,7 @@ function Icon() {
 function Link2() {
   return (
     <div className="bg-[#060e20] content-stretch flex gap-[12px] items-center px-[24px] py-[12px] relative rounded-[11.681px] shrink-0" data-name="Link">
-      <p className="font-['Inter:Medium',sans-serif] font-medium leading-[16.426px] not-italic relative shrink-0 text-[10.951px] text-center text-white tracking-[-0.1711px] whitespace-nowrap">Get Started</p>
+      <p className="font-['Inter:Medium',sans-serif] font-normal leading-[16.426px] not-italic relative shrink-0 text-[10.951px] text-center text-white tracking-[-0.1711px] whitespace-nowrap">Get Started</p>
       <Icon />
     </div>
   );
@@ -178,7 +178,7 @@ function Icon1() {
 function Text2() {
   return (
     <div className="content-stretch flex items-center justify-center relative shrink-0" data-name="Text">
-      <p className="font-['Satoshi_Variable:Regular',sans-serif] font-normal leading-none relative shrink-0 text-[#6e6e6e] text-[14px] text-center whitespace-nowrap">Institutional Intelligence for Realestate owners.</p>
+      <p className="font-['Satoshi_Variable:Regular',sans-serif] font-normal leading-none relative shrink-0 text-[#6e6e6e] text-sm text-center whitespace-nowrap">Institutional Intelligence for Realestate owners.</p>
     </div>
   );
 }
@@ -224,7 +224,7 @@ function HeadlineContainer() {
   return (
     <div className="content-stretch flex flex-col gap-[23px] items-center justify-center relative shrink-0" data-name="Headline Container">
       <Headline />
-      <p className="font-['Satoshi:Regular',sans-serif] leading-[1.52] not-italic relative shrink-0 text-[#5a5a5a] text-[16px] text-center tracking-[-0.3208px] w-[631px]">Vybe analyzes your land through real-time market intelligence, structures the most viable investment path, and deploys verified execution partners to deliver results.</p>
+      <p className="font-['Satoshi:Regular',sans-serif] leading-[1.52] not-italic relative shrink-0 text-[#5a5a5a] text-base text-center tracking-[-0.3208px] w-[631px]">Vybe analyzes your land through real-time market intelligence, structures the most viable investment path, and deploys verified execution partners to deliver results.</p>
     </div>
   );
 }
@@ -265,7 +265,7 @@ function Section() {
 function SectionHeader() {
   return (
     <div className="content-stretch flex flex-col gap-[44px] items-center relative shrink-0 w-full" data-name="Section Header">
-      <p className="font-['Inter:Bold',sans-serif] font-['Onest:Regular',sans-serif] font-bold font-normal leading-[0] not-italic relative shrink-0 text-[#060e20] text-[0px] text-[48px] text-center tracking-[-1.44px] whitespace-nowrap">
+      <p className="font-['Inter:Bold',sans-serif] font-['Onest:Regular',sans-serif] font-normal font-normal leading-[0] not-italic relative shrink-0 text-[#060e20] text-[0px] text-[48px] text-center tracking-[-1.44px] whitespace-nowrap">
         <span className="leading-[1.2]">{`Everything You Need `}</span>
         <span className="leading-[1.2] text-[rgba(0,0,0,0.4)]">in One Platform</span>
       </p>
@@ -298,8 +298,8 @@ function Icon2() {
 function FeatureTitle() {
   return (
     <div className="content-stretch flex flex-col gap-[10px] items-start relative shrink-0 w-full" data-name="Feature Title">
-      <p className="font-['Satoshi_Variable:Medium',sans-serif] font-medium leading-[1.2] min-w-full relative shrink-0 text-[32px] text-black tracking-[-0.32px] w-[min-content]">AI Document Vault</p>
-      <p className="font-['Satoshi_Variable:Regular',sans-serif] font-normal leading-[1.45] relative shrink-0 text-[#787373] text-[14px] tracking-[-0.1098px] w-[345px]">Stop losing weeks to legal back-and-forth. Get instant clarity on any land asset.</p>
+      <p className="font-['Satoshi_Variable:Medium',sans-serif] font-normal leading-[1.2] min-w-full relative shrink-0 text-[32px] text-black tracking-[-0.32px] w-[min-content]">AI Document Vault</p>
+      <p className="font-['Satoshi_Variable:Regular',sans-serif] font-normal leading-[1.45] relative shrink-0 text-[#787373] text-sm tracking-[-0.1098px] w-[345px]">Stop losing weeks to legal back-and-forth. Get instant clarity on any land asset.</p>
     </div>
   );
 }
@@ -308,7 +308,7 @@ function FeatureItem3() {
   return (
     <div className="bg-[#e7ebed] col-1 justify-self-stretch relative rounded-[8px] row-1 self-stretch shrink-0" data-name="Feature Item 4">
       <div className="content-stretch flex items-start p-[12px] relative size-full">
-        <p className="font-['Satoshi_Variable:Medium',sans-serif] font-medium leading-[1.2] relative shrink-0 text-[#060e20] text-[14px] tracking-[-0.14px] whitespace-nowrap">Registered Sale Deed</p>
+        <p className="font-['Satoshi_Variable:Medium',sans-serif] font-normal leading-[1.2] relative shrink-0 text-[#060e20] text-sm tracking-[-0.14px] whitespace-nowrap">Registered Sale Deed</p>
       </div>
     </div>
   );
@@ -318,7 +318,7 @@ function FeatureItem2() {
   return (
     <div className="bg-[#e7ebed] col-2 justify-self-stretch relative rounded-[8px] row-1 self-stretch shrink-0" data-name="Feature Item 3">
       <div className="content-stretch flex items-start p-[12px] relative size-full">
-        <p className="font-['Satoshi_Variable:Medium',sans-serif] font-medium leading-[1.2] relative shrink-0 text-[#060e20] text-[14px] tracking-[-0.14px] whitespace-nowrap">Revenue Records (RTC/7-12)</p>
+        <p className="font-['Satoshi_Variable:Medium',sans-serif] font-normal leading-[1.2] relative shrink-0 text-[#060e20] text-sm tracking-[-0.14px] whitespace-nowrap">Revenue Records (RTC/7-12)</p>
       </div>
     </div>
   );
@@ -328,7 +328,7 @@ function FeatureItem1() {
   return (
     <div className="bg-[#e7ebed] col-1 justify-self-stretch relative rounded-[8px] row-2 self-stretch shrink-0" data-name="Feature Item 2">
       <div className="content-stretch flex items-start p-[12px] relative size-full">
-        <p className="font-['Satoshi_Variable:Medium',sans-serif] font-medium leading-[1.2] relative shrink-0 text-[#060e20] text-[14px] tracking-[-0.14px] whitespace-nowrap">Conversion Orders</p>
+        <p className="font-['Satoshi_Variable:Medium',sans-serif] font-normal leading-[1.2] relative shrink-0 text-[#060e20] text-sm tracking-[-0.14px] whitespace-nowrap">Conversion Orders</p>
       </div>
     </div>
   );
@@ -338,7 +338,7 @@ function FeatureItem() {
   return (
     <div className="bg-[#e7ebed] col-2 justify-self-stretch relative rounded-[8px] row-2 self-stretch shrink-0" data-name="Feature Item 1">
       <div className="content-stretch flex items-start p-[12px] relative size-full">
-        <p className="font-['Satoshi_Variable:Medium',sans-serif] font-medium leading-[1.2] relative shrink-0 text-[#060e20] text-[14px] tracking-[-0.14px] whitespace-nowrap">Encumbrance Certificate</p>
+        <p className="font-['Satoshi_Variable:Medium',sans-serif] font-normal leading-[1.2] relative shrink-0 text-[#060e20] text-sm tracking-[-0.14px] whitespace-nowrap">Encumbrance Certificate</p>
       </div>
     </div>
   );
@@ -405,8 +405,8 @@ function Container8() {
 function FeatureTitle1() {
   return (
     <div className="content-stretch flex flex-col gap-[10px] items-start leading-[1.2] relative shrink-0 w-full" data-name="Feature Title">
-      <p className="font-['Satoshi_Variable:Medium',sans-serif] font-medium relative shrink-0 text-[#6b6b6b] text-[24px] tracking-[-0.24px] whitespace-nowrap">Highest and Best Use - Strategy Engine</p>
-      <p className="font-['Satoshi_Variable:Regular',sans-serif] font-normal min-w-full relative shrink-0 text-[#9a9a9a] text-[14px] tracking-[-0.1098px] w-[min-content]">AI-generated monetization pathways with detailed projections</p>
+      <p className="font-['Satoshi_Variable:Medium',sans-serif] font-normal relative shrink-0 text-[#6b6b6b] text-[24px] tracking-[-0.24px] whitespace-nowrap">Highest and Best Use - Strategy Engine</p>
+      <p className="font-['Satoshi_Variable:Regular',sans-serif] font-normal min-w-full relative shrink-0 text-[#9a9a9a] text-sm tracking-[-0.1098px] w-[min-content]">AI-generated monetization pathways with detailed projections</p>
     </div>
   );
 }
@@ -443,8 +443,8 @@ function Container9() {
 function FeatureTitle2() {
   return (
     <div className="content-stretch flex flex-col gap-[10px] items-start leading-[1.2] relative shrink-0 w-full" data-name="Feature Title">
-      <p className="font-['Satoshi_Variable:Medium',sans-serif] font-medium relative shrink-0 text-[#6b6b6b] text-[24px] tracking-[-0.24px] w-full">Execution Network</p>
-      <p className="font-['Satoshi_Variable:Regular',sans-serif] font-normal relative shrink-0 text-[#9a9a9a] text-[14px] tracking-[-0.1098px] w-full">Pre-vetted partners with transparent milestone tracking</p>
+      <p className="font-['Satoshi_Variable:Medium',sans-serif] font-normal relative shrink-0 text-[#6b6b6b] text-[24px] tracking-[-0.24px] w-full">Execution Network</p>
+      <p className="font-['Satoshi_Variable:Regular',sans-serif] font-normal relative shrink-0 text-[#9a9a9a] text-sm tracking-[-0.1098px] w-full">Pre-vetted partners with transparent milestone tracking</p>
     </div>
   );
 }
@@ -695,8 +695,8 @@ function Frame1() {
 function StepDescription() {
   return (
     <div className="absolute content-stretch flex flex-col gap-[4px] items-start left-[259.41px] top-[400.92px]" data-name="Step Description">
-      <p className="font-['Satoshi_Variable:Medium',sans-serif] font-medium leading-[1.2] relative shrink-0 text-[#060e20] text-[32px] tracking-[-0.32px] w-[281px]">Upload Documents</p>
-      <p className="font-['Satoshi_Variable:Regular',sans-serif] font-normal leading-[1.44] relative shrink-0 text-[#787878] text-[14px] tracking-[-0.0556px] w-[235px]">Secure upload of critical legal papers with instant verification triggers.</p>
+      <p className="font-['Satoshi_Variable:Medium',sans-serif] font-normal leading-[1.2] relative shrink-0 text-[#060e20] text-[32px] tracking-[-0.32px] w-[281px]">Upload Documents</p>
+      <p className="font-['Satoshi_Variable:Regular',sans-serif] font-normal leading-[1.44] relative shrink-0 text-[#787878] text-sm tracking-[-0.0556px] w-[235px]">Secure upload of critical legal papers with instant verification triggers.</p>
     </div>
   );
 }
@@ -704,8 +704,8 @@ function StepDescription() {
 function StepDescription1() {
   return (
     <div className="content-stretch flex flex-col gap-[4px] items-start relative shrink-0" data-name="Step Description">
-      <p className="font-['Satoshi_Variable:Medium',sans-serif] font-medium leading-[1.2] min-w-full relative shrink-0 text-[#060e20] text-[32px] tracking-[-0.32px] w-[min-content]">AI Analysis</p>
-      <p className="font-['Satoshi_Variable:Regular',sans-serif] font-normal leading-[1.44] relative shrink-0 text-[#787878] text-[14px] tracking-[-0.0556px] w-[299px]">The proprietary HABU engine processes massive datasets to generate site-specific strategies.</p>
+      <p className="font-['Satoshi_Variable:Medium',sans-serif] font-normal leading-[1.2] min-w-full relative shrink-0 text-[#060e20] text-[32px] tracking-[-0.32px] w-[min-content]">AI Analysis</p>
+      <p className="font-['Satoshi_Variable:Regular',sans-serif] font-normal leading-[1.44] relative shrink-0 text-[#787878] text-sm tracking-[-0.0556px] w-[299px]">The proprietary HABU engine processes massive datasets to generate site-specific strategies.</p>
     </div>
   );
 }
@@ -713,7 +713,7 @@ function StepDescription1() {
 function StepContainer() {
   return (
     <div className="absolute content-stretch flex gap-[17px] items-center left-[572px] top-[625.55px]" data-name="Step Container">
-      <p className="bg-clip-text bg-gradient-to-b font-['Onest:Medium',sans-serif] font-medium from-[#b3b3b3] leading-none relative shrink-0 text-[96px] text-[transparent] to-[#f1f1f1] tracking-[-0.1098px] whitespace-nowrap">2</p>
+      <p className="bg-clip-text bg-gradient-to-b font-['Onest:Medium',sans-serif] font-normal from-[#b3b3b3] leading-none relative shrink-0 text-[96px] text-[transparent] to-[#f1f1f1] tracking-[-0.1098px] whitespace-nowrap">2</p>
       <StepDescription1 />
     </div>
   );
@@ -722,8 +722,8 @@ function StepContainer() {
 function StepDescription2() {
   return (
     <div className="content-stretch flex flex-col gap-[4px] items-start relative shrink-0" data-name="Step Description">
-      <p className="font-['Satoshi_Variable:Medium',sans-serif] font-medium leading-[1.2] min-w-full relative shrink-0 text-[#060e20] text-[32px] tracking-[-0.32px] w-[min-content]">Review Strategies</p>
-      <p className="font-['Satoshi_Variable:Regular',sans-serif] font-normal leading-[1.44] relative shrink-0 text-[#787878] text-[14px] tracking-[-0.0556px] w-[257px]">Evaluate multiple monetization pathways with detailed financial projections.</p>
+      <p className="font-['Satoshi_Variable:Medium',sans-serif] font-normal leading-[1.2] min-w-full relative shrink-0 text-[#060e20] text-[32px] tracking-[-0.32px] w-[min-content]">Review Strategies</p>
+      <p className="font-['Satoshi_Variable:Regular',sans-serif] font-normal leading-[1.44] relative shrink-0 text-[#787878] text-sm tracking-[-0.0556px] w-[257px]">Evaluate multiple monetization pathways with detailed financial projections.</p>
     </div>
   );
 }
@@ -731,7 +731,7 @@ function StepDescription2() {
 function StepContainer1() {
   return (
     <div className="absolute content-stretch flex gap-[17px] items-center left-[1068px] top-[407.55px]" data-name="Step Container">
-      <p className="bg-clip-text bg-gradient-to-b font-['Onest:Medium',sans-serif] font-medium from-[#b3b3b3] leading-none relative shrink-0 text-[96px] text-[transparent] to-[#f1f1f1] tracking-[-0.1098px] whitespace-nowrap">3</p>
+      <p className="bg-clip-text bg-gradient-to-b font-['Onest:Medium',sans-serif] font-normal from-[#b3b3b3] leading-none relative shrink-0 text-[96px] text-[transparent] to-[#f1f1f1] tracking-[-0.1098px] whitespace-nowrap">3</p>
       <StepDescription2 />
     </div>
   );
@@ -740,8 +740,8 @@ function StepContainer1() {
 function StepDescription3() {
   return (
     <div className="content-stretch flex flex-col gap-[4px] items-start relative shrink-0" data-name="Step Description">
-      <p className="font-['Satoshi_Variable:Medium',sans-serif] font-medium leading-[1.2] relative shrink-0 text-[#060e20] text-[32px] tracking-[-0.32px] whitespace-nowrap">Execute with Partners</p>
-      <p className="font-['Satoshi_Variable:Regular',sans-serif] font-normal leading-[1.44] relative shrink-0 text-[#787878] text-[14px] tracking-[-0.0556px] w-[307px]">Seamlessly transition to the physical world through our network of pre-vetted execution experts</p>
+      <p className="font-['Satoshi_Variable:Medium',sans-serif] font-normal leading-[1.2] relative shrink-0 text-[#060e20] text-[32px] tracking-[-0.32px] whitespace-nowrap">Execute with Partners</p>
+      <p className="font-['Satoshi_Variable:Regular',sans-serif] font-normal leading-[1.44] relative shrink-0 text-[#787878] text-sm tracking-[-0.0556px] w-[307px]">Seamlessly transition to the physical world through our network of pre-vetted execution experts</p>
     </div>
   );
 }
@@ -749,7 +749,7 @@ function StepDescription3() {
 function StepContainer2() {
   return (
     <div className="absolute content-stretch flex gap-[17px] items-center left-[1340px] top-[714.55px]" data-name="Step Container">
-      <p className="bg-clip-text bg-gradient-to-b font-['Onest:Medium',sans-serif] font-medium from-[#b3b3b3] leading-none relative shrink-0 text-[96px] text-[transparent] to-[#f1f1f1] tracking-[-0.1098px] whitespace-nowrap">4</p>
+      <p className="bg-clip-text bg-gradient-to-b font-['Onest:Medium',sans-serif] font-normal from-[#b3b3b3] leading-none relative shrink-0 text-[96px] text-[transparent] to-[#f1f1f1] tracking-[-0.1098px] whitespace-nowrap">4</p>
       <StepDescription3 />
     </div>
   );
@@ -927,7 +927,7 @@ function R1() {
         <span className="leading-[1.2]">{`The VYBE `}</span>
         <span className="leading-[1.2] text-[#939393]">Lifecycle</span>
       </p>
-      <p className="absolute bg-clip-text bg-gradient-to-b font-['Onest:Medium',sans-serif] font-medium from-[#b3b3b3] leading-none left-[198.41px] text-[96px] text-[transparent] to-[#f1f1f1] top-[388.55px] tracking-[-0.1098px] whitespace-nowrap">1</p>
+      <p className="absolute bg-clip-text bg-gradient-to-b font-['Onest:Medium',sans-serif] font-normal from-[#b3b3b3] leading-none left-[198.41px] text-[96px] text-[transparent] to-[#f1f1f1] top-[388.55px] tracking-[-0.1098px] whitespace-nowrap">1</p>
       <StepDescription />
       <StepContainer />
       <StepContainer1 />
@@ -1009,11 +1009,11 @@ function Container13() {
 function Frame2() {
   return (
     <div className="content-stretch flex flex-col font-normal gap-[4px] items-start relative shrink-0">
-      <p className="font-['Inter:Bold',sans-serif] font-['Onest:Regular',sans-serif] font-bold leading-[0] not-italic relative shrink-0 text-[#060e20] text-[0px] text-[32px] text-center tracking-[-0.96px] whitespace-nowrap">
+      <p className="font-['Inter:Bold',sans-serif] font-['Onest:Regular',sans-serif] font-normal leading-[0] not-italic relative shrink-0 text-[#060e20] text-[0px] text-[32px] text-center tracking-[-0.96px] whitespace-nowrap">
         <span className="leading-[1.2]">{`Check Real time Market `}</span>
         <span className="leading-[1.2] text-[rgba(0,0,0,0.4)]">Value</span>
       </p>
-      <p className="font-['Satoshi_Variable:Regular',sans-serif] leading-[1.44] relative shrink-0 text-[#787878] text-[14px] tracking-[-0.0556px] w-[428px]">Enter any pincode to explore appreciation trends, rental yields, and Vybe Scores to guide your next move</p>
+      <p className="font-['Satoshi_Variable:Regular',sans-serif] leading-[1.44] relative shrink-0 text-[#787878] text-sm tracking-[-0.0556px] w-[428px]">Enter any pincode to explore appreciation trends, rental yields, and Vybe Scores to guide your next move</p>
     </div>
   );
 }
@@ -1080,7 +1080,7 @@ function Frame9() {
 function Button() {
   return (
     <div className="h-[32.852px] relative rounded-[7.3px] shrink-0 w-[104.926px]" data-name="Button" style={{ backgroundImage: "linear-gradient(115.17deg, rgb(0, 135, 44) 38%, rgb(0, 178, 235) 96.9%)" }}>
-      <p className="-translate-x-1/2 absolute font-['Satoshi_Variable:Medium',sans-serif] font-medium leading-[15.331px] left-[51.96px] text-[12px] text-center text-white top-[calc(50%-8.43px)] tracking-[-0.1098px] whitespace-nowrap">Analyze</p>
+      <p className="-translate-x-1/2 absolute font-['Satoshi_Variable:Medium',sans-serif] font-normal leading-[15.331px] left-[51.96px] text-xs text-center text-white top-[calc(50%-8.43px)] tracking-[-0.1098px] whitespace-nowrap">Analyze</p>
     </div>
   );
 }
@@ -1167,7 +1167,7 @@ function Text3() {
   return (
     <div className="flex-[1_0_0] h-[21px] min-h-px min-w-px relative" data-name="Text">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="-translate-x-1/2 absolute font-['Inter:Regular',sans-serif] font-normal leading-[21px] left-[62px] not-italic text-[14px] text-[rgba(0,0,0,0.7)] text-center top-0 whitespace-nowrap">Start Your Journey</p>
+        <p className="-translate-x-1/2 absolute font-['Inter:Regular',sans-serif] font-normal leading-[21px] left-[62px] not-italic text-sm text-[rgba(0,0,0,0.7)] text-center top-0 whitespace-nowrap">Start Your Journey</p>
       </div>
     </div>
   );
@@ -1207,7 +1207,7 @@ function Heading() {
 function Paragraph() {
   return (
     <div className="h-[48px] relative shrink-0 w-[600px]" data-name="Paragraph">
-      <p className="-translate-x-1/2 absolute font-['Satoshi:Regular',sans-serif] leading-[24px] left-1/2 not-italic text-[#5a5a5a] text-[16px] text-center top-[1.41px] tracking-[-0.32px] w-[506px]">Join thousands of landowners and investors who are making smarter, data-driven real estate decisions with VYBE.</p>
+      <p className="-translate-x-1/2 absolute font-['Satoshi:Regular',sans-serif] leading-[24px] left-1/2 not-italic text-[#5a5a5a] text-base text-center top-[1.41px] tracking-[-0.32px] w-[506px]">Join thousands of landowners and investors who are making smarter, data-driven real estate decisions with VYBE.</p>
     </div>
   );
 }
@@ -1248,7 +1248,7 @@ function Button1() {
   return (
     <div className="bg-[#060e20] h-[50px] relative rounded-[12px] shadow-[0px_4px_12px_0px_rgba(6,14,32,0.15)] shrink-0 w-[203.242px]" data-name="Button">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="-translate-x-1/2 absolute font-['Inter:Medium',sans-serif] font-medium leading-[18px] left-[88px] not-italic text-[12px] text-center text-white top-[16.5px] whitespace-nowrap">Get Started Free</p>
+        <p className="-translate-x-1/2 absolute font-['Inter:Medium',sans-serif] font-normal leading-[18px] left-[88px] not-italic text-xs text-center text-white top-[16.5px] whitespace-nowrap">Get Started Free</p>
         <Icon5 />
       </div>
     </div>
@@ -1260,7 +1260,7 @@ function Button2() {
     <div className="bg-white h-[55px] relative rounded-[12px] shrink-0 w-[193.438px]" data-name="Button">
       <div aria-hidden="true" className="absolute border border-[rgba(0,0,0,0.1)] border-solid inset-0 pointer-events-none rounded-[12px]" />
       <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-center px-[41px] py-[17px] relative size-full">
-        <p className="font-['Satoshi_Variable:Medium',sans-serif] font-medium leading-[21px] relative shrink-0 text-[#060e20] text-[14px] text-center whitespace-nowrap">Schedule a Demo</p>
+        <p className="font-['Satoshi_Variable:Medium',sans-serif] font-normal leading-[21px] relative shrink-0 text-[#060e20] text-sm text-center whitespace-nowrap">Schedule a Demo</p>
       </div>
     </div>
   );
@@ -1297,7 +1297,7 @@ function Paragraph1() {
   return (
     <div className="flex-[1_0_0] min-h-px min-w-px relative w-[77.969px]" data-name="Paragraph">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="-translate-x-1/2 absolute font-['Satoshi_Variable:Bold',sans-serif] font-bold leading-[38.4px] left-[39px] text-[#060e20] text-[32px] text-center top-px whitespace-nowrap">10K+</p>
+        <p className="-translate-x-1/2 absolute font-['Satoshi_Variable:Bold',sans-serif] font-normal leading-[38.4px] left-[39px] text-[#060e20] text-[32px] text-center top-px whitespace-nowrap">10K+</p>
       </div>
     </div>
   );
@@ -1307,7 +1307,7 @@ function Paragraph2() {
   return (
     <div className="h-[16.5px] relative shrink-0 w-[74.547px]" data-name="Paragraph">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="-translate-x-1/2 absolute font-['Inter:Regular',sans-serif] font-normal leading-[16.5px] left-[37px] not-italic text-[11px] text-[rgba(0,0,0,0.5)] text-center top-[0.5px] tracking-[0.8px] uppercase whitespace-nowrap">Properties</p>
+        <p className="-translate-x-1/2 absolute font-['Inter:Regular',sans-serif] font-normal leading-[16.5px] left-[37px] not-italic text-xs text-[rgba(0,0,0,0.5)] text-center top-[0.5px] tracking-[0.8px] uppercase whitespace-nowrap">Properties</p>
       </div>
     </div>
   );
@@ -1326,7 +1326,7 @@ function Paragraph3() {
   return (
     <div className="flex-[1_0_0] min-h-px min-w-px relative w-[97.594px]" data-name="Paragraph">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="-translate-x-1/2 absolute font-['Satoshi_Variable:Bold',sans-serif] font-bold leading-[38.4px] left-[49px] text-[#060e20] text-[32px] text-center top-px whitespace-nowrap">99.9%</p>
+        <p className="-translate-x-1/2 absolute font-['Satoshi_Variable:Bold',sans-serif] font-normal leading-[38.4px] left-[49px] text-[#060e20] text-[32px] text-center top-px whitespace-nowrap">99.9%</p>
       </div>
     </div>
   );
@@ -1336,7 +1336,7 @@ function Paragraph4() {
   return (
     <div className="h-[16.5px] relative shrink-0 w-[46.273px]" data-name="Paragraph">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="-translate-x-1/2 absolute font-['Inter:Regular',sans-serif] font-normal leading-[16.5px] left-[23px] not-italic text-[11px] text-[rgba(0,0,0,0.5)] text-center top-[0.5px] tracking-[0.8px] uppercase whitespace-nowrap">Uptime</p>
+        <p className="-translate-x-1/2 absolute font-['Inter:Regular',sans-serif] font-normal leading-[16.5px] left-[23px] not-italic text-xs text-[rgba(0,0,0,0.5)] text-center top-[0.5px] tracking-[0.8px] uppercase whitespace-nowrap">Uptime</p>
       </div>
     </div>
   );
@@ -1355,7 +1355,7 @@ function Paragraph5() {
   return (
     <div className="flex-[1_0_0] min-h-px min-w-px relative w-[81.117px]" data-name="Paragraph">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="-translate-x-1/2 absolute font-['Satoshi_Variable:Bold',sans-serif] font-bold leading-[38.4px] left-[41px] text-[#060e20] text-[32px] text-center top-px whitespace-nowrap">15M+</p>
+        <p className="-translate-x-1/2 absolute font-['Satoshi_Variable:Bold',sans-serif] font-normal leading-[38.4px] left-[41px] text-[#060e20] text-[32px] text-center top-px whitespace-nowrap">15M+</p>
       </div>
     </div>
   );
@@ -1365,7 +1365,7 @@ function Paragraph6() {
   return (
     <div className="h-[16.5px] relative shrink-0 w-[80.117px]" data-name="Paragraph">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="-translate-x-1/2 absolute font-['Inter:Regular',sans-serif] font-normal leading-[16.5px] left-[40px] not-italic text-[11px] text-[rgba(0,0,0,0.5)] text-center top-[0.5px] tracking-[0.8px] uppercase whitespace-nowrap">Data Points</p>
+        <p className="-translate-x-1/2 absolute font-['Inter:Regular',sans-serif] font-normal leading-[16.5px] left-[40px] not-italic text-xs text-[rgba(0,0,0,0.5)] text-center top-[0.5px] tracking-[0.8px] uppercase whitespace-nowrap">Data Points</p>
       </div>
     </div>
   );
@@ -1547,7 +1547,7 @@ function Heading1() {
 function Paragraph7() {
   return (
     <div className="absolute h-[48px] left-0 top-[64px] w-[320px]" data-name="Paragraph">
-      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[24px] left-0 not-italic text-[15px] text-[rgba(255,255,255,0.6)] top-[0.5px] tracking-[-0.2px] w-[290px]">{`Unlock your land's potential with AI-powered analysis and data-driven real estate decisions.`}</p>
+      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[24px] left-0 not-italic text-sm text-[rgba(255,255,255,0.6)] top-[0.5px] tracking-[-0.2px] w-[290px]">{`Unlock your land's potential with AI-powered analysis and data-driven real estate decisions.`}</p>
     </div>
   );
 }
@@ -1653,7 +1653,7 @@ function Container32() {
 function Heading2() {
   return (
     <div className="h-[21px] relative shrink-0 w-full" data-name="Heading 4">
-      <p className="absolute font-['Satoshi_Variable:Medium',sans-serif] font-medium leading-[21px] left-0 text-[14px] text-white top-[0.5px] tracking-[1px] uppercase whitespace-nowrap">Platform</p>
+      <p className="absolute font-['Satoshi_Variable:Medium',sans-serif] font-normal leading-[21px] left-0 text-sm text-white top-[0.5px] tracking-[1px] uppercase whitespace-nowrap">Platform</p>
     </div>
   );
 }
@@ -1661,7 +1661,7 @@ function Heading2() {
 function ListItem() {
   return (
     <div className="h-[24px] relative shrink-0 w-full" data-name="List Item">
-      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-[14px] text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Features</p>
+      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-sm text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Features</p>
     </div>
   );
 }
@@ -1669,7 +1669,7 @@ function ListItem() {
 function ListItem1() {
   return (
     <div className="h-[24px] relative shrink-0 w-full" data-name="List Item">
-      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-[14px] text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Pricing</p>
+      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-sm text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Pricing</p>
     </div>
   );
 }
@@ -1677,7 +1677,7 @@ function ListItem1() {
 function ListItem2() {
   return (
     <div className="h-[24px] relative shrink-0 w-full" data-name="List Item">
-      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-[14px] text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Security</p>
+      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-sm text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Security</p>
     </div>
   );
 }
@@ -1685,7 +1685,7 @@ function ListItem2() {
 function ListItem3() {
   return (
     <div className="h-[24px] relative shrink-0 w-full" data-name="List Item">
-      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-[14px] text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Integrations</p>
+      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-sm text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Integrations</p>
     </div>
   );
 }
@@ -1713,7 +1713,7 @@ function Container35() {
 function Heading3() {
   return (
     <div className="h-[21px] relative shrink-0 w-full" data-name="Heading 4">
-      <p className="absolute font-['Satoshi_Variable:Medium',sans-serif] font-medium leading-[21px] left-0 text-[14px] text-white top-[0.5px] tracking-[1px] uppercase whitespace-nowrap">Resources</p>
+      <p className="absolute font-['Satoshi_Variable:Medium',sans-serif] font-normal leading-[21px] left-0 text-sm text-white top-[0.5px] tracking-[1px] uppercase whitespace-nowrap">Resources</p>
     </div>
   );
 }
@@ -1721,7 +1721,7 @@ function Heading3() {
 function ListItem4() {
   return (
     <div className="h-[24px] relative shrink-0 w-full" data-name="List Item">
-      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-[14px] text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Documentation</p>
+      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-sm text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Documentation</p>
     </div>
   );
 }
@@ -1729,7 +1729,7 @@ function ListItem4() {
 function ListItem5() {
   return (
     <div className="h-[24px] relative shrink-0 w-full" data-name="List Item">
-      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-[14px] text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">API Reference</p>
+      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-sm text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">API Reference</p>
     </div>
   );
 }
@@ -1737,7 +1737,7 @@ function ListItem5() {
 function ListItem6() {
   return (
     <div className="h-[24px] relative shrink-0 w-full" data-name="List Item">
-      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-[14px] text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Guides</p>
+      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-sm text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Guides</p>
     </div>
   );
 }
@@ -1745,7 +1745,7 @@ function ListItem6() {
 function ListItem7() {
   return (
     <div className="h-[24px] relative shrink-0 w-full" data-name="List Item">
-      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-[14px] text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Blog</p>
+      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-sm text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Blog</p>
     </div>
   );
 }
@@ -1773,7 +1773,7 @@ function Container36() {
 function Heading4() {
   return (
     <div className="h-[21px] relative shrink-0 w-full" data-name="Heading 4">
-      <p className="absolute font-['Satoshi_Variable:Medium',sans-serif] font-medium leading-[21px] left-0 text-[14px] text-white top-[0.5px] tracking-[1px] uppercase whitespace-nowrap">Company</p>
+      <p className="absolute font-['Satoshi_Variable:Medium',sans-serif] font-normal leading-[21px] left-0 text-sm text-white top-[0.5px] tracking-[1px] uppercase whitespace-nowrap">Company</p>
     </div>
   );
 }
@@ -1781,7 +1781,7 @@ function Heading4() {
 function ListItem8() {
   return (
     <div className="h-[24px] relative shrink-0 w-full" data-name="List Item">
-      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-[14px] text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">About</p>
+      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-sm text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">About</p>
     </div>
   );
 }
@@ -1789,7 +1789,7 @@ function ListItem8() {
 function ListItem9() {
   return (
     <div className="h-[24px] relative shrink-0 w-full" data-name="List Item">
-      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-[14px] text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Careers</p>
+      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-sm text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Careers</p>
     </div>
   );
 }
@@ -1797,7 +1797,7 @@ function ListItem9() {
 function ListItem10() {
   return (
     <div className="h-[24px] relative shrink-0 w-full" data-name="List Item">
-      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-[14px] text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Contact</p>
+      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-sm text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Contact</p>
     </div>
   );
 }
@@ -1805,7 +1805,7 @@ function ListItem10() {
 function ListItem11() {
   return (
     <div className="h-[24px] relative shrink-0 w-full" data-name="List Item">
-      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-[14px] text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Press Kit</p>
+      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-sm text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Press Kit</p>
     </div>
   );
 }
@@ -1833,7 +1833,7 @@ function Container37() {
 function Heading5() {
   return (
     <div className="h-[21px] relative shrink-0 w-full" data-name="Heading 4">
-      <p className="absolute font-['Satoshi_Variable:Medium',sans-serif] font-medium leading-[21px] left-0 text-[14px] text-white top-[0.5px] tracking-[1px] uppercase whitespace-nowrap">Legal</p>
+      <p className="absolute font-['Satoshi_Variable:Medium',sans-serif] font-normal leading-[21px] left-0 text-sm text-white top-[0.5px] tracking-[1px] uppercase whitespace-nowrap">Legal</p>
     </div>
   );
 }
@@ -1841,7 +1841,7 @@ function Heading5() {
 function ListItem12() {
   return (
     <div className="h-[24px] relative shrink-0 w-full" data-name="List Item">
-      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-[14px] text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Privacy</p>
+      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-sm text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Privacy</p>
     </div>
   );
 }
@@ -1849,7 +1849,7 @@ function ListItem12() {
 function ListItem13() {
   return (
     <div className="h-[24px] relative shrink-0 w-full" data-name="List Item">
-      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-[14px] text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Terms</p>
+      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-sm text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Terms</p>
     </div>
   );
 }
@@ -1857,7 +1857,7 @@ function ListItem13() {
 function ListItem14() {
   return (
     <div className="h-[24px] relative shrink-0 w-full" data-name="List Item">
-      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-[14px] text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Cookies</p>
+      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-sm text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Cookies</p>
     </div>
   );
 }
@@ -1865,7 +1865,7 @@ function ListItem14() {
 function ListItem15() {
   return (
     <div className="h-[24px] relative shrink-0 w-full" data-name="List Item">
-      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-[14px] text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Licenses</p>
+      <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[21px] left-0 not-italic text-sm text-[rgba(255,255,255,0.6)] top-px whitespace-nowrap">Licenses</p>
     </div>
   );
 }
@@ -1907,7 +1907,7 @@ function Paragraph8() {
   return (
     <div className="h-[19.5px] relative shrink-0 w-[186.164px]" data-name="Paragraph">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
-        <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[19.5px] left-0 not-italic text-[13px] text-[rgba(255,255,255,0.4)] top-[0.5px] tracking-[-0.2px] whitespace-nowrap">© 2026 VYBE. All rights reserved.</p>
+        <p className="absolute font-['Satoshi:Regular',sans-serif] leading-[19.5px] left-0 not-italic text-sm text-[rgba(255,255,255,0.4)] top-[0.5px] tracking-[-0.2px] whitespace-nowrap">© 2026 VYBE. All rights reserved.</p>
       </div>
     </div>
   );

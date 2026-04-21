@@ -28,7 +28,7 @@ export function Waitlist() {
   }, [navigate]);
 
   return (
-    <div className="min-h-screen h-screen w-full flex items-center justify-center container-padding py-8 bg-[#F2F2F2] dark:bg-[#0a0a0a] font-sans overflow-y-auto pt-[60px] md:pt-0">
+    <div className="min-h-screen h-screen w-full flex items-center justify-center container-padding py-8 bg-[#F8FAFC] dark:bg-[#0a0a0a] font-sans overflow-y-auto">
       {/* Background Image & Overlay */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
         <img
@@ -48,15 +48,15 @@ export function Waitlist() {
               <img src={vybeLogoImage} alt="VYBE" className="w-5 h-5 md:w-6 md:h-6 object-contain" />
             </div>
             <div>
-              <h1 className="text-h2 md:text-h1 tracking-[-0.01em] font-medium text-[#1A1A1A] dark:text-white leading-none mb-1">VYBE</h1>
-              <p className="text-caption uppercase tracking-[0.05em] font-medium text-[#8E8E93]">Intelligence-First Capital</p>
+              <h1 className="text-h2 md:text-h1 tracking-[-0.01em] font-normal text-[#1A1A1A] dark:text-white leading-none mb-1">VYBE</h1>
+              <p className="text-caption uppercase tracking-[0.05em] font-normal text-[#8E8E93]">Intelligence-First Capital</p>
             </div>
           </div>
         </div>
 
         {/* The Glass Card */}
         <div
-          className="bg-white/[0.90] dark:bg-[#1A1A1A]/[0.85] backdrop-blur-[40px] rounded-xl card-padding
+          className="bg-white/[0.90] dark:bg-[#0d1b2e]/[0.85] backdrop-blur-[40px] rounded-xl card-padding
                      shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]
                      border border-white/60 dark:border-white/10 relative overflow-hidden transition-all duration-500"
         >
@@ -68,7 +68,7 @@ export function Waitlist() {
             <div className="flex justify-center mb-6">
               <div className="relative">
                 <div className="absolute inset-0 bg-emerald-500/20 rounded-full blur-[20px]" />
-                <div className="relative w-20 h-20 rounded-full bg-black dark:bg-white flex items-center justify-center">
+                <div className="relative w-20 h-20 rounded-full bg-[#0B1F3A] dark:bg-[#C9A75D]/20 flex items-center justify-center">
                   <CheckCircle className="w-10 h-10 text-white" strokeWidth={2.5} />
                 </div>
               </div>
@@ -76,14 +76,14 @@ export function Waitlist() {
 
             {/* Status Label */}
             <div className="mb-4">
-              <span className="inline-flex items-center gap-2 text-caption uppercase tracking-[0.05em] font-medium text-emerald-500">
+              <span className="inline-flex items-center gap-2 text-caption uppercase tracking-[0.05em] font-normal text-emerald-500">
                 <Sparkles className="w-3.5 h-3.5" />
                 Application Received
               </span>
             </div>
 
             {/* Main Heading */}
-            <h2 className="text-h1 font-medium tracking-[-0.02em] text-[#1A1A1A] dark:text-white leading-tight mb-3">
+            <h2 className="text-h1 font-normal tracking-[-0.02em] text-[#1A1A1A] dark:text-white leading-tight mb-3">
               You're on the list!
             </h2>
             
@@ -93,17 +93,17 @@ export function Waitlist() {
 
             {/* What Happens Next Section */}
             <div className="mb-8">
-              <h3 className="text-small font-medium text-[#1A1A1A] dark:text-white mb-5 tracking-tight">
+              <h3 className="text-small font-normal text-[#1A1A1A] dark:text-white mb-5 tracking-tight">
                 What Happens Next
               </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {/* Step 1 */}
-                <div className="bg-black/[0.02] dark:bg-white/[0.02] border-[0.5px] border-black/10 dark:border-white/10 rounded-[12px] p-5 text-center">
+                <div className="bg-[#F8FAFC] dark:bg-white/[0.03] border-[0.5px] border-[#E2E8F0] dark:border-white/[0.06] rounded-[12px] p-5 text-center">
                   <div className="w-10 h-10 rounded-[8px] bg-blue-500/10 flex items-center justify-center mb-3 mx-auto">
                     <Users className="w-5 h-5 text-blue-500" strokeWidth={1.5} />
                   </div>
-                  <div className="text-small font-medium text-[#1A1A1A] dark:text-white mb-1">
+                  <div className="text-small font-normal text-[#1A1A1A] dark:text-white mb-1">
                     Review Process
                   </div>
                   <div className="text-caption text-[#8E8E93] leading-snug">
@@ -112,11 +112,11 @@ export function Waitlist() {
                 </div>
 
                 {/* Step 2 */}
-                <div className="bg-black/[0.02] dark:bg-white/[0.02] border-[0.5px] border-black/10 dark:border-white/10 rounded-[12px] p-5 text-center">
+                <div className="bg-[#F8FAFC] dark:bg-white/[0.03] border-[0.5px] border-[#E2E8F0] dark:border-white/[0.06] rounded-[12px] p-5 text-center">
                   <div className="w-10 h-10 rounded-[8px] bg-[#28FF6E]/10 flex items-center justify-center mb-3 mx-auto">
                     <Shield className="w-5 h-5 text-[#28FF6E]" strokeWidth={1.5} />
                   </div>
-                  <div className="text-small font-medium text-[#1A1A1A] dark:text-white mb-1">
+                  <div className="text-small font-normal text-[#1A1A1A] dark:text-white mb-1">
                     Verification
                   </div>
                   <div className="text-caption text-[#8E8E93] leading-snug">
@@ -125,11 +125,11 @@ export function Waitlist() {
                 </div>
 
                 {/* Step 3 */}
-                <div className="bg-black/[0.02] dark:bg-white/[0.02] border-[0.5px] border-black/10 dark:border-white/10 rounded-[12px] p-5 text-center">
+                <div className="bg-[#F8FAFC] dark:bg-white/[0.03] border-[0.5px] border-[#E2E8F0] dark:border-white/[0.06] rounded-[12px] p-5 text-center">
                   <div className="w-10 h-10 rounded-[8px] bg-emerald-500/10 flex items-center justify-center mb-3 mx-auto">
                     <TrendingUp className="w-5 h-5 text-emerald-500" strokeWidth={1.5} />
                   </div>
-                  <div className="text-small font-medium text-[#1A1A1A] dark:text-white mb-1">
+                  <div className="text-small font-normal text-[#1A1A1A] dark:text-white mb-1">
                     Activation
                   </div>
                   <div className="text-caption text-[#8E8E93] leading-snug">
@@ -148,7 +148,7 @@ export function Waitlist() {
 
             {/* Support Contact */}
             <p className="text-caption text-[#8E8E93] mt-6">
-              Questions? <a href="mailto:support@vybe.com" className="text-[#FFC700] hover:underline font-medium">support@vybe.com</a>
+              Questions? <a href="mailto:support@vybe.com" className="text-[#FFC700] hover:underline font-normal">support@vybe.com</a>
             </p>
           </div>
         </div>

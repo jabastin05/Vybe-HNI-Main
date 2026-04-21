@@ -103,7 +103,7 @@ export function Onboarding() {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center p-4 md:p-5 lg:p-6 bg-[#F2F2F2] dark:bg-[#0a0a0a] font-sans overflow-y-auto">
+    <div className="min-h-screen w-full flex items-center justify-center p-4 md:p-5 lg:p-6 bg-[#F8FAFC] dark:bg-[#0a0a0a] font-sans overflow-y-auto">
       {/* Background Image & Overlay */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
         <img 
@@ -124,7 +124,7 @@ export function Onboarding() {
         <div
           className="bg-white/90 dark:bg-[#0a0a0a]/90 backdrop-blur-xl rounded-xl card-padding
                      shadow-lg dark:shadow-2xl
-                     border border-black/5 dark:border-white/10 relative overflow-hidden transition-all duration-500"
+                     border border-[#E2E8F0] dark:border-white/[0.06] relative overflow-hidden transition-all duration-500"
         >
           {/* Top subtle highlight */}
           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 dark:via-white/20 to-transparent" />
@@ -133,62 +133,62 @@ export function Onboarding() {
             {/* Phase 1: Identity & Mandate */}
             <div className="flex-1 opacity-100 transition-opacity duration-500">
               <div className="mb-10">
-                <h2 className="text-h1 tracking-tight text-black dark:text-white leading-tight mb-2">Tell us about yourself</h2>
-                <p className="text-small text-black/50 dark:text-white/60">Define your profile to access institutional-grade real estate intelligence.</p>
+                <h2 className="text-h1 tracking-tight text-[#0F172A] dark:text-white leading-tight mb-2">Tell us about yourself</h2>
+                <p className="text-small text-[#475569] dark:text-white/50">Define your profile to access institutional-grade real estate intelligence.</p>
               </div>
 
               <div className="space-y-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-small text-black/60 dark:text-white/60 mb-3 tracking-wide">First Name</label>
+                    <label className="block text-small text-[#475569] dark:text-white/50 mb-3 tracking-wide">First Name</label>
                     <input
                       type="text"
                       value={data.firstName}
                       onChange={e => setData({...data, firstName: e.target.value})}
                       placeholder="John"
-                      className="w-full bg-black/[0.02] dark:bg-white/[0.02] border border-black/10 dark:border-white/10 rounded-xl px-5 py-2.5 text-black dark:text-white/95 text-small placeholder:text-black/30 dark:placeholder:text-white/30 focus:outline-none focus:border-black/20 dark:focus:border-white/20 focus:bg-black/[0.04] dark:focus:bg-black/40 transition-all"
+                      className="w-full bg-[#F8FAFC] dark:bg-white/[0.03] border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl px-5 py-2.5 text-[#0F172A] dark:text-white text-small placeholder:text-[#94A3B8] dark:placeholder:text-white/30 focus:outline-none focus:border-[#E2E8F0] dark:focus:border-white/20 focus:bg-[#F1F5F9] dark:focus:bg-white/[0.06] transition-all"
                     />
                   </div>
                   <div>
-                    <label className="block text-small text-black/60 dark:text-white/60 mb-3 tracking-wide">Last Name</label>
+                    <label className="block text-small text-[#475569] dark:text-white/50 mb-3 tracking-wide">Last Name</label>
                     <input
                       type="text"
                       value={data.lastName}
                       onChange={e => setData({...data, lastName: e.target.value})}
                       placeholder="Doe"
-                      className="w-full bg-black/[0.02] dark:bg-white/[0.02] border border-black/10 dark:border-white/10 rounded-xl px-5 py-2.5 text-black dark:text-white/95 text-small placeholder:text-black/30 dark:placeholder:text-white/30 focus:outline-none focus:border-black/20 dark:focus:border-white/20 focus:bg-black/[0.04] dark:focus:bg-black/40 transition-all"
+                      className="w-full bg-[#F8FAFC] dark:bg-white/[0.03] border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl px-5 py-2.5 text-[#0F172A] dark:text-white text-small placeholder:text-[#94A3B8] dark:placeholder:text-white/30 focus:outline-none focus:border-[#E2E8F0] dark:focus:border-white/20 focus:bg-[#F1F5F9] dark:focus:bg-white/[0.06] transition-all"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-small text-black/60 dark:text-white/60 mb-3 tracking-wide">Email</label>
+                    <label className="block text-small text-[#475569] dark:text-white/50 mb-3 tracking-wide">Email</label>
                     <input
                       type="email"
                       value={data.email}
                       onChange={e => setData({...data, email: e.target.value})}
                       placeholder="john.doe@example.com"
-                      className="w-full bg-black/[0.02] dark:bg-white/[0.02] border border-black/10 dark:border-white/10 rounded-xl px-5 py-2.5 text-black dark:text-white/95 text-small placeholder:text-black/30 dark:placeholder:text-white/30 focus:outline-none focus:border-black/20 dark:focus:border-white/20 focus:bg-black/[0.04] dark:focus:bg-black/40 transition-all"
+                      className="w-full bg-[#F8FAFC] dark:bg-white/[0.03] border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl px-5 py-2.5 text-[#0F172A] dark:text-white text-small placeholder:text-[#94A3B8] dark:placeholder:text-white/30 focus:outline-none focus:border-[#E2E8F0] dark:focus:border-white/20 focus:bg-[#F1F5F9] dark:focus:bg-white/[0.06] transition-all"
                     />
                   </div>
                   <div>
-                    <label className="block text-small text-black/60 dark:text-white/60 mb-3 tracking-wide">Phone Number</label>
+                    <label className="block text-small text-[#475569] dark:text-white/50 mb-3 tracking-wide">Phone Number</label>
                     <div className="relative">
-                      <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-black/40 dark:text-white/40" />
+                      <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#94A3B8] dark:text-white/40" />
                       <input
                         type="tel"
                         value={data.phone}
                         onChange={e => setData({...data, phone: e.target.value})}
                         placeholder="98765 43210"
-                        className="w-full bg-black/[0.02] dark:bg-white/[0.02] border border-black/10 dark:border-white/10 rounded-xl pl-11 pr-5 py-4 text-black dark:text-white/95 text-small placeholder:text-black/30 dark:placeholder:text-white/30 focus:outline-none focus:border-black/20 dark:focus:border-white/20 focus:bg-black/[0.04] dark:focus:bg-black/40 transition-all"
+                        className="w-full bg-[#F8FAFC] dark:bg-white/[0.03] border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl pl-11 pr-5 py-2.5 text-[#0F172A] dark:text-white text-small placeholder:text-[#94A3B8] dark:placeholder:text-white/30 focus:outline-none focus:border-[#E2E8F0] dark:focus:border-white/20 focus:bg-[#F1F5F9] dark:focus:bg-white/[0.06] transition-all"
                       />
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-small text-black/60 dark:text-white/60 mb-4 tracking-wide">Operating Role</label>
+                  <label className="block text-small text-[#475569] dark:text-white/50 mb-4 tracking-wide">Operating Role</label>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {[
                       { id: 'land-owner', label: 'Land Owner', icon: Building2, desc: 'Monetize existing prime assets' },
@@ -200,25 +200,25 @@ export function Onboarding() {
                         onClick={() => setData({ ...data, primaryRole: role.id as any })}
                         className={`text-left p-4 rounded-xl border transition-all relative overflow-hidden group ${
                           data.primaryRole === role.id
-                            ? 'border-emerald-500/50 bg-emerald-500/5 shadow-lg'
-                            : 'border-black/10 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02] hover:border-emerald-500/30'
+                            ? 'border-[#C9A75D]/60 bg-[#0B1F3A]/[0.04] dark:bg-[#C9A75D]/[0.07] shadow-lg'
+                            : 'border-[#E2E8F0] dark:border-white/[0.06] bg-[#F8FAFC] dark:bg-white/[0.03] hover:border-[#C9A75D]/30'
                         }`}
                       >
                         <div className={`w-10 h-10 rounded-lg flex items-center justify-center mb-3 relative ${
-                          data.primaryRole === role.id ? 'text-emerald-400 bg-emerald-500/10' : 'text-black/40 dark:text-white/40 bg-black/5 dark:bg-white/5'
+                          data.primaryRole === role.id ? 'text-[#C9A75D] bg-[#C9A75D]/10' : 'text-[#94A3B8] dark:text-white/40 bg-[#F8FAFC] dark:bg-white/[0.04]'
                         }`}>
-                          {data.primaryRole === role.id && <div className="absolute inset-0 bg-emerald-500/20 rounded-full blur-lg" />}
+                          {data.primaryRole === role.id && <div className="absolute inset-0 bg-[#C9A75D]/20 rounded-full blur-lg" />}
                           <role.icon className="w-5 h-5 relative z-10" strokeWidth={1.5} />
                         </div>
-                        <div className="text-small text-black dark:text-white mb-1">{role.label}</div>
-                        <div className="text-caption text-black/40 dark:text-white/40 leading-snug">{role.desc}</div>
+                        <div className="text-small text-[#0F172A] dark:text-white mb-1">{role.label}</div>
+                        <div className="text-caption text-[#94A3B8] dark:text-white/40 leading-snug">{role.desc}</div>
                       </button>
                     ))}
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-small text-black/60 dark:text-white/60 mb-4 tracking-wide">Portfolio Size</label>
+                  <label className="block text-small text-[#475569] dark:text-white/50 mb-4 tracking-wide">Portfolio Size</label>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {[
                       { id: '1', label: '1 Property' },
@@ -231,17 +231,17 @@ export function Onboarding() {
                         onClick={() => setData({ ...data, portfolioSize: size.id as any })}
                         className={`text-left p-4 rounded-xl border transition-all relative overflow-hidden group ${
                           data.portfolioSize === size.id
-                            ? 'border-emerald-500/50 bg-emerald-500/5 shadow-lg'
-                            : 'border-black/10 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02] hover:border-emerald-500/30'
+                            ? 'border-[#C9A75D]/60 bg-[#0B1F3A]/[0.04] dark:bg-[#C9A75D]/[0.07] shadow-lg'
+                            : 'border-[#E2E8F0] dark:border-white/[0.06] bg-[#F8FAFC] dark:bg-white/[0.03] hover:border-[#C9A75D]/30'
                         }`}
                       >
                         <div className={`w-10 h-10 rounded-lg flex items-center justify-center mb-3 relative ${
-                          data.portfolioSize === size.id ? 'text-emerald-400 bg-emerald-500/10' : 'text-black/40 dark:text-white/40 bg-black/5 dark:bg-white/5'
+                          data.portfolioSize === size.id ? 'text-[#C9A75D] bg-[#C9A75D]/10' : 'text-[#94A3B8] dark:text-white/40 bg-[#F8FAFC] dark:bg-white/[0.04]'
                         }`}>
-                          {data.portfolioSize === size.id && <div className="absolute inset-0 bg-emerald-500/20 rounded-full blur-lg" />}
+                          {data.portfolioSize === size.id && <div className="absolute inset-0 bg-[#C9A75D]/20 rounded-full blur-lg" />}
                           <Layers className="w-5 h-5 relative z-10" strokeWidth={1.5} />
                         </div>
-                        <div className="text-small text-black dark:text-white mb-1">{size.label}</div>
+                        <div className="text-small text-[#0F172A] dark:text-white mb-1">{size.label}</div>
                       </button>
                     ))}
                   </div>
@@ -249,7 +249,7 @@ export function Onboarding() {
 
                 {/* Document Verification Section */}
                 <div>
-                  <label className="block text-small text-black/60 dark:text-white/60 mb-4 tracking-wide">Identity Verification (Optional)</label>
+                  <label className="block text-small text-[#475569] dark:text-white/50 mb-4 tracking-wide">Identity Verification (Optional)</label>
                   
                   {/* Document Type Selection */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
@@ -258,17 +258,17 @@ export function Onboarding() {
                       onClick={() => setData({ ...data, documentType: 'aadhaar', documentNumber: '', documentVerified: false })}
                       className={`p-4 rounded-xl border transition-all text-left ${
                         data.documentType === 'aadhaar'
-                          ? 'border-emerald-500/50 bg-emerald-500/5 shadow-lg'
-                          : 'border-black/10 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02] hover:border-emerald-500/30'
+                          ? 'border-[#C9A75D]/60 bg-[#0B1F3A]/[0.04] dark:bg-[#C9A75D]/[0.07] shadow-lg'
+                          : 'border-[#E2E8F0] dark:border-white/[0.06] bg-[#F8FAFC] dark:bg-white/[0.03] hover:border-[#C9A75D]/30'
                       }`}
                     >
                       <div className={`w-10 h-10 rounded-lg flex items-center justify-center mb-3 ${
-                        data.documentType === 'aadhaar' ? 'text-emerald-400 bg-emerald-500/10' : 'text-black/40 dark:text-white/40 bg-black/5 dark:bg-white/5'
+                        data.documentType === 'aadhaar' ? 'text-[#C9A75D] bg-[#C9A75D]/10' : 'text-[#94A3B8] dark:text-white/40 bg-[#F8FAFC] dark:bg-white/[0.04]'
                       }`}>
                         <CreditCard className="w-5 h-5" strokeWidth={1.5} />
                       </div>
-                      <div className="text-small text-black dark:text-white mb-1">Aadhaar Card</div>
-                      <div className="text-caption text-black/40 dark:text-white/40">Upload Aadhaar document</div>
+                      <div className="text-small text-[#0F172A] dark:text-white mb-1">Aadhaar Card</div>
+                      <div className="text-caption text-[#94A3B8] dark:text-white/40">Upload Aadhaar document</div>
                     </button>
                     
                     <button
@@ -276,17 +276,17 @@ export function Onboarding() {
                       onClick={() => setData({ ...data, documentType: 'pan', documentNumber: '', documentVerified: false })}
                       className={`p-4 rounded-xl border transition-all text-left ${
                         data.documentType === 'pan'
-                          ? 'border-emerald-500/50 bg-emerald-500/5 shadow-lg'
-                          : 'border-black/10 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02] hover:border-emerald-500/30'
+                          ? 'border-[#C9A75D]/60 bg-[#0B1F3A]/[0.04] dark:bg-[#C9A75D]/[0.07] shadow-lg'
+                          : 'border-[#E2E8F0] dark:border-white/[0.06] bg-[#F8FAFC] dark:bg-white/[0.03] hover:border-[#C9A75D]/30'
                       }`}
                     >
                       <div className={`w-10 h-10 rounded-lg flex items-center justify-center mb-3 ${
-                        data.documentType === 'pan' ? 'text-emerald-400 bg-emerald-500/10' : 'text-black/40 dark:text-white/40 bg-black/5 dark:bg-white/5'
+                        data.documentType === 'pan' ? 'text-[#C9A75D] bg-[#C9A75D]/10' : 'text-[#94A3B8] dark:text-white/40 bg-[#F8FAFC] dark:bg-white/[0.04]'
                       }`}>
                         <FileText className="w-5 h-5" strokeWidth={1.5} />
                       </div>
-                      <div className="text-small text-black dark:text-white mb-1">PAN Card</div>
-                      <div className="text-caption text-black/40 dark:text-white/40">Upload PAN document</div>
+                      <div className="text-small text-[#0F172A] dark:text-white mb-1">PAN Card</div>
+                      <div className="text-caption text-[#94A3B8] dark:text-white/40">Upload PAN document</div>
                     </button>
                   </div>
                   
@@ -306,24 +306,24 @@ export function Onboarding() {
                           htmlFor="document-upload"
                           className={`flex items-center justify-center gap-3 w-full card-padding rounded-xl border-2 border-dashed transition-all cursor-pointer ${
                             uploadedFile
-                              ? 'border-emerald-500/30 bg-emerald-500/5'
-                              : 'border-black/10 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02] hover:border-emerald-500/30 hover:bg-emerald-500/5'
+                              ? 'border-[#C9A75D]/30 bg-[#0B1F3A]/[0.04] dark:bg-[#C9A75D]/[0.07]'
+                              : 'border-[#E2E8F0] dark:border-white/[0.06] bg-[#F8FAFC] dark:bg-white/[0.03] hover:border-[#C9A75D]/30 hover:bg-[#0B1F3A]/[0.04]'
                           }`}
                         >
                           {isProcessing ? (
                             <>
-                              <div className="w-5 h-5 border-2 border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin" />
-                              <span className="text-small text-black dark:text-white/95">Processing document...</span>
+                              <div className="w-5 h-5 border-2 border-[#C9A75D]/30 border-t-[#C9A75D] rounded-full animate-spin" />
+                              <span className="text-small text-[#0F172A] dark:text-white">Processing document...</span>
                             </>
                           ) : uploadedFile ? (
                             <>
-                              <CheckCircle2 className="w-5 h-5 text-emerald-500" />
-                              <span className="text-small text-black dark:text-white/95">{uploadedFile.name}</span>
+                              <CheckCircle2 className="w-5 h-5 text-[#C9A75D]" />
+                              <span className="text-small text-[#0F172A] dark:text-white">{uploadedFile.name}</span>
                             </>
                           ) : (
                             <>
-                              <Upload className="w-5 h-5 text-black/40 dark:text-white/40" />
-                              <span className="text-small text-black/60 dark:text-white/60">
+                              <Upload className="w-5 h-5 text-[#94A3B8] dark:text-white/40" />
+                              <span className="text-small text-[#475569] dark:text-white/50">
                                 Upload {data.documentType === 'aadhaar' ? 'Aadhaar' : 'PAN'} Card
                               </span>
                             </>
@@ -333,13 +333,13 @@ export function Onboarding() {
                       
                       {/* Extracted Number - Editable */}
                       {data.documentVerified && (
-                        <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
+                        <div className="p-4 rounded-xl bg-[#0B1F3A]/[0.04] dark:bg-[#C9A75D]/[0.07] border border-[#C9A75D]/30">
                           <div className="flex items-start gap-3">
-                            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                              <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                            <div className="w-8 h-8 rounded-lg bg-[#C9A75D]/10 flex items-center justify-center flex-shrink-0">
+                              <CheckCircle2 className="w-4 h-4 text-[#C9A75D]" />
                             </div>
                             <div className="flex-1 min-w-0">
-                              <label className="block text-caption text-emerald-600 dark:text-emerald-400 mb-2 font-medium">
+                              <label className="block text-caption text-[#C9A75D] dark:text-[#C9A75D]/80 mb-2 font-normal">
                                 Extracted {data.documentType === 'aadhaar' ? 'Aadhaar' : 'PAN'} Number
                               </label>
                               <input
@@ -347,9 +347,9 @@ export function Onboarding() {
                                 value={data.documentNumber}
                                 onChange={(e) => setData({ ...data, documentNumber: e.target.value })}
                                 placeholder={data.documentType === 'aadhaar' ? '1234 5678 9012' : 'ABCDE1234F'}
-                                className="w-full bg-white dark:bg-black/30 border border-emerald-500/30 rounded-lg px-4 py-2.5 text-black dark:text-white/95 text-small font-medium placeholder:text-black/30 dark:placeholder:text-white/30 focus:outline-none focus:border-black/20 dark:focus:border-white/20 transition-all"
+                                className="w-full bg-white dark:bg-white/[0.05] border border-[#C9A75D]/30 rounded-lg px-4 py-2.5 text-[#0F172A] dark:text-white text-small font-normal placeholder:text-[#94A3B8] dark:placeholder:text-white/30 focus:outline-none focus:border-[#E2E8F0] dark:focus:border-white/20 transition-all"
                               />
-                              <p className="text-caption text-black/50 dark:text-white/50 mt-2">
+                              <p className="text-caption text-[#475569] dark:text-white/50 mt-2">
                                 Auto-extracted • You can edit if needed
                               </p>
                             </div>
@@ -361,15 +361,15 @@ export function Onboarding() {
                 </div>
 
                 <div>
-                  <label className="block text-small text-black/60 dark:text-white/60 mb-3 tracking-wide">Referral Code</label>
+                  <label className="block text-small text-[#475569] dark:text-white/50 mb-3 tracking-wide">Referral Code</label>
                   <div className="relative">
-                    <Ticket className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-black/40 dark:text-white/40" />
+                    <Ticket className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#94A3B8] dark:text-white/40" />
                     <input
                       type="text"
                       value={data.referralCode}
                       onChange={e => setData({...data, referralCode: e.target.value})}
                       placeholder="Enter referral code (optional)"
-                      className="w-full bg-black/[0.02] dark:bg-white/[0.02] border border-black/10 dark:border-white/10 rounded-xl pl-11 pr-5 py-4 text-black dark:text-white/95 text-small placeholder:text-black/30 dark:placeholder:text-white/30 focus:outline-none focus:border-black/20 dark:focus:border-white/20 focus:bg-black/[0.04] dark:focus:bg-black/40 transition-all"
+                      className="w-full bg-[#F8FAFC] dark:bg-white/[0.03] border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl pl-11 pr-5 py-2.5 text-[#0F172A] dark:text-white text-small placeholder:text-[#94A3B8] dark:placeholder:text-white/30 focus:outline-none focus:border-[#E2E8F0] dark:focus:border-white/20 focus:bg-[#F1F5F9] dark:focus:bg-white/[0.06] transition-all"
                     />
                   </div>
                 </div>
@@ -377,11 +377,11 @@ export function Onboarding() {
             </div>
 
             {/* Navigation Footer */}
-            <div className="mt-auto pt-8 flex items-center justify-end border-t border-black/5 dark:border-white/10">
+            <div className="mt-auto pt-8 flex items-center justify-end border-t border-[#E2E8F0] dark:border-white/[0.06]">
               <button
                 onClick={handleComplete}
                 disabled={!isFormValid}
-                className="flex items-center justify-center gap-2 px-8 py-2.5 rounded-xl bg-black dark:bg-white text-white dark:text-black text-small tracking-wide transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:bg-black/90 dark:hover:bg-white/90 shadow-lg w-full sm:w-auto"
+                className="flex items-center justify-center gap-2 px-8 py-2.5 rounded-xl bg-[#0B1F3A] text-white text-small tracking-wide transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#0f2a50] shadow-lg w-full sm:w-auto"
               >
                 Finish
                 <ArrowRight className="w-4 h-4 flex-shrink-0" />
@@ -391,7 +391,7 @@ export function Onboarding() {
         </div>
         
         <div className="text-center mt-6">
-          <p className="text-caption text-black/40 dark:text-white/40 tracking-wide">
+          <p className="text-caption text-[#94A3B8] dark:text-white/40 tracking-wide">
             End-to-End Encrypted • Institutional Grade Privacy
           </p>
         </div>

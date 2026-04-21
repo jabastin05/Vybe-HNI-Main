@@ -3,7 +3,6 @@ import { Link, useParams } from 'react-router';
 import { ArrowLeft, MapPin, TrendingUp, User, Calendar, CheckCircle2, Circle, FileText, Activity, Building2, Maximize2, MapPinned, ChevronDown, Target, Shield, Download, Clock } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { mockPropertyCases, mockStrategies, mockPartner, mockMilestones } from '../data/mock-data';
-import { SideNav } from '../components/SideNav';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 
@@ -18,7 +17,7 @@ export function PropertyIntelligence() {
   });
 
   if (!property) {
-    return <div className="min-h-screen bg-[#F2F2F2] dark:bg-[#0a0a0a] flex items-center justify-center text-black/40 dark:text-white/40">Property not found</div>;
+    return <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0a0a0a] flex items-center justify-center text-[#94A3B8] dark:text-white/40">Property not found</div>;
   }
 
   // Get selected strategy if available
@@ -66,29 +65,29 @@ export function PropertyIntelligence() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F2F2F2] dark:bg-[#0a0a0a] transition-colors duration-300">
-      <SideNav />
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0a0a0a] transition-colors duration-300">
+
       
       {/* Header - Full Width */}
-      <div className="border-b border-black/5 dark:border-white/10 bg-white dark:bg-[#1A1A1A]">
+      <div className="border-b border-[#E2E8F0] dark:border-white/[0.06] bg-white dark:bg-[#0d1b2e]">
         <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-6">
           <div className="flex items-center justify-between">
             {/* Left: Back Button + Property Name */}
             <div className="flex items-center gap-4">
               <Link 
                 to="/properties" 
-                className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-black/60 dark:text-white/60"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-[#0B1F3A]/5 dark:bg-white/5 hover:bg-[#0B1F3A]/10 dark:hover:bg-white/10 transition-colors text-[#475569] dark:text-white/50"
               >
                 <ArrowLeft className="w-4 h-4" />
               </Link>
               <div>
-                <h1 className="text-caption tracking-[0.05em] uppercase text-black/40 dark:text-white/50 mb-2">
+                <h1 className="text-caption tracking-[0.05em] uppercase text-[#94A3B8] dark:text-white/50 mb-2">
                   Case {property.caseId}
                 </h1>
-                <div className="text-h1 tracking-tight text-black dark:text-white">
+                <div className="text-h1 tracking-tight text-[#0F172A] dark:text-white">
                   {property.location}
                 </div>
-                <p className="text-body text-black/50 dark:text-white/60 mt-1">
+                <p className="text-body text-[#475569] dark:text-white/60 mt-1">
                   {property.parcelSize} • Survey No. {property.surveyNumber}
                 </p>
               </div>
@@ -104,21 +103,21 @@ export function PropertyIntelligence() {
 
       {/* Modal for HABU Report In Progress */}
       {showReportModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
-          <div className="bg-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded-lg p-4 md:p-5 lg:p-6 max-w-md mx-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0B1F3A]/80 backdrop-blur-sm">
+          <div className="bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-lg p-4 md:p-5 lg:p-6 max-w-md mx-4">
             <div className="text-center">
               <div className="w-16 h-16 rounded-full bg-yellow-500/10 flex items-center justify-center mx-auto mb-6">
                 <Clock className="w-8 h-8 text-yellow-400" />
               </div>
-              <h3 className="text-h2 tracking-tight text-black dark:text-white mb-4">
+              <h3 className="text-h2 tracking-tight text-[#0F172A] dark:text-white mb-4">
                 Report In Progress
               </h3>
-              <p className="text-small text-black/60 dark:text-white/60 leading-relaxed mb-8">
+              <p className="text-small text-[#475569] dark:text-white/50 leading-relaxed mb-8">
                 The HABU report is currently being generated. We will notify you once it is ready.
               </p>
               <button
                 onClick={() => setShowReportModal(false)}
-                className="w-full bg-black dark:bg-white text-white dark:text-black px-6 py-2.5 rounded-md hover:bg-black/90 dark:hover:bg-white/90 transition-colors text-small tracking-wide font-medium"
+                className="w-full bg-[#0B1F3A] dark:bg-white text-white dark:text-[#0F172A] px-6 py-2.5 rounded-md hover:bg-[#0B1F3A]/90 dark:hover:bg-white/90 transition-colors text-small tracking-wide font-normal"
               >
                 Okay
               </button>
@@ -140,35 +139,35 @@ export function PropertyIntelligence() {
                       <Activity className="w-4 h-4 text-yellow-500" />
                     </div>
                     <div>
-                      <h2 className="text-small tracking-tight text-black dark:text-white/95 font-medium">
+                      <h2 className="text-small tracking-tight text-[#0F172A] dark:text-white/95 font-normal">
                         VYBE Team Analysis
                       </h2>
-                      <p className="text-caption text-black/50 dark:text-white/50">
+                      <p className="text-caption text-[#475569] dark:text-white/50">
                         Real-time AI-powered property assessment
                       </p>
                     </div>
                   </div>
-                  <div className="text-[9px] tracking-widest uppercase text-yellow-500 bg-yellow-500/10 px-2.5 py-1 rounded-lg flex items-center gap-1.5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-black dark:bg-white animate-pulse" />
+                  <div className="text-[10px] tracking-widest uppercase text-yellow-500 bg-yellow-500/10 px-2.5 py-1 rounded-lg flex items-center gap-1.5">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#0B1F3A] dark:bg-white animate-pulse" />
                     In Progress
                   </div>
                 </div>
               </div>
 
-              <div className="p-4 bg-white/60 dark:bg-black/30 backdrop-blur-sm">
+              <div className="p-4 bg-white/60 dark:bg-[#0B1F3A]/30 backdrop-blur-sm">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {/* Documents Uploaded Card */}
-                  <div className="bg-white/90 dark:bg-[#0a0a0a]/90 border border-black/5 dark:border-white/10 rounded-xl p-5 backdrop-blur-[20px] shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_rgba(0,0,0,0.05)]">
+                  <div className="bg-white/90 dark:bg-[#0d1b2e]/90 border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl p-5 backdrop-blur-[20px] shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_rgba(0,0,0,0.05)]">
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center gap-2">
                         <div className="w-8 h-8 rounded-lg bg-yellow-500/20 flex items-center justify-center">
                           <FileText className="w-4 h-4 text-yellow-600 dark:text-yellow-400" />
                         </div>
-                        <h3 className="text-small font-medium tracking-tight text-black dark:text-white/95">
+                        <h3 className="text-small font-normal tracking-tight text-[#0F172A] dark:text-white/95">
                           Documents Uploaded
                         </h3>
                       </div>
-                      <div className="text-h1 font-medium text-yellow-600 dark:text-yellow-400 leading-none">
+                      <div className="text-h1 font-normal text-yellow-600 dark:text-yellow-400 leading-none">
                         {property.documentCount || 0}
                       </div>
                     </div>
@@ -181,12 +180,12 @@ export function PropertyIntelligence() {
                           className="bg-emerald-500/10 border border-emerald-500/20 rounded-lg px-2.5 py-1 flex items-center gap-1.5"
                         >
                           <CheckCircle2 className="w-3 h-3 text-emerald-500 flex-shrink-0" />
-                          <span className="text-caption font-medium text-black/70 dark:text-white/70 tracking-tight">{doc}</span>
+                          <span className="text-caption font-normal text-[#0F172A]/70 dark:text-white/70 tracking-tight">{doc}</span>
                         </div>
                       ))}
                       {(property.documentCount || 0) > 6 && (
-                        <div className="bg-black/5 dark:bg-white/5 rounded-lg px-2.5 py-1">
-                          <span className="text-caption font-medium text-black/50 dark:text-white/50">+{(property.documentCount || 0) - 6} more</span>
+                        <div className="bg-[#0B1F3A]/5 dark:bg-white/5 rounded-lg px-2.5 py-1">
+                          <span className="text-caption font-normal text-[#475569] dark:text-white/50">+{(property.documentCount || 0) - 6} more</span>
                         </div>
                       )}
                     </div>
@@ -195,12 +194,12 @@ export function PropertyIntelligence() {
                     
 
                     {/* Upload Info */}
-                    <div className="pt-3 border-t border-black/10 dark:border-white/10 flex items-center justify-between">
+                    <div className="pt-3 border-t border-[#E2E8F0] dark:border-white/[0.06] flex items-center justify-between">
                       <div className="flex items-center gap-1.5">
                         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
-                        <span className="text-caption text-black/50 dark:text-white/50">Last uploaded Feb 18, 2026</span>
+                        <span className="text-caption text-[#475569] dark:text-white/50">Last uploaded Feb 18, 2026</span>
                       </div>
-                      <span className="text-caption font-medium text-black/60 dark:text-white/60">Total: 24.3 MB</span>
+                      <span className="text-caption font-normal text-[#475569] dark:text-white/50">Total: 24.3 MB</span>
                     </div>
                   </div>
 
@@ -210,7 +209,7 @@ export function PropertyIntelligence() {
                       <div className="w-8 h-8 rounded-lg bg-blue-500/30 flex items-center justify-center">
                         <Activity className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                       </div>
-                      <h3 className="text-small font-medium tracking-tight text-black dark:text-white/95">
+                      <h3 className="text-small font-normal tracking-tight text-[#0F172A] dark:text-white/95">
                         Analysis Progress
                       </h3>
                     </div>
@@ -222,26 +221,26 @@ export function PropertyIntelligence() {
                     
 
                     {/* Timeline Info */}
-                    <div className="pt-3 border-t border-black/10 dark:border-white/10 grid grid-cols-2 gap-3">
-                      <div className="bg-white/60 dark:bg-black/30 rounded-lg p-2.5">
-                        <div className="text-[9px] tracking-wider uppercase text-blue-600 dark:text-blue-400 mb-1">
+                    <div className="pt-3 border-t border-[#E2E8F0] dark:border-white/[0.06] grid grid-cols-2 gap-3">
+                      <div className="bg-white/60 dark:bg-[#0B1F3A]/30 rounded-lg p-2.5">
+                        <div className="text-[10px] tracking-wider uppercase text-blue-600 dark:text-blue-400 mb-1">
                           Completion
                         </div>
-                        <div className="text-body font-medium text-black dark:text-white/95 leading-none mb-0.5">
+                        <div className="text-body font-normal text-[#0F172A] dark:text-white/95 leading-none mb-0.5">
                           2-3 Days
                         </div>
-                        <div className="text-[9px] text-black/50 dark:text-white/50">
+                        <div className="text-[10px] text-[#475569] dark:text-white/50">
                           Mar 13-14, 2026
                         </div>
                       </div>
-                      <div className="bg-white/60 dark:bg-black/30 rounded-lg p-2.5">
-                        <div className="text-[9px] tracking-[0.05em] uppercase text-black/40 dark:text-white/50 mb-1">
+                      <div className="bg-white/60 dark:bg-[#0B1F3A]/30 rounded-lg p-2.5">
+                        <div className="text-[10px] tracking-[0.05em] uppercase text-[#94A3B8] dark:text-white/50 mb-1">
                           Next Update
                         </div>
-                        <div className="text-body font-medium text-black dark:text-white/95 leading-none mb-0.5">
+                        <div className="text-body font-normal text-[#0F172A] dark:text-white/95 leading-none mb-0.5">
                           6 hours
                         </div>
-                        <div className="text-[9px] text-black/50 dark:text-white/50">
+                        <div className="text-[10px] text-[#475569] dark:text-white/50">
                           Today, 8:00 PM
                         </div>
                       </div>
@@ -252,15 +251,15 @@ export function PropertyIntelligence() {
             </div>
 
             {/* Property Overview Grid - Location + Metadata Combined */}
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {/* Location Card - Compact */}
-              <div className="bg-white dark:bg-[#1A1A1A] border border-black/5 dark:border-white/10 rounded-xl overflow-hidden">
-                <div className="p-4 border-b border-black/5 dark:border-white/10">
+              <div className="bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl overflow-hidden">
+                <div className="p-4 border-b border-[#E2E8F0] dark:border-white/[0.06]">
                   <div className="flex items-center gap-2">
                     <div className="w-7 h-7 rounded-lg bg-emerald-500/10 flex items-center justify-center">
                       <MapPinned className="w-3.5 h-3.5 text-emerald-500" />
                     </div>
-                    <h3 className="text-caption tracking-widest uppercase text-black/40 dark:text-white/40">
+                    <h3 className="text-caption tracking-widest uppercase text-[#94A3B8] dark:text-white/40">
                       Location
                     </h3>
                   </div>
@@ -268,15 +267,15 @@ export function PropertyIntelligence() {
                 <div className="p-4">
                   <div className="space-y-3">
                     <div>
-                      <div className="text-[9px] tracking-[0.05em] uppercase text-black/40 dark:text-white/50 mb-1">Address</div>
-                      <div className="text-caption text-black dark:text-white/95 font-medium leading-snug">{property.location}</div>
+                      <div className="text-[10px] tracking-[0.05em] uppercase text-[#94A3B8] dark:text-white/50 mb-1">Address</div>
+                      <div className="text-caption text-[#0F172A] dark:text-white/95 font-normal leading-snug">{property.location}</div>
                     </div>
                     <div>
-                      <div className="text-[9px] tracking-[0.05em] uppercase text-black/40 dark:text-white/50 mb-1">Coordinates</div>
-                      <div className="text-caption text-black/60 dark:text-white/60 font-mono">12.9716° N, 77.5946° E</div>
+                      <div className="text-[10px] tracking-[0.05em] uppercase text-[#94A3B8] dark:text-white/50 mb-1">Coordinates</div>
+                      <div className="text-caption text-[#475569] dark:text-white/50 font-mono">12.9716° N, 77.5946° E</div>
                     </div>
-                    <div className="pt-2 border-t border-black/5 dark:border-white/10">
-                      <div className="flex items-center gap-1.5 text-[9px] text-emerald-500">
+                    <div className="pt-2 border-t border-[#E2E8F0] dark:border-white/[0.06]">
+                      <div className="flex items-center gap-1.5 text-[10px] text-emerald-500">
                         <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
                         Verified from documents
                       </div>
@@ -293,46 +292,46 @@ export function PropertyIntelligence() {
                       <div className="w-7 h-7 rounded-lg bg-blue-500/20 flex items-center justify-center">
                         <Building2 className="w-3.5 h-3.5 text-blue-500" />
                       </div>
-                      <h3 className="text-caption tracking-widest uppercase text-black/40 dark:text-white/40">
+                      <h3 className="text-caption tracking-widest uppercase text-[#94A3B8] dark:text-white/40">
                         Property Details
                       </h3>
                     </div>
-                    <div className="text-[9px] tracking-widest uppercase text-blue-500 bg-blue-500/10 px-6 py-2.5 rounded">
+                    <div className="text-[10px] tracking-widest uppercase text-blue-500 bg-blue-500/10 px-6 py-2.5 rounded">
                       AI Verified
                     </div>
                   </div>
                 </div>
-                <div className="p-4 bg-white/60 dark:bg-black/30 backdrop-blur-sm">
-                  <div className="grid grid-cols-3 gap-3 mb-3">
-                    <div className="bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-lg p-3">
-                      <div className="text-[9px] tracking-[0.05em] uppercase text-black/40 dark:text-white/50 mb-1">Survey No.</div>
-                      <div className="text-small text-black dark:text-white/95 font-medium">{property.surveyNumber}</div>
+                <div className="p-4 bg-white/60 dark:bg-[#0B1F3A]/30 backdrop-blur-sm">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-3">
+                    <div className="bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-lg p-3">
+                      <div className="text-[10px] tracking-[0.05em] uppercase text-[#94A3B8] dark:text-white/50 mb-1">Survey No.</div>
+                      <div className="text-small text-[#0F172A] dark:text-white/95 font-normal">{property.surveyNumber}</div>
                     </div>
-                    <div className="bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-lg p-3">
-                      <div className="text-[9px] tracking-[0.05em] uppercase text-black/40 dark:text-white/50 mb-1">Land Area</div>
-                      <div className="text-small text-black dark:text-white/95 font-medium">{property.parcelSize}</div>
+                    <div className="bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-lg p-3">
+                      <div className="text-[10px] tracking-[0.05em] uppercase text-[#94A3B8] dark:text-white/50 mb-1">Land Area</div>
+                      <div className="text-small text-[#0F172A] dark:text-white/95 font-normal">{property.parcelSize}</div>
                     </div>
-                    <div className="bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-lg p-3">
-                      <div className="text-[9px] tracking-[0.05em] uppercase text-black/40 dark:text-white/50 mb-1">Ownership</div>
-                      <div className="text-small text-black dark:text-white/95 font-medium">Freehold</div>
+                    <div className="bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-lg p-3">
+                      <div className="text-[10px] tracking-[0.05em] uppercase text-[#94A3B8] dark:text-white/50 mb-1">Ownership</div>
+                      <div className="text-small text-[#0F172A] dark:text-white/95 font-normal">Freehold</div>
                     </div>
                   </div>
-                  <div className="grid grid-cols-4 gap-3">
-                    <div className="bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-lg p-3">
-                      <div className="text-[9px] tracking-[0.05em] uppercase text-black/40 dark:text-white/50 mb-1">District</div>
-                      <div className="text-caption text-black dark:text-white/95 font-medium">Bangalore Urban</div>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <div className="bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-lg p-3">
+                      <div className="text-[10px] tracking-[0.05em] uppercase text-[#94A3B8] dark:text-white/50 mb-1">District</div>
+                      <div className="text-caption text-[#0F172A] dark:text-white/95 font-normal">Bangalore Urban</div>
                     </div>
-                    <div className="bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-lg p-3">
-                      <div className="text-[9px] tracking-[0.05em] uppercase text-black/40 dark:text-white/50 mb-1">State</div>
-                      <div className="text-caption text-black dark:text-white/95 font-medium">Karnataka</div>
+                    <div className="bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-lg p-3">
+                      <div className="text-[10px] tracking-[0.05em] uppercase text-[#94A3B8] dark:text-white/50 mb-1">State</div>
+                      <div className="text-caption text-[#0F172A] dark:text-white/95 font-normal">Karnataka</div>
                     </div>
-                    <div className="bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-lg p-3">
-                      <div className="text-[9px] tracking-[0.05em] uppercase text-black/40 dark:text-white/50 mb-1">Zoning</div>
-                      <div className="text-caption text-black dark:text-white/95 font-medium">Residential</div>
+                    <div className="bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-lg p-3">
+                      <div className="text-[10px] tracking-[0.05em] uppercase text-[#94A3B8] dark:text-white/50 mb-1">Zoning</div>
+                      <div className="text-caption text-[#0F172A] dark:text-white/95 font-normal">Residential</div>
                     </div>
-                    <div className="bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-lg p-3">
-                      <div className="text-[9px] tracking-[0.05em] uppercase text-black/40 dark:text-white/50 mb-1">Road Access</div>
-                      <div className="text-caption text-black dark:text-white/95 font-medium">30ft Arterial</div>
+                    <div className="bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-lg p-3">
+                      <div className="text-[10px] tracking-[0.05em] uppercase text-[#94A3B8] dark:text-white/50 mb-1">Road Access</div>
+                      <div className="text-caption text-[#0F172A] dark:text-white/95 font-normal">30ft Arterial</div>
                     </div>
                   </div>
                 </div>
@@ -340,15 +339,15 @@ export function PropertyIntelligence() {
             </div>
 
             {/* Status Grid - Legal, Development, Infrastructure */}
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {/* Legal Status - Compact */}
-              <div className="bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-xl overflow-hidden">
-                <div className="p-4 border-b border-black/5 dark:border-white/10">
+              <div className="bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl overflow-hidden">
+                <div className="p-4 border-b border-[#E2E8F0] dark:border-white/[0.06]">
                   <div className="flex items-center gap-2">
                     <div className="w-7 h-7 rounded-lg bg-emerald-500/10 flex items-center justify-center">
                       <Shield className="w-3.5 h-3.5 text-emerald-500" />
                     </div>
-                    <h3 className="text-caption tracking-widest uppercase text-black/40 dark:text-white/40">
+                    <h3 className="text-caption tracking-widest uppercase text-[#94A3B8] dark:text-white/40">
                       Legal Status
                     </h3>
                   </div>
@@ -357,67 +356,67 @@ export function PropertyIntelligence() {
                   <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-3 mb-3">
                     <div className="flex items-center gap-2 mb-1">
                       <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                      <span className="text-caption text-emerald-600 dark:text-emerald-400 font-medium">Clear Title</span>
+                      <span className="text-caption text-emerald-600 dark:text-emerald-400 font-normal">Clear Title</span>
                     </div>
-                    <div className="text-[9px] text-black/50 dark:text-white/50">Verified Feb 18, 2026</div>
+                    <div className="text-[10px] text-[#475569] dark:text-white/50">Verified Feb 18, 2026</div>
                   </div>
                   <div className="space-y-2">
-                    <div className="flex items-center justify-between py-1.5 border-b border-black/5 dark:border-white/10">
-                      <span className="text-caption text-black/50 dark:text-white/50">Registry</span>
-                      <span className="text-caption text-emerald-500 font-medium flex items-center gap-1">
+                    <div className="flex items-center justify-between py-1.5 border-b border-[#E2E8F0] dark:border-white/[0.06]">
+                      <span className="text-caption text-[#475569] dark:text-white/50">Registry</span>
+                      <span className="text-caption text-emerald-500 font-normal flex items-center gap-1">
                         <CheckCircle2 className="w-2.5 h-2.5" />
                         Verified
                       </span>
                     </div>
-                    <div className="flex items-center justify-between py-1.5 border-b border-black/5 dark:border-white/10">
-                      <span className="text-caption text-black/50 dark:text-white/50">Marketability</span>
-                      <span className="text-caption text-black dark:text-white/95 font-medium">Transferable</span>
+                    <div className="flex items-center justify-between py-1.5 border-b border-[#E2E8F0] dark:border-white/[0.06]">
+                      <span className="text-caption text-[#475569] dark:text-white/50">Marketability</span>
+                      <span className="text-caption text-[#0F172A] dark:text-white/95 font-normal">Transferable</span>
                     </div>
                     <div className="flex items-center justify-between py-1.5">
-                      <span className="text-caption text-black/50 dark:text-white/50">Encumbrances</span>
-                      <span className="text-caption text-emerald-500 font-medium">None</span>
+                      <span className="text-caption text-[#475569] dark:text-white/50">Encumbrances</span>
+                      <span className="text-caption text-emerald-500 font-normal">None</span>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Development Potential - Compact */}
-              <div className="bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-xl overflow-hidden">
-                <div className="p-4 border-b border-black/5 dark:border-white/10">
+              <div className="bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl overflow-hidden">
+                <div className="p-4 border-b border-[#E2E8F0] dark:border-white/[0.06]">
                   <div className="flex items-center gap-2">
                     <div className="w-7 h-7 rounded-lg bg-blue-500/10 flex items-center justify-center">
                       <TrendingUp className="w-3.5 h-3.5 text-blue-500" />
                     </div>
-                    <h3 className="text-caption tracking-widest uppercase text-black/40 dark:text-white/40">
+                    <h3 className="text-caption tracking-widest uppercase text-[#94A3B8] dark:text-white/40">
                       Development
                     </h3>
                   </div>
                 </div>
                 <div className="p-4">
                   <div className="space-y-2 mb-3">
-                    <div className="flex items-center justify-between py-1.5 border-b border-black/5 dark:border-white/10">
-                      <span className="text-caption text-black/50 dark:text-white/50">FSI Available</span>
-                      <span className="text-small text-black dark:text-white/95 font-medium">2.5x</span>
+                    <div className="flex items-center justify-between py-1.5 border-b border-[#E2E8F0] dark:border-white/[0.06]">
+                      <span className="text-caption text-[#475569] dark:text-white/50">FSI Available</span>
+                      <span className="text-small text-[#0F172A] dark:text-white/95 font-normal">2.5x</span>
                     </div>
-                    <div className="flex items-center justify-between py-1.5 border-b border-black/5 dark:border-white/10">
-                      <span className="text-caption text-black/50 dark:text-white/50">Max Buildable</span>
-                      <span className="text-caption text-black dark:text-white/95 font-medium">12,500 sq ft</span>
+                    <div className="flex items-center justify-between py-1.5 border-b border-[#E2E8F0] dark:border-white/[0.06]">
+                      <span className="text-caption text-[#475569] dark:text-white/50">Max Buildable</span>
+                      <span className="text-caption text-[#0F172A] dark:text-white/95 font-normal">12,500 sq ft</span>
                     </div>
                     <div className="flex items-center justify-between py-1.5">
-                      <span className="text-caption text-black/50 dark:text-white/50">Approval Status</span>
-                      <span className="text-caption text-emerald-500 font-medium flex items-center gap-1">
+                      <span className="text-caption text-[#475569] dark:text-white/50">Approval Status</span>
+                      <span className="text-caption text-emerald-500 font-normal flex items-center gap-1">
                         <CheckCircle2 className="w-2.5 h-2.5" />
                         Ready
                       </span>
                     </div>
                   </div>
                   <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-2.5">
-                    <div className="text-[9px] tracking-wider uppercase text-blue-600 dark:text-blue-400 mb-0.5">Utilities</div>
+                    <div className="text-[10px] tracking-wider uppercase text-blue-600 dark:text-blue-400 mb-0.5">Utilities</div>
                     <div className="flex flex-wrap gap-1">
                       {['Water', 'Electricity', 'Sewage', 'Gas'].map((utility, index) => (
                         <div key={index} className="bg-emerald-500/20 rounded px-1.5 py-0.5 flex items-center gap-1">
                           <CheckCircle2 className="w-2 h-2 text-emerald-500" />
-                          <span className="text-[9px] text-emerald-600 dark:text-emerald-400 font-medium">{utility}</span>
+                          <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-normal">{utility}</span>
                         </div>
                       ))}
                     </div>
@@ -426,13 +425,13 @@ export function PropertyIntelligence() {
               </div>
 
               {/* Infrastructure Proximity - Compact */}
-              <div className="bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-xl overflow-hidden">
-                <div className="p-4 border-b border-black/5 dark:border-white/10">
+              <div className="bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl overflow-hidden">
+                <div className="p-4 border-b border-[#E2E8F0] dark:border-white/[0.06]">
                   <div className="flex items-center gap-2">
                     <div className="w-7 h-7 rounded-lg bg-purple-500/10 flex items-center justify-center">
                       <Activity className="w-3.5 h-3.5 text-purple-500" />
                     </div>
-                    <h3 className="text-caption tracking-widest uppercase text-black/40 dark:text-white/40">
+                    <h3 className="text-caption tracking-widest uppercase text-[#94A3B8] dark:text-white/40">
                       Infrastructure
                     </h3>
                   </div>
@@ -444,16 +443,16 @@ export function PropertyIntelligence() {
                         <div className="flex items-center justify-between mb-1">
                           <div className="flex items-center gap-1.5">
                             <div className={`w-1.5 h-1.5 rounded-full ${
-                              signal.impact === 'positive' ? 'bg-emerald-500' : 'bg-black/20 dark:bg-white/20'
+                              signal.impact === 'positive' ? 'bg-emerald-500' : 'bg-[#0B1F3A]/20 dark:bg-white/20'
                             }`}></div>
-                            <span className="text-caption text-black dark:text-white/95">{signal.label}</span>
+                            <span className="text-caption text-[#0F172A] dark:text-white/95">{signal.label}</span>
                           </div>
-                          <span className="text-[9px] font-medium text-black/50 dark:text-white/50">{signal.distance}</span>
+                          <span className="text-[10px] font-normal text-[#475569] dark:text-white/50">{signal.distance}</span>
                         </div>
-                        <div className="h-0.5 rounded-full bg-black/5 dark:bg-white/5 overflow-hidden">
+                        <div className="h-0.5 rounded-full bg-[#0B1F3A]/5 dark:bg-white/5 overflow-hidden">
                           <div 
                             className={`h-full transition-all ${
-                              signal.impact === 'positive' ? 'bg-emerald-500/60' : 'bg-black/10 dark:bg-white/10'
+                              signal.impact === 'positive' ? 'bg-emerald-500/60' : 'bg-[#0B1F3A]/10 dark:bg-white/10'
                             }`}
                             style={{ width: `${Math.max(10, 100 - (parseFloat(signal.distance) * 15))}%` }}
                           />
@@ -461,14 +460,14 @@ export function PropertyIntelligence() {
                       </div>
                     ))}
                   </div>
-                  <div className="mt-3 pt-3 border-t border-black/5 dark:border-white/10">
-                    <div className="flex items-center gap-2 text-[9px] text-black/40 dark:text-white/40">
+                  <div className="mt-3 pt-3 border-t border-[#E2E8F0] dark:border-white/[0.06]">
+                    <div className="flex items-center gap-2 text-[10px] text-[#94A3B8] dark:text-white/40">
                       <div className="flex items-center gap-1">
                         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
                         <span>Positive</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <div className="w-1.5 h-1.5 rounded-full bg-black/20 dark:bg-white/20"></div>
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#0B1F3A]/20 dark:bg-white/20"></div>
                         <span>Neutral</span>
                       </div>
                     </div>
@@ -484,20 +483,20 @@ export function PropertyIntelligence() {
           <div className="mb-8 bg-gradient-to-br from-blue-500/5 to-purple-500/5 border-2 border-blue-500/20 dark:border-blue-400/20 rounded-xl p-4 md:p-5 lg:p-6">
             <div className="flex items-center gap-3 mb-6">
               <FileText className="w-6 h-6 text-blue-500" />
-              <h2 className="text-h1 tracking-tight text-black dark:text-white/95 font-medium">
+              <h2 className="text-h1 tracking-tight text-[#0F172A] dark:text-white/95 font-normal">
                 HABU Report Preview
               </h2>
               <div className="ml-auto flex items-center gap-3">
                 <button
                   onClick={() => {/* Download handler */}}
-                  className="bg-white dark:bg-[#1A1A1A] text-black dark:text-white border border-black/10 dark:border-white/10 px-4 py-2.5  rounded-lg text-small tracking-wide transition-all hover:bg-black/5 dark:hover:bg-white/5 inline-flex items-center gap-2"
+                  className="bg-white dark:bg-[#0d1b2e] text-[#0F172A] dark:text-white border border-[#E2E8F0] dark:border-white/[0.06] px-4 py-2.5  rounded-lg text-small tracking-wide transition-all hover:bg-[#0B1F3A]/5 dark:hover:bg-white/5 inline-flex items-center gap-2"
                 >
                   <Download className="w-4 h-4" />
                   Download HABU Report
                 </button>
                 <Link
                   to="/report/habu"
-                  className="bg-black dark:bg-white text-white dark:text-black px-4 py-2.5  rounded-lg text-small tracking-wide transition-all hover:bg-black/90 dark:hover:bg-white/90 inline-flex items-center gap-2"
+                  className="bg-[#0B1F3A] dark:bg-white text-white dark:text-[#0F172A] px-4 py-2.5  rounded-lg text-small tracking-wide transition-all hover:bg-[#0B1F3A]/90 dark:hover:bg-white/90 inline-flex items-center gap-2"
                 >
                   View Full Report
                   <ArrowLeft className="w-4 h-4 rotate-180" />
@@ -506,13 +505,13 @@ export function PropertyIntelligence() {
             </div>
 
             {/* 3 Strategy Options - Highlighted Section */}
-            <div className="bg-white dark:bg-[#0a0a0a] border border-blue-500/30 dark:border-blue-400/30 rounded-lg p-4 md:p-5 lg:p-6">
+            <div className="bg-white dark:bg-[#0d1b2e] border border-blue-500/30 dark:border-blue-400/30 rounded-lg p-4 md:p-5 lg:p-6">
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h3 className="text-h2 tracking-tight text-black dark:text-white/95 font-medium mb-2">
+                  <h3 className="text-h2 tracking-tight text-[#0F172A] dark:text-white/95 font-normal mb-2">
                     Strategic Investment Options
                   </h3>
-                  <p className="text-small text-black/60 dark:text-white/60">
+                  <p className="text-small text-[#475569] dark:text-white/50">
                     AI-powered analysis has identified 3 optimal monetization strategies for this property
                   </p>
                 </div>
@@ -521,52 +520,52 @@ export function PropertyIntelligence() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {mockStrategies.map((strategy, index) => (
                   <div
                     key={strategy.id}
                     className={`relative bg-gradient-to-br ${
                       strategy.id === selectedStrategy?.id
                         ? 'from-blue-500/10 to-purple-500/10 border-2 border-blue-500/50 dark:border-blue-400/50'
-                        : 'from-black/[0.02] to-black/[0.01] dark:from-white/[0.02] dark:to-white/[0.01] border border-black/10 dark:border-white/10'
+                        : 'from-black/[0.02] to-black/[0.01] dark:from-white/[0.02] dark:to-white/[0.01] border border-[#E2E8F0] dark:border-white/[0.06]'
                     } rounded-lg p-4 md:p-5 lg:p-6 hover:border-blue-500/30 dark:hover:border-blue-400/30 transition-all`}
                   >
                     {strategy.id === selectedStrategy?.id && (
                       <div className="absolute top-4 right-4">
-                        <div className="bg-black dark:bg-white text-white px-6 py-2.5 rounded text-caption tracking-wider uppercase">
+                        <div className="bg-[#0B1F3A] dark:bg-white text-white px-6 py-2.5 rounded text-caption tracking-wider uppercase">
                           Selected
                         </div>
                       </div>
                     )}
                     
                     <div className="mb-4">
-                      <div className="text-caption text-black/40 dark:text-white/40 tracking-wider uppercase mb-2">
+                      <div className="text-caption text-[#94A3B8] dark:text-white/40 tracking-wider uppercase mb-2">
                         Option {index + 1}
                       </div>
-                      <h4 className="text-body tracking-tight text-black dark:text-white/95 font-medium mb-2">
+                      <h4 className="text-body tracking-tight text-[#0F172A] dark:text-white/95 font-normal mb-2">
                         {strategy.name}
                       </h4>
-                      <p className="text-caption text-black/60 dark:text-white/60 leading-relaxed line-clamp-2">
+                      <p className="text-caption text-[#475569] dark:text-white/50 leading-relaxed line-clamp-2">
                         {strategy.description}
                       </p>
                     </div>
 
                     <div className="space-y-3 mb-4">
                       <div className="flex items-center justify-between">
-                        <span className="text-caption text-black/40 dark:text-white/40 uppercase tracking-wide">ROI</span>
-                        <span className="text-body tracking-tight text-emerald-400 font-medium">{strategy.roi}%</span>
+                        <span className="text-caption text-[#94A3B8] dark:text-white/40 uppercase tracking-wide">ROI</span>
+                        <span className="text-body tracking-tight text-[#C9A75D] font-normal">{strategy.roi}%</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-caption text-black/40 dark:text-white/40 uppercase tracking-wide">Capital</span>
-                        <span className="text-small tracking-tight text-black dark:text-white/95">{strategy.capitalRequired}</span>
+                        <span className="text-caption text-[#94A3B8] dark:text-white/40 uppercase tracking-wide">Capital</span>
+                        <span className="text-small tracking-tight text-[#0F172A] dark:text-white/95">{strategy.capitalRequired}</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-caption text-black/40 dark:text-white/40 uppercase tracking-wide">Timeline</span>
-                        <span className="text-small tracking-tight text-black dark:text-white/95">{strategy.timeline}</span>
+                        <span className="text-caption text-[#94A3B8] dark:text-white/40 uppercase tracking-wide">Timeline</span>
+                        <span className="text-small tracking-tight text-[#0F172A] dark:text-white/95">{strategy.timeline}</span>
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between pt-3 border-t border-black/5 dark:border-white/10">
+                    <div className="flex items-center justify-between pt-3 border-t border-[#E2E8F0] dark:border-white/[0.06]">
                       <div className={`px-6 py-2.5 rounded text-caption tracking-wider uppercase ${
                         strategy.riskLevel === 'low' ? 'bg-emerald-500/10 text-emerald-400' :
                         strategy.riskLevel === 'medium' ? 'bg-yellow-500/10 text-yellow-400' :
@@ -590,39 +589,39 @@ export function PropertyIntelligence() {
 
         {/* Exact Map Location - For Strategy Ready Status */}
         {property.status !== 'analyzing' && (
-          <div className="mb-8 bg-white dark:bg-[#1A1A1A] border border-black/5 dark:border-white/10 rounded-xl overflow-hidden">
-            <div className="p-4 md:p-5 lg:p-6 border-b border-black/5 dark:border-white/10">
+          <div className="mb-8 bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl overflow-hidden">
+            <div className="p-4 md:p-5 lg:p-6 border-b border-[#E2E8F0] dark:border-white/[0.06]">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
                   <MapPinned className="w-5 h-5 text-emerald-500" />
                 </div>
                 <div>
-                  <h2 className="text-body tracking-tight text-black dark:text-white/95 font-medium">
+                  <h2 className="text-body tracking-tight text-[#0F172A] dark:text-white/95 font-normal">
                     Exact Location
                   </h2>
-                  <p className="text-small text-black/50 dark:text-white/50">
+                  <p className="text-small text-[#475569] dark:text-white/50">
                     {property.location}
                   </p>
                 </div>
               </div>
             </div>
             
-            <div className="relative bg-gradient-to-br from-emerald-500/5 to-blue-500/5 h-[420px] flex items-center justify-center">
+            <div className="relative bg-gradient-to-br from-[#0B1F3A]/5 to-[#C9A75D]/5 h-[420px] flex items-center justify-center">
               <div className="text-center">
-                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 flex items-center justify-center shadow-lg">
+                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] flex items-center justify-center shadow-lg">
                   <MapPinned className="w-10 h-10 text-emerald-500" />
                 </div>
-                <h3 className="text-body tracking-tight text-black dark:text-white mb-2">
+                <h3 className="text-body tracking-tight text-[#0F172A] dark:text-white mb-2">
                   {property.location}
                 </h3>
-                <p className="text-small text-black/40 dark:text-white/40 mb-1">
+                <p className="text-small text-[#94A3B8] dark:text-white/40 mb-1">
                   Geographic Coordinates
                 </p>
-                <p className="text-body font-medium text-black/60 dark:text-white/60 tracking-wider">
+                <p className="text-body font-normal text-[#475569] dark:text-white/50 tracking-wider">
                   12.9716° N, 77.5946° E
                 </p>
-                <div className="mt-6 flex items-center justify-center gap-2 text-caption text-black/50 dark:text-white/50">
-                  <div className="w-2 h-2 rounded-full bg-black/70 dark:bg-white/70 animate-pulse"></div>
+                <div className="mt-6 flex items-center justify-center gap-2 text-caption text-[#475569] dark:text-white/50">
+                  <div className="w-2 h-2 rounded-full bg-[#0B1F3A]/70 dark:bg-white/70 animate-pulse"></div>
                   Location verified from document extraction
                 </div>
               </div>
@@ -648,10 +647,10 @@ export function PropertyIntelligence() {
                     <Building2 className="w-5 h-5 text-blue-500" />
                   </div>
                   <div>
-                    <h2 className="text-small tracking-tight text-black dark:text-white/95 font-medium">
+                    <h2 className="text-small tracking-tight text-[#0F172A] dark:text-white/95 font-normal">
                       Property Data Preview
                     </h2>
-                    <p className="text-caption text-black/50 dark:text-white/50">
+                    <p className="text-caption text-[#475569] dark:text-white/50">
                       Extracted from uploaded documents
                     </p>
                   </div>
@@ -662,43 +661,43 @@ export function PropertyIntelligence() {
               </div>
             </div>
 
-            <div className="p-4 md:p-5 lg:p-6 bg-white/60 dark:bg-black/30 backdrop-blur-sm">
-              <div className="grid grid-cols-4 gap-4 mb-4">
-                <div className="bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-xl p-4">
-                  <div className="text-caption tracking-widest uppercase text-black/40 dark:text-white/40 mb-2">District</div>
-                  <div className="text-body text-black dark:text-white/95 font-medium">Bangalore Urban</div>
+            <div className="p-4 md:p-5 lg:p-6 bg-white/60 dark:bg-[#0B1F3A]/30 backdrop-blur-sm">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                <div className="bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl p-4">
+                  <div className="text-caption tracking-widest uppercase text-[#94A3B8] dark:text-white/40 mb-2">District</div>
+                  <div className="text-body text-[#0F172A] dark:text-white/95 font-normal">Bangalore Urban</div>
                 </div>
 
-                <div className="bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-xl p-4">
-                  <div className="text-caption tracking-widest uppercase text-black/40 dark:text-white/40 mb-2">State</div>
-                  <div className="text-body text-black dark:text-white/95 font-medium">Karnataka</div>
+                <div className="bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl p-4">
+                  <div className="text-caption tracking-widest uppercase text-[#94A3B8] dark:text-white/40 mb-2">State</div>
+                  <div className="text-body text-[#0F172A] dark:text-white/95 font-normal">Karnataka</div>
                 </div>
 
-                <div className="bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-xl p-4">
-                  <div className="text-caption tracking-widest uppercase text-black/40 dark:text-white/40 mb-2">Survey No.</div>
-                  <div className="text-body text-black dark:text-white/95 font-medium">{property.surveyNumber}</div>
+                <div className="bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl p-4">
+                  <div className="text-caption tracking-widest uppercase text-[#94A3B8] dark:text-white/40 mb-2">Survey No.</div>
+                  <div className="text-body text-[#0F172A] dark:text-white/95 font-normal">{property.surveyNumber}</div>
                 </div>
 
-                <div className="bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-xl p-4">
-                  <div className="text-caption tracking-widest uppercase text-black/40 dark:text-white/40 mb-2">Land Area</div>
-                  <div className="text-body text-black dark:text-white/95 font-medium">{property.parcelSize}</div>
+                <div className="bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl p-4">
+                  <div className="text-caption tracking-widest uppercase text-[#94A3B8] dark:text-white/40 mb-2">Land Area</div>
+                  <div className="text-body text-[#0F172A] dark:text-white/95 font-normal">{property.parcelSize}</div>
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 gap-4">
-                <div className="bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-xl p-4">
-                  <div className="text-caption tracking-widest uppercase text-black/40 dark:text-white/40 mb-2">Ownership</div>
-                  <div className="text-small text-black dark:text-white/95">Freehold</div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl p-4">
+                  <div className="text-caption tracking-widest uppercase text-[#94A3B8] dark:text-white/40 mb-2">Ownership</div>
+                  <div className="text-small text-[#0F172A] dark:text-white/95">Freehold</div>
                 </div>
 
-                <div className="bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-xl p-4">
-                  <div className="text-caption tracking-widest uppercase text-black/40 dark:text-white/40 mb-2">Zoning</div>
-                  <div className="text-small text-black dark:text-white/95">Residential</div>
+                <div className="bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl p-4">
+                  <div className="text-caption tracking-widest uppercase text-[#94A3B8] dark:text-white/40 mb-2">Zoning</div>
+                  <div className="text-small text-[#0F172A] dark:text-white/95">Residential</div>
                 </div>
 
-                <div className="bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-xl p-4">
-                  <div className="text-caption tracking-widest uppercase text-black/40 dark:text-white/40 mb-2">Road Access</div>
-                  <div className="text-small text-black dark:text-white/95">30ft Arterial</div>
+                <div className="bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl p-4">
+                  <div className="text-caption tracking-widest uppercase text-[#94A3B8] dark:text-white/40 mb-2">Road Access</div>
+                  <div className="text-small text-[#0F172A] dark:text-white/95">30ft Arterial</div>
                 </div>
               </div>
 
@@ -707,18 +706,18 @@ export function PropertyIntelligence() {
                   <div className="text-caption tracking-widest uppercase text-emerald-600 dark:text-emerald-400 mb-1">Encumbrance Status</div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-5 h-5 text-emerald-500" />
-                    <span className="text-body text-emerald-500 font-medium">Clear Title</span>
+                    <span className="text-body text-emerald-500 font-normal">Clear Title</span>
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-2 items-center">
-                  <div className="text-caption tracking-[0.05em] uppercase text-black/40 dark:text-white/50 mr-2">Utilities:</div>
+                  <div className="text-caption tracking-[0.05em] uppercase text-[#94A3B8] dark:text-white/50 mr-2">Utilities:</div>
                   {['Water', 'Electricity', 'Sewage', 'Gas'].map((utility, index) => (
                     <div 
                       key={index} 
                       className="bg-emerald-500/20 border border-emerald-500/30 rounded-lg px-6 py-2.5 flex items-center gap-1.5"
                     >
                       <CheckCircle2 className="w-3 h-3 text-emerald-500" />
-                      <span className="text-caption text-emerald-600 dark:text-emerald-400 font-medium">{utility}</span>
+                      <span className="text-caption text-emerald-600 dark:text-emerald-400 font-normal">{utility}</span>
                     </div>
                   ))}
                 </div>
@@ -729,14 +728,14 @@ export function PropertyIntelligence() {
 
         {/* Intelligence Metrics Section - For Strategy Ready Status */}
         {property.status !== 'analyzing' && (
-          <div className="mb-8 grid grid-cols-3 gap-6">
+          <div className="mb-8 grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
             {/* Legal Status */}
-            <div className="bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-xl p-4 md:p-5 lg:p-6">
+            <div className="bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl p-4 md:p-5 lg:p-6">
               <div className="flex items-center gap-2 mb-6">
                 <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
                   <Shield className="w-4 h-4 text-emerald-500" />
                 </div>
-                <h3 className="text-caption tracking-widest uppercase text-black/40 dark:text-white/40">
+                <h3 className="text-caption tracking-widest uppercase text-[#94A3B8] dark:text-white/40">
                   Legal Status
                 </h3>
               </div>
@@ -746,56 +745,56 @@ export function PropertyIntelligence() {
                   <div className="flex items-start gap-3 mb-3">
                     <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <div className="text-small text-black dark:text-white/95 font-medium mb-1">Clear Title</div>
-                      <p className="text-caption text-black/50 dark:text-white/50 leading-relaxed">
+                      <div className="text-small text-[#0F172A] dark:text-white/95 font-normal mb-1">Clear Title</div>
+                      <p className="text-caption text-[#475569] dark:text-white/50 leading-relaxed">
                         No encumbrances detected
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between py-2.5 px-3 bg-black/[0.02] dark:bg-white/[0.02] rounded-lg">
-                  <span className="text-caption text-black/50 dark:text-white/50 uppercase tracking-wider">Verification Date</span>
-                  <span className="text-caption text-black dark:text-white/95 font-medium">Feb 20, 2026</span>
+                <div className="flex items-center justify-between py-2.5 px-3 bg-[#0B1F3A]/[0.02] dark:bg-white/[0.02] rounded-lg">
+                  <span className="text-caption text-[#475569] dark:text-white/50 uppercase tracking-wider">Verification Date</span>
+                  <span className="text-caption text-[#0F172A] dark:text-white/95 font-normal">Feb 20, 2026</span>
                 </div>
 
-                <div className="flex items-center justify-between py-2.5 px-3 bg-black/[0.02] dark:bg-white/[0.02] rounded-lg">
-                  <span className="text-caption text-black/50 dark:text-white/50 uppercase tracking-wider">Registry Status</span>
-                  <span className="inline-flex items-center gap-1.5 text-caption text-emerald-500 font-medium">
+                <div className="flex items-center justify-between py-2.5 px-3 bg-[#0B1F3A]/[0.02] dark:bg-white/[0.02] rounded-lg">
+                  <span className="text-caption text-[#475569] dark:text-white/50 uppercase tracking-wider">Registry Status</span>
+                  <span className="inline-flex items-center gap-1.5 text-caption text-emerald-500 font-normal">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     Verified
                   </span>
                 </div>
 
-                <div className="flex items-center justify-between py-2.5 px-3 bg-black/[0.02] dark:bg-white/[0.02] rounded-lg">
-                  <span className="text-caption text-black/50 dark:text-white/50 uppercase tracking-wider">Marketability</span>
-                  <span className="text-caption text-emerald-500 font-medium">High</span>
+                <div className="flex items-center justify-between py-2.5 px-3 bg-[#0B1F3A]/[0.02] dark:bg-white/[0.02] rounded-lg">
+                  <span className="text-caption text-[#475569] dark:text-white/50 uppercase tracking-wider">Marketability</span>
+                  <span className="text-caption text-emerald-500 font-normal">High</span>
                 </div>
               </div>
             </div>
 
             {/* Development Potential */}
-            <div className="bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-xl p-4 md:p-5 lg:p-6">
+            <div className="bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl p-4 md:p-5 lg:p-6">
               <div className="flex items-center gap-2 mb-6">
                 <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
                   <TrendingUp className="w-4 h-4 text-blue-500" />
                 </div>
-                <h3 className="text-caption tracking-widest uppercase text-black/40 dark:text-white/40">
+                <h3 className="text-caption tracking-widest uppercase text-[#94A3B8] dark:text-white/40">
                   Development Potential
                 </h3>
               </div>
               <div className="space-y-4">
-                <div className="flex justify-between items-center py-2 border-b border-black/5 dark:border-white/10">
-                  <span className="text-caption text-black/50 dark:text-white/50">FSI Available</span>
-                  <span className="text-body text-black dark:text-white/95 font-medium">2.5x</span>
+                <div className="flex justify-between items-center py-2 border-b border-[#E2E8F0] dark:border-white/[0.06]">
+                  <span className="text-caption text-[#475569] dark:text-white/50">FSI Available</span>
+                  <span className="text-body text-[#0F172A] dark:text-white/95 font-normal">2.5x</span>
                 </div>
-                <div className="flex justify-between items-center py-2 border-b border-black/5 dark:border-white/10">
-                  <span className="text-caption text-black/50 dark:text-white/50">Max Buildable</span>
-                  <span className="text-body text-black dark:text-white/95 font-medium">12,500 sq ft</span>
+                <div className="flex justify-between items-center py-2 border-b border-[#E2E8F0] dark:border-white/[0.06]">
+                  <span className="text-caption text-[#475569] dark:text-white/50">Max Buildable</span>
+                  <span className="text-body text-[#0F172A] dark:text-white/95 font-normal">12,500 sq ft</span>
                 </div>
                 <div className="flex justify-between items-center py-2">
-                  <span className="text-caption text-black/50 dark:text-white/50">Approval Status</span>
-                  <span className="inline-flex items-center gap-1.5 text-small text-emerald-500 font-medium">
+                  <span className="text-caption text-[#475569] dark:text-white/50">Approval Status</span>
+                  <span className="inline-flex items-center gap-1.5 text-small text-emerald-500 font-normal">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     Ready
                   </span>
@@ -804,12 +803,12 @@ export function PropertyIntelligence() {
             </div>
 
             {/* Infrastructure Proximity */}
-            <div className="bg-white dark:bg-[#0a0a0a] border border-black/5 dark:border-white/10 rounded-xl p-4 md:p-5 lg:p-6">
+            <div className="bg-white dark:bg-[#0d1b2e] border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl p-4 md:p-5 lg:p-6">
               <div className="flex items-center gap-2 mb-6">
                 <div className="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center">
                   <Activity className="w-4 h-4 text-purple-500" />
                 </div>
-                <h3 className="text-caption tracking-widest uppercase text-black/40 dark:text-white/40">
+                <h3 className="text-caption tracking-widest uppercase text-[#94A3B8] dark:text-white/40">
                   Infrastructure Proximity
                 </h3>
               </div>
@@ -820,16 +819,16 @@ export function PropertyIntelligence() {
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
                         <div className={`w-2 h-2 rounded-full ${
-                          signal.impact === 'positive' ? 'bg-emerald-500' : 'bg-black/20 dark:bg-white/20'
+                          signal.impact === 'positive' ? 'bg-emerald-500' : 'bg-[#0B1F3A]/20 dark:bg-white/20'
                         }`}></div>
-                        <span className="text-caption text-black dark:text-white/95">{signal.label}</span>
+                        <span className="text-caption text-[#0F172A] dark:text-white/95">{signal.label}</span>
                       </div>
-                      <span className="text-caption font-medium text-black/50 dark:text-white/50">{signal.distance}</span>
+                      <span className="text-caption font-normal text-[#475569] dark:text-white/50">{signal.distance}</span>
                     </div>
-                    <div className="h-1 rounded-full bg-black/5 dark:bg-white/5 overflow-hidden">
+                    <div className="h-1 rounded-full bg-[#0B1F3A]/5 dark:bg-white/5 overflow-hidden">
                       <div 
                         className={`h-full transition-all ${
-                          signal.impact === 'positive' ? 'bg-emerald-500/60' : 'bg-black/10 dark:bg-white/10'
+                          signal.impact === 'positive' ? 'bg-emerald-500/60' : 'bg-[#0B1F3A]/10 dark:bg-white/10'
                         }`}
                         style={{ width: `${Math.max(10, 100 - (parseFloat(signal.distance) * 15))}%` }}
                       />
@@ -838,14 +837,14 @@ export function PropertyIntelligence() {
                 ))}
               </div>
 
-              <div className="mt-6 pt-4 border-t border-black/5 dark:border-white/10">
-                <div className="flex items-center gap-3 text-caption text-black/40 dark:text-white/40">
+              <div className="mt-6 pt-4 border-t border-[#E2E8F0] dark:border-white/[0.06]">
+                <div className="flex items-center gap-3 text-caption text-[#94A3B8] dark:text-white/40">
                   <div className="flex items-center gap-1.5">
                     <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
                     <span>Positive</span>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <div className="w-2 h-2 rounded-full bg-black/20 dark:bg-white/20"></div>
+                    <div className="w-2 h-2 rounded-full bg-[#0B1F3A]/20 dark:bg-white/20"></div>
                     <span>Neutral</span>
                   </div>
                 </div>

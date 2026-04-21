@@ -1,20 +1,19 @@
 import { Link, useLocation } from 'react-router';
-import { Building2, Plus, User, Briefcase, Home, FileText } from 'lucide-react';
+import { Building2, Plus, User, Briefcase, Home, FileText, LayoutDashboard } from 'lucide-react';
 import { useProperties } from '../contexts/PropertiesContext';
 
 interface NavItem {
   icon: typeof Building2;
   label: string;
   path: string;
-  accentColor: string; // Each item gets its own color
 }
 
 const navItems: NavItem[] = [
-  { icon: Building2, label: 'Case Management', path: '/properties', accentColor: 'bg-gradient-to-br from-emerald-500 to-green-500 dark:bg-white' },
-  { icon: Briefcase, label: 'Services', path: '/services/catalog', accentColor: 'bg-gradient-to-br from-emerald-500 to-green-500 dark:bg-white' },
-  { icon: FileText, label: 'My Documents', path: '/documents', accentColor: 'bg-gradient-to-br from-emerald-500 to-green-500 dark:bg-white' },
-  { icon: Plus, label: 'Add Property', path: '/upload', accentColor: 'bg-gradient-to-br from-emerald-500 to-green-500 dark:bg-white' },
-  { icon: User, label: 'My Profile', path: '/settings', accentColor: 'bg-gradient-to-br from-emerald-500 to-green-500 dark:bg-white' },
+  { icon: Home,        label: 'My Properties',   path: '/my-properties' },
+  { icon: Building2,   label: 'Case Management', path: '/properties' },
+  { icon: Briefcase,   label: 'Services',        path: '/services' },
+  { icon: FileText,    label: 'Documents',       path: '/documents' },
+  { icon: User,        label: 'Profile',         path: '/settings' },
 ];
 
 export function SideNav() {
@@ -22,150 +21,118 @@ export function SideNav() {
   const { properties } = useProperties();
 
   const isActive = (path: string) => {
-    if (path === '/properties') {
-      return location.pathname === '/properties';
-    }
-    if (path === '/my-properties') {
-      return location.pathname === '/my-properties' || (location.pathname.startsWith('/property/') && location.pathname.includes('/detail'));
-    }
-    if (path === '/upload') {
-      return location.pathname === '/upload';
-    }
-    if (path === '/documents') {
-      return location.pathname.startsWith('/documents') || location.pathname.includes('/documents');
-    }
+    if (path === '/properties')
+      return location.pathname === '/properties' || location.pathname === '/cases';
+    if (path === '/my-properties')
+      return location.pathname === '/my-properties' ||
+        (location.pathname.startsWith('/property/') && location.pathname.includes('/detail'));
+    if (path === '/documents')
+      return location.pathname.startsWith('/documents') ||
+        location.pathname.includes('/documents');
+    if (path === '/services/catalog')
+      return location.pathname.startsWith('/services') ||
+        location.pathname.startsWith('/service/');
     return location.pathname === path;
   };
 
+  const displayItems = properties.length > 0
+    ? navItems
+    : navItems.filter(item => item.path !== '/my-properties');
+
   return (
-    <nav className="hidden lg:block fixed left-6 top-1/2 -translate-y-1/2 z-50">
-      {/* Floating Pill Container */}
-      <div className="bg-white dark:bg-[#111111]/80 backdrop-blur-xl rounded-[32px] p-4 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] border border-black/[0.06] dark:border-white/[0.08]">
-        
-        {/* Navigation Items */}
-        <div className="flex flex-col gap-3">
-          {/* Primary Action: Add Property */}
+    <aside className="hidden md:flex fixed left-0 top-0 bottom-0 z-50
+                      flex-col w-[72px] overflow-visible
+                      bg-[#0B1F3A]
+                      border-r border-white/[0.06]
+                      shadow-[4px_0_24px_rgba(11,31,58,0.25)]">
+
+      {/* ── Brand ── */}
+      <div className="flex items-center justify-center h-16 flex-shrink-0
+                      border-b border-white/[0.06]">
+        <Link to="/" className="flex flex-col items-center gap-0.5 group">
+          <div className="w-9 h-9 rounded-xl bg-[#C9A75D]/20 border border-[#C9A75D]/30
+                          flex items-center justify-center
+                          group-hover:bg-[#C9A75D]/30 transition-colors">
+            <span className="text-sm font-normal text-[#C9A75D] tracking-tighter">VY</span>
+          </div>
+        </Link>
+      </div>
+
+      {/* ── Add Property CTA ── */}
+      <div className="px-3 pt-4 pb-2 flex-shrink-0">
+        <NavTip label="Add Property">
           <Link
             to="/upload"
-            className="relative group mb-1"
-            title="Add Property"
+            className="group relative flex items-center justify-center
+                       w-full h-11 rounded-xl
+                       bg-[#C9A75D] hover:bg-[#d4b472]
+                       shadow-[0_4px_16px_rgba(201,167,93,0.35)]
+                       hover:shadow-[0_6px_20px_rgba(201,167,93,0.5)]
+                       transition-all duration-200 hover:-translate-y-0.5"
           >
-            <div className="relative w-[64px] h-[64px] rounded-[22px] flex items-center justify-center bg-emerald-500 hover:bg-emerald-400 text-white shadow-[0_8px_24px_rgba(16,185,129,0.25)] hover:shadow-[0_8px_32px_rgba(16,185,129,0.4)] transition-all duration-300 hover:-translate-y-0.5">
-              <Plus className="w-8 h-8 transition-transform group-hover:scale-110" strokeWidth={2} />
-            </div>
-
-            {/* Tooltip */}
-            <div className="absolute left-full ml-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 pointer-events-none transition-all duration-300 whitespace-nowrap z-50">
-              <div className="relative px-5 py-3 bg-white dark:bg-gray-900 rounded-[16px] shadow-[0_12px_40px_-10px_rgba(0,0,0,0.2)] dark:shadow-[0_12px_40px_-10px_rgba(0,0,0,0.6)] border border-black/[0.08] dark:border-white/[0.08]">
-                <span className="text-[14px] font-medium text-gray-900 dark:text-white">
-                  Add Property
-                </span>
-                <div className="absolute right-full top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-b-[6px] border-r-[8px] border-transparent border-r-white dark:border-r-gray-900" />
-              </div>
-            </div>
+            <Plus className="w-5 h-5 text-[#0B1F3A]" strokeWidth={2.5} />
           </Link>
+        </NavTip>
+      </div>
 
-          <div className="h-px w-8 mx-auto bg-black/10 dark:bg-white/10 my-1" />
+      <div className="h-px mx-4 bg-white/[0.06] mb-2" />
 
-          {/* My Properties - Only show when properties exist */}
-          {properties.length > 0 && (
+      {/* ── Nav Items ── */}
+      <nav className="flex-1 flex flex-col gap-1 px-3 py-1">
+        {displayItems.map((item) => (
+          <NavTip key={item.path} label={item.label}>
             <Link
-              to="/my-properties"
-              className="relative group"
-              title="My Properties"
+              to={item.path}
+              className={`
+                relative group flex items-center justify-center
+                w-full h-11 rounded-xl
+                transition-all duration-200
+                ${isActive(item.path)
+                  ? 'bg-white text-[#0B1F3A] shadow-[0_4px_12px_rgba(0,0,0,0.2)]'
+                  : 'text-white/50 hover:text-white hover:bg-white/[0.08]'}
+              `}
             >
-              {/* Pill Button */}
-              <div
-                className={`
-                  relative w-full h-[52px] rounded-2xl flex items-center justify-center
-                  transition-all duration-300 group
-                  ${isActive('/my-properties')
-                    ? 'bg-black dark:bg-white text-white dark:text-black shadow-md scale-105' 
-                    : 'text-black/40 dark:text-white/40 hover:text-black/90 dark:hover:text-white/90 hover:bg-black/[0.08] dark:hover:bg-white/[0.12] hover:scale-[1.02]'
-                  }
-                `}
-              >
-                <Home 
-                  className={`w-6 h-6 transition-all duration-300 ${
-                    isActive('/my-properties')
-                      ? 'text-white dark:text-black' 
-                      : 'text-black/50 dark:text-white/50 group-hover:text-black/90 dark:group-hover:text-white/90'
-                  }`}
-                  strokeWidth={isActive('/my-properties') ? 2 : 1.5}
-                />
-              </div>
-
-              {/* Modern Tooltip - Floating Pill Style */}
-              <div className="absolute left-full ml-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 pointer-events-none transition-all duration-300 whitespace-nowrap z-50">
-                <div className="relative px-5 py-3 bg-white dark:bg-gray-900 rounded-[16px] shadow-[0_12px_40px_-10px_rgba(0,0,0,0.2)] dark:shadow-[0_12px_40px_-10px_rgba(0,0,0,0.6)] border border-black/[0.08] dark:border-white/[0.08]">
-                  <span className="text-[14px] font-medium text-gray-900 dark:text-white">
-                    My Properties
-                  </span>
-                  
-                  {/* Tooltip Arrow */}
-                  <div className="absolute right-full top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-b-[6px] border-r-[8px] border-transparent border-r-white dark:border-r-gray-900" />
-                </div>
-              </div>
-
-              {/* Active Indicator - Subtle dot */}
-              {isActive('/my-properties') && (
-                <div className="absolute -left-1 top-1/2 -translate-y-1/2 w-1 h-3 rounded-full bg-black dark:bg-white" />
+              {isActive(item.path) && (
+                <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5
+                                  rounded-r-full bg-[#C9A75D]" />
               )}
+              <item.icon
+                className={`w-[20px] h-[20px] transition-all ${
+                  isActive(item.path) ? 'text-[#0B1F3A]' : 'text-white/50 group-hover:text-white'
+                }`}
+                strokeWidth={isActive(item.path) ? 2.2 : 1.6}
+              />
             </Link>
-          )}
+          </NavTip>
+        ))}
+      </nav>
 
-          {navItems.filter(item => item.path !== '/upload').map((item) => {
-            const active = isActive(item.path);
-            return (
-              <Link
-                key={item.path}
-                to={item.path}
-                className="relative group"
-                title={item.label}
-              >
-                {/* Pill Button */}
-                <div
-                  className={`
-                    relative w-full h-[52px] rounded-2xl flex items-center justify-center
-                    transition-all duration-300 group
-                    ${active 
-                      ? 'bg-black dark:bg-white text-white dark:text-black shadow-md scale-105' 
-                      : 'text-black/40 dark:text-white/40 hover:text-black/90 dark:hover:text-white/90 hover:bg-black/[0.08] dark:hover:bg-white/[0.12] hover:scale-[1.02]'
-                    }
-                  `}
-                >
-                  <item.icon 
-                    className={`w-6 h-6 transition-all duration-300 ${
-                      active 
-                        ? 'text-white dark:text-black' 
-                        : 'text-black/50 dark:text-white/50 group-hover:text-black/90 dark:group-hover:text-white/90'
-                    }`}
-                    strokeWidth={active ? 2 : 1.5}
-                  />
-                </div>
+    </aside>
+  );
+}
 
-                {/* Modern Tooltip - Floating Pill Style */}
-                <div className="absolute left-full ml-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 pointer-events-none transition-all duration-300 whitespace-nowrap z-50">
-                  <div className="relative px-5 py-3 bg-white dark:bg-gray-900 rounded-[16px] shadow-[0_12px_40px_-10px_rgba(0,0,0,0.2)] dark:shadow-[0_12px_40px_-10px_rgba(0,0,0,0.6)] border border-black/[0.08] dark:border-white/[0.08]">
-                    <span className="text-[14px] font-medium text-gray-900 dark:text-white">
-                      {item.label}
-                    </span>
-                    
-                    {/* Tooltip Arrow */}
-                    <div className="absolute right-full top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-b-[6px] border-r-[8px] border-transparent border-r-white dark:border-r-gray-900" />
-                  </div>
-                </div>
-
-                {/* Active Indicator - Subtle dot */}
-                {active && (
-                  <div className="absolute -left-1 top-1/2 -translate-y-1/2 w-1 h-3 rounded-full bg-black dark:bg-white" />
-                )}
-              </Link>
-            );
-          })}
-
+/* ── Tooltip wrapper ─────────────────────────────────── */
+function NavTip({ children, label }: { children: React.ReactNode; label: string }) {
+  return (
+    <div className="relative group/tip w-full">
+      {children}
+      {/* Tooltip */}
+      <div className="absolute left-full ml-3 top-1/2 -translate-y-1/2
+                      pointer-events-none z-[60]
+                      opacity-0 group-hover/tip:opacity-100
+                      -translate-x-1 group-hover/tip:translate-x-0
+                      transition-all duration-150 whitespace-nowrap">
+        <div className="px-3 py-2 bg-[#0B1F3A] border border-white/10 rounded-xl
+                        shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+          <span className="text-xs font-normal text-white tracking-wide">
+            {label}
+          </span>
+          {/* Arrow */}
+          <div className="absolute right-full top-1/2 -translate-y-1/2
+                          border-t-[5px] border-b-[5px] border-r-[6px]
+                          border-t-transparent border-b-transparent border-r-[#0B1F3A]" />
         </div>
       </div>
-    </nav>
+    </div>
   );
 }

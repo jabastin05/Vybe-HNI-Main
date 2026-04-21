@@ -109,6 +109,10 @@ export const router = createBrowserRouter([
         Component: ExecutionTracker,
       },
       {
+        path: "services",
+        Component: ServiceCatalog,
+      },
+      {
         path: "services/catalog",
         Component: ServiceCatalog,
       },
