@@ -1,2 +1,2 @@
-/* Satoshi — clean geometric sans, weight 400 only */
-@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400&display=swap');
+/* Satoshi — weights 400 and 500 */
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500&display=swap');

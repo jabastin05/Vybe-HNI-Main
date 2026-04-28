@@ -1,10 +1,33 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  /* ── Vybe Brand Tokens — CHANGE COLORS HERE ──────────────── */
+  /* Primary blue */
+  --brand-primary:        #1C75BC;
+  --brand-primary-hover:  #155A8F;
+  --brand-primary-active: #0F3E66;
+  /* Navy (sidebar, hero sections, dark backgrounds) */
+  --brand-navy:           #0E3E65;
+  --brand-navy-hover:     #0a3055;
+  /* Gold (accent, CTAs, highlights) */
+  --brand-gold:           #00B6BD;
+  --brand-gold-hover:     #008E93;
+  --brand-gold-active:    #00686C;
+  /* Teal (secondary accent) */
+  --brand-teal:           #00B6BD;
+  --brand-teal-hover:     #008E93;
+  --brand-teal-active:    #00686C;
+  /* RGB channels for box-shadow rgba() — update if you change the hex above */
+  --brand-primary-rgb:    28, 117, 188;
+  --brand-navy-rgb:       14, 62, 101;
+  --brand-gold-rgb:       0, 182, 189;
+  --brand-teal-rgb:       0, 182, 189;
+  /* ──────────────────────────────────────────────────────── */
+
   /* ── Vybe HNI Design Tokens ─────────────────────────────── */
   /* Global colours */
-  --token-navy:           #0B1F3A;
-  --token-gold:           #C9A75D;
+  --token-navy:           var(--brand-navy);
+  --token-gold:           var(--brand-gold);
   --token-white:          #FFFFFF;
   --token-gray-50:        #F8FAFC;
   --token-gray-100:       #F1F5F9;
@@ -26,8 +49,8 @@
   --token-text-inverse:   #FFFFFF;
   --token-border:         #E2E8F0;
   --token-border-subtle:  #F1F5F9;
-  --token-primary:        #0B1F3A;
-  --token-secondary:      #C9A75D;
+  --token-primary:        var(--brand-navy);
+  --token-secondary:      var(--brand-gold);
 
   /* Component tokens */
   --token-btn-h:          48px;
@@ -49,7 +72,7 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: #030213;
+  --primary: var(--brand-primary);
   --primary-foreground: #ffffff;
   --secondary: oklch(0.95 0.0058 264.53);
   --secondary-foreground: #030213;
@@ -72,9 +95,9 @@
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: #030213;
+  --sidebar: #0E3E65;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: var(--brand-gold);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
@@ -167,25 +190,26 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
+  /* ── Dark theme — blue-charcoal palette ── */
+  --background:           #0F1117;   /* page bg — dark blue-charcoal        */
+  --foreground:           #E8EBF2;   /* primary text — off-white             */
+  --card:                 #161B24;   /* card surface — slightly lighter      */
+  --card-foreground:      #E8EBF2;
+  --popover:              #161B24;
+  --popover-foreground:   #E8EBF2;
+  --primary:              var(--brand-primary);
+  --primary-foreground:   #ffffff;
+  --secondary:            #1E2330;   /* secondary surface                    */
+  --secondary-foreground: #E8EBF2;
+  --muted:                #1E2330;   /* muted surface                        */
+  --muted-foreground:     #8892A4;   /* secondary text — slate               */
+  --accent:               #1E2330;
+  --accent-foreground:    #E8EBF2;
+  --destructive:          #EF4444;
+  --destructive-foreground: #ffffff;
+  --border:               rgba(255, 255, 255, 0.08); /* subtle border       */
+  --input:                #1E2330;
+  --ring:                 rgba(255, 255, 255, 0.15);
   --font-weight-medium: 400;
   --font-weight-normal: 400;
   --chart-1: oklch(0.488 0.243 264.376);
@@ -193,14 +217,14 @@
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+  --sidebar:              #0A0D14;   /* sidebar — darkest layer              */
+  --sidebar-foreground:   #E8EBF2;
+  --sidebar-primary:      var(--brand-primary);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent:       #1E2330;
+  --sidebar-accent-foreground: #E8EBF2;
+  --sidebar-border:       rgba(255, 255, 255, 0.06);
+  --sidebar-ring:         rgba(255, 255, 255, 0.15);
 }
 
 @theme inline {
@@ -242,6 +266,19 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* ── Brand color utilities (bg-brand-*, text-brand-*, etc.) ── */
+  --color-brand-primary:        var(--brand-primary);
+  --color-brand-primary-hover:  var(--brand-primary-hover);
+  --color-brand-primary-active: var(--brand-primary-active);
+  --color-brand-navy:           var(--brand-navy);
+  --color-brand-navy-hover:     var(--brand-navy-hover);
+  --color-brand-gold:           var(--brand-gold);
+  --color-brand-gold-hover:     var(--brand-gold-hover);
+  --color-brand-gold-active:    var(--brand-gold-active);
+  --color-brand-teal:           var(--brand-teal);
+  --color-brand-teal-hover:     var(--brand-teal-hover);
+  --color-brand-teal-active:    var(--brand-teal-active);
 }
 
 @layer base {

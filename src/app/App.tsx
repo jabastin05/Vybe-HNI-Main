@@ -7,13 +7,13 @@ import { CasesProvider } from './contexts/CasesContext';
 
 // VYBE Platform - HNI Client Application
 export default function App() {
-  return (
-    <ThemeProvider>
-      <PropertiesProvider>
-        <CasesProvider>
-          <RouterProvider router={router} />
-        </CasesProvider>
-      </PropertiesProvider>
-    </ThemeProvider>
-  );
+ return (
+ <ThemeProvider>
+ <PropertiesProvider>
+ <CasesProvider>
+ <RouterProvider router={router} />
+ </CasesProvider>
+ </PropertiesProvider>
+ </ThemeProvider>
+ );
 }
