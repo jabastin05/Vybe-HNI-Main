@@ -1,27 +1,26 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* ── Vybe Brand Tokens — CHANGE COLORS HERE ──────────────── */
-  /* Primary blue */
-  --brand-primary:        #1C75BC;
-  --brand-primary-hover:  #155A8F;
-  --brand-primary-active: #0F3E66;
-  /* Navy (sidebar, hero sections, dark backgrounds) */
-  --brand-navy:           #0E3E65;
-  --brand-navy-hover:     #0a3055;
-  /* Gold (accent, CTAs, highlights) */
-  --brand-gold:           #00B6BD;
-  --brand-gold-hover:     #008E93;
-  --brand-gold-active:    #00686C;
-  /* Teal (secondary accent) */
-  --brand-teal:           #00B6BD;
-  --brand-teal-hover:     #008E93;
-  --brand-teal-active:    #00686C;
+  /* ── Vybe Brand Tokens — Colour option C ─────────────────── */
+  /* Primary blue: trust, intelligence, enterprise-grade clarity */
+  --brand-primary:        #237CC0;
+  --brand-primary-hover:  #1B669F;
+  --brand-primary-active: #14527F;
+  /* Deep navy: premium app chrome and dark surfaces */
+  --brand-navy:           #102A3A;
+  --brand-navy-hover:     #0B2230;
+  /* Aquamarine accent: logo mark, focus states, highlights */
+  --brand-gold:           #10B4BA;
+  --brand-gold-hover:     #0C959A;
+  --brand-gold-active:    #08777B;
+  --brand-teal:           #10B4BA;
+  --brand-teal-hover:     #0C959A;
+  --brand-teal-active:    #08777B;
   /* RGB channels for box-shadow rgba() — update if you change the hex above */
-  --brand-primary-rgb:    28, 117, 188;
-  --brand-navy-rgb:       14, 62, 101;
-  --brand-gold-rgb:       0, 182, 189;
-  --brand-teal-rgb:       0, 182, 189;
+  --brand-primary-rgb:    35, 124, 192;
+  --brand-navy-rgb:       16, 42, 58;
+  --brand-gold-rgb:       16, 180, 186;
+  --brand-teal-rgb:       16, 180, 186;
   /* ──────────────────────────────────────────────────────── */
 
   /* ── Vybe HNI Design Tokens ─────────────────────────────── */
@@ -41,7 +40,7 @@
   --token-blue:           #2563EB;
 
   /* Alias colours */
-  --token-bg:             #F8FAFC;
+  --token-bg:             #F6FAFC;
   --token-surface:        #FFFFFF;
   --token-text-primary:   #0F172A;
   --token-text-secondary: #475569;
@@ -66,7 +65,7 @@
   /* ──────────────────────────────────────────────────────── */
 
   --font-size: 16px;
-  --background: #ffffff;
+  --background: #F6FAFC;
   --foreground: oklch(0.145 0 0);
   --card: #ffffff;
   --card-foreground: oklch(0.145 0 0);
@@ -76,15 +75,15 @@
   --primary-foreground: #ffffff;
   --secondary: oklch(0.95 0.0058 264.53);
   --secondary-foreground: #030213;
-  --muted: #ececf0;
-  --muted-foreground: #717182;
-  --accent: #e9ebef;
+  --muted: #EAF3F7;
+  --muted-foreground: #5D7080;
+  --accent: #E7F7F8;
   --accent-foreground: #030213;
   --destructive: #d4183d;
   --destructive-foreground: #ffffff;
   --border: rgba(0, 0, 0, 0.1);
   --input: transparent;
-  --input-background: #f3f3f5;
+  --input-background: #FFFFFF;
   --switch-background: #cbced4;
   --font-weight-medium: 400;
   --font-weight-normal: 400;
@@ -95,7 +94,7 @@
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
   --radius: 0.625rem;
-  --sidebar: #0E3E65;
+  --sidebar: var(--brand-navy);
   --sidebar-foreground: #ffffff;
   --sidebar-primary: var(--brand-gold);
   --sidebar-primary-foreground: oklch(0.985 0 0);
@@ -190,25 +189,25 @@
 }
 
 .dark {
-  /* ── Dark theme — blue-charcoal palette ── */
-  --background:           #0F1117;   /* page bg — dark blue-charcoal        */
-  --foreground:           #E8EBF2;   /* primary text — off-white             */
-  --card:                 #161B24;   /* card surface — slightly lighter      */
+  /* ── Dark theme — Colour option C navy palette ── */
+  --background:           #071A24;   /* page bg — deep navy                  */
+  --foreground:           #E8F2F6;   /* primary text — off-white             */
+  --card:                 #102A3A;   /* card surface                         */
   --card-foreground:      #E8EBF2;
   --popover:              #161B24;
   --popover-foreground:   #E8EBF2;
   --primary:              var(--brand-primary);
   --primary-foreground:   #ffffff;
-  --secondary:            #1E2330;   /* secondary surface                    */
+  --secondary:            #143445;   /* secondary surface                    */
   --secondary-foreground: #E8EBF2;
-  --muted:                #1E2330;   /* muted surface                        */
-  --muted-foreground:     #8892A4;   /* secondary text — slate               */
-  --accent:               #1E2330;
+  --muted:                #143445;   /* muted surface                        */
+  --muted-foreground:     #8FA6B4;   /* secondary text — slate               */
+  --accent:               #143445;
   --accent-foreground:    #E8EBF2;
   --destructive:          #EF4444;
   --destructive-foreground: #ffffff;
   --border:               rgba(255, 255, 255, 0.08); /* subtle border       */
-  --input:                #1E2330;
+  --input:                #143445;
   --ring:                 rgba(255, 255, 255, 0.15);
   --font-weight-medium: 400;
   --font-weight-normal: 400;
@@ -217,7 +216,7 @@
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar:              #0A0D14;   /* sidebar — darkest layer              */
+  --sidebar:              #071A24;   /* sidebar — darkest layer              */
   --sidebar-foreground:   #E8EBF2;
   --sidebar-primary:      var(--brand-primary);
   --sidebar-primary-foreground: #ffffff;

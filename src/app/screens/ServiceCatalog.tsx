@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Search, Sparkles, ArrowRight, FileText, PenTool, DollarSign, Compass, HardHat, Clipboard, Flower2, Map, Home, Clock, IndianRupee } from 'lucide-react';
+import { Search, Sparkles, ArrowRight, FileText, PenTool, Compass, Clipboard, Flower2, Home, Clock, IndianRupee, Brain, BarChart3, BriefcaseBusiness } from 'lucide-react';
 import { useNavigate, Link } from 'react-router';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { NotificationDropdown } from '../components/NotificationDropdown';
@@ -9,83 +9,83 @@ import { servicesData } from '../data/servicesData';
 // Service Categories for horizontal scroll
 const serviceCategories = [
  {
- id: 'legal',
- name: 'Legal',
- description: 'Legal compliance, documentation and clearance',
+ id: 'advisory-intelligence',
+ name: 'Advisory & Intelligence',
+ description: 'Flagship strategy, HABU, deal and exit advisory',
+ icon: Brain,
+ color: 'from-brand-primary to-brand-teal',
+ serviceCount: 6,
+ },
+ {
+ id: 'valuation-financial-intelligence',
+ name: 'Valuation & Financial Intelligence',
+ description: 'Valuation, market, yield and benchmark intelligence',
+ icon: BarChart3,
+ color: 'from-brand-primary to-brand-teal',
+ serviceCount: 5,
+ },
+ {
+ id: 'legal-compliance',
+ name: 'Legal & Compliance',
+ description: 'Title, documentation, NOCs and investor due diligence',
  icon: FileText,
- color: 'from-blue-500 to-cyan-500',
- serviceCount: 4,
+ color: 'from-brand-primary to-brand-teal',
+ serviceCount: 5,
  },
  {
- id: 'architect',
- name: 'Architect',
- description: 'Architectural design and planning services',
+ id: 'development-design',
+ name: 'Development & Design',
+ description: 'Planning, design, construction and redevelopment lifecycle',
  icon: PenTool,
- color: 'from-purple-500 to-pink-500',
- serviceCount: 3,
+ color: 'from-brand-primary to-brand-teal',
+ serviceCount: 6,
  },
  {
- id: 'valuation',
- name: 'Valuation',
- description: 'Property valuation and market analysis',
- icon: DollarSign,
- color: 'from-emerald-500 to-green-500',
- serviceCount: 3,
- },
- {
- id: 'surveyor',
- name: 'Surveyor',
- description: 'Land survey and boundary demarcation',
+ id: 'land-intelligence',
+ name: 'Land Intelligence',
+ description: 'Survey, GIS, drone, soil and zoning data layer',
  icon: Compass,
- color: 'from-orange-500 to-amber-500',
- serviceCount: 3,
+ color: 'from-brand-primary to-brand-teal',
+ serviceCount: 6,
  },
  {
- id: 'contractor',
- name: 'Contractor',
- description: 'Construction and execution services',
- icon: HardHat,
- color: 'from-red-500 to-orange-500',
- serviceCount: 3,
- },
- {
- id: 'property-management',
- name: 'Property Mgmt',
- description: 'Property maintenance and facility management',
- icon: Home,
- color: 'from-indigo-500 to-blue-500',
+ id: 'documentation-government-interface',
+ name: 'Documentation & Government Interface',
+ description: 'Tax, approvals, verification and registration support',
+ icon: Clipboard,
+ color: 'from-brand-primary to-brand-teal',
  serviceCount: 4,
  },
  {
- id: 'documentation',
- name: 'Documentation',
- description: 'Property documentation and compliance filing',
- icon: Clipboard,
- color: 'from-teal-500 to-cyan-500',
- serviceCount: 3,
+ id: 'property-lifecycle-services',
+ name: 'Property Lifecycle Services',
+ description: 'Rental, tenant, facility and maintenance operations',
+ icon: Home,
+ color: 'from-brand-primary to-brand-teal',
+ serviceCount: 4,
  },
  {
- id: 'vastu',
- name: 'Vastu',
+ id: 'specialized-services',
+ name: 'Specialized Services',
  description: 'Vastu consultation and correction',
  icon: Flower2,
- color: 'from-pink-500 to-rose-500',
+ color: 'from-brand-primary to-brand-teal',
  serviceCount: 2,
  },
  {
- id: 'drone-gis',
- name: 'Drone + GIS',
- description: 'Drone surveys and GIS mapping',
- icon: Map,
- color: 'from-violet-500 to-purple-500',
- serviceCount: 3,
+ id: 'investor-services',
+ name: 'Investor Services',
+ description: 'Curated opportunities, deal evaluation and portfolio advisory',
+ icon: BriefcaseBusiness,
+ color: 'from-brand-primary to-brand-teal',
+ serviceCount: 5,
  },
 ];
 
 export function ServiceCatalog() {
  const navigate = useNavigate();
  const [searchQuery, setSearchQuery] = useState('');
- const [selectedCategory, setSelectedCategory] = useState<string>('legal');
+ const [selectedCategory, setSelectedCategory] = useState<string>('advisory-intelligence');
  const [selectedService, setSelectedService] = useState<string | null>(null);
 
  // Filter services based on selected category and search
@@ -106,7 +106,7 @@ export function ServiceCatalog() {
  const selectedCategoryData = serviceCategories.find(cat => cat.id === selectedCategory);
 
  return (
- <div className="min-h-screen bg-[#F8FAFC] dark:bg-background transition-colors duration-300">
+ <div className="min-h-screen bg-background dark:bg-background transition-colors duration-300">
 
  {/* ─────────────────────────────────────────
  MOBILE LAYOUT (< md)
@@ -166,12 +166,12 @@ export function ServiceCatalog() {
  flex-shrink-0 flex items-center gap-1.5 px-3.5 py-2 rounded-full
  text-xs font-normal transition-all duration-200 whitespace-nowrap
  ${isActive
- ? 'bg-brand-gold text-brand-navy'
+ ? 'bg-white text-brand-primary'
  : 'bg-white/[0.08] text-white/60 border border-white/[0.12]'
  }
  `}
  >
- <Icon className={`w-3.5 h-3.5 flex-shrink-0 ${isActive ? 'text-brand-navy' : 'text-white/50'}`} />
+ <Icon className={`w-3.5 h-3.5 flex-shrink-0 ${isActive ? 'text-brand-teal' : 'text-white/50'}`} />
  {cat.name}
  </button>
  );
@@ -192,7 +192,7 @@ export function ServiceCatalog() {
  {selectedCategoryData.description}
  </p>
  </div>
- <span className="text-xs font-normal text-brand-gold bg-brand-gold/10 px-2.5 py-1 rounded-full">
+ <span className="text-xs font-normal text-brand-primary bg-brand-primary/10 px-2.5 py-1 rounded-full">
  {filteredServices.length} services
  </span>
  </div>
@@ -231,8 +231,8 @@ export function ServiceCatalog() {
  </div>
  {service.badge && (
  <span className="flex-shrink-0 text-[10px] font-normal tracking-[0.06em] uppercase
- text-amber-600 dark:text-amber-400
- bg-amber-500/10 border border-amber-500/20
+ text-brand-teal
+ bg-brand-teal/10 border border-brand-teal/20
  px-2 py-0.5 rounded-lg">
  {service.badge}
  </span>
@@ -253,9 +253,9 @@ export function ServiceCatalog() {
  {primaryAttr.eta}
  </span>
  </div>
- <div className="flex items-center gap-1 px-2 py-1 bg-emerald-50 dark:bg-emerald-500/10 rounded-lg">
- <IndianRupee className="w-3 h-3 text-emerald-500 dark:text-emerald-400 flex-shrink-0" />
- <span className="text-[10px] font-normal text-emerald-600 dark:text-emerald-400 uppercase tracking-[0.05em]">
+ <div className="flex items-center gap-1 px-2 py-1 bg-brand-teal/10 rounded-lg">
+ <IndianRupee className="w-3 h-3 text-brand-teal flex-shrink-0" />
+ <span className="text-[10px] font-normal text-brand-teal uppercase tracking-[0.05em]">
  {primaryAttr.priceRange}
  </span>
  </div>
@@ -271,7 +271,7 @@ export function ServiceCatalog() {
  <div className="flex items-center justify-between">
  {primaryAttr?.deliverables && primaryAttr.deliverables.length > 0 ? (
  <div className="flex items-center gap-1">
- <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0" />
+ <div className="w-1.5 h-1.5 rounded-full bg-brand-teal flex-shrink-0" />
  <span className="text-xs text-[#64748B] dark:text-white/40 truncate max-w-[180px]">
  {primaryAttr.deliverables[0]}
  </span>
@@ -382,7 +382,7 @@ export function ServiceCatalog() {
  <div className="relative -mx-4 md:-mx-8 px-4 md:px-8">
  {/* Right fade-edge scroll hint */}
  <div className="pointer-events-none absolute right-0 top-0 bottom-4 w-16 z-10
- bg-gradient-to-l from-[#F8FAFC] dark:from-[#0a0a0a] to-transparent" />
+ bg-gradient-to-l from-background dark:from-background to-transparent" />
  <div className="flex gap-3 md:gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory">
  {serviceCategories.map((category) => {
  const isSelected = selectedCategory === category.id;
@@ -398,7 +398,7 @@ export function ServiceCatalog() {
  rounded-2xl p-5 md:p-6 cursor-pointer
  transition-all duration-300 text-left relative overflow-hidden
  ${isSelected
- ? 'border-2 border-brand-navy shadow-[0_8px_32px_rgba(var(--brand-navy-rgb),0.20)] dark:border-brand-gold dark:shadow-[0_8px_32px_rgba(var(--brand-gold-rgb),0.20)]'
+ ? 'border-2 border-brand-primary shadow-[0_8px_32px_rgba(var(--brand-primary-rgb),0.18)] dark:border-brand-teal dark:shadow-[0_8px_32px_rgba(var(--brand-teal-rgb),0.18)]'
  : 'border border-[#E2E8F0] dark:border-white/[0.06] shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] hover:shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_60px_-5px_rgba(0,0,0,0.1)] hover:-translate-y-1'
  }
  `}
@@ -406,10 +406,14 @@ export function ServiceCatalog() {
  {/* Top subtle highlight */}
  <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 dark:via-white/20 to-transparent" />
 
- {/* Category Name - Stronger hierarchy */}
- <h3 className="text-body md:text-h3 font-normal tracking-[-0.02em] text-[#0F172A] dark:text-white mb-3">
+ <div className="flex items-start justify-between gap-4 mb-3">
+ <h3 className="text-body md:text-h3 font-normal tracking-[-0.02em] text-[#0F172A] dark:text-white">
  {category.name}
  </h3>
+ <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${isSelected ? 'bg-brand-primary text-white' : 'bg-brand-primary/10 text-brand-primary dark:bg-brand-teal/10 dark:text-brand-teal'}`}>
+ <Icon className="w-5 h-5" strokeWidth={1.8} />
+ </div>
+ </div>
 
  {/* Description */}
  <p className="text-small text-[#475569] dark:text-white/50 leading-relaxed mb-4 line-clamp-2">
@@ -490,7 +494,7 @@ export function ServiceCatalog() {
  </div>
  ) : (
  <div className="flex flex-col items-center justify-center py-8 md:py-16">
- <div className="w-16 h-16 rounded-full bg-[#F8FAFC] dark:bg-white/5 flex items-center justify-center mb-4">
+ <div className="w-16 h-16 rounded-full bg-brand-primary/5 dark:bg-white/5 flex items-center justify-center mb-4">
  <Search className="w-8 h-8 text-[#0F172A]/20 dark:text-white/20" />
  </div>
  <p className="text-body text-[#0F172A]/60 dark:text-white/60 mb-2">
@@ -503,10 +507,10 @@ export function ServiceCatalog() {
  )}
 
  {/* Info Card */}
- <div className="mt-12 bg-gradient-to-br from-brand-navy/[0.04] to-brand-gold/[0.04] border border-brand-navy/10 dark:border-brand-gold/20 backdrop-blur-xl rounded-xl p-4 md:p-5 lg:p-6">
+ <div className="mt-12 bg-gradient-to-br from-brand-primary/[0.05] to-brand-teal/[0.06] border border-brand-primary/10 dark:border-brand-teal/20 backdrop-blur-xl rounded-xl p-4 md:p-5 lg:p-6">
  <div className="flex items-start gap-6">
- <div className="w-14 h-14 rounded-xl bg-brand-navy/[0.08] dark:bg-brand-gold/10 flex items-center justify-center flex-shrink-0">
- <Sparkles className="w-7 h-7 text-brand-navy dark:text-brand-gold" />
+ <div className="w-14 h-14 rounded-xl bg-brand-primary/10 dark:bg-brand-teal/10 flex items-center justify-center flex-shrink-0">
+ <Sparkles className="w-7 h-7 text-brand-primary dark:text-brand-teal" />
  </div>
  <div className="flex-1">
  <h3 className="text-body font-normal tracking-[-0.01em] text-[#0F172A] dark:text-white mb-2">
@@ -517,7 +521,7 @@ export function ServiceCatalog() {
  </p>
  <button
  onClick={() => navigate('/help-support')}
- className="flex items-center gap-2 px-5 py-2.5 bg-brand-navy hover:bg-brand-navy-hover text-white rounded-xl text-small font-normal transition-all"
+ className="flex items-center gap-2 px-5 py-2.5 bg-brand-primary hover:bg-brand-primary-hover text-white rounded-xl text-small font-normal transition-all"
  >
  Get Personalized Recommendations
  <ArrowRight className="w-4 h-4" />

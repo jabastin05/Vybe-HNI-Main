@@ -44,12 +44,12 @@ export function ServiceCard({
  <div
  onClick={onClick}
  className={`
- relative bg-white/95 dark:bg-card/95 backdrop-blur-[40px] rounded-xl p-4 md:p-5 cursor-pointer
- shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]
+ relative bg-white dark:bg-card rounded-xl p-4 md:p-5 cursor-pointer
+ shadow-[0_1px_2px_rgba(var(--brand-navy-rgb),0.04),0_18px_36px_-18px_rgba(var(--brand-navy-rgb),0.24)]
  transition-all duration-300 overflow-hidden group flex flex-col
  ${isSelected
- ? 'border-2 border-emerald-500 shadow-[0_8px_32px_rgba(16,185,129,0.25)]'
- : 'border border-white/60 dark:border-white/10 hover:shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_60px_-5px_rgba(0,0,0,0.1)] hover:-translate-y-1'
+ ? 'border-2 border-brand-primary shadow-[0_10px_34px_rgba(var(--brand-primary-rgb),0.20)]'
+ : 'border border-[#DDEAF1] dark:border-white/10 hover:shadow-[0_2px_4px_rgba(var(--brand-navy-rgb),0.05),0_24px_50px_-20px_rgba(var(--brand-navy-rgb),0.28)] hover:-translate-y-1'
  }
  `}
  >
@@ -69,8 +69,8 @@ export function ServiceCard({
  </h3>
  </div>
  {badge && (
- <div className="flex-shrink-0 px-3 py-1.5 bg-amber-500/20 rounded-lg border border-amber-500/30">
- <span className="text-caption font-normal tracking-[0.05em] uppercase text-amber-600 dark:text-amber-400 whitespace-nowrap">
+ <div className="flex-shrink-0 px-3 py-1.5 bg-brand-teal/10 rounded-lg border border-brand-teal/25">
+ <span className="text-caption font-normal tracking-[0.05em] uppercase text-brand-teal whitespace-nowrap">
  {badge}
  </span>
  </div>
@@ -85,15 +85,15 @@ export function ServiceCard({
  {/* ETA and Price Badges */}
  {primaryAttribute && (
  <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-5 flex-wrap">
- <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-blue-500/10 dark:bg-blue-500/20 rounded-lg border border-blue-500/20">
- <Clock className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 flex-shrink-0" />
- <span className="text-caption font-normal tracking-[0.05em] uppercase text-blue-700 dark:text-blue-400">
+ <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-brand-primary/10 dark:bg-brand-primary/20 rounded-lg border border-brand-primary/20">
+ <Clock className="w-3.5 h-3.5 text-brand-primary dark:text-blue-300 flex-shrink-0" />
+ <span className="text-caption font-normal tracking-[0.05em] uppercase text-brand-primary dark:text-blue-300">
  {primaryAttribute.eta}
  </span>
  </div>
- <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-lg border border-emerald-500/20">
- <IndianRupee className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
- <span className="text-caption font-normal tracking-[0.05em] uppercase text-emerald-700 dark:text-emerald-400">
+ <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-brand-teal/10 dark:bg-brand-teal/20 rounded-lg border border-brand-teal/20">
+ <IndianRupee className="w-3.5 h-3.5 text-brand-teal flex-shrink-0" />
+ <span className="text-caption font-normal tracking-[0.05em] uppercase text-brand-teal">
  {primaryAttribute.priceRange}
  </span>
  </div>
@@ -105,7 +105,7 @@ export function ServiceCard({
  <div className="space-y-1.5 md:space-y-2 mb-4 md:mb-5 pb-4 md:pb-5 border-b border-[#E2E8F0] dark:border-white/[0.06] flex-1">
  {primaryAttribute.deliverables.slice(0, 2).map((deliverable, index) => (
  <div key={index} className="flex items-start gap-2">
- <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1 flex-shrink-0" />
+ <div className="w-1.5 h-1.5 rounded-full bg-brand-teal mt-1 flex-shrink-0" />
  <span className="text-small text-[#0F172A]/70 dark:text-white/70 font-normal">
  {deliverable}
  </span>
@@ -117,7 +117,7 @@ export function ServiceCard({
  {/* Multiple Options Badge */}
  {hasMultipleOptions && (
  <div className="mb-4 md:mb-5 pb-4 md:pb-5 border-b border-[#E2E8F0] dark:border-white/[0.06]">
- <span className="text-small font-normal text-emerald-600 dark:text-emerald-400">
+ <span className="text-small font-normal text-brand-primary dark:text-blue-300">
  <span className="font-normal">{attributes.length}</span> options available
  </span>
  </div>
@@ -129,9 +129,9 @@ export function ServiceCard({
  to={`/service/${id}`}
  onClick={(e) => e.stopPropagation()}
  className="flex items-center justify-center gap-2 text-small font-normal
- text-[#0F172A] dark:text-white
+ text-brand-primary dark:text-blue-200
  px-4 md:px-5 py-2.5 rounded-xl
- hover:bg-brand-navy/5 dark:hover:bg-white/5
+ hover:bg-brand-primary/10 dark:hover:bg-white/5
  transition-all border border-transparent"
  >
  <span>View Details</span>
