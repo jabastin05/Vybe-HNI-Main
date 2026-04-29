@@ -64,6 +64,13 @@ export function PropertyIntelligence() {
  'https://images.unsplash.com/photo-1771068807150-2cab0734d25b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsYW5kJTIwc3VydmV5JTIwbWVhc3VyZW1lbnQlMjBwcm9wZXJ0eXxlbnwxfHx8fDE3NzE1NzI3NTV8MA&ixlib=rb-4.1.0&q=80&w=1080'
  ];
 
+ const intelligenceSummary = [
+ { label: 'Status', value: property.status === 'analyzing' ? 'In Analysis' : selectedStrategy ? 'Strategy Selected' : 'Submitted', note: property.status === 'analyzing' ? 'VYBE team processing inputs' : 'ready for next decision' },
+ { label: 'Strategy', value: selectedStrategy?.title || 'Pending', note: selectedStrategy ? 'recommended path chosen' : 'decision still open' },
+ { label: 'Partner', value: assignedPartner ? mockPartner.name : 'Not assigned', note: assignedPartner ? 'execution support lined up' : 'assignment follows strategy' },
+ { label: 'Progress', value: `${property.documentCount || 0} docs`, note: useCase === 3 ? `${milestones.length} milestones active` : 'documents powering analysis' },
+ ];
+
  return (
  <div className="min-h-screen bg-[#F8FAFC] dark:bg-background transition-colors duration-300">
 
@@ -81,14 +88,14 @@ export function PropertyIntelligence() {
  <ArrowLeft className="w-4 h-4" />
  </Link>
  <div>
- <h1 className="text-caption tracking-[0.05em] uppercase text-[#94A3B8] dark:text-white/50 mb-2">
- Case {property.caseId}
+ <h1 className="text-caption tracking-[0.05em] uppercase text-brand-accent dark:text-brand-accent mb-2">
+ Intelligence Summary
  </h1>
  <div className="text-h1 tracking-tight text-[#0F172A] dark:text-white">
  {property.location}
  </div>
  <p className="text-body text-[#475569] dark:text-white/60 mt-1">
- {property.parcelSize} • Survey No. {property.surveyNumber}
+ {property.parcelSize} • Survey No. {property.surveyNumber} • Case {property.caseId}
  </p>
  </div>
  </div>
@@ -127,16 +134,54 @@ export function PropertyIntelligence() {
  )}
 
  <div className="max-w-[1200px] mx-auto container-padding py-6 md:py-8 lg:py-10">
+ <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-4">
+ {intelligenceSummary.map((metric) => (
+ <div key={metric.label} className="rounded-2xl border border-[#E2E8F0] bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] dark:border-white/[0.06] dark:bg-card">
+ <div className="text-[10px] font-normal uppercase tracking-[0.1em] text-[#94A3B8]">{metric.label}</div>
+ <div className="mt-2 text-h3 font-normal tracking-tight text-[#0F172A] dark:text-white">{metric.value}</div>
+ <div className="mt-1 text-xs text-[#64748B] dark:text-white/45">{metric.note}</div>
+ </div>
+ ))}
+ </div>
+
+ <div className="mb-6 rounded-2xl border border-[#D9E8F4] bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] dark:border-white/[0.08] dark:bg-card">
+ <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+ <div className="max-w-2xl">
+ <div className="text-[10px] font-normal uppercase tracking-[0.1em] text-brand-primary">Executive Summary</div>
+ <h2 className="mt-2 text-h2 font-normal tracking-tight text-[#0F172A] dark:text-white">
+ Decision-first framing for HABU and execution
+ </h2>
+ <p className="mt-2 text-small text-[#475569] dark:text-white/50">
+ The page now leads with status, strategy, and progress so the business can narrate what the asset needs next before dropping into raw analysis detail.
+ </p>
+ </div>
+ <div className="grid gap-3 md:max-w-sm">
+ <div className="rounded-2xl bg-brand-primary/[0.06] px-4 py-3 dark:bg-white/[0.04]">
+ <div className="text-[10px] uppercase tracking-[0.08em] text-brand-primary dark:text-white/60">Primary View</div>
+ <div className="mt-1 text-sm text-[#0F172A] dark:text-white">
+ {property.status === 'analyzing' ? 'Analysis in progress with next update window' : selectedStrategy ? 'Strategy selected and ready for execution' : 'Awaiting decision on recommended path'}
+ </div>
+ </div>
+ <div className="rounded-2xl bg-brand-accent/[0.08] px-4 py-3 dark:bg-brand-accent/12">
+ <div className="text-[10px] uppercase tracking-[0.08em] text-[#0C7F86] dark:text-brand-accent">What to show</div>
+ <div className="mt-1 text-sm text-[#0F172A] dark:text-white">
+ {selectedStrategy ? selectedStrategy.title : 'HABU recommendation will appear here once analysis closes'}
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
  {/* Analyzing Stage - Special Layout */}
  {property.status === 'analyzing' && (
  <div className="space-y-6">
  {/* VYBE Team Analysis Progress Section - Compact */}
- <div className="bg-gradient-to-br from-yellow-500/[0.03] to-amber-500/[0.03] dark:from-yellow-500/[0.05] dark:to-amber-500/[0.05] border border-yellow-500/20 dark:border-yellow-400/20 rounded-xl overflow-hidden">
- <div className="p-4 border-b border-yellow-500/10 dark:border-yellow-400/10">
+ <div className="rounded-2xl overflow-hidden border border-[#D9E8F4] bg-[#FBFDFF] dark:border-white/[0.08] dark:bg-card">
+ <div className="p-4 border-b border-[#E2E8F0] dark:border-white/[0.06]">
  <div className="flex items-center justify-between">
  <div className="flex items-center gap-2.5">
- <div className="w-8 h-8 rounded-lg bg-yellow-500/20 flex items-center justify-center">
- <Activity className="w-4 h-4 text-yellow-500" />
+ <div className="w-8 h-8 rounded-lg bg-brand-primary/[0.10] flex items-center justify-center">
+ <Activity className="w-4 h-4 text-brand-primary" />
  </div>
  <div>
  <h2 className="text-small tracking-tight text-[#0F172A] dark:text-white/95 font-normal">
@@ -147,27 +192,27 @@ export function PropertyIntelligence() {
  </p>
  </div>
  </div>
- <div className="text-[10px] tracking-widest uppercase text-yellow-500 bg-yellow-500/10 px-2.5 py-1 rounded-lg flex items-center gap-1.5">
- <div className="w-1.5 h-1.5 rounded-full bg-brand-navy dark:bg-white animate-pulse" />
+ <div className="text-[10px] tracking-widest uppercase text-brand-accent bg-brand-accent/[0.10] px-2.5 py-1 rounded-lg flex items-center gap-1.5">
+ <div className="w-1.5 h-1.5 rounded-full bg-brand-accent animate-pulse" />
  In Progress
  </div>
  </div>
  </div>
 
- <div className="p-4 bg-white/60 dark:bg-brand-navy/30 backdrop-blur-sm">
+ <div className="p-4 bg-white dark:bg-card">
  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
  {/* Documents Uploaded Card */}
- <div className="bg-white/90 dark:bg-card/90 border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl p-5 backdrop-blur-[20px]">
+ <div className="bg-white dark:bg-card border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl p-5">
  <div className="flex items-center justify-between mb-4">
  <div className="flex items-center gap-2">
- <div className="w-8 h-8 rounded-lg bg-yellow-500/20 flex items-center justify-center">
- <FileText className="w-4 h-4 text-yellow-600 dark:text-yellow-400" />
+ <div className="w-8 h-8 rounded-lg bg-brand-accent/[0.10] flex items-center justify-center">
+ <FileText className="w-4 h-4 text-[#0C7F86] dark:text-brand-accent" />
  </div>
  <h3 className="text-small font-normal tracking-tight text-[#0F172A] dark:text-white/95">
  Documents Uploaded
  </h3>
  </div>
- <div className="text-h1 font-normal text-yellow-600 dark:text-yellow-400 leading-none">
+ <div className="text-h1 font-normal text-brand-primary leading-none">
  {property.documentCount || 0}
  </div>
  </div>
@@ -177,9 +222,9 @@ export function PropertyIntelligence() {
  {['Title Deed', 'Survey Plan', 'Tax Receipt', 'Encumbrance Cert', 'Building Plan', 'Approval Letter'].slice(0, Math.min(6, property.documentCount || 0)).map((doc, index) => (
  <div 
  key={index} 
- className="bg-emerald-500/10 border border-emerald-500/20 rounded-lg px-2.5 py-1 flex items-center gap-1.5"
+ className="bg-brand-accent/[0.10] border border-brand-accent/20 rounded-lg px-2.5 py-1 flex items-center gap-1.5"
  >
- <CheckCircle2 className="w-3 h-3 text-emerald-500 flex-shrink-0" />
+ <CheckCircle2 className="w-3 h-3 text-brand-accent flex-shrink-0" />
  <span className="text-caption font-normal text-[#0F172A]/70 dark:text-white/70 tracking-tight">{doc}</span>
  </div>
  ))}
@@ -196,7 +241,7 @@ export function PropertyIntelligence() {
  {/* Upload Info */}
  <div className="pt-3 border-t border-[#E2E8F0] dark:border-white/[0.06] flex items-center justify-between">
  <div className="flex items-center gap-1.5">
- <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+ <div className="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
  <span className="text-caption text-[#475569] dark:text-white/50">Last uploaded Feb 18, 2026</span>
  </div>
  <span className="text-caption font-normal text-[#475569] dark:text-white/50">Total: 24.3 MB</span>
@@ -204,10 +249,10 @@ export function PropertyIntelligence() {
  </div>
 
  {/* Analysis Progress & Timeline Card */}
- <div className="bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-blue-500/10 border border-blue-500/20 dark:border-blue-400/20 rounded-xl p-5 backdrop-blur-[20px]">
+ <div className="bg-[#F3F8FC] border border-[#D9E8F4] dark:bg-white/[0.03] dark:border-white/[0.08] rounded-xl p-5">
  <div className="flex items-center gap-2 mb-4">
- <div className="w-8 h-8 rounded-lg bg-blue-500/30 flex items-center justify-center">
- <Activity className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+ <div className="w-8 h-8 rounded-lg bg-brand-primary/[0.12] flex items-center justify-center">
+ <Activity className="w-4 h-4 text-brand-primary" />
  </div>
  <h3 className="text-small font-normal tracking-tight text-[#0F172A] dark:text-white/95">
  Analysis Progress
@@ -222,8 +267,8 @@ export function PropertyIntelligence() {
 
  {/* Timeline Info */}
  <div className="pt-3 border-t border-[#E2E8F0] dark:border-white/[0.06] grid grid-cols-2 gap-3">
- <div className="bg-white/60 dark:bg-brand-navy/30 rounded-lg p-2.5">
- <div className="text-[10px] tracking-wider uppercase text-blue-600 dark:text-blue-400 mb-1">
+ <div className="bg-white dark:bg-white/[0.04] rounded-lg p-2.5">
+ <div className="text-[10px] tracking-wider uppercase text-brand-primary mb-1">
  Completion
  </div>
  <div className="text-body font-normal text-[#0F172A] dark:text-white/95 leading-none mb-0.5">
@@ -233,7 +278,7 @@ export function PropertyIntelligence() {
  Mar 13-14, 2026
  </div>
  </div>
- <div className="bg-white/60 dark:bg-brand-navy/30 rounded-lg p-2.5">
+ <div className="bg-white dark:bg-white/[0.04] rounded-lg p-2.5">
  <div className="text-[10px] tracking-[0.05em] uppercase text-[#94A3B8] dark:text-white/50 mb-1">
  Next Update
  </div>

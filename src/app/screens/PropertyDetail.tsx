@@ -278,12 +278,32 @@ export function PropertyDetail() {
  documents: ['Electricity Bill', 'Water Bill', 'Gas Bill', 'Association Receipts'],
  weight: 0.10 // 10% weight
  },
- supporting: {
- title: 'Supporting',
- documents: ['Floor Plan', 'Property Photos', 'Inspection Report'],
- weight: 0.0 // Exceptional, doesn't count towards core score
- }
+  supporting: {
+   title: 'Supporting',
+   documents: ['Floor Plan', 'Property Photos', 'Inspection Report'],
+   weight: 0.0 // Exceptional, doesn't count towards core score
+  }
  };
+
+ const coreDocuments = propertyDocuments.filter((doc: any) => doc.status === 'verified');
+ const verifiedCoreCategories = Object.values(docCategoryTabs)
+   .filter(tab => tab.weight > 0)
+   .filter(tab => tab.documents.some(docName =>
+     propertyDocuments.some((propertyDoc: any) => propertyDoc.status === 'verified' && propertyDoc.documentType?.includes(docName.split(' ')[0]))
+   ));
+ const documentReadiness = Math.round((verifiedCoreCategories.length / 5) * 100);
+ const missingCriticalDocs = Object.values(docCategoryTabs)
+   .filter(tab => tab.weight > 0)
+   .filter(tab => !tab.documents.some(docName =>
+     propertyDocuments.some((propertyDoc: any) => propertyDoc.status === 'verified' && propertyDoc.documentType?.includes(docName.split(' ')[0]))
+   ))
+   .map(tab => tab.title);
+ const executiveSummary = [
+   { label: 'Document Readiness', value: `${documentReadiness}%`, note: missingCriticalDocs.length ? `${missingCriticalDocs.length} critical gaps` : 'core stack complete' },
+   { label: 'Verified Files', value: `${coreDocuments.length}`, note: `${propertyDocuments.length - coreDocuments.length} still processing` },
+   { label: 'Market Signal', value: `#${localityData.localityRank}`, note: `${property.city || property.district} locality rank` },
+   { label: 'Priority', value: aiRisks[0]?.severity || 'low', note: aiRisks[0]?.category || 'watchlist clear' },
+ ];
 
  return (
  <div className="min-h-screen bg-[#F8FAFC] dark:bg-background transition-colors duration-300">
@@ -330,6 +350,15 @@ export function PropertyDetail() {
  </span>
  )}
  </div>
+ <div className="mt-4 grid grid-cols-2 gap-2">
+ {executiveSummary.slice(0, 4).map((metric) => (
+ <div key={metric.label} className="rounded-2xl border border-white/[0.10] bg-white/[0.08] p-3">
+ <div className="text-[10px] uppercase tracking-[0.08em] text-white/45">{metric.label}</div>
+ <div className="mt-1 text-base font-normal text-white">{metric.value}</div>
+ <div className="mt-1 text-[11px] text-white/45">{metric.note}</div>
+ </div>
+ ))}
+ </div>
  </div>
  </div>
 
@@ -367,12 +396,68 @@ export function PropertyDetail() {
  </div>
  </div>
  </div>
+ <div className="flex items-center gap-3">
+ <Link
+ to={`/property/${property.id}/documents`}
+ className="inline-flex items-center gap-2 rounded-xl border border-[#D9E8F4] px-4 py-2.5 text-small text-brand-primary transition-all hover:border-brand-primary/20 hover:bg-brand-primary/[0.04] dark:border-white/[0.08] dark:text-white/80 dark:hover:bg-white/[0.04]"
+ >
+ <FileText className="w-4 h-4" />
+ Documents
+ </Link>
+ <Link
+ to={`/property/${property.id}/habu`}
+ className="inline-flex items-center gap-2 rounded-xl bg-brand-navy px-4 py-2.5 text-small text-white transition-all hover:bg-brand-navy-hover"
+ >
+ <TrendingUp className="w-4 h-4" />
+ HABU
+ </Link>
+ </div>
  </div>
  </div>
  </div>
 
  {/* Main Content */}
  <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-8 lg:py-10">
+ <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-4">
+ {executiveSummary.map((metric) => (
+ <div key={metric.label} className="rounded-2xl border border-[#E2E8F0] bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] dark:border-white/[0.06] dark:bg-card">
+ <div className="text-[10px] font-normal uppercase tracking-[0.1em] text-[#94A3B8]">{metric.label}</div>
+ <div className="mt-2 text-h3 font-normal tracking-tight text-[#0F172A] dark:text-white">{metric.value}</div>
+ <div className="mt-1 text-xs text-[#64748B] dark:text-white/45">{metric.note}</div>
+ </div>
+ ))}
+ </div>
+
+ <div className="mb-6 rounded-2xl border border-[#D9E8F4] bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] dark:border-white/[0.08] dark:bg-card">
+ <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+ <div className="max-w-2xl">
+ <div className="text-[10px] font-normal uppercase tracking-[0.1em] text-brand-primary">Decision Snapshot</div>
+ <h2 className="mt-2 text-h2 font-normal tracking-tight text-[#0F172A] dark:text-white">
+ Present the asset, the gaps, and the next move
+ </h2>
+ <p className="mt-2 text-small text-[#475569] dark:text-white/50">
+ This view now leads with portfolio context. The business can show readiness, missing diligence items, and why the asset is worth deeper analysis without forcing users to scan the whole page.
+ </p>
+ </div>
+ <div className="grid grid-cols-1 gap-3 md:max-w-sm">
+ <div className="rounded-2xl bg-brand-primary/[0.06] px-4 py-3 dark:bg-white/[0.04]">
+ <div className="text-[10px] uppercase tracking-[0.08em] text-brand-primary dark:text-white/60">Opportunity</div>
+ <div className="mt-1 text-sm text-[#0F172A] dark:text-white">{aiOpportunities[0]?.title}</div>
+ </div>
+ <div className="rounded-2xl bg-brand-accent/[0.08] px-4 py-3 dark:bg-brand-accent/12">
+ <div className="text-[10px] uppercase tracking-[0.08em] text-[#0C7F86] dark:text-brand-accent">Risk</div>
+ <div className="mt-1 text-sm text-[#0F172A] dark:text-white">{aiRisks[0]?.title}</div>
+ </div>
+ <div className="rounded-2xl bg-[#F3F8FC] px-4 py-3 dark:bg-white/[0.04]">
+ <div className="text-[10px] uppercase tracking-[0.08em] text-[#5B7285] dark:text-white/55">Missing</div>
+ <div className="mt-1 text-sm text-[#0F172A] dark:text-white">
+ {missingCriticalDocs.length ? missingCriticalDocs.join(', ') : 'No critical documentation gaps'}
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
  {/* Left Column - Property Details */}
  <div className="lg:col-span-2 space-y-6">
