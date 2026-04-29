@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 import { Root } from "./Root";
 import { Landing } from "./screens/Landing";
 import { EmptyDashboard } from "./screens/EmptyDashboard";
@@ -37,9 +37,9 @@ export const router = createBrowserRouter([
  Component: Root,
  children: [
  {
- index: true,
- Component: Landing,
- },
+   index: true,
+   element: <Navigate to="/signup" replace />,
+  },
  {
  path: "onboarding",
  Component: Onboarding,

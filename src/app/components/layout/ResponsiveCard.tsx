@@ -9,7 +9,7 @@ export function ResponsiveCard({ children, className = '', ...props }: Responsiv
  return (
  <div
  className={`
- bg-white dark:bg-card rounded-xl border border-[#E2E8F0] dark:border-white/[0.06]
+ bg-white dark:bg-card rounded-xl shadow-card
  card-padding shadow-sm
  ${className}
  `}

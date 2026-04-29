@@ -25,7 +25,8 @@ import {
  File,
  FileImage,
  FileSpreadsheet,
- ArrowRight
+ ArrowRight,
+ ChevronRight
 } from 'lucide-react';
 
 interface Document {
@@ -364,266 +365,160 @@ export function DocumentVault() {
  case 'XLS': return <FileSpreadsheet className={`${cls} text-brand-gold`} />;
  case 'JPG':
  case 'PNG': return <FileImage className={`${cls} text-purple-500`} />;
- default: return <FileText className={`${cls} text-[#94A3B8]`} />;
+ default: return <FileText className={`${cls} text-gray-400`} />;
  }
  };
 
  return (
- <div className="min-h-screen bg-[#F8FAFC] dark:bg-background">
+ <div className="min-h-screen bg-gray-50 dark:bg-background">
 
  {/* ─────────────────────────────────────────
  MOBILE LAYOUT (< md)
  ───────────────────────────────────────── */}
  <div className="md:hidden">
 
- {/* Navy Hero */}
- <div className="bg-brand-navy dark:bg-background px-4 pt-5 pb-0 relative overflow-hidden">
- {/* Decorative blobs */}
- <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-brand-gold/10 blur-3xl pointer-events-none" />
- <div className="absolute bottom-0 left-4 w-20 h-20 rounded-full bg-white/5 blur-2xl pointer-events-none" />
-
- {/* Title + Upload */}
- <div className="flex items-start justify-between mb-4 relative">
+ {/* ── Hero ── */}
+ <div className="relative bg-gradient-to-br from-[#0B3360] via-brand-navy to-brand-primary/75 dark:from-background dark:to-background px-5 pt-6 pb-6 overflow-hidden">
+ <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-brand-secondary/[0.05] blur-3xl pointer-events-none" />
+ <div className="relative flex items-start justify-between">
  <div>
- <p className="text-[10px] font-normal tracking-[0.14em] uppercase text-brand-gold mb-1">
- Vault
- </p>
- <h1 className="text-2xl font-normal tracking-tight text-white leading-tight">
- Documents
- </h1>
- <p className="text-sm text-white/50 mt-0.5">
- {documents.length} files · encrypted & secure
- </p>
+ <p className="text-xs tracking-[0.16em] uppercase text-white/40 mb-2">Vault</p>
+ <h1 className="text-3xl font-normal text-white tracking-tight leading-none">Documents</h1>
+ <p className="text-sm text-white/50 mt-2">{documents.length} files · encrypted & secure</p>
  </div>
  <button
  onClick={() => navigate(id ? `/property/${id}/documents/upload` : '/documents/upload')}
- className="flex items-center gap-1.5 px-3.5 py-2 bg-brand-gold text-brand-navy
- rounded-xl text-xs font-normal mt-1
- shadow-[0_2px_12px_rgba(var(--brand-gold-rgb),0.4)]
- active:scale-95 transition-all"
+ className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl
+ bg-white/15 active:bg-white/25 text-white
+ text-xs font-normal transition-all duration-200 mt-1"
  >
- <Upload className="w-3.5 h-3.5" />
+ <Upload className="w-3.5 h-3.5" strokeWidth={1.5} />
  Upload
  </button>
  </div>
+ </div>
 
- {/* Search */}
- <div className="relative mb-4">
- <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40" />
+ {/* ── Search + filters ── */}
+ <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.05]">
+ <div className="px-4 pt-3 pb-0">
+ <div className="relative">
+ <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
  <input
  type="text"
  placeholder="Search documents…"
  value={searchQuery}
  onChange={(e) => setSearchQuery(e.target.value)}
- className="w-full pl-10 pr-4 py-3 bg-white/[0.08] border border-white/[0.12] rounded-2xl
- text-sm text-white placeholder:text-white/40
- focus:outline-none focus:border-brand-gold/50
- transition-all"
+ className="w-full bg-gray-50 dark:bg-white/[0.04] rounded-xl
+ pl-10 pr-4 py-3 text-sm text-gray-900 dark:text-white
+ placeholder:text-gray-400 dark:placeholder:text-white/30
+ focus:outline-none focus:ring-2 focus:ring-brand-primary/20
+ transition-all duration-200"
  />
  </div>
-
- {/* Category chip rail */}
- <div className="relative -mx-4">
- <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-10 z-10
- bg-gradient-to-l from-brand-navy to-transparent" />
- <div className="flex gap-2 overflow-x-auto px-4 pb-4 scrollbar-hide">
+ </div>
+ <div className="flex items-center justify-between">
+ <div className="flex overflow-x-auto scrollbar-hide">
  {categories.map((cat) => {
  const isActive = selectedCategory === cat.id;
  return (
  <button
  key={cat.id}
  onClick={() => setSelectedCategory(cat.id)}
- className={`
- flex-shrink-0 flex items-center gap-1.5 px-3.5 py-2 rounded-full
- text-xs font-normal transition-all duration-200 whitespace-nowrap
- ${isActive
- ? 'bg-brand-gold text-brand-navy'
- : 'bg-white/[0.08] text-white/60 border border-white/[0.12]'
- }
- `}
+ className={`flex-shrink-0 px-4 py-3.5 text-xs font-normal whitespace-nowrap transition-all duration-200 border-b-2 ${
+ isActive ? 'text-brand-primary border-brand-primary' : 'text-gray-400 border-transparent'
+ }`}
  >
- {cat.label}
- <span className={`text-[10px] ${isActive ? 'text-brand-navy/60' : 'text-white/30'}`}>
- {cat.count}
- </span>
+ {cat.label} <span className="ml-0.5 text-gray-300 dark:text-white/20">{cat.count}</span>
  </button>
  );
  })}
  </div>
- </div>
- </div>
-
- {/* Property filter strip */}
- <div className="px-4 py-2.5 bg-white dark:bg-card border-b border-[#F1F5F9] dark:border-white/[0.06]">
- <div className="flex items-center justify-between">
  <button
  onClick={() => setShowPropertyFilter(true)}
- className="flex items-center gap-1.5 text-xs font-normal text-[#64748B] dark:text-white/50"
+ className="flex items-center gap-1 px-4 py-3.5 text-xs text-gray-400 flex-shrink-0 border-b-2 border-transparent"
  >
- <Building2 className="w-3.5 h-3.5" />
- {selectedProperty === 'all' ? 'All Properties' : selectedProperty}
- <ChevronDown className="w-3 h-3" />
+ <Building2 className="w-3.5 h-3.5" strokeWidth={1.5} />
+ {selectedProperty === 'all' ? 'All' : selectedProperty.split(' ')[0]}
+ <ChevronDown className="w-3 h-3" strokeWidth={1.5} />
  </button>
- <div className="flex items-center gap-3">
- {(selectedProperty !== 'all' || selectedCategory !== 'all') && (
+ </div>
+ </div>
+
+ {/* ── Document list ── */}
+ {filteredDocuments.length === 0 ? (
+ <div className="flex flex-col items-center justify-center py-16 px-6 text-center">
+ <div className="w-14 h-14 rounded-2xl bg-gray-100 dark:bg-white/5 flex items-center justify-center mb-4">
+ <FileText className="w-6 h-6 text-gray-400" strokeWidth={1.5} />
+ </div>
+ <p className="text-base font-normal text-gray-900 dark:text-white mb-1">No documents found</p>
+ <p className="text-sm text-gray-400">Try adjusting your search or filters</p>
+ </div>
+ ) : (
+ <div className="px-4 pt-5 pb-4">
+ <div className="bg-white dark:bg-card rounded-2xl overflow-hidden">
+ {filteredDocuments.map((doc, idx) => (
  <button
- onClick={() => { setSelectedProperty('all'); setSelectedCategory('all'); }}
- className="text-xs font-normal text-brand-gold"
- >
- Clear
- </button>
- )}
- <span className="text-xs font-normal text-brand-gold">
- {filteredDocuments.length} docs
- </span>
- </div>
- </div>
- </div>
-
- {/* Document list */}
- <div className="px-4 py-4 space-y-3">
- {filteredDocuments.length > 0 ? (
- filteredDocuments.map((doc) => (
- <div
  key={doc.id}
- className="bg-white dark:bg-card rounded-2xl overflow-hidden
- border border-[#F1F5F9] dark:border-white/[0.06]
- shadow-[0_2px_12px_rgba(var(--brand-navy-rgb),0.06)]
- active:scale-[0.99] transition-transform duration-100"
+ onClick={() => setViewingDocument(doc)}
+ className={`w-full flex items-center gap-4 px-5 py-4 bg-white dark:bg-card active:bg-gray-50 dark:active:bg-white/[0.03] transition-colors duration-150 text-left ${
+ idx < filteredDocuments.length - 1 ? 'border-b border-gray-100 dark:border-white/[0.05]' : ''
+ }`}
  >
- <div className="flex">
- {/* Gold left accent */}
- <div className={`w-[3px] flex-shrink-0 ${
- doc.verified ? 'bg-brand-gold' : 'bg-[#E2E8F0] dark:bg-white/10'
- }`} />
-
- <div className="flex-1 p-4">
- {/* Top row: icon + name + star */}
- <div className="flex items-start gap-2.5 mb-2">
- <div className="flex-shrink-0 mt-0.5">
+ {/* File icon */}
+ <div className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-white/[0.06] flex items-center justify-center flex-shrink-0">
  {getFileIcon(doc.type)}
  </div>
+ {/* Content */}
  <div className="flex-1 min-w-0">
- <div className="flex items-center gap-1.5">
- <p className="text-sm font-normal text-[#0F172A] dark:text-white truncate leading-tight">
- {doc.name}
- </p>
- {doc.isStarred && (
- <Star className="w-3 h-3 text-yellow-500 fill-yellow-500 flex-shrink-0" />
- )}
+ <div className="flex items-center gap-1.5 mb-0.5">
+ <p className="text-sm font-normal text-gray-900 dark:text-white truncate">{doc.name}</p>
+ {doc.isStarred && <Star className="w-3 h-3 text-yellow-500 fill-yellow-500 flex-shrink-0" />}
  </div>
- <p className="text-xs text-[#94A3B8] dark:text-white/40 mt-0.5 truncate">
- {doc.propertyName}{doc.propertyLocation ? ` · ${doc.propertyLocation}` : ''}
- </p>
- </div>
- </div>
-
- {/* Meta row: category + size + date */}
- <div className="flex items-center gap-2 mb-3 flex-wrap">
- <span className={`text-[10px] font-normal uppercase tracking-[0.06em]
- px-2.5 py-1 rounded-lg
- bg-${getCategoryColor(doc.category)}-500/10
- text-${getCategoryColor(doc.category)}-600 dark:text-${getCategoryColor(doc.category)}-400`}>
- {doc.category}
- </span>
- <span className="text-xs text-[#94A3B8] dark:text-white/40">
- {doc.size}
- </span>
- <span className="text-xs text-[#94A3B8] dark:text-white/40">
- {doc.uploadDate}
- </span>
+ <div className="flex items-center gap-1.5 text-xs text-gray-400 dark:text-white/40">
+ <span className="truncate">{doc.propertyName || doc.category}</span>
+ <span className="flex-shrink-0">·</span>
+ <span className="flex-shrink-0">{doc.size}</span>
  {doc.verified && (
- <div className="flex items-center gap-0.5">
- <CheckCircle2 className="w-3 h-3 text-emerald-500" />
- <span className="text-[10px] font-normal text-emerald-600 dark:text-emerald-400 uppercase tracking-[0.05em]">Verified</span>
- </div>
+ <>
+ <span className="flex-shrink-0">·</span>
+ <CheckCircle2 className="w-3 h-3 text-emerald-500 flex-shrink-0" strokeWidth={1.5} />
+ </>
  )}
  </div>
-
- {/* Action row */}
- <div className="flex items-center gap-2">
- <button
- onClick={() => setViewingDocument(doc)}
- className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl
- bg-brand-navy/[0.05] dark:bg-white/[0.05]
- text-brand-navy dark:text-white
- text-xs font-normal
- active:bg-brand-navy/10 transition-colors"
- >
- <Eye className="w-3.5 h-3.5" />
- View
+ </div>
+ <ChevronRight className="w-4 h-4 text-gray-300 dark:text-white/20 flex-shrink-0" strokeWidth={1.5} />
  </button>
- <button
- className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl
- bg-brand-gold/[0.08] dark:bg-brand-gold/[0.12]
- text-brand-gold
- text-xs font-normal
- active:bg-brand-gold/15 transition-colors"
- >
- <Download className="w-3.5 h-3.5" />
- Download
- </button>
+ ))}
  </div>
- </div>
- </div>
- </div>
- ))
- ) : (
- <div className="flex flex-col items-center justify-center py-16">
- <div className="w-14 h-14 rounded-full bg-[#F1F5F9] dark:bg-white/5 flex items-center justify-center mb-3">
- <FileText className="w-6 h-6 text-[#94A3B8] dark:text-white/30" />
- </div>
- <p className="text-sm font-normal text-[#64748B] dark:text-white/50 mb-1">No documents found</p>
- <p className="text-xs text-[#94A3B8] dark:text-white/30">Try adjusting your search or filters</p>
  </div>
  )}
- </div>
 
- {/* Property filter bottom sheet */}
+ {/* ── Property filter bottom sheet ── */}
  {showPropertyFilter && (
  <>
  <div className="fixed inset-0 bg-black/50 z-40" onClick={() => setShowPropertyFilter(false)} />
- <div className="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-card rounded-t-3xl
- shadow-[0_-8px_32px_rgba(var(--brand-navy-rgb),0.15)]
- pb-[env(safe-area-inset-bottom)]">
- <div className="w-10 h-1 rounded-full bg-[#E2E8F0] dark:bg-white/20 mx-auto mt-3 mb-4" />
- <p className="text-xs font-normal uppercase tracking-[0.12em] text-[#94A3B8] dark:text-white/40 px-5 mb-3">
- Filter by Property
- </p>
+ <div className="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-card rounded-t-3xl pb-[env(safe-area-inset-bottom)]">
+ <div className="w-10 h-1 rounded-full bg-gray-200 dark:bg-white/20 mx-auto mt-3 mb-4" />
+ <p className="text-xs font-normal uppercase tracking-[0.12em] text-gray-400 dark:text-white/40 px-5 mb-3">Filter by Property</p>
  <div className="px-3 pb-4 space-y-1 max-h-[60vh] overflow-y-auto">
  {[{ name: 'all', location: '', count: documents.length }, ...properties].map((p) => (
  <button
  key={p.name}
  onClick={() => { setSelectedProperty(p.name); setShowPropertyFilter(false); }}
- className={`w-full flex items-center justify-between px-3 py-3 rounded-xl transition-all
- ${selectedProperty === p.name
- ? 'bg-brand-navy text-white'
- : 'text-[#0F172A] dark:text-white active:bg-[#F8FAFC] dark:active:bg-white/5'
+ className={`w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all ${
+ selectedProperty === p.name ? 'bg-brand-primary text-white' : 'text-gray-900 dark:text-white active:bg-gray-50 dark:active:bg-white/5'
  }`}
  >
  <div className="flex items-center gap-3">
- <div className={`w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 ${
- selectedProperty === p.name ? 'bg-white/20' : 'bg-[#F1F5F9] dark:bg-white/5'
- }`}>
- {p.name === 'all'
- ? <FolderOpen className="w-4 h-4" />
- : <Building2 className="w-4 h-4" />
- }
+ <div className={`w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 ${selectedProperty === p.name ? 'bg-white/20' : 'bg-gray-100 dark:bg-white/5'}`}>
+ {p.name === 'all' ? <FolderOpen className="w-4 h-4" strokeWidth={1.5} /> : <Building2 className="w-4 h-4" strokeWidth={1.5} />}
  </div>
  <div className="text-left">
- <p className="text-sm font-normal">
- {p.name === 'all' ? 'All Properties' : p.name}
- </p>
- {p.location && (
- <p className={`text-xs ${selectedProperty === p.name ? 'text-white/60' : 'text-[#94A3B8] dark:text-white/40'}`}>
- {p.location}
- </p>
- )}
+ <p className="text-sm font-normal">{p.name === 'all' ? 'All Properties' : p.name}</p>
+ {p.location && <p className={`text-xs ${selectedProperty === p.name ? 'text-white/60' : 'text-gray-400 dark:text-white/40'}`}>{p.location}</p>}
  </div>
  </div>
- <span className={`text-xs font-normal ${selectedProperty === p.name ? 'text-brand-gold' : 'text-[#94A3B8] dark:text-white/40'}`}>
- {p.count}
- </span>
+ <span className={`text-xs font-normal ${selectedProperty === p.name ? 'text-white/70' : 'text-gray-400 dark:text-white/40'}`}>{p.count}</span>
  </button>
  ))}
  </div>
@@ -639,17 +534,17 @@ export function DocumentVault() {
  <div className="hidden md:block">
 
  {/* Header */}
- <div className="border-b border-[#E2E8F0] dark:border-white/[0.06] bg-white dark:bg-card">
+ <div className="border-b border-gray-200 dark:border-white/[0.06] bg-white dark:bg-card">
  <div className="max-w-[1200px] mx-auto container-padding py-5 md:py-6">
  <div className="flex items-center justify-between gap-4">
  <div>
  <div className="text-xs font-normal tracking-[0.12em] uppercase text-brand-gold mb-2">
  Secure Document Vault
  </div>
- <h1 className="text-h1 font-normal tracking-tight text-[#0F172A] dark:text-white">
+ <h1 className="text-h1 font-normal tracking-tight text-gray-900 dark:text-white">
  My Documents
  </h1>
- <p className="text-small text-[#475569] dark:text-white/50 mt-1">
+ <p className="text-small text-gray-600 dark:text-white/50 mt-1">
  Store and manage all your property documents securely
  </p>
  </div>
@@ -665,17 +560,17 @@ export function DocumentVault() {
  <div className="max-w-[1200px] mx-auto container-padding py-6 md:py-8">
 
  {/* Search and Filters */}
- <div className="mb-6 md:mb-8 space-y-3 md:space-y-4">
+ <div className="mb-6 md:mb-8 space-y-4 md:space-y-4">
  {/* Search Bar */}
- <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3 md:gap-4">
+ <div className="flex flex-col md:flex-row items-stretch md:items-center gap-4 md:gap-4">
  <div className="flex-1 relative">
- <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#94A3B8] dark:text-white/40 z-10" />
+ <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-white/40 z-10" />
  <input
  type="text"
  placeholder="Search documents or properties..."
  value={searchQuery}
  onChange={(e) => setSearchQuery(e.target.value)}
- className="w-full pl-12 pr-4 py-3 md:py-3.5 bg-white/80 dark:bg-white/[0.03] border border-[#E2E8F0] dark:border-white/[0.08] rounded-xl text-small text-[#0F172A] dark:text-white placeholder:text-[#94A3B8] dark:placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-brand-navy/20 backdrop-blur-xl transition-all"
+ className="w-full pl-12 pr-4 py-3 md:py-3.5 bg-white/80 dark:bg-white/[0.03] shadow-card rounded-xl text-small text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-brand-navy/20 backdrop-blur-xl transition-all"
  />
  </div>
  <button
@@ -697,7 +592,7 @@ export function DocumentVault() {
  className={`w-full sm:w-auto px-4 py-2.5 rounded-xl text-small font-normal transition-all flex items-center justify-between sm:justify-start gap-2 ${
  selectedProperty !== 'all'
  ? 'bg-brand-primary text-white'
- : 'bg-white/80 dark:bg-white/[0.03] border border-[#E2E8F0] dark:border-white/[0.08] text-[#0F172A] dark:text-white'
+ : 'bg-white/80 dark:bg-white/[0.03] shadow-card text-gray-900 dark:text-white'
  }`}
  >
  <div className="flex items-center gap-2">
@@ -711,20 +606,20 @@ export function DocumentVault() {
  <>
  <div className="fixed inset-0 bg-brand-navy/40 z-[55]" onClick={() => setShowPropertyFilter(false)} />
  <div className="fixed inset-0 flex items-center justify-center z-[60] p-4">
- <div className="bg-white/95 dark:bg-card/95 backdrop-blur-xl border border-[#E2E8F0] dark:border-white/[0.08] rounded-xl overflow-hidden w-full max-w-[400px]">
- <div className="p-3 border-b border-[#E2E8F0] dark:border-white/[0.06]">
- <div className="text-caption tracking-[0.1em] uppercase text-[#94A3B8] dark:text-white/40 font-normal mb-3 px-2">
+ <div className="bg-white/95 dark:bg-card/95 backdrop-blur-xl shadow-card rounded-xl overflow-hidden w-full max-w-[400px]">
+ <div className="p-3 border-b border-gray-200 dark:border-white/[0.06]">
+ <div className="text-caption tracking-[0.1em] uppercase text-gray-400 dark:text-white/40 font-normal mb-3 px-2">
  Filter by Property
  </div>
  <button
  onClick={() => { setSelectedProperty('all'); setShowPropertyFilter(false); }}
- className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all mb-1 ${selectedProperty === 'all' ? 'bg-brand-gold/10' : 'hover:bg-brand-navy/[0.02] dark:hover:bg-white/[0.02] text-[#0F172A] dark:text-white'}`}
+ className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all mb-1 ${selectedProperty === 'all' ? 'bg-brand-gold/8' : 'hover:bg-brand-navy/[0.02] dark:hover:bg-white/[0.02] text-gray-900 dark:text-white'}`}
  >
  <div className="flex items-center gap-3">
  <FolderOpen className="w-4 h-4" />
  <span className="text-small font-normal">All Properties</span>
  </div>
- <span className="text-caption text-[#94A3B8]">{documents.length}</span>
+ <span className="text-caption text-gray-400">{documents.length}</span>
  </button>
  </div>
  <div className="p-3 max-h-80 overflow-y-auto">
@@ -732,18 +627,18 @@ export function DocumentVault() {
  <button
  key={property.name}
  onClick={() => { setSelectedProperty(property.name); setShowPropertyFilter(false); }}
- className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all mb-1 ${selectedProperty === property.name ? 'bg-brand-gold/10' : 'hover:bg-brand-navy/[0.02] dark:hover:bg-white/[0.02]'}`}
+ className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all mb-1 ${selectedProperty === property.name ? 'bg-brand-gold/8' : 'hover:bg-brand-navy/[0.02] dark:hover:bg-white/[0.02]'}`}
  >
- <div className="flex items-center gap-3 flex-1 min-w-0">
+ <div className="flex items-center gap-4 flex-1 min-w-0">
  <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${selectedProperty === property.name ? 'bg-brand-navy' : 'bg-brand-navy/[0.04] dark:bg-white/[0.04]'}`}>
- <Building2 className={`w-5 h-5 ${selectedProperty === property.name ? 'text-white' : 'text-[#475569] dark:text-white/50'}`} />
+ <Building2 className={`w-5 h-5 ${selectedProperty === property.name ? 'text-white' : 'text-gray-600 dark:text-white/50'}`} />
  </div>
  <div className="text-left min-w-0 flex-1">
- <div className="text-small font-normal text-[#0F172A] dark:text-white truncate">{property.name}</div>
- <div className="text-caption text-[#475569] dark:text-white/50 truncate">{property.location}</div>
+ <div className="text-small font-normal text-gray-900 dark:text-white truncate">{property.name}</div>
+ <div className="text-caption text-gray-600 dark:text-white/50 truncate">{property.location}</div>
  </div>
  </div>
- <span className="text-caption text-[#94A3B8] ml-2 flex-shrink-0">{property.count}</span>
+ <span className="text-caption text-gray-400 ml-2 flex-shrink-0">{property.count}</span>
  </button>
  ))}
  </div>
@@ -760,7 +655,7 @@ export function DocumentVault() {
  className={`w-full sm:w-auto px-4 py-2.5 rounded-xl text-small font-normal transition-all flex items-center gap-2 ${
  selectedCategory !== 'all'
  ? 'bg-brand-primary text-white'
- : 'bg-white/80 dark:bg-white/[0.03] border border-[#E2E8F0] dark:border-white/[0.08] text-[#0F172A] dark:text-white'
+ : 'bg-white/80 dark:bg-white/[0.03] shadow-card text-gray-900 dark:text-white'
  }`}
  >
  <Filter className="w-4 h-4 flex-shrink-0" />
@@ -772,33 +667,33 @@ export function DocumentVault() {
  <>
  <div className="fixed inset-0 bg-brand-navy/40 z-40" onClick={() => setShowCategoryFilter(false)} />
  <div className="fixed inset-0 flex items-center justify-center z-[60] p-4">
- <div className="bg-white/95 dark:bg-card/95 backdrop-blur-xl border border-[#E2E8F0] dark:border-white/[0.08] rounded-xl overflow-hidden w-full max-w-[400px]">
+ <div className="bg-white/95 dark:bg-card/95 backdrop-blur-xl shadow-card rounded-xl overflow-hidden w-full max-w-[400px]">
  <div className="p-3">
- <div className="text-caption tracking-[0.1em] uppercase text-[#94A3B8] dark:text-white/40 font-normal mb-3 px-2">
+ <div className="text-caption tracking-[0.1em] uppercase text-gray-400 dark:text-white/40 font-normal mb-3 px-2">
  Filter by Category
  </div>
  <button
  onClick={() => { setSelectedCategory('all'); setShowCategoryFilter(false); }}
- className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all mb-1 ${selectedCategory === 'all' ? 'bg-brand-gold/10' : 'hover:bg-brand-navy/[0.02] dark:hover:bg-white/[0.02] text-[#0F172A] dark:text-white'}`}
+ className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all mb-1 ${selectedCategory === 'all' ? 'bg-brand-gold/8' : 'hover:bg-brand-navy/[0.02] dark:hover:bg-white/[0.02] text-gray-900 dark:text-white'}`}
  >
  <div className="flex items-center gap-3">
  <FileText className="w-4 h-4" />
  <span className="text-small font-normal">All Categories</span>
  </div>
- <span className="text-caption text-[#94A3B8]">{documents.length}</span>
+ <span className="text-caption text-gray-400">{documents.length}</span>
  </button>
- <div className="my-2 border-t border-[#E2E8F0] dark:border-white/[0.06]" />
+ <div className="my-2 border-t border-gray-200 dark:border-white/[0.06]" />
  {categories.filter(c => c.id !== 'all').map((category) => (
  <button
  key={category.id}
  onClick={() => { setSelectedCategory(category.id); setShowCategoryFilter(false); }}
- className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all mb-1 ${selectedCategory === category.id ? 'bg-brand-gold/10' : 'hover:bg-brand-navy/[0.02] dark:hover:bg-white/[0.02]'}`}
+ className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all mb-1 ${selectedCategory === category.id ? 'bg-brand-gold/8' : 'hover:bg-brand-navy/[0.02] dark:hover:bg-white/[0.02]'}`}
  >
  <div className="flex items-center gap-3">
  <div className={`w-2 h-2 rounded-full bg-${category.color}-500`} />
- <span className="text-small font-normal text-[#0F172A] dark:text-white">{category.label}</span>
+ <span className="text-small font-normal text-gray-900 dark:text-white">{category.label}</span>
  </div>
- <span className="text-caption text-[#94A3B8]">{category.count}</span>
+ <span className="text-caption text-gray-400">{category.count}</span>
  </button>
  ))}
  </div>
@@ -822,19 +717,19 @@ export function DocumentVault() {
 
  {/* View Mode Toggle */}
  <div className="flex items-center justify-end gap-4">
- <div className="text-small text-[#475569] dark:text-white/50">
- <span className="font-normal text-[#0F172A] dark:text-white">{filteredDocuments.length}</span> documents
+ <div className="text-small text-gray-600 dark:text-white/50">
+ <span className="font-normal text-gray-900 dark:text-white">{filteredDocuments.length}</span> documents
  </div>
- <div className="flex items-center gap-2 bg-white/80 dark:bg-white/[0.03] border border-[#E2E8F0] dark:border-white/[0.08] rounded-lg p-1">
+ <div className="flex items-center gap-2 bg-white/80 dark:bg-white/[0.03] shadow-card rounded-lg p-1">
  <button
  onClick={() => setViewMode('table')}
- className={`p-2 rounded transition-all ${viewMode === 'table' ? 'bg-brand-primary text-white' : 'text-[#475569] dark:text-white/50 hover:text-[#0F172A] dark:hover:text-white'}`}
+ className={`p-2 rounded transition-all ${viewMode === 'table' ? 'bg-brand-primary text-white' : 'text-gray-600 dark:text-white/50 hover:text-gray-900 dark:hover:text-white'}`}
  >
  <List className="w-4 h-4" />
  </button>
  <button
  onClick={() => setViewMode('grid')}
- className={`p-2 rounded transition-all ${viewMode === 'grid' ? 'bg-brand-primary text-white' : 'text-[#475569] dark:text-white/50 hover:text-[#0F172A] dark:hover:text-white'}`}
+ className={`p-2 rounded transition-all ${viewMode === 'grid' ? 'bg-brand-primary text-white' : 'text-gray-600 dark:text-white/50 hover:text-gray-900 dark:hover:text-white'}`}
  >
  <Grid3x3 className="w-4 h-4" />
  </button>
@@ -845,9 +740,9 @@ export function DocumentVault() {
 
  {/* Documents Display */}
  {viewMode === 'table' ? (
- <div className="bg-white/80 dark:bg-white/[0.03] backdrop-blur-xl border border-[#E2E8F0] dark:border-white/[0.08] rounded-xl overflow-hidden dark:">
+ <div className="bg-white/80 dark:bg-white/[0.03] backdrop-blur-xl shadow-card rounded-xl overflow-hidden dark:">
  {/* Table Header */}
- <div className="hidden md:block bg-brand-navy/[0.02] dark:bg-white/[0.02] border-b border-[#E2E8F0] dark:border-white/[0.06] px-6 py-4">
+ <div className="hidden md:block bg-brand-navy/[0.02] dark:bg-white/[0.02] border-b border-gray-200 dark:border-white/[0.06] px-6 py-4">
  <div className="grid grid-cols-12 gap-4 items-center">
  <div className="col-span-4 text-caption tracking-[0.1em] uppercase font-normal text-[#8E8E93]">Document Name</div>
  <div className="col-span-3 text-caption tracking-[0.1em] uppercase font-normal text-[#8E8E93]">Property</div>
@@ -865,20 +760,20 @@ export function DocumentVault() {
  className="px-6 py-4 hover:bg-brand-navy/[0.01] dark:hover:bg-white/[0.01] transition-colors group"
  >
  <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-start md:items-center">
- <div className="md:col-span-4 flex items-center gap-3 min-w-0">
+ <div className="md:col-span-4 flex items-center gap-4 min-w-0">
  <div className="flex-shrink-0">{getFileIcon(doc.type)}</div>
  <div className="min-w-0 flex-1">
  <div className="flex items-center gap-2">
- <div className="text-small font-normal text-[#0F172A] dark:text-white truncate">{doc.name}</div>
+ <div className="text-small font-normal text-gray-900 dark:text-white truncate">{doc.name}</div>
  {doc.isStarred && <Star className="w-3.5 h-3.5 text-yellow-500 fill-yellow-500 flex-shrink-0" />}
  </div>
- <div className="text-caption text-[#475569] dark:text-white/50">{doc.size} • {doc.type} • {doc.uploadDate}</div>
+ <div className="text-caption text-gray-600 dark:text-white/50">{doc.size} • {doc.type} • {doc.uploadDate}</div>
  </div>
  </div>
 
  <div className="md:col-span-3 min-w-0">
- <div className="text-small text-[#0F172A] dark:text-white truncate">{doc.propertyName}</div>
- <div className="text-caption text-[#475569] dark:text-white/50 truncate">{doc.propertyLocation}</div>
+ <div className="text-small text-gray-900 dark:text-white truncate">{doc.propertyName}</div>
+ <div className="text-caption text-gray-600 dark:text-white/50 truncate">{doc.propertyLocation}</div>
  </div>
 
  <div className="md:col-span-2">
@@ -889,21 +784,21 @@ export function DocumentVault() {
  </div>
 
  <div className="hidden md:block md:col-span-1">
- <span className="text-caption tracking-wider text-[#475569] dark:text-white/50">{doc.type}</span>
+ <span className="text-caption tracking-wider text-gray-600 dark:text-white/50">{doc.type}</span>
  </div>
 
  <div className="hidden md:block md:col-span-1">
  <div className="flex items-center gap-1.5">
  <Calendar className="w-3.5 h-3.5 text-[#8E8E93]" />
- <span className="text-caption text-[#0F172A] dark:text-white">{doc.uploadDate}</span>
+ <span className="text-caption text-gray-900 dark:text-white">{doc.uploadDate}</span>
  </div>
  </div>
 
  <div className="md:col-span-1 flex items-center justify-end gap-1 md:opacity-0 group-hover:opacity-100 transition-opacity">
- <button onClick={() => setViewingDocument(doc)} className="p-2 hover:bg-brand-gold/10 dark:hover:bg-brand-gold/20 rounded-lg transition-all">
+ <button onClick={() => setViewingDocument(doc)} className="p-2 hover:bg-brand-gold/8 dark:hover:bg-brand-gold/8 rounded-lg transition-all">
  <Eye className="w-4 h-4 text-brand-gold" />
  </button>
- <button className="p-2 hover:bg-brand-gold/10 dark:hover:bg-brand-gold/20 rounded-lg transition-all">
+ <button className="p-2 hover:bg-brand-gold/8 dark:hover:bg-brand-gold/8 rounded-lg transition-all">
  <Download className="w-4 h-4 text-brand-gold" />
  </button>
  </div>
@@ -911,7 +806,7 @@ export function DocumentVault() {
 
  {doc.verified && (
  <div className="mt-2 ml-8">
- <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-brand-gold/10 dark:bg-brand-gold/20 rounded text-caption font-normal text-emerald-700 dark:text-emerald-400 tracking-wide">
+ <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-brand-gold/8 dark:bg-brand-gold/8 rounded text-caption font-normal text-emerald-700 dark:text-emerald-400 tracking-wide">
  <CheckCircle2 className="w-3 h-3" />
  VERIFIED
  </div>
@@ -924,9 +819,9 @@ export function DocumentVault() {
  {filteredDocuments.length === 0 && (
  <div className="py-20 text-center">
  <div className="w-16 h-16 rounded-xl bg-brand-navy/5 dark:bg-white/5 flex items-center justify-center mx-auto mb-4">
- <FileText className="w-8 h-8 text-[#94A3B8] dark:text-white/40" />
+ <FileText className="w-8 h-8 text-gray-400 dark:text-white/40" />
  </div>
- <p className="text-small text-[#475569] dark:text-white/50 mb-1">No documents found</p>
+ <p className="text-small text-gray-600 dark:text-white/50 mb-1">No documents found</p>
  <p className="text-caption text-[#8E8E93]">Try adjusting your filters or search query</p>
  </div>
  )}
@@ -936,7 +831,7 @@ export function DocumentVault() {
  {filteredDocuments.map((doc) => (
  <div
  key={doc.id}
- className="group bg-white/80 dark:bg-white/[0.03] backdrop-blur-xl border border-[#E2E8F0] dark:border-white/[0.08] rounded-xl overflow-hidden hover:border-brand-gold/30 hover: dark:hover: transition-all duration-300"
+ className="group bg-white/80 dark:bg-white/[0.03] backdrop-blur-xl shadow-card rounded-xl overflow-hidden hover:border-brand-gold/12 hover: dark:hover: transition-all duration-200"
  >
  <div className="aspect-[4/3] bg-gradient-to-br from-black/[0.02] to-black/[0.04] dark:from-white/[0.02] dark:to-white/[0.04] relative flex items-center justify-center">
  <div className="scale-150">{getFileIcon(doc.type)}</div>
@@ -963,19 +858,19 @@ export function DocumentVault() {
  </div>
 
  <div className="p-4">
- <div className="text-small font-normal text-[#0F172A] dark:text-white mb-2 truncate">{doc.name}</div>
+ <div className="text-small font-normal text-gray-900 dark:text-white mb-2 truncate">{doc.name}</div>
  <div className="flex items-center gap-2 mb-3">
- <Building2 className="w-3.5 h-3.5 text-[#94A3B8] dark:text-white/40 flex-shrink-0" />
- <div className="text-caption text-[#475569] dark:text-white/50 truncate">{doc.propertyName}</div>
+ <Building2 className="w-3.5 h-3.5 text-gray-400 dark:text-white/40 flex-shrink-0" />
+ <div className="text-caption text-gray-600 dark:text-white/50 truncate">{doc.propertyName}</div>
  </div>
  <div className="flex items-center justify-between gap-2 mb-3">
  <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-caption font-normal tracking-wide uppercase bg-${getCategoryColor(doc.category)}-500/10 text-${getCategoryColor(doc.category)}-600 dark:text-${getCategoryColor(doc.category)}-400`}>
  <div className={`w-1 h-1 rounded-full bg-${getCategoryColor(doc.category)}-500`} />
  {doc.category}
  </span>
- <span className="text-caption text-[#94A3B8] dark:text-white/40 tracking-wider">{doc.type}</span>
+ <span className="text-caption text-gray-400 dark:text-white/40 tracking-wider">{doc.type}</span>
  </div>
- <div className="flex items-center justify-between text-caption text-[#475569] dark:text-white/50 pt-3 border-t border-[#E2E8F0] dark:border-white/[0.06]">
+ <div className="flex items-center justify-between text-caption text-gray-600 dark:text-white/50 pt-3 border-t border-gray-200 dark:border-white/[0.06]">
  <span>{doc.size}</span>
  <span>{doc.uploadDate}</span>
  </div>
@@ -1007,9 +902,9 @@ export function DocumentVault() {
  {filteredDocuments.length === 0 && (
  <div className="col-span-full py-20 text-center">
  <div className="w-16 h-16 rounded-xl bg-brand-navy/5 dark:bg-white/5 flex items-center justify-center mx-auto mb-4">
- <FileText className="w-8 h-8 text-[#94A3B8] dark:text-white/40" />
+ <FileText className="w-8 h-8 text-gray-400 dark:text-white/40" />
  </div>
- <p className="text-small text-[#475569] dark:text-white/50 mb-1">No documents found</p>
+ <p className="text-small text-gray-600 dark:text-white/50 mb-1">No documents found</p>
  <p className="text-caption text-[#8E8E93]">Try adjusting your filters or search query</p>
  </div>
  )}
@@ -1030,20 +925,20 @@ export function DocumentVault() {
  flex flex-col
  pb-[env(safe-area-inset-bottom)]">
  {/* Drag handle (mobile) */}
- <div className="w-10 h-1 rounded-full bg-[#E2E8F0] dark:bg-white/20 mx-auto mt-3 mb-1 md:hidden" />
+ <div className="w-10 h-1 rounded-full bg-gray-200 dark:bg-white/20 mx-auto mt-3 mb-1 md:hidden" />
 
  {/* Header */}
- <div className="flex items-center justify-between gap-3 px-5 py-4 border-b border-[#E2E8F0] dark:border-white/[0.06] flex-shrink-0">
- <div className="flex items-center gap-3 flex-1 min-w-0">
+ <div className="flex items-center justify-between gap-4 px-5 py-4 border-b border-gray-200 dark:border-white/[0.06] flex-shrink-0">
+ <div className="flex items-center gap-4 flex-1 min-w-0">
  <div className="flex-shrink-0">{getFileIcon(viewingDocument.type)}</div>
  <div className="flex-1 min-w-0">
- <div className="text-small font-normal text-[#0F172A] dark:text-white truncate">{viewingDocument.name}</div>
- <div className="text-caption text-[#475569] dark:text-white/50">{viewingDocument.size} • {viewingDocument.uploadDate}</div>
+ <div className="text-small font-normal text-gray-900 dark:text-white truncate">{viewingDocument.name}</div>
+ <div className="text-caption text-gray-600 dark:text-white/50">{viewingDocument.size} • {viewingDocument.uploadDate}</div>
  </div>
  </div>
  <button
  onClick={() => setViewingDocument(null)}
- className="w-9 h-9 rounded-full bg-[#F1F5F9] dark:bg-white/10 flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform"
+ className="w-9 h-9 rounded-full bg-gray-100 dark:bg-white/10 flex items-center justify-center flex-shrink-0 active:scale-95 transition-transform"
  >
  <X className="w-4 h-4 text-[#64748B] dark:text-white/60" />
  </button>
@@ -1054,14 +949,14 @@ export function DocumentVault() {
  <div className="w-full aspect-[1.414/1] bg-gradient-to-br from-black/[0.02] to-black/[0.04] dark:from-white/[0.02] dark:to-white/[0.04] rounded-2xl flex items-center justify-center">
  <div className="text-center">
  <div className="scale-[2.5] mb-8">{getFileIcon(viewingDocument.type)}</div>
- <div className="text-small text-[#475569] dark:text-white/50 mb-2">Document Preview</div>
- <div className="text-caption text-[#94A3B8] dark:text-white/40">Full preview available after download</div>
+ <div className="text-small text-gray-600 dark:text-white/50 mb-2">Document Preview</div>
+ <div className="text-caption text-gray-400 dark:text-white/40">Full preview available after download</div>
  </div>
  </div>
  </div>
 
  {/* Footer */}
- <div className="flex flex-col gap-3 px-5 py-4 border-t border-[#E2E8F0] dark:border-white/[0.06] bg-[#F8FAFC] dark:bg-white/[0.01] flex-shrink-0">
+ <div className="flex flex-col gap-4 px-5 py-4 border-t border-gray-200 dark:border-white/[0.06] bg-gray-50 dark:bg-white/[0.01] flex-shrink-0">
  {viewingDocument.verified && (
  <div className="flex items-center gap-2 px-4 py-2 bg-emerald-50 dark:bg-emerald-500/10 rounded-xl w-fit">
  <CheckCircle2 className="w-4 h-4 text-emerald-500" />
@@ -1069,7 +964,7 @@ export function DocumentVault() {
  </div>
  )}
  <div className="flex gap-2">
- <button className="flex-1 flex items-center justify-center gap-2 py-3 bg-white dark:bg-white/[0.05] border border-[#E2E8F0] dark:border-white/[0.08] text-[#0F172A] dark:text-white rounded-2xl text-sm font-normal active:scale-[0.98] transition-transform">
+ <button className="flex-1 flex items-center justify-center gap-2 py-3 bg-white dark:bg-white/[0.05] shadow-card text-gray-900 dark:text-white rounded-2xl text-sm font-normal active:scale-[0.98] transition-transform">
  <Download className="w-4 h-4" />
  Download
  </button>

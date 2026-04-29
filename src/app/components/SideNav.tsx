@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router';
-import { Building2, Plus, User, Briefcase, Home, FileText, LayoutDashboard } from 'lucide-react';
+import { Building2, Plus, User, Briefcase, Home, FileText, LayoutDashboard, FolderOpen } from 'lucide-react';
 import { useProperties } from '../contexts/PropertiesContext';
 import { VybeLogo } from './VybeLogo';
 
@@ -11,7 +11,7 @@ interface NavItem {
 
 const navItems: NavItem[] = [
  { icon: Home, label: 'My Properties', path: '/my-properties' },
- { icon: Building2, label: 'Case Management', path: '/properties' },
+ { icon: FolderOpen, label: 'Case Management', path: '/properties' },
  { icon: Briefcase, label: 'Services', path: '/services' },
  { icon: FileText, label: 'Documents', path: '/documents' },
  { icon: User, label: 'Profile', path: '/settings' },
@@ -42,52 +42,58 @@ export function SideNav() {
 
  return (
  <aside className="hidden md:flex fixed left-0 top-0 bottom-0 z-50
- flex-col w-[72px] overflow-visible
+ flex-col
+ w-[220px] lg:w-[72px]
+ overflow-visible
  bg-sidebar
- border-r border-white/[0.06]">
+ border-r border-white/[0.06]
+ transition-all duration-200">
 
  {/* ── Brand ── */}
- <div className="flex items-center justify-center h-16 flex-shrink-0
- border-b border-white/[0.06]">
- <Link to="/" className="flex items-center justify-center group">
+ <div className="flex items-center h-16 flex-shrink-0
+ border-b border-white/[0.06]
+ px-4 lg:justify-center lg:px-0">
+ <Link to="/" className="flex items-center gap-3 group">
  <VybeLogo
            width={44}
            height={27}
-           className="opacity-90 group-hover:opacity-100 transition-opacity"
+           className="flex-shrink-0 opacity-90 group-hover:opacity-100 transition-opacity"
            style={{ '--brand-primary': '#ffffff', '--brand-teal': '#ffffff' } as React.CSSProperties}
          />
+ <span className="lg:hidden text-white font-normal text-sm tracking-wide opacity-90">
+   VYBE
+ </span>
  </Link>
  </div>
 
  {/* ── Add Property CTA ── */}
  <div className="px-3 pt-4 pb-2 flex-shrink-0">
- <NavTip label="Add Property">
  <Link
  to="/upload"
- className="group relative flex items-center justify-center
- w-full h-11 rounded-xl
- bg-brand-gold hover:bg-brand-gold-hover
- transition-all duration-200 hover:-translate-y-0.5"
+ className="group relative flex items-center gap-3
+ w-full h-11 rounded-xl px-3 lg:justify-center lg:px-0
+ bg-white/15 hover:bg-white/25
+ transition-all duration-200"
  >
- <Plus className="w-5 h-5 text-brand-navy" strokeWidth={2.5} />
+ <Plus className="w-5 h-5 text-white flex-shrink-0" strokeWidth={1.5} />
+ <span className="lg:hidden text-white text-sm font-normal">Add Property</span>
  </Link>
- </NavTip>
  </div>
 
  <div className="h-px mx-4 bg-white/[0.06] mb-2" />
 
  {/* ── Nav Items ── */}
- <nav className="flex-1 flex flex-col gap-1 px-3 py-1">
+ <nav className="flex-1 flex flex-col gap-0.5 px-3 py-1">
  {displayItems.map((item) => (
  <NavTip key={item.path} label={item.label}>
  <Link
  to={item.path}
  className={`
- relative group flex items-center justify-center
- w-full h-11 rounded-xl
+ relative group flex items-center gap-3
+ w-full h-11 rounded-xl px-3 lg:justify-center lg:px-0
  transition-all duration-200
  ${isActive(item.path)
- ? 'bg-white text-brand-navy'
+ ? 'bg-white/95 text-brand-navy'
  : 'text-white/50 hover:text-white hover:bg-white/[0.08]'}
  `}
  >
@@ -96,11 +102,16 @@ export function SideNav() {
  rounded-r-full bg-brand-gold" />
  )}
  <item.icon
- className={`w-[20px] h-[20px] transition-all ${
+ className={`w-5 h-5 flex-shrink-0 transition-all ${
  isActive(item.path) ? 'text-brand-navy' : 'text-white/50 group-hover:text-white'
  }`}
- strokeWidth={isActive(item.path) ? 2.2 : 1.6}
+ strokeWidth={1.5}
  />
+ <span className={`lg:hidden text-sm font-normal truncate ${
+ isActive(item.path) ? 'text-brand-navy' : 'text-white/60 group-hover:text-white'
+ }`}>
+ {item.label}
+ </span>
  </Link>
  </NavTip>
  ))}

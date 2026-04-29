@@ -74,25 +74,25 @@ export function HelpSupport() {
  });
 
  return (
- <div className="min-h-screen bg-[#F8FAFC] dark:bg-background transition-colors duration-300">
+ <div className="min-h-screen bg-gray-50 dark:bg-background transition-colors duration-300">
 
  
  {/* Header */}
- <div className="border-b border-[#E2E8F0] dark:border-white/[0.06] bg-white dark:bg-card">
+ <div className="border-b border-gray-200 dark:border-white/[0.06] bg-white dark:bg-card">
  <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-6">
  <div className="flex items-center justify-between">
  <div>
  <Link
  to="/settings"
- className="flex items-center gap-2 text-small text-[#475569] dark:text-white/50 hover:text-[#0F172A] dark:hover:text-white mb-3 md:mb-4 transition-colors"
+ className="flex items-center gap-2 text-small text-gray-600 dark:text-white/50 hover:text-gray-900 dark:hover:text-white mb-3 md:mb-4 transition-colors"
  >
  <ArrowLeft className="w-4 h-4" />
  Back to Settings
  </Link>
- <div className="text-h1 tracking-tight text-[#0F172A] dark:text-white">
+ <div className="text-h1 tracking-tight text-gray-900 dark:text-white">
  Help & Support
  </div>
- <p className="text-small text-[#475569] dark:text-white/50 mt-1">
+ <p className="text-small text-gray-600 dark:text-white/50 mt-1">
  Get help and find answers to common questions
  </p>
  </div>
@@ -109,25 +109,25 @@ export function HelpSupport() {
  {/* Contact Cards - Left Column */}
  <div className="lg:col-span-1 space-y-6">
  {/* Contact Us Card */}
- <div className="rounded-xl bg-white/80 dark:bg-card backdrop-blur-xl border border-[#E2E8F0] dark:border-white/[0.08] p-4 md:p-5 lg:p-6 dark:">
- <div className="flex items-center gap-3 mb-6">
- <div className="w-12 h-12 rounded-xl bg-brand-gold/20 dark:bg-brand-gold/10 flex items-center justify-center">
+ <div className="rounded-xl bg-white/80 dark:bg-card backdrop-blur-xl shadow-card p-4 md:p-5 lg:p-6 dark:">
+ <div className="flex items-center gap-4 mb-6">
+ <div className="w-12 h-12 rounded-xl bg-brand-gold/8 dark:bg-brand-gold/8 flex items-center justify-center">
  <HeadphonesIcon className="w-6 h-6 text-brand-gold" />
  </div>
  <div>
- <div className="text-h2 tracking-tight font-normal text-[#0F172A] dark:text-white">
+ <div className="text-h2 tracking-tight font-normal text-gray-900 dark:text-white">
  Contact Us
  </div>
- <div className="text-small text-[#475569] dark:text-white/50">
+ <div className="text-small text-gray-600 dark:text-white/50">
  We're here to help
  </div>
  </div>
  </div>
 
  {/* Email */}
- <div className="mb-4 p-4 rounded-xl bg-white/60 dark:bg-white/[0.05] border border-[#E2E8F0] dark:border-white/[0.06] backdrop-blur-sm">
+ <div className="mb-4 p-4 rounded-xl bg-white/60 dark:bg-white/[0.05] shadow-card backdrop-blur-sm">
  <div className="flex items-start gap-4">
- <div className="w-10 h-10 rounded-lg bg-brand-gold/10 flex items-center justify-center flex-shrink-0">
+ <div className="w-10 h-10 rounded-lg bg-brand-gold/8 flex items-center justify-center flex-shrink-0">
  <Mail className="w-5 h-5 text-brand-gold" />
  </div>
  <div className="flex-1 min-w-0">
@@ -140,7 +140,7 @@ export function HelpSupport() {
  >
  support@vybe.in
  </a>
- <div className="text-caption text-[#475569] dark:text-white/50 mt-1">
+ <div className="text-caption text-gray-600 dark:text-white/50 mt-1">
  24-48 hour response time
  </div>
  </div>
@@ -148,9 +148,9 @@ export function HelpSupport() {
  </div>
 
  {/* Phone */}
- <div className="p-4 rounded-xl bg-white/60 dark:bg-white/[0.05] border border-[#E2E8F0] dark:border-white/[0.06] backdrop-blur-sm">
+ <div className="p-4 rounded-xl bg-white/60 dark:bg-white/[0.05] shadow-card backdrop-blur-sm">
  <div className="flex items-start gap-4">
- <div className="w-10 h-10 rounded-lg bg-brand-gold/10 flex items-center justify-center flex-shrink-0">
+ <div className="w-10 h-10 rounded-lg bg-brand-gold/8 flex items-center justify-center flex-shrink-0">
  <Phone className="w-5 h-5 text-brand-gold" />
  </div>
  <div className="flex-1">
@@ -163,7 +163,7 @@ export function HelpSupport() {
  >
  +91 80471 82000
  </a>
- <div className="text-caption text-[#475569] dark:text-white/50 mt-1">
+ <div className="text-caption text-gray-600 dark:text-white/50 mt-1">
  Mon-Fri, 9:00 AM - 6:00 PM IST
  </div>
  </div>
@@ -172,10 +172,10 @@ export function HelpSupport() {
  </div>
 
  {/* Resources Card */}
- <div className="rounded-xl bg-white/80 dark:bg-card backdrop-blur-xl border border-[#E2E8F0] dark:border-white/[0.08] p-4 md:p-5 lg:p-6 dark:">
+ <div className="rounded-xl bg-white/80 dark:bg-card backdrop-blur-xl shadow-card p-4 md:p-5 lg:p-6 dark:">
  <div className="flex items-center gap-2 mb-4">
  <BookOpen className="w-5 h-5 text-brand-gold" />
- <div className="text-body font-normal text-[#0F172A] dark:text-white">
+ <div className="text-body font-normal text-gray-900 dark:text-white">
  Helpful Resources
  </div>
  </div>
@@ -184,10 +184,10 @@ export function HelpSupport() {
  href="#" 
  className="block p-3 rounded-lg hover:bg-brand-navy/[0.02] dark:hover:bg-white/[0.02] transition-colors group"
  >
- <div className="text-small font-normal text-[#0F172A] dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+ <div className="text-small font-normal text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
  Getting Started Guide
  </div>
- <div className="text-caption text-[#475569] dark:text-white/50 mt-0.5">
+ <div className="text-caption text-gray-600 dark:text-white/50 mt-0.5">
  Learn the basics of VYBE
  </div>
  </a>
@@ -195,10 +195,10 @@ export function HelpSupport() {
  href="#" 
  className="block p-3 rounded-lg hover:bg-brand-navy/[0.02] dark:hover:bg-white/[0.02] transition-colors group"
  >
- <div className="text-small font-normal text-[#0F172A] dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+ <div className="text-small font-normal text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
  Video Tutorials
  </div>
- <div className="text-caption text-[#475569] dark:text-white/50 mt-0.5">
+ <div className="text-caption text-gray-600 dark:text-white/50 mt-0.5">
  Watch step-by-step guides
  </div>
  </a>
@@ -206,10 +206,10 @@ export function HelpSupport() {
  href="#" 
  className="block p-3 rounded-lg hover:bg-brand-navy/[0.02] dark:hover:bg-white/[0.02] transition-colors group"
  >
- <div className="text-small font-normal text-[#0F172A] dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+ <div className="text-small font-normal text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
  API Documentation
  </div>
- <div className="text-caption text-[#475569] dark:text-white/50 mt-0.5">
+ <div className="text-caption text-gray-600 dark:text-white/50 mt-0.5">
  For developers
  </div>
  </a>
@@ -219,29 +219,29 @@ export function HelpSupport() {
 
  {/* FAQ Section - Right Column */}
  <div className="lg:col-span-2">
- <div className="rounded-xl bg-white/80 dark:bg-card backdrop-blur-xl border border-[#E2E8F0] dark:border-white/[0.08] p-4 md:p-5 lg:p-6 dark:">
+ <div className="rounded-xl bg-white/80 dark:bg-card backdrop-blur-xl shadow-card p-4 md:p-5 lg:p-6 dark:">
  {/* FAQ Header */}
- <div className="flex items-center gap-3 mb-6">
+ <div className="flex items-center gap-4 mb-6">
  <MessageSquare className="w-6 h-6 text-brand-gold" />
- <div className="text-h1 tracking-tight font-normal text-[#0F172A] dark:text-white">
+ <div className="text-h1 tracking-tight font-normal text-gray-900 dark:text-white">
  Frequently Asked Questions
  </div>
  </div>
 
  {/* Search Bar */}
  <div className="mb-6 relative">
- <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#94A3B8] dark:text-white/40" />
+ <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-white/40" />
  <input
  type="text"
  placeholder="Search questions..."
  value={searchQuery}
  onChange={(e) => setSearchQuery(e.target.value)}
- className="w-full bg-white dark:bg-white/[0.02] border border-[#E2E8F0] dark:border-white/[0.08] rounded-xl pl-11 pr-4 py-2.5 text-small text-[#0F172A] dark:text-white placeholder:text-[#94A3B8] dark:placeholder:text-white/40 focus:outline-none focus:border-[#E2E8F0] dark:focus:border-white/20 transition-all"
+ className="w-full bg-white dark:bg-white/[0.02] shadow-card rounded-xl pl-11 pr-4 py-2.5 text-small text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/40 focus:outline-none focus:border-gray-200 dark:focus:border-white/20 transition-all"
  />
  </div>
 
  {/* Category Filter */}
- <div className="flex flex-wrap gap-2 mb-8 pb-6 border-b border-[#E2E8F0] dark:border-white/[0.06]">
+ <div className="flex flex-wrap gap-2 mb-8 pb-6 border-b border-gray-200 dark:border-white/[0.06]">
  {categories.map((category) => (
  <button
  key={category.id}
@@ -249,7 +249,7 @@ export function HelpSupport() {
  className={`px-4 py-2.5 rounded-lg text-small font-normal transition-all ${
  selectedCategory === category.id
  ? 'bg-brand-navy dark:bg-white text-white'
- : 'bg-brand-navy/[0.02] dark:bg-white/[0.02] text-[#475569] dark:text-white/50 hover:bg-brand-navy/[0.04] dark:hover:bg-white/[0.04] hover:text-[#0F172A] dark:hover:text-white'
+ : 'bg-brand-navy/[0.02] dark:bg-white/[0.02] text-gray-600 dark:text-white/50 hover:bg-brand-navy/[0.04] dark:hover:bg-white/[0.04] hover:text-gray-900 dark:hover:text-white'
  }`}
  >
  {category.label}
@@ -263,18 +263,18 @@ export function HelpSupport() {
  {filteredFAQs.map((faq) => (
  <div
  key={faq.id}
- className="rounded-xl bg-white/60 dark:bg-white/[0.02] border border-[#E2E8F0] dark:border-white/[0.06] overflow-hidden transition-all hover:border-emerald-500/30"
+ className="rounded-xl bg-white/60 dark:bg-white/[0.02] shadow-card overflow-hidden transition-all hover:border-emerald-500/30"
  >
  <button
  onClick={() => toggleFAQ(faq.id)}
  className="w-full flex items-start justify-between gap-4 p-5 text-left transition-colors hover:bg-brand-navy/[0.01] dark:hover:bg-white/[0.01]"
  >
  <div className="flex-1">
- <div className="text-small font-normal text-[#0F172A] dark:text-white">
+ <div className="text-small font-normal text-gray-900 dark:text-white">
  {faq.question}
  </div>
  </div>
- <div className="flex-shrink-0 w-6 h-6 rounded-full bg-brand-gold/10 flex items-center justify-center">
+ <div className="flex-shrink-0 w-6 h-6 rounded-full bg-brand-gold/8 flex items-center justify-center">
  {expandedFAQ === faq.id ? (
  <ChevronUp className="w-4 h-4 text-brand-gold" />
  ) : (
@@ -285,7 +285,7 @@ export function HelpSupport() {
  
  {expandedFAQ === faq.id && (
  <div className="px-5 pb-5 pt-0">
- <div className="text-small text-[#0F172A]/70 dark:text-white/70 leading-relaxed border-t border-[#E2E8F0] dark:border-white/[0.06] pt-4">
+ <div className="text-small text-gray-900/70 dark:text-white/70 leading-relaxed border-t border-gray-200 dark:border-white/[0.06] pt-4">
  {faq.answer}
  </div>
  </div>
@@ -296,9 +296,9 @@ export function HelpSupport() {
  ) : (
  <div className="text-center py-12">
  <div className="w-16 h-16 rounded-full bg-brand-navy/5 dark:bg-white/5 flex items-center justify-center mx-auto mb-4">
- <Search className="w-8 h-8 text-[#94A3B8] dark:text-white/40" />
+ <Search className="w-8 h-8 text-gray-400 dark:text-white/40" />
  </div>
- <p className="text-small text-[#475569] dark:text-white/50">
+ <p className="text-small text-gray-600 dark:text-white/50">
  No questions found matching your search.
  </p>
  <button
@@ -314,9 +314,9 @@ export function HelpSupport() {
  )}
 
  {/* Still Need Help */}
- <div className="mt-8 pt-6 border-t border-[#E2E8F0] dark:border-white/[0.06]">
+ <div className="mt-8 pt-6 border-t border-gray-200 dark:border-white/[0.06]">
  <div className="text-center">
- <div className="text-small text-[#475569] dark:text-white/50 mb-3">
+ <div className="text-small text-gray-600 dark:text-white/50 mb-3">
  Still need help? We're here for you.
  </div>
  <a

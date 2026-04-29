@@ -112,7 +112,7 @@ export function SwipeableCard({
  className={`flex flex-col items-center justify-center gap-1 h-full transition-opacity active:opacity-70 ${action.bgColor}`}
  >
  <span className={action.textColor}>{action.icon}</span>
- <span className={`text-[10px] font-normal tracking-wide ${action.textColor}`}>
+ <span className={`text-xs font-normal tracking-wide ${action.textColor}`}>
  {action.label}
  </span>
  </button>

@@ -14,13 +14,13 @@ export function PageHeader({ label, title, subtitle, className = '', action }: P
  <div className="flex items-start justify-between gap-4">
  <div className="flex-1">
  {label && (
- <div className="text-[10px] tracking-[0.05em] uppercase font-normal text-[#0F172A]/40 dark:text-white/40 mb-2">
+ <div className="text-xs tracking-[0.05em] uppercase font-normal text-gray-900/40 dark:text-white/40 mb-2">
  {label}
  </div>
  )}
  <h1 className="text-h1 mb-2">{title}</h1>
  {subtitle && (
- <p className="text-body text-[#0F172A]/60 dark:text-white/60">{subtitle}</p>
+ <p className="text-body text-gray-900/60 dark:text-white/60">{subtitle}</p>
  )}
  </div>
  {action && (

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Search, Sparkles, ArrowRight, FileText, PenTool, DollarSign, Compass, HardHat, Clipboard, Flower2, Map, Home, Clock, IndianRupee } from 'lucide-react';
+import { Search, Sparkles, ArrowRight, FileText, PenTool, DollarSign, Compass, HardHat, Clipboard, Flower2, Map, Home, Clock, IndianRupee, ChevronRight } from 'lucide-react';
 import { useNavigate, Link } from 'react-router';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { NotificationDropdown } from '../components/NotificationDropdown';
@@ -106,55 +106,44 @@ export function ServiceCatalog() {
  const selectedCategoryData = serviceCategories.find(cat => cat.id === selectedCategory);
 
  return (
- <div className="min-h-screen bg-[#F8FAFC] dark:bg-background transition-colors duration-300">
+ <div className="min-h-screen bg-gray-50 dark:bg-background transition-colors duration-300">
 
  {/* ─────────────────────────────────────────
  MOBILE LAYOUT (< md)
  ───────────────────────────────────────── */}
  <div className="md:hidden">
 
- {/* Navy Hero Header */}
- <div className="bg-brand-navy dark:bg-background px-4 pt-5 pb-0">
- {/* Decorative blur circles */}
- <div className="absolute top-16 right-4 w-24 h-24 rounded-full bg-brand-gold/10 blur-2xl pointer-events-none" />
- <div className="absolute top-24 left-8 w-16 h-16 rounded-full bg-white/5 blur-xl pointer-events-none" />
-
- {/* Title row */}
- <div className="flex items-start justify-between mb-4">
- <div>
- <p className="text-[10px] font-normal tracking-[0.14em] uppercase text-brand-gold mb-1">
- Marketplace
- </p>
- <h1 className="text-2xl font-normal tracking-tight text-white leading-tight">
- Services
- </h1>
- <p className="text-sm text-white/50 mt-0.5">
- {serviceCategories.reduce((a, c) => a + c.serviceCount, 0)} services across {serviceCategories.length} categories
+ {/* ── Hero ── */}
+ <div className="relative bg-gradient-to-br from-[#0B3360] via-brand-navy to-brand-primary/75 dark:from-background dark:to-background px-5 pt-6 pb-6 overflow-hidden">
+ <div className="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-brand-secondary/[0.05] blur-3xl pointer-events-none" />
+ <div className="relative">
+ <p className="text-xs tracking-[0.16em] uppercase text-white/40 mb-2">Marketplace</p>
+ <h1 className="text-3xl font-normal text-white tracking-tight leading-none">Services</h1>
+ <p className="text-sm text-white/50 mt-2">
+ {serviceCategories.reduce((a, c) => a + c.serviceCount, 0)} services · {serviceCategories.length} categories
  </p>
  </div>
  </div>
 
- {/* Search bar inside hero */}
- <div className="relative mb-4">
- <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40" />
+ {/* ── Search + category tabs ── */}
+ <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.05]">
+ <div className="px-4 pt-3 pb-0">
+ <div className="relative">
+ <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
  <input
  type="text"
  placeholder="Search services…"
  value={searchQuery}
  onChange={(e) => setSearchQuery(e.target.value)}
- className="w-full pl-10 pr-4 py-3 bg-white/[0.08] border border-white/[0.12] rounded-2xl
- text-sm text-white placeholder:text-white/40
- focus:outline-none focus:border-brand-gold/50 focus:bg-white/[0.12]
- transition-all"
+ className="w-full bg-gray-50 dark:bg-white/[0.04] rounded-xl
+ pl-10 pr-4 py-3 text-sm text-gray-900 dark:text-white
+ placeholder:text-gray-400 dark:placeholder:text-white/30
+ focus:outline-none focus:ring-2 focus:ring-brand-primary/20
+ transition-all duration-200"
  />
  </div>
-
- {/* Category chip rail — overlaps hero bottom */}
- <div className="relative -mx-4">
- {/* Right fade hint */}
- <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 z-10
- bg-gradient-to-l from-brand-navy to-transparent" />
- <div className="flex gap-2 overflow-x-auto px-4 pb-4 scrollbar-hide">
+ </div>
+ <div className="flex overflow-x-auto scrollbar-hide">
  {serviceCategories.map((cat) => {
  const isActive = selectedCategory === cat.id;
  const Icon = cat.icon;
@@ -162,178 +151,86 @@ export function ServiceCatalog() {
  <button
  key={cat.id}
  onClick={() => setSelectedCategory(cat.id)}
- className={`
- flex-shrink-0 flex items-center gap-1.5 px-3.5 py-2 rounded-full
- text-xs font-normal transition-all duration-200 whitespace-nowrap
- ${isActive
- ? 'bg-brand-gold text-brand-navy'
- : 'bg-white/[0.08] text-white/60 border border-white/[0.12]'
- }
- `}
+ className={`flex-shrink-0 flex items-center gap-1.5 px-4 py-3.5 text-xs font-normal whitespace-nowrap transition-all duration-200 border-b-2 ${
+ isActive ? 'text-brand-primary border-brand-primary' : 'text-gray-400 border-transparent'
+ }`}
  >
- <Icon className={`w-3.5 h-3.5 flex-shrink-0 ${isActive ? 'text-brand-navy' : 'text-white/50'}`} />
+ <Icon className="w-3.5 h-3.5 flex-shrink-0" strokeWidth={1.5} />
  {cat.name}
  </button>
  );
  })}
  </div>
  </div>
- </div>
 
- {/* Category context strip */}
- {selectedCategoryData && (
- <div className="px-4 py-3 bg-white dark:bg-card border-b border-[#F1F5F9] dark:border-white/[0.06]">
- <div className="flex items-center justify-between">
- <div>
- <p className="text-sm font-normal text-[#0F172A] dark:text-white">
- {selectedCategoryData.name}
- </p>
- <p className="text-xs text-[#94A3B8] dark:text-white/40 mt-0.5">
- {selectedCategoryData.description}
- </p>
+ {/* ── Service list ── */}
+ {filteredServices.length === 0 ? (
+ <div className="flex flex-col items-center justify-center py-16 px-6 text-center">
+ <div className="w-14 h-14 rounded-2xl bg-gray-100 dark:bg-white/5 flex items-center justify-center mb-4">
+ <Search className="w-6 h-6 text-gray-400" strokeWidth={1.5} />
  </div>
- <span className="text-xs font-normal text-brand-gold bg-brand-gold/10 px-2.5 py-1 rounded-full">
- {filteredServices.length} services
- </span>
+ <p className="text-base font-normal text-gray-900 dark:text-white mb-1">No services found</p>
+ <p className="text-sm text-gray-400">Try adjusting your search</p>
  </div>
- </div>
- )}
-
- {/* Service Cards — mobile */}
- <div className="px-4 py-4 space-y-3">
- {filteredServices.length > 0 ? (
- filteredServices.map((service) => {
+ ) : (
+ <div className="px-4 pt-5 pb-4">
+ <div className="bg-white dark:bg-card rounded-2xl overflow-hidden">
+ {filteredServices.map((service, idx) => {
  const primaryAttr = service.attributes[0];
+ const Icon = serviceCategories.find(c => c.id === service.categoryId)?.icon || FileText;
  return (
  <button
  key={service.id}
  onClick={() => handleServiceClick(service.id)}
- className="w-full text-left"
+ className={`w-full flex items-center gap-4 px-5 py-4 bg-white dark:bg-card active:bg-gray-50 dark:active:bg-white/[0.03] transition-colors duration-150 text-left ${
+ idx < filteredServices.length - 1 ? 'border-b border-gray-100 dark:border-white/[0.05]' : ''
+ }`}
  >
- <div className="bg-white dark:bg-card rounded-2xl overflow-hidden
- border border-[#F1F5F9] dark:border-white/[0.06]
- shadow-[0_2px_12px_rgba(var(--brand-navy-rgb),0.06)]
- active:scale-[0.99] transition-transform duration-100">
- <div className="flex">
- {/* Gold left accent */}
- <div className="w-[3px] bg-brand-gold flex-shrink-0" />
-
- <div className="flex-1 p-4">
- {/* Top: name + badge */}
- <div className="flex items-start justify-between gap-2 mb-2">
+ {/* Icon */}
+ <div className="w-10 h-10 rounded-xl bg-brand-primary/[0.08] dark:bg-brand-primary/[0.15] flex items-center justify-center flex-shrink-0">
+ <Icon className="w-5 h-5 text-brand-primary" strokeWidth={1.5} />
+ </div>
+ {/* Content */}
  <div className="flex-1 min-w-0">
- <p className="text-xs font-normal tracking-[0.1em] uppercase text-[#94A3B8] dark:text-white/40 mb-1">
- {service.categoryName}
- </p>
- <h3 className="text-sm font-normal text-[#0F172A] dark:text-white tracking-[-0.01em] leading-tight">
- {service.name}
- </h3>
- </div>
+ <div className="flex items-center gap-2 mb-0.5">
+ <h3 className="text-sm font-normal text-gray-900 dark:text-white truncate">{service.name}</h3>
  {service.badge && (
- <span className="flex-shrink-0 text-[10px] font-normal tracking-[0.06em] uppercase
- text-amber-600 dark:text-amber-400
- bg-amber-500/10 border border-amber-500/20
- px-2 py-0.5 rounded-lg">
- {service.badge}
- </span>
+ <span className="flex-shrink-0 text-xs text-amber-600 bg-amber-50 dark:bg-amber-500/10 dark:text-amber-400 px-1.5 py-0.5 rounded-md">{service.badge}</span>
  )}
  </div>
-
- {/* Description */}
- <p className="text-xs text-[#64748B] dark:text-white/50 leading-relaxed mb-3 line-clamp-2">
- {service.description}
- </p>
-
- {/* ETA + Price */}
+ <div className="flex items-center gap-2">
+ <span className="text-xs text-gray-400 dark:text-white/40 truncate">{service.categoryName}</span>
  {primaryAttr && (
- <div className="flex items-center gap-2 mb-3">
- <div className="flex items-center gap-1 px-2 py-1 bg-blue-50 dark:bg-blue-500/10 rounded-lg">
- <Clock className="w-3 h-3 text-blue-500 dark:text-blue-400 flex-shrink-0" />
- <span className="text-[10px] font-normal text-blue-600 dark:text-blue-400 uppercase tracking-[0.05em]">
- {primaryAttr.eta}
+ <>
+ <span className="text-gray-200 dark:text-white/10 flex-shrink-0">·</span>
+ <span className="text-xs text-gray-400 dark:text-white/30 flex-shrink-0 flex items-center gap-1">
+ <Clock className="w-3 h-3" strokeWidth={1.5} />{primaryAttr.eta}
  </span>
- </div>
- <div className="flex items-center gap-1 px-2 py-1 bg-emerald-50 dark:bg-emerald-500/10 rounded-lg">
- <IndianRupee className="w-3 h-3 text-emerald-500 dark:text-emerald-400 flex-shrink-0" />
- <span className="text-[10px] font-normal text-emerald-600 dark:text-emerald-400 uppercase tracking-[0.05em]">
- {primaryAttr.priceRange}
- </span>
- </div>
- {service.attributes.length > 1 && (
- <span className="text-[10px] font-normal text-brand-gold">
- +{service.attributes.length - 1} options
- </span>
+ </>
  )}
  </div>
- )}
-
- {/* Footer: deliverables + arrow */}
- <div className="flex items-center justify-between">
- {primaryAttr?.deliverables && primaryAttr.deliverables.length > 0 ? (
- <div className="flex items-center gap-1">
- <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0" />
- <span className="text-xs text-[#64748B] dark:text-white/40 truncate max-w-[180px]">
- {primaryAttr.deliverables[0]}
- </span>
  </div>
- ) : (
- <div />
- )}
- <div className="flex items-center gap-1 text-brand-gold flex-shrink-0">
- <span className="text-xs font-normal">View</span>
- <ArrowRight className="w-3.5 h-3.5" />
- </div>
- </div>
- </div>
- </div>
- </div>
+ <ChevronRight className="w-4 h-4 text-gray-300 dark:text-white/20 flex-shrink-0" strokeWidth={1.5} />
  </button>
  );
- })
- ) : (
- <div className="flex flex-col items-center justify-center py-16">
- <div className="w-14 h-14 rounded-full bg-[#F1F5F9] dark:bg-white/5 flex items-center justify-center mb-3">
- <Search className="w-6 h-6 text-[#94A3B8] dark:text-white/30" />
- </div>
- <p className="text-sm font-normal text-[#64748B] dark:text-white/50 mb-1">
- No services found
- </p>
- <p className="text-xs text-[#94A3B8] dark:text-white/30">
- Try adjusting your search
- </p>
- </div>
- )}
+ })}
  </div>
 
- {/* AI Recommendation Card */}
- <div className="px-4 pb-6">
- <div className="bg-gradient-to-br from-brand-navy to-brand-navy-hover rounded-2xl p-4
- border border-[#1a3a5c]
- shadow-[0_4px_24px_rgba(var(--brand-navy-rgb),0.20)]">
- <div className="flex items-start gap-3">
- <div className="w-10 h-10 rounded-xl bg-brand-gold/20 flex items-center justify-center flex-shrink-0">
- <Sparkles className="w-5 h-5 text-brand-gold" />
+ {/* AI nudge */}
+ <div className="mt-4 bg-brand-primary/[0.05] dark:bg-brand-primary/[0.08] rounded-2xl p-4 flex items-center gap-3">
+ <div className="w-9 h-9 rounded-xl bg-brand-primary/10 flex items-center justify-center flex-shrink-0">
+ <Sparkles className="w-4.5 h-4.5 text-brand-primary" strokeWidth={1.5} />
  </div>
  <div className="flex-1 min-w-0">
- <p className="text-sm font-normal text-white mb-1">
- Not sure which service?
- </p>
- <p className="text-xs text-white/50 leading-relaxed mb-3">
- Get AI-powered recommendations based on your portfolio.
- </p>
- <button
- onClick={() => navigate('/help-support')}
- className="flex items-center gap-1.5 px-3.5 py-2 bg-brand-gold text-brand-navy
- rounded-xl text-xs font-normal transition-all
- active:scale-95 shadow-[0_2px_12px_rgba(var(--brand-gold-rgb),0.4)]"
- >
- Get Recommendations
- <ArrowRight className="w-3.5 h-3.5" />
+ <p className="text-sm font-normal text-gray-900 dark:text-white">Not sure which service?</p>
+ <p className="text-xs text-gray-500 dark:text-white/40">Get AI-powered recommendations</p>
+ </div>
+ <button onClick={() => navigate('/help-support')} className="flex-shrink-0 flex items-center gap-1 text-xs text-brand-primary font-normal">
+ Ask <ArrowRight className="w-3.5 h-3.5" strokeWidth={1.5} />
  </button>
  </div>
  </div>
- </div>
- </div>
+ )}
 
  </div>
 
@@ -343,17 +240,17 @@ export function ServiceCatalog() {
  <div className="hidden md:block">
 
  {/* Header */}
- <div className="border-b border-[#E2E8F0] dark:border-white/[0.06] bg-white dark:bg-card">
+ <div className="border-b border-gray-200 dark:border-white/[0.06] bg-white dark:bg-card">
  <div className="max-w-[1200px] mx-auto container-padding py-5 md:py-6">
  <div className="flex items-center justify-between gap-4">
  <div>
  <div className="text-xs font-normal tracking-[0.12em] uppercase text-brand-gold mb-2">
  Service Catalog
  </div>
- <h1 className="text-h1 font-normal tracking-tight text-[#0F172A] dark:text-white">
+ <h1 className="text-h1 font-normal tracking-tight text-gray-900 dark:text-white">
  Real Estate Services
  </h1>
- <p className="text-small text-[#475569] dark:text-white/50 mt-1">
+ <p className="text-small text-gray-600 dark:text-white/50 mt-1">
  Comprehensive property services designed for UHNIs
  </p>
  </div>
@@ -370,10 +267,10 @@ export function ServiceCatalog() {
  {/* Service Categories - Horizontal Scroll */}
  <div className="mb-6 md:mb-8">
  <div className="flex items-center justify-between mb-3 md:mb-4">
- <h2 className="text-body md:text-body font-normal tracking-[-0.01em] text-[#0F172A] dark:text-white">
+ <h2 className="text-body md:text-body font-normal tracking-[-0.01em] text-gray-900 dark:text-white">
  Service Categories
  </h2>
- <div className="text-caption md:text-caption text-[#0F172A]/40 dark:text-white/40">
+ <div className="text-caption md:text-caption text-gray-900/40 dark:text-white/40">
  {serviceCategories.length} categories
  </div>
  </div>
@@ -382,8 +279,8 @@ export function ServiceCatalog() {
  <div className="relative -mx-4 md:-mx-8 px-4 md:px-8">
  {/* Right fade-edge scroll hint */}
  <div className="pointer-events-none absolute right-0 top-0 bottom-4 w-16 z-10
- bg-gradient-to-l from-[#F8FAFC] dark:from-[#0a0a0a] to-transparent" />
- <div className="flex gap-3 md:gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory">
+ bg-gradient-to-l from-gray-50 dark:from-[#0a0a0a] to-transparent" />
+ <div className="flex gap-4 md:gap-4 overflow-x-auto scrollbar-hide pb-4 scrollbar-hide snap-x snap-mandatory">
  {serviceCategories.map((category) => {
  const isSelected = selectedCategory === category.id;
  const Icon = category.icon;
@@ -395,11 +292,11 @@ export function ServiceCatalog() {
  className={`
  flex-shrink-0 w-[280px] md:w-[340px] snap-start
  bg-white dark:bg-card
- rounded-2xl p-5 md:p-6 cursor-pointer
- transition-all duration-300 text-left relative overflow-hidden
+ rounded-2xl p-5 md:p-7 cursor-pointer
+ transition-all duration-200 text-left relative overflow-hidden
  ${isSelected
  ? 'border-2 border-brand-navy shadow-[0_8px_32px_rgba(var(--brand-navy-rgb),0.20)] dark:border-brand-gold dark:shadow-[0_8px_32px_rgba(var(--brand-gold-rgb),0.20)]'
- : 'border border-[#E2E8F0] dark:border-white/[0.06] shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] hover:shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_60px_-5px_rgba(0,0,0,0.1)] hover:-translate-y-1'
+ : 'shadow-card shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] hover:shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_60px_-5px_rgba(0,0,0,0.1)] hover:-translate-y-1'
  }
  `}
  >
@@ -407,18 +304,18 @@ export function ServiceCatalog() {
  <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 dark:via-white/20 to-transparent" />
 
  {/* Category Name - Stronger hierarchy */}
- <h3 className="text-body md:text-h3 font-normal tracking-[-0.02em] text-[#0F172A] dark:text-white mb-3">
+ <h3 className="text-body md:text-h3 font-normal tracking-[-0.02em] text-gray-900 dark:text-white mb-3">
  {category.name}
  </h3>
 
  {/* Description */}
- <p className="text-small text-[#475569] dark:text-white/50 leading-relaxed mb-4 line-clamp-2">
+ <p className="text-small text-gray-600 dark:text-white/50 leading-relaxed mb-4 line-clamp-2">
  {category.description}
  </p>
 
  {/* Service Count */}
- <div className="flex items-center justify-between pt-3 border-t border-[#F1F5F9] dark:border-white/5">
- <span className="text-caption font-normal tracking-[0.05em] uppercase text-[#0F172A]/40 dark:text-white/40">
+ <div className="flex items-center justify-between pt-3 border-t border-gray-100 dark:border-white/5">
+ <span className="text-caption font-normal tracking-[0.05em] uppercase text-gray-900/40 dark:text-white/40">
  {category.serviceCount} services
  </span>
  {isSelected && (
@@ -436,10 +333,10 @@ export function ServiceCatalog() {
  {selectedCategoryData && (
  <div className="mb-6">
  <div className="mb-2">
- <h2 className="text-h1 font-normal tracking-tight text-[#0F172A] dark:text-white">
+ <h2 className="text-h1 font-normal tracking-tight text-gray-900 dark:text-white">
  {selectedCategoryData.name}
  </h2>
- <p className="text-small text-[#475569] dark:text-white/50">
+ <p className="text-small text-gray-600 dark:text-white/50">
  {selectedCategoryData.description}
  </p>
  </div>
@@ -449,20 +346,20 @@ export function ServiceCatalog() {
  {/* Search Bar */}
  <div className="mb-6">
  <div className="relative">
- <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#0F172A]/40 dark:text-white/40" />
+ <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-900/40 dark:text-white/40" />
  <input
  type="text"
  placeholder="Search services in this category..."
  value={searchQuery}
  onChange={(e) => setSearchQuery(e.target.value)}
- className="w-full pl-12 pr-4 py-4 bg-white dark:bg-card border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl text-small text-[#0F172A] dark:text-white placeholder:text-[#0F172A]/40 dark:placeholder:text-white/40 focus:outline-none focus:border-brand-navy/30 dark:focus:border-brand-gold/30"
+ className="w-full pl-12 pr-4 py-4 bg-white dark:bg-card shadow-card rounded-xl text-small text-gray-900 dark:text-white placeholder:text-gray-900/40 dark:placeholder:text-white/40 focus:outline-none focus:border-brand-navy/30 dark:focus:border-brand-gold/12"
  />
  </div>
  </div>
 
  {/* Results Count */}
  <div className="mb-6">
- <p className="text-small text-[#475569] dark:text-white/50">
+ <p className="text-small text-gray-600 dark:text-white/50">
  {filteredServices.length} service{filteredServices.length !== 1 ? 's' : ''} available
  </p>
  </div>
@@ -490,29 +387,29 @@ export function ServiceCatalog() {
  </div>
  ) : (
  <div className="flex flex-col items-center justify-center py-8 md:py-16">
- <div className="w-16 h-16 rounded-full bg-[#F8FAFC] dark:bg-white/5 flex items-center justify-center mb-4">
- <Search className="w-8 h-8 text-[#0F172A]/20 dark:text-white/20" />
+ <div className="w-16 h-16 rounded-full bg-gray-50 dark:bg-white/5 flex items-center justify-center mb-4">
+ <Search className="w-8 h-8 text-gray-900/20 dark:text-white/20" />
  </div>
- <p className="text-body text-[#0F172A]/60 dark:text-white/60 mb-2">
+ <p className="text-body text-gray-900/60 dark:text-white/60 mb-2">
  No services found
  </p>
- <p className="text-small text-[#0F172A]/40 dark:text-white/40">
+ <p className="text-small text-gray-900/40 dark:text-white/40">
  Try adjusting your search
  </p>
  </div>
  )}
 
  {/* Info Card */}
- <div className="mt-12 bg-gradient-to-br from-brand-navy/[0.04] to-brand-gold/[0.04] border border-brand-navy/10 dark:border-brand-gold/20 backdrop-blur-xl rounded-xl p-4 md:p-5 lg:p-6">
+ <div className="mt-12 bg-gradient-to-br from-brand-navy/[0.04] to-brand-gold/[0.04] border border-brand-navy/10 dark:border-brand-gold/20 backdrop-blur-xl rounded-xl p-5 md:p-5 lg:p-6">
  <div className="flex items-start gap-6">
- <div className="w-14 h-14 rounded-xl bg-brand-navy/[0.08] dark:bg-brand-gold/10 flex items-center justify-center flex-shrink-0">
+ <div className="w-14 h-14 rounded-xl bg-brand-navy/[0.08] dark:bg-brand-gold/8 flex items-center justify-center flex-shrink-0">
  <Sparkles className="w-7 h-7 text-brand-navy dark:text-brand-gold" />
  </div>
  <div className="flex-1">
- <h3 className="text-body font-normal tracking-[-0.01em] text-[#0F172A] dark:text-white mb-2">
+ <h3 className="text-body font-normal tracking-[-0.01em] text-gray-900 dark:text-white mb-2">
  Need help choosing the right service?
  </h3>
- <p className="text-small text-[#475569] dark:text-white/50 leading-relaxed mb-4">
+ <p className="text-small text-gray-600 dark:text-white/50 leading-relaxed mb-4">
  Our AI-powered recommendation engine can analyze your property portfolio and suggest the most relevant services based on your investment goals, property type, and current requirements.
  </p>
  <button

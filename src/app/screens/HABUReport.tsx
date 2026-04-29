@@ -8,42 +8,42 @@ export function HABUReport() {
  const property = mockPropertyCases.find(p => p.id === id);
 
  if (!property) {
- return <div className="min-h-screen bg-[#F8FAFC] dark:bg-background flex items-center justify-center text-[#94A3B8] dark:text-white/40">Property not found</div>;
+ return <div className="min-h-screen bg-gray-50 dark:bg-background flex items-center justify-center text-gray-400 dark:text-white/40">Property not found</div>;
  }
 
  const getRiskColor = (level: string) => {
  switch (level) {
- case 'low': return { bg: 'bg-brand-gold/10', text: 'text-emerald-400', border: 'border-brand-gold/20' };
+ case 'low': return { bg: 'bg-brand-gold/8', text: 'text-emerald-400', border: 'border-brand-gold/20' };
  case 'medium': return { bg: 'bg-yellow-500/10', text: 'text-yellow-400', border: 'border-yellow-500/20' };
  case 'high': return { bg: 'bg-red-500/10', text: 'text-red-400', border: 'border-red-500/20' };
- default: return { bg: 'bg-brand-navy/5 dark:bg-white/5', text: 'text-[#94A3B8] dark:text-white/40', border: 'border-[#E2E8F0] dark:border-white/[0.06]' };
+ default: return { bg: 'bg-brand-navy/5 dark:bg-white/5', text: 'text-gray-400 dark:text-white/40', border: 'border-gray-200 dark:border-white/[0.06]' };
  }
  };
 
  return (
- <div className="min-h-screen bg-[#F8FAFC] dark:bg-background transition-colors duration-300">
+ <div className="min-h-screen bg-gray-50 dark:bg-background transition-colors duration-300">
 
  
  {/* Header - Full Width */}
- <div className="border-b border-[#E2E8F0] dark:border-white/[0.06] bg-white dark:bg-card">
+ <div className="border-b border-gray-200 dark:border-white/[0.06] bg-white dark:bg-card">
  <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-6">
  <div className="flex items-center justify-between">
  {/* Left: Back Button + Page Title */}
  <div className="flex items-center gap-4">
  <Link 
  to={`/property/${id}`} 
- className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-brand-navy/5 dark:bg-white/5 hover:bg-brand-navy/10 dark:hover:bg-white/10 transition-colors text-[#475569] dark:text-white/50"
+ className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-brand-navy/5 dark:bg-white/5 hover:bg-brand-navy/10 dark:hover:bg-white/10 transition-colors text-gray-600 dark:text-white/50"
  >
  <ArrowLeft className="w-4 h-4" />
  </Link>
  <div>
- <h1 className="text-caption tracking-wider uppercase text-[#94A3B8] dark:text-white/50 mb-2">
+ <h1 className="text-caption tracking-wider uppercase text-gray-400 dark:text-white/50 mb-2">
  Intelligence Report
  </h1>
- <div className="text-h1 tracking-tight text-[#0F172A] dark:text-white">
+ <div className="text-h1 tracking-tight text-gray-900 dark:text-white">
  HABU Report
  </div>
- <p className="text-small text-[#475569] dark:text-white/60 mt-1">
+ <p className="text-small text-gray-600 dark:text-white/60 mt-1">
  High-value Analysis & Best-use Understanding
  </p>
  </div>
@@ -60,10 +60,10 @@ export function HABUReport() {
  <div className="max-w-[1200px] mx-auto container-padding py-6 md:py-8 lg:py-10">
  {/* Header */}
  <div className="mb-10">
- <h2 className="text-h1 tracking-tight text-[#0F172A] dark:text-white mb-2">
+ <h2 className="text-h1 tracking-tight text-gray-900 dark:text-white mb-2">
  Investment Strategy Comparison
  </h2>
- <p className="text-small text-[#475569] dark:text-white/50">
+ <p className="text-small text-gray-600 dark:text-white/50">
  Three optimized development pathways ranked by risk-adjusted returns
  </p>
  </div>
@@ -77,10 +77,10 @@ export function HABUReport() {
  return (
  <div
  key={strategy.id}
- className={`relative bg-white dark:bg-card border rounded-xl overflow-hidden transition-all duration-300 hover: ${
+ className={`relative bg-white dark:bg-card border rounded-xl overflow-hidden transition-all duration-200 hover: ${
  isRecommended 
  ? 'border-blue-500/30 dark:border-blue-400/30 shadow-lg' 
- : 'border-[#E2E8F0] dark:border-white/[0.06] hover:border-[#E2E8F0] dark:hover:border-white/10'
+ : 'border-gray-200 dark:border-white/[0.06] hover:border-gray-200 dark:hover:border-white/10'
  }`}
  >
  {/* Recommended Badge */}
@@ -99,25 +99,25 @@ export function HABUReport() {
  <div className={`p-4 md:p-5 lg:p-6 ${isRecommended ? 'pt-16' : ''}`}>
  {/* Strategy Number & Name */}
  <div className="mb-6">
- <div className="flex items-center gap-3 mb-3">
- <div className="w-8 h-8 rounded-lg bg-brand-navy/5 dark:bg-white/5 flex items-center justify-center text-small font-normal text-[#475569] dark:text-white/50">
+ <div className="flex items-center gap-4 mb-3">
+ <div className="w-8 h-8 rounded-lg bg-brand-navy/5 dark:bg-white/5 flex items-center justify-center text-small font-normal text-gray-600 dark:text-white/50">
  {index + 1}
  </div>
  <div className={`inline-flex px-2.5 py-1 rounded-md text-caption tracking-wide font-normal ${riskColors.bg} ${riskColors.text} border ${riskColors.border} capitalize`}>
  {strategy.riskLevel} Risk
  </div>
  </div>
- <h3 className="text-body tracking-tight text-[#0F172A] dark:text-white/95 font-normal mb-2">
+ <h3 className="text-body tracking-tight text-gray-900 dark:text-white/95 font-normal mb-2">
  {strategy.name}
  </h3>
- <p className="text-small text-[#475569] dark:text-white/50 leading-relaxed">
+ <p className="text-small text-gray-600 dark:text-white/50 leading-relaxed">
  {strategy.description}
  </p>
  </div>
 
  {/* ROI - Prominent Display */}
- <div className="mb-6 pb-6 border-b border-[#E2E8F0] dark:border-white/[0.06]">
- <div className="text-caption text-[#94A3B8] dark:text-white/40 tracking-wider uppercase mb-2">
+ <div className="mb-6 pb-6 border-b border-gray-200 dark:border-white/[0.06]">
+ <div className="text-caption text-gray-400 dark:text-white/40 tracking-wider uppercase mb-2">
  Expected ROI
  </div>
  <div className="flex items-baseline gap-2">
@@ -142,10 +142,10 @@ export function HABUReport() {
  {/* Capital Required */}
  <div className="flex items-center justify-between">
  <div className="flex items-center gap-2">
- <DollarSign className="w-4 h-4 text-[#94A3B8] dark:text-white/40" />
- <span className="text-caption text-[#475569] dark:text-white/50">Capital Required</span>
+ <DollarSign className="w-4 h-4 text-gray-400 dark:text-white/40" />
+ <span className="text-caption text-gray-600 dark:text-white/50">Capital Required</span>
  </div>
- <span className="text-small font-normal text-[#0F172A] dark:text-white/95">
+ <span className="text-small font-normal text-gray-900 dark:text-white/95">
  {strategy.capitalRequired}
  </span>
  </div>
@@ -153,10 +153,10 @@ export function HABUReport() {
  {/* Timeline */}
  <div className="flex items-center justify-between">
  <div className="flex items-center gap-2">
- <Building2 className="w-4 h-4 text-[#94A3B8] dark:text-white/40" />
- <span className="text-caption text-[#475569] dark:text-white/50">Timeline</span>
+ <Building2 className="w-4 h-4 text-gray-400 dark:text-white/40" />
+ <span className="text-caption text-gray-600 dark:text-white/50">Timeline</span>
  </div>
- <span className="text-small font-normal text-[#0F172A] dark:text-white/95">
+ <span className="text-small font-normal text-gray-900 dark:text-white/95">
  {strategy.timeline}
  </span>
  </div>
@@ -164,10 +164,10 @@ export function HABUReport() {
  {/* Effort Level */}
  <div className="flex items-center justify-between">
  <div className="flex items-center gap-2">
- <Zap className="w-4 h-4 text-[#94A3B8] dark:text-white/40" />
- <span className="text-caption text-[#475569] dark:text-white/50">Management Effort</span>
+ <Zap className="w-4 h-4 text-gray-400 dark:text-white/40" />
+ <span className="text-caption text-gray-600 dark:text-white/50">Management Effort</span>
  </div>
- <span className="text-small font-normal text-[#0F172A] dark:text-white/95">
+ <span className="text-small font-normal text-gray-900 dark:text-white/95">
  {strategy.effort}
  </span>
  </div>
@@ -178,8 +178,8 @@ export function HABUReport() {
  to={`/property/${id}/strategy/${strategy.id}/assignment`}
  className={`w-full flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-small tracking-wide transition-all ${
  isRecommended
- ? 'bg-brand-navy dark:bg-white text-white dark:text-[#0F172A] hover:bg-brand-navy/90 dark:hover:bg-white/90 font-normal'
- : 'bg-brand-navy/5 dark:bg-white/5 text-[#0F172A] dark:text-white/95 hover:bg-brand-navy/10 dark:hover:bg-white/10 border border-[#E2E8F0] dark:border-white/[0.06]'
+ ? 'bg-brand-navy dark:bg-white text-white dark:text-gray-900 hover:bg-brand-navy/90 dark:hover:bg-white/90 font-normal'
+ : 'bg-brand-navy/5 dark:bg-white/5 text-gray-900 dark:text-white/95 hover:bg-brand-navy/10 dark:hover:bg-white/10 shadow-card'
  }`}
  >
  Proceed with Strategy
@@ -192,21 +192,21 @@ export function HABUReport() {
  </div>
 
  {/* Comparison Matrix */}
- <div className="bg-white dark:bg-card border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl overflow-hidden">
- <div className="container-padding py-5 border-b border-[#E2E8F0] dark:border-white/[0.06] bg-brand-navy/[0.01] dark:bg-white/[0.01]">
- <h3 className="text-body tracking-tight text-[#0F172A] dark:text-white/95 font-normal">
+ <div className="bg-white dark:bg-card shadow-card rounded-xl overflow-hidden">
+ <div className="container-padding py-5 border-b border-gray-200 dark:border-white/[0.06] bg-brand-navy/[0.01] dark:bg-white/[0.01]">
+ <h3 className="text-body tracking-tight text-gray-900 dark:text-white/95 font-normal">
  Side-by-Side Comparison
  </h3>
  </div>
- <div className="overflow-x-auto">
+ <div className="overflow-x-auto scrollbar-hide">
  <table className="w-full">
  <thead>
- <tr className="border-b border-[#E2E8F0] dark:border-white/[0.06]">
- <th className="text-left container-padding py-4 md:py-6 text-caption text-[#94A3B8] dark:text-white/40 tracking-wider uppercase font-normal">
+ <tr className="border-b border-gray-200 dark:border-white/[0.06]">
+ <th className="text-left container-padding py-4 md:py-6 text-caption text-gray-400 dark:text-white/40 tracking-wider uppercase font-normal">
  Metric
  </th>
  {mockStrategies.map((strategy) => (
- <th key={strategy.id} className="text-center px-6 py-4 text-caption text-[#475569] dark:text-white/50 font-normal">
+ <th key={strategy.id} className="text-center px-6 py-4 text-caption text-gray-600 dark:text-white/50 font-normal">
  {strategy.name}
  </th>
  ))}
@@ -214,8 +214,8 @@ export function HABUReport() {
  </thead>
  <tbody>
  {/* ROI Row */}
- <tr className="border-b border-[#E2E8F0] dark:border-white/[0.06] hover:bg-brand-navy/[0.01] dark:hover:bg-white/[0.01]">
- <td className="container-padding py-5 text-small text-[#475569] dark:text-white/50">
+ <tr className="border-b border-gray-200 dark:border-white/[0.06] hover:bg-brand-navy/[0.01] dark:hover:bg-white/[0.01]">
+ <td className="container-padding py-5 text-small text-gray-600 dark:text-white/50">
  Expected ROI
  </td>
  {mockStrategies.map((strategy) => (
@@ -228,8 +228,8 @@ export function HABUReport() {
  </tr>
 
  {/* Risk Row */}
- <tr className="border-b border-[#E2E8F0] dark:border-white/[0.06] hover:bg-brand-navy/[0.01] dark:hover:bg-white/[0.01]">
- <td className="container-padding py-5 text-small text-[#475569] dark:text-white/50">
+ <tr className="border-b border-gray-200 dark:border-white/[0.06] hover:bg-brand-navy/[0.01] dark:hover:bg-white/[0.01]">
+ <td className="container-padding py-5 text-small text-gray-600 dark:text-white/50">
  Risk Level
  </td>
  {mockStrategies.map((strategy) => {
@@ -245,24 +245,24 @@ export function HABUReport() {
  </tr>
 
  {/* Capital Row */}
- <tr className="border-b border-[#E2E8F0] dark:border-white/[0.06] hover:bg-brand-navy/[0.01] dark:hover:bg-white/[0.01]">
- <td className="container-padding py-5 text-small text-[#475569] dark:text-white/50">
+ <tr className="border-b border-gray-200 dark:border-white/[0.06] hover:bg-brand-navy/[0.01] dark:hover:bg-white/[0.01]">
+ <td className="container-padding py-5 text-small text-gray-600 dark:text-white/50">
  Capital Required
  </td>
  {mockStrategies.map((strategy) => (
- <td key={strategy.id} className="text-center px-6 py-5 text-small text-[#0F172A] dark:text-white/95">
+ <td key={strategy.id} className="text-center px-6 py-5 text-small text-gray-900 dark:text-white/95">
  {strategy.capitalRequired}
  </td>
  ))}
  </tr>
 
  {/* Timeline Row */}
- <tr className="border-b border-[#E2E8F0] dark:border-white/[0.06] hover:bg-brand-navy/[0.01] dark:hover:bg-white/[0.01]">
- <td className="container-padding py-5 text-small text-[#475569] dark:text-white/50">
+ <tr className="border-b border-gray-200 dark:border-white/[0.06] hover:bg-brand-navy/[0.01] dark:hover:bg-white/[0.01]">
+ <td className="container-padding py-5 text-small text-gray-600 dark:text-white/50">
  Development Timeline
  </td>
  {mockStrategies.map((strategy) => (
- <td key={strategy.id} className="text-center px-6 py-5 text-small text-[#0F172A] dark:text-white/95">
+ <td key={strategy.id} className="text-center px-6 py-5 text-small text-gray-900 dark:text-white/95">
  {strategy.timeline}
  </td>
  ))}
@@ -270,11 +270,11 @@ export function HABUReport() {
 
  {/* Effort Row */}
  <tr className="hover:bg-brand-navy/[0.01] dark:hover:bg-white/[0.01]">
- <td className="container-padding py-5 text-small text-[#475569] dark:text-white/50">
+ <td className="container-padding py-5 text-small text-gray-600 dark:text-white/50">
  Management Effort
  </td>
  {mockStrategies.map((strategy) => (
- <td key={strategy.id} className="text-center px-6 py-5 text-small text-[#0F172A] dark:text-white/95">
+ <td key={strategy.id} className="text-center px-6 py-5 text-small text-gray-900 dark:text-white/95">
  {strategy.effort}
  </td>
  ))}

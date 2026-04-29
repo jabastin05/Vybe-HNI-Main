@@ -41,11 +41,11 @@ export function CaseDetail() {
 
  if (!caseItem) {
  return (
- <div className="flex min-h-screen bg-[#F8FAFC] dark:bg-background">
+ <div className="flex min-h-screen bg-gray-50 dark:bg-background">
 
  <div className="flex-1 flex items-center justify-center">
  <div className="text-center">
- <h2 className="text-h1 text-[#0F172A] dark:text-white mb-4">Case not found</h2>
+ <h2 className="text-h1 text-gray-900 dark:text-white mb-4">Case not found</h2>
  <Link 
  to="/properties"
  className="text-brand-gold hover:text-brand-gold-hover text-small font-normal"
@@ -122,90 +122,77 @@ export function CaseDetail() {
  case 'Property Service':
  return 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20';
  case 'Lease & Rent':
- return 'bg-[#F8FAFC] text-brand-navy border-[#E2E8F0] dark:bg-white/5 dark:text-white dark:border-white/10';
+ return 'bg-gray-50 text-brand-navy border-gray-200 dark:bg-white/5 dark:text-white dark:border-white/10';
  case 'Sell or Liquidate':
  return 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20';
  default:
- return 'bg-[#F8FAFC] dark:bg-background0/10 text-gray-600 dark:text-gray-400 border-gray-500/20';
+ return 'bg-gray-50 dark:bg-background0/10 text-gray-600 dark:text-gray-400 border-gray-500/20';
  }
  };
 
  return (
- <div className="flex min-h-screen bg-[#F8FAFC] dark:bg-background">
+ <div className="flex min-h-screen bg-gray-50 dark:bg-background">
 
 
  {/* Right Column */}
  <div className="flex-1 flex flex-col">
 
  {/* ── Mobile Hero (md:hidden) ──────────────────────── */}
- <div className="md:hidden bg-brand-navy dark:bg-background px-4 pt-5 pb-6 overflow-hidden relative">
- {/* Top bar: back + status */}
- <div className="flex items-center justify-between mb-4">
- <Link
- to={backUrl}
- className="flex items-center gap-1.5 text-white/70 hover:text-white transition-colors"
- >
- <ArrowLeft className="w-4 h-4" />
- <span className="text-small">Back</span>
+ <div className="md:hidden bg-gradient-to-br from-[#0B3360] via-brand-navy to-brand-primary/75 dark:from-background dark:to-background px-5 pt-6 pb-6 overflow-hidden relative">
+ {/* Back + status */}
+ <div className="flex items-center justify-between mb-5">
+ <Link to={backUrl} className="flex items-center gap-2 text-white/60 active:text-white transition-colors duration-200">
+ <ArrowLeft className="w-4 h-4" strokeWidth={1.5} />
+ <span className="text-sm">Cases</span>
  </Link>
- <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-caption font-normal border ${
+ <span className={`text-xs px-2.5 py-1 rounded-full ${
  caseItem.status === 'Open'
- ? 'bg-brand-gold/20 text-brand-gold border-brand-gold/30'
- : 'bg-white/10 text-white/70 border-white/20'
+ ? 'bg-brand-secondary/20 text-white'
+ : 'bg-white/10 text-white/60'
  }`}>
- {caseItem.status === 'Open'
- ? <Clock className="w-3 h-3" />
- : <CheckCircle2 className="w-3 h-3" />}
- <span>{caseItem.status}</span>
- </div>
+ {caseItem.status}
+ </span>
  </div>
 
- {/* Eyebrow */}
- <p className="text-[10px] tracking-[0.14em] uppercase text-brand-gold/80 mb-1">Case ID</p>
-
- {/* Title */}
- <h1 className="text-2xl font-normal tracking-tight text-white mb-3 leading-snug">
+ {/* Title + subtitle */}
+ <p className="text-xs tracking-[0.16em] uppercase text-white/40 mb-2">Case ID</p>
+ <h1 className="text-3xl font-normal tracking-tight text-white leading-none mb-2">
  {caseItem.caseId}
  </h1>
-
- {/* Info chips */}
- <div className="flex flex-wrap gap-2">
- <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.08] border border-white/[0.12]">
- <FileText className="w-3.5 h-3.5 text-white/60" />
- <span className="text-caption text-white/80">{caseItem.subService || caseItem.serviceRequested}</span>
- </div>
+ <div className="flex items-center gap-2 text-sm text-white/50">
+ <span>{caseItem.subService || caseItem.serviceRequested}</span>
  {caseItem.propertyLocation && (
- <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.08] border border-white/[0.12]">
- <MapPin className="w-3.5 h-3.5 text-white/60" />
- <span className="text-caption text-white/80">{caseItem.propertyLocation}</span>
- </div>
+ <>
+ <span className="text-white/20">·</span>
+ <span>{caseItem.propertyLocation}</span>
+ </>
  )}
  </div>
 
  {/* Decorative blob */}
- <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none" />
+ <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand-secondary/[0.05] rounded-full blur-3xl pointer-events-none" />
  </div>
 
  {/* ── Desktop Header (hidden md:block) ─────────────── */}
- <div className="hidden md:block border-b border-[#E2E8F0] dark:border-white/[0.06] bg-white dark:bg-card">
+ <div className="hidden md:block border-b border-gray-200 dark:border-white/[0.06] bg-white dark:bg-card">
  <div className="max-w-[1200px] mx-auto container-padding py-3 md:py-4">
  {/* Back Button */}
  <Link
  to={backUrl}
- className="flex items-center gap-2 text-small text-[#475569] dark:text-white/50
- hover:text-[#0F172A] dark:hover:text-white transition-colors mb-3 md:mb-4 w-fit"
+ className="flex items-center gap-2 text-small text-gray-600 dark:text-white/50
+ hover:text-gray-900 dark:hover:text-white transition-colors mb-3 md:mb-4 w-fit"
  >
  <ArrowLeft className="w-4 h-4" />
  <span>{backLabel}</span>
  </Link>
 
  {/* Header Content */}
- <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 md:gap-4">
+ <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 md:gap-4">
  {/* Left: Case Details */}
  <div className="flex-1 min-w-0">
  <div className="flex flex-col gap-2">
- <div className="flex items-baseline gap-3 flex-wrap">
- <h1 className="text-h2 tracking-tight text-[#0F172A] dark:text-white leading-none">
+ <div className="flex items-baseline gap-4 flex-wrap">
+ <h1 className="text-h2 tracking-tight text-gray-900 dark:text-white leading-none">
  {caseItem.caseId}
  </h1>
  <div className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg border text-caption font-normal flex-shrink-0 ${
@@ -219,7 +206,7 @@ export function CaseDetail() {
  </div>
 
  {/* Right: Action Buttons */}
- <div className="flex flex-row items-center gap-2 md:gap-3 flex-shrink-0">
+ <div className="flex flex-row items-center gap-2 md:gap-4 flex-shrink-0">
  {/* Chat Button */}
  <button
  onClick={() => navigate(`/case/${id}/chat`)}
@@ -242,8 +229,8 @@ export function CaseDetail() {
  {/* Status Badge */}
  <div className={`flex items-center justify-center gap-2 px-3 py-2 rounded-lg border text-small font-normal ${
  caseItem.status === 'Open'
- ? 'bg-[#F8FAFC] text-brand-navy border-[#E2E8F0] dark:bg-white/5 dark:text-white dark:border-white/10'
- : 'bg-brand-navy/5 dark:bg-white/5 text-[#475569] dark:text-white/50 border-[#E2E8F0] dark:border-white/[0.06]'
+ ? 'bg-gray-50 text-brand-navy border-gray-200 dark:bg-white/5 dark:text-white dark:border-white/10'
+ : 'bg-brand-navy/5 dark:bg-white/5 text-gray-600 dark:text-white/50 border-gray-200 dark:border-white/[0.06]'
  }`}>
  {caseItem.status === 'Open'
  ? <Clock className="w-4 h-4 flex-shrink-0" />
@@ -260,12 +247,12 @@ export function CaseDetail() {
  <div className="max-w-[1200px] mx-auto">
  {/* Case Progress */}
  {caseItem.milestones && caseItem.milestones.length > 0 && (
- <div className="bg-white dark:bg-card border border-[#F1F5F9] dark:border-white/[0.06] rounded-2xl p-3 md:p-5 lg:p-6 mb-6">
- <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6 md:mb-8">
- <h2 className="text-small font-normal text-[#0F172A] dark:text-white">
+ <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-3 md:p-5 lg:p-6 mb-6">
+ <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 md:mb-8">
+ <h2 className="text-small font-normal text-gray-900 dark:text-white">
  Case progress
  </h2>
- <div className="text-small text-[#475569] dark:text-white/50">
+ <div className="text-small text-gray-600 dark:text-white/50">
  {caseItem.progress || 0}% complete
  </div>
  </div>
@@ -296,10 +283,10 @@ export function CaseDetail() {
  onClick={() => handleMilestoneToggle(milestone.id)}
  disabled={isUpdating}
  className={`
- relative z-10 w-6 h-6 rounded-full flex-shrink-0 transition-all duration-300 mb-3
+ relative z-10 w-6 h-6 rounded-full flex-shrink-0 transition-all duration-200 mb-3
  ${milestone.status === 'completed'
  ? 'bg-brand-navy dark:bg-brand-gold cursor-pointer hover:scale-125'
- : 'bg-white dark:bg-card border-2 border-[#E2E8F0] dark:border-white/[0.06] cursor-pointer hover:border-brand-navy/40 dark:hover:border-brand-gold/40 hover:scale-110'
+ : 'bg-white dark:bg-card border-2 border-gray-200 dark:border-white/[0.06] cursor-pointer hover:border-brand-navy/40 dark:hover:border-brand-gold/15 hover:scale-110'
  }
  ${isUpdating ? 'opacity-50 cursor-not-allowed' : ''}
  `}
@@ -315,12 +302,12 @@ export function CaseDetail() {
  <div className="text-center max-w-[120px]">
  <div className={`text-caption mb-1 transition-colors leading-tight ${ 
  milestone.status === 'completed'
- ? 'text-[#0F172A] dark:text-white font-normal'
- : 'text-[#94A3B8] dark:text-white/40'
+ ? 'text-gray-900 dark:text-white font-normal'
+ : 'text-gray-400 dark:text-white/40'
  }`}>
  {milestone.title}
  </div>
- <div className="text-caption text-[#94A3B8] dark:text-white/40">
+ <div className="text-caption text-gray-400 dark:text-white/40">
  {milestone.date || 'Pending'}
  </div>
  </div>
@@ -347,10 +334,10 @@ export function CaseDetail() {
  onClick={() => handleMilestoneToggle(milestone.id)}
  disabled={isUpdating}
  className={`
- flex items-start gap-3 p-3 rounded-xl border transition-all
+ flex items-start gap-4 p-3 rounded-xl border transition-all
  ${milestone.status === 'completed'
- ? 'bg-brand-navy/5 dark:bg-white/5 border-[#E2E8F0] dark:border-white/[0.06]'
- : 'border-[#E2E8F0] dark:border-white/[0.06] hover:border-[#E2E8F0] dark:hover:border-white/20'
+ ? 'bg-brand-navy/5 dark:bg-white/5 border-gray-200 dark:border-white/[0.06]'
+ : 'border-gray-200 dark:border-white/[0.06] hover:border-gray-200 dark:hover:border-white/20'
  }
  ${isUpdating ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
  `}
@@ -359,7 +346,7 @@ export function CaseDetail() {
  w-5 h-5 rounded-full flex-shrink-0 transition-all mt-0.5
  ${milestone.status === 'completed'
  ? 'bg-brand-navy dark:bg-white'
- : 'bg-white dark:bg-card border-2 border-[#E2E8F0] dark:border-white/[0.06]'
+ : 'bg-white dark:bg-card border-2 border-gray-200 dark:border-white/[0.06]'
  }
  `}>
  {milestone.status === 'completed' && (
@@ -372,12 +359,12 @@ export function CaseDetail() {
  <div className="flex-1 text-left">
  <div className={`text-caption mb-0.5 transition-colors leading-tight ${
  milestone.status === 'completed'
- ? 'text-[#0F172A] dark:text-white font-normal'
- : 'text-[#94A3B8] dark:text-white/40'
+ ? 'text-gray-900 dark:text-white font-normal'
+ : 'text-gray-400 dark:text-white/40'
  }`}>
  {milestone.title}
  </div>
- <div className="text-caption text-[#94A3B8] dark:text-white/40">
+ <div className="text-caption text-gray-400 dark:text-white/40">
  {milestone.date || 'Pending'}
  </div>
  </div>
@@ -388,8 +375,8 @@ export function CaseDetail() {
  </div>
 
  {/* Info Message */}
- <div className="mt-6 pt-6 border-t border-[#E2E8F0] dark:border-white/[0.06]">
- <p className="text-caption text-[#94A3B8] dark:text-white/40">
+ <div className="mt-6 pt-6 border-t border-gray-200 dark:border-white/[0.06]">
+ <p className="text-caption text-gray-400 dark:text-white/40">
  💡 Click on any milestone to update its status
  </p>
  </div>
@@ -398,13 +385,13 @@ export function CaseDetail() {
 
  {/* HABU Report Preview Section (Only for closed HABU cases) */}
  {isHABU && caseItem.status === 'Closed' && caseItem.habuPlans && caseItem.habuPlans.length > 0 && (
- <div className="bg-white dark:bg-card border border-[#F1F5F9] dark:border-white/[0.06] rounded-2xl p-4 md:p-5 lg:p-6 mb-6">
+ <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5 md:p-5 lg:p-6 mb-6">
  <div className="mb-8 flex flex-col sm:flex-row sm:items-start justify-between gap-4">
  <div>
- <h2 className="text-body font-normal text-[#0F172A] dark:text-white mb-1">
+ <h2 className="text-body font-normal text-gray-900 dark:text-white mb-1">
  HABU Report Ready
  </h2>
- <p className="text-small text-[#475569] dark:text-white/50">
+ <p className="text-small text-gray-600 dark:text-white/50">
  Your High-value Analysis & Best-use Understanding report analysis is now available below
  </p>
  </div>
@@ -425,14 +412,14 @@ export function CaseDetail() {
  switch (theme) {
  case 'green':
  return {
- bg: 'bg-brand-gold/[0.08] dark:bg-brand-gold/10',
- border: 'border-brand-gold/30 dark:border-brand-gold/20',
- iconBg: 'bg-brand-gold/10',
+ bg: 'bg-brand-gold/[0.04] dark:bg-brand-gold/8',
+ border: 'border-brand-gold/12 dark:border-brand-gold/20',
+ iconBg: 'bg-brand-gold/8',
  iconColor: 'text-brand-gold dark:text-brand-gold',
- insightBg: 'bg-brand-gold/[0.12] dark:bg-brand-gold/[0.08]',
- insightBorder: 'border-brand-gold/30 dark:border-brand-gold/20',
- insightText: 'text-[#0F172A] dark:text-white',
- highlightBg: 'bg-brand-gold/10',
+ insightBg: 'bg-brand-gold/[0.06] dark:bg-brand-gold/[0.04]',
+ insightBorder: 'border-brand-gold/12 dark:border-brand-gold/20',
+ insightText: 'text-gray-900 dark:text-white',
+ highlightBg: 'bg-brand-gold/8',
  highlightText: 'text-brand-navy dark:text-brand-gold'
  };
  case 'pink':
@@ -461,14 +448,14 @@ export function CaseDetail() {
  };
  default:
  return {
- bg: 'bg-[#F8FAFC] dark:bg-background/80 dark:bg-brand-navy/[0.02] dark:bg-white/[0.02]/20',
+ bg: 'bg-gray-50 dark:bg-background/80 dark:bg-brand-navy/[0.02] dark:bg-white/[0.02]/20',
  border: 'border-gray-200/50 dark:border-gray-800/30',
- iconBg: 'bg-[#F8FAFC] dark:bg-background/10',
+ iconBg: 'bg-gray-50 dark:bg-background/10',
  iconColor: 'text-gray-600 dark:text-gray-400',
- insightBg: 'bg-[#F8FAFC] dark:bg-background/80 dark:bg-brand-navy/[0.02] dark:bg-white/[0.02]/20',
+ insightBg: 'bg-gray-50 dark:bg-background/80 dark:bg-brand-navy/[0.02] dark:bg-white/[0.02]/20',
  insightBorder: 'border-gray-200/50 dark:border-gray-800/30',
  insightText: 'text-gray-900 dark:text-gray-100',
- highlightBg: 'bg-[#F8FAFC] dark:bg-background/10',
+ highlightBg: 'bg-gray-50 dark:bg-background/10',
  highlightText: 'text-gray-700 dark:text-gray-300'
  };
  }
@@ -495,22 +482,22 @@ export function CaseDetail() {
  className={`border rounded-xl p-5 ${themeStyles.bg} ${themeStyles.border} relative`}
  >
  {/* Header */}
- <div className="flex items-start gap-3 mb-4">
+ <div className="flex items-start gap-4 mb-4">
  <div className={`w-8 h-8 rounded-xl ${themeStyles.iconBg} flex items-center justify-center flex-shrink-0`}>
  {getIcon(plan.icon)}
  </div>
  <div className="flex-1">
  <div className="flex items-center gap-2 mb-1">
- <span className="text-[10px] tracking-[0.05em] uppercase font-normal text-[#94A3B8] dark:text-white/40">
+ <span className="text-xs tracking-[0.05em] uppercase font-normal text-gray-400 dark:text-white/40">
  OPTION {plan.optionNumber}
  </span>
  {plan.badge === 'recommended' && (
- <span className="px-1.5 py-0.5 bg-brand-gold text-brand-navy text-[10px] font-normal tracking-wider uppercase rounded">
+ <span className="px-1.5 py-0.5 bg-brand-primary text-white text-xs font-normal tracking-wider uppercase rounded">
  RECOMMENDED
  </span>
  )}
  </div>
- <h3 className="text-small font-normal text-[#0F172A] dark:text-white leading-tight">
+ <h3 className="text-small font-normal text-gray-900 dark:text-white leading-tight">
  {plan.title}
  </h3>
  </div>
@@ -524,21 +511,21 @@ export function CaseDetail() {
  className={`p-3 rounded-xl ${
  metric.highlight 
  ? `${themeStyles.highlightBg} border ${themeStyles.border}` 
- : 'bg-white dark:bg-card border border-[#E2E8F0] dark:border-white/[0.06]'
+ : 'bg-white dark:bg-card shadow-card'
  }`}
  >
- <div className="text-[10px] tracking-[0.05em] uppercase font-normal text-[#94A3B8] dark:text-white/40 mb-1">
+ <div className="text-xs tracking-[0.05em] uppercase font-normal text-gray-400 dark:text-white/40 mb-1">
  {metric.label}
  </div>
  <div className={`text-small font-normal tracking-tight ${
  metric.highlight
  ? themeStyles.highlightText
- : 'text-[#0F172A] dark:text-white'
+ : 'text-gray-900 dark:text-white'
  }`}>
  {metric.value}
  </div>
  {metric.subtext && (
- <div className="text-caption text-[#475569] dark:text-white/50 mt-0.5">
+ <div className="text-caption text-gray-600 dark:text-white/50 mt-0.5">
  {metric.subtext}
  </div>
  )}
@@ -547,15 +534,15 @@ export function CaseDetail() {
  </div>
 
  {/* Insights Section */}
- <div className={`rounded-xl p-4 border ${themeStyles.insightBg} ${themeStyles.insightBorder}`}>
- <div className="text-[10px] tracking-[0.05em] uppercase font-normal mb-2"
+ <div className={`rounded-xl p-5 border ${themeStyles.insightBg} ${themeStyles.insightBorder}`}>
+ <div className="text-xs tracking-[0.05em] uppercase font-normal mb-2"
  style={{ color: plan.insights?.type === 'why' ? '#16a34a' : '#dc2626' }}>
  {plan.insights?.type === 'why' ? 'WHY THIS WORKS' : 'FOR MORE DETAILS DOWNLOAD HABU REPORT'}
  </div>
  <ul className={`space-y-1.5 ${themeStyles.insightText}`}>
  {plan.insights?.points?.map((point, index) => (
  <li key={index} className="flex items-start gap-2 text-caption">
- <span className="text-[#94A3B8] dark:text-white/40 mt-0.5">•</span>
+ <span className="text-gray-400 dark:text-white/40 mt-0.5">•</span>
  <span className="flex-1">{point}</span>
  </li>
  ))}
@@ -572,23 +559,23 @@ export function CaseDetail() {
  {/* Left Column - Main Info */}
  <div className="lg:col-span-2 space-y-6">
  {/* Property Information */}
- <div className="bg-white dark:bg-card border border-[#F1F5F9] dark:border-white/[0.06] rounded-2xl p-4 md:p-5 lg:p-6">
- <h2 className="text-base font-normal tracking-tight text-[#0F172A] dark:text-white mb-6">
+ <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5 md:p-5 lg:p-6">
+ <h2 className="text-base font-normal tracking-tight text-gray-900 dark:text-white mb-6">
  Property Information
  </h2>
  
  <div className="space-y-4">
  <div>
- <div className="text-caption text-[#94A3B8] dark:text-white/40 mb-1">Property Name</div>
- <div className="text-small font-normal text-[#0F172A] dark:text-white">
+ <div className="text-caption text-gray-400 dark:text-white/40 mb-1">Property Name</div>
+ <div className="text-small font-normal text-gray-900 dark:text-white">
  {caseItem.propertyName}
  </div>
  </div>
 
  <div>
- <div className="text-caption text-[#94A3B8] dark:text-white/40 mb-1">Location</div>
- <div className="flex items-center gap-2 text-small text-[#0F172A]/80 dark:text-white/80">
- <MapPin className="w-4 h-4 text-[#94A3B8] dark:text-white/40" />
+ <div className="text-caption text-gray-400 dark:text-white/40 mb-1">Location</div>
+ <div className="flex items-center gap-2 text-small text-gray-900/80 dark:text-white/80">
+ <MapPin className="w-4 h-4 text-gray-400 dark:text-white/40" />
  {caseItem.propertyLocation}
  </div>
  </div>
@@ -608,9 +595,9 @@ export function CaseDetail() {
 
  {/* Documents (Only for owned properties) */}
  {property && hasDocuments && (
- <div className="bg-white dark:bg-card border border-[#F1F5F9] dark:border-white/[0.06] rounded-2xl p-4 md:p-5 lg:p-6">
+ <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5 md:p-5 lg:p-6">
  <div className="flex items-center justify-between mb-6">
- <h2 className="text-base font-normal tracking-tight text-[#0F172A] dark:text-white">
+ <h2 className="text-base font-normal tracking-tight text-gray-900 dark:text-white">
  Linked Documents
  </h2>
  <Link
@@ -625,18 +612,18 @@ export function CaseDetail() {
  {property.documents?.slice(0, 5).map((doc) => (
  <div
  key={doc.id}
- className="flex items-center justify-between p-4 rounded-xl border border-[#E2E8F0] dark:border-white/[0.06]
- hover:border-brand-gold/30 hover:bg-[#F8FAFC] dark:hover:bg-white/[0.04] transition-all group"
+ className="flex items-center justify-between p-4 rounded-xl shadow-card
+ hover:border-brand-gold/12 hover:bg-gray-50 dark:hover:bg-white/[0.04] transition-all group"
  >
  <div className="flex items-center gap-3">
  <div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center">
  <FileText className="w-5 h-5 text-purple-500" />
  </div>
  <div>
- <div className="text-small font-normal text-[#0F172A] dark:text-white">
+ <div className="text-small font-normal text-gray-900 dark:text-white">
  {doc.name}
  </div>
- <div className="text-caption text-[#94A3B8] dark:text-white/40">
+ <div className="text-caption text-gray-400 dark:text-white/40">
  {doc.size}
  </div>
  </div>
@@ -644,7 +631,7 @@ export function CaseDetail() {
 
  <div className={`px-6 py-2.5 rounded-lg text-caption font-normal ${
  doc.status === 'verified'
- ? 'bg-[#F8FAFC] text-brand-navy dark:bg-white/5 dark:text-brand-gold'
+ ? 'bg-gray-50 text-brand-navy dark:bg-white/5 dark:text-brand-gold'
  : 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-400'
  }`}>
  {doc.status === 'verified' ? 'Verified' : 'Processing'}
@@ -657,9 +644,9 @@ export function CaseDetail() {
 
  {/* Case Documents (Documents attached directly to the case) */}
  {caseItem.documents && caseItem.documents.length > 0 && (
- <div className="bg-white dark:bg-card border border-[#F1F5F9] dark:border-white/[0.06] rounded-2xl p-4 md:p-5 lg:p-6">
+ <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5 md:p-5 lg:p-6">
  <div className="flex items-center justify-between mb-6">
- <h2 className="text-base font-normal tracking-tight text-[#0F172A] dark:text-white">
+ <h2 className="text-base font-normal tracking-tight text-gray-900 dark:text-white">
  Case Documents
  </h2>
  </div>
@@ -668,8 +655,8 @@ export function CaseDetail() {
  {caseItem.documents.map((doc) => (
  <div
  key={doc.id}
- className="flex items-center justify-between p-4 rounded-xl border border-[#E2E8F0] dark:border-white/[0.06]
- hover:border-brand-gold/30 hover:bg-[#F8FAFC] dark:hover:bg-white/[0.04] transition-all group cursor-pointer"
+ className="flex items-center justify-between p-4 rounded-xl shadow-card
+ hover:border-brand-gold/12 hover:bg-gray-50 dark:hover:bg-white/[0.04] transition-all group cursor-pointer"
  onClick={() => {
  // Trigger download
  const link = document.createElement('a');
@@ -685,16 +672,16 @@ export function CaseDetail() {
  <FileText className="w-5 h-5 text-purple-500" />
  </div>
  <div>
- <div className="text-small font-normal text-[#0F172A] dark:text-white">
+ <div className="text-small font-normal text-gray-900 dark:text-white">
  {doc.name}
  </div>
- <div className="text-caption text-[#94A3B8] dark:text-white/40">
+ <div className="text-caption text-gray-400 dark:text-white/40">
  {doc.size} • {doc.uploadedDate}
  </div>
  </div>
  </div>
 
- <Download className="w-4 h-4 text-[#94A3B8] dark:text-white/40 group-hover:text-brand-teal" />
+ <Download className="w-4 h-4 text-gray-400 dark:text-white/40 group-hover:text-brand-teal" />
  </div>
  ))}
  </div>
@@ -703,10 +690,10 @@ export function CaseDetail() {
 
  {/* Message when documents not available */}
  {!property && (
- <div className="bg-white dark:bg-card border border-[#F1F5F9] dark:border-white/[0.06] rounded-2xl p-4 md:p-5 lg:p-6">
+ <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5 md:p-5 lg:p-6">
  <div className="text-center py-6">
- <FileText className="w-12 h-12 text-[#94A3B8]/60 dark:text-white/20 mx-auto mb-3" />
- <p className="text-small text-[#475569] dark:text-white/60">
+ <FileText className="w-12 h-12 text-gray-400/60 dark:text-white/20 mx-auto mb-3" />
+ <p className="text-small text-gray-600 dark:text-white/60">
  Documents not available for non-owned properties
  </p>
  </div>
@@ -715,8 +702,8 @@ export function CaseDetail() {
 
  {/* Required Documents for Service */}
  {serviceRequirements.length > 0 && (
- <div className="bg-white dark:bg-card border border-[#F1F5F9] dark:border-white/[0.06] rounded-2xl p-4 md:p-5 lg:p-6">
- <h2 className="text-base font-normal tracking-tight text-[#0F172A] dark:text-white mb-6">
+ <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5 md:p-5 lg:p-6">
+ <h2 className="text-base font-normal tracking-tight text-gray-900 dark:text-white mb-6">
  Required Documents for Service
  </h2>
  
@@ -724,17 +711,17 @@ export function CaseDetail() {
  {serviceRequirements.map((requirement, index) => (
  <div
  key={index}
- className="flex items-start gap-3 p-4 rounded-xl border border-[#E2E8F0] dark:border-white/[0.06]
+ className="flex items-start gap-4 p-4 rounded-xl shadow-card
  bg-gradient-to-br from-orange-500/5 to-red-500/5"
  >
  <div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0">
  <Upload className="w-5 h-5 text-orange-600 dark:text-orange-400" />
  </div>
  <div className="flex-1">
- <div className="text-small font-normal text-[#0F172A] dark:text-white mb-1">
+ <div className="text-small font-normal text-gray-900 dark:text-white mb-1">
  {requirement}
  </div>
- <div className="text-caption text-[#475569] dark:text-white/50">
+ <div className="text-caption text-gray-600 dark:text-white/50">
  Required for case processing
  </div>
  </div>
@@ -747,8 +734,8 @@ export function CaseDetail() {
 
  {/* Info */}
  <div className="mt-4 p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl">
- <p className="text-caption text-[#475569] dark:text-white/50 leading-relaxed">
- <strong className="text-[#0F172A] dark:text-white">Note:</strong> Please ensure all required documents are uploaded to expedite the case processing. Contact your RM if you need assistance.
+ <p className="text-caption text-gray-600 dark:text-white/50 leading-relaxed">
+ <strong className="text-gray-900 dark:text-white">Note:</strong> Please ensure all required documents are uploaded to expedite the case processing. Contact your RM if you need assistance.
  </p>
  </div>
  </div>
@@ -758,8 +745,8 @@ export function CaseDetail() {
  {/* Right Column - Timeline & Metadata */}
  <div className="space-y-6">
  {/* Quick Actions */}
- <div className="bg-white dark:bg-card border border-[#F1F5F9] dark:border-white/[0.06] rounded-2xl p-4 md:p-5 lg:p-6">
- <h2 className="text-base font-normal tracking-tight text-[#0F172A] dark:text-white mb-4">
+ <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5 md:p-5 lg:p-6">
+ <h2 className="text-base font-normal tracking-tight text-gray-900 dark:text-white mb-4">
  Quick Actions
  </h2>
 
@@ -767,16 +754,16 @@ export function CaseDetail() {
  {/* Chat with RM - Featured Action */}
  <button
  onClick={() => navigate(`/case/${id}/chat`)}
- className="w-full flex items-center justify-between p-3 rounded-lg border-2 border-brand-gold/50 dark:border-brand-gold/30
+ className="w-full flex items-center justify-between p-3 rounded-lg border-2 border-brand-gold/15 dark:border-brand-gold/12
  bg-gradient-to-br from-brand-gold/[0.08] to-brand-gold/[0.04]
- hover:border-brand-gold hover:bg-brand-gold/[0.12] transition-all group relative"
+ hover:border-brand-gold hover:bg-brand-gold/[0.06] transition-all group relative"
  >
  <div className="flex items-center gap-3">
- <MessageCircle className="w-4 h-4 text-brand-gold dark:text-brand-gold group-hover:text-brand-teal" strokeWidth={2} />
- <span className="text-small text-brand-navy dark:text-brand-gold font-normal">Chat with RM</span>
+ <MessageCircle className="w-4 h-4 text-brand-gold dark:text-brand-gold group-hover:text-brand-teal" strokeWidth={1.5} />
+ <span className="text-small text-brand-primary font-normal">Chat with RM</span>
  </div>
  {caseItem.unreadMessages && caseItem.unreadMessages > 0 && (
- <span className="bg-brand-gold text-brand-navy text-caption font-normal 
+ <span className="bg-brand-primary text-white text-caption font-normal 
  rounded-full w-5 h-5 flex items-center justify-center">
  {caseItem.unreadMessages}
  </span>
@@ -786,41 +773,41 @@ export function CaseDetail() {
  {property && (
  <Link
  to={`/property/${property.id}/detail`}
- className="flex items-center justify-between p-3 rounded-lg border border-[#E2E8F0] dark:border-white/[0.06]
- hover:border-brand-gold/30 hover:bg-[#F8FAFC] dark:hover:bg-white/[0.06] transition-all group"
+ className="flex items-center justify-between p-3 rounded-lg shadow-card
+ hover:border-brand-gold/12 hover:bg-gray-50 dark:hover:bg-white/[0.06] transition-all group"
  >
  <div className="flex items-center gap-3">
- <Building2 className="w-4 h-4 text-[#94A3B8] dark:text-white/40 group-hover:text-brand-teal" />
- <span className="text-small text-[#0F172A] dark:text-white">View Property</span>
+ <Building2 className="w-4 h-4 text-gray-400 dark:text-white/40 group-hover:text-brand-teal" />
+ <span className="text-small text-gray-900 dark:text-white">View Property</span>
  </div>
- <ExternalLink className="w-3.5 h-3.5 text-[#94A3B8]/60 dark:text-white/20 group-hover:text-brand-teal" />
+ <ExternalLink className="w-3.5 h-3.5 text-gray-400/60 dark:text-white/20 group-hover:text-brand-teal" />
  </Link>
  )}
 
  {property && (
  <Link
  to={`/property/${property.id}/documents`}
- className="flex items-center justify-between p-3 rounded-lg border border-[#E2E8F0] dark:border-white/[0.06]
- hover:border-brand-gold/30 hover:bg-[#F8FAFC] dark:hover:bg-white/[0.06] transition-all group"
+ className="flex items-center justify-between p-3 rounded-lg shadow-card
+ hover:border-brand-gold/12 hover:bg-gray-50 dark:hover:bg-white/[0.06] transition-all group"
  >
  <div className="flex items-center gap-3">
- <FileText className="w-4 h-4 text-[#94A3B8] dark:text-white/40 group-hover:text-brand-teal" />
- <span className="text-small text-[#0F172A] dark:text-white">View Documents</span>
+ <FileText className="w-4 h-4 text-gray-400 dark:text-white/40 group-hover:text-brand-teal" />
+ <span className="text-small text-gray-900 dark:text-white">View Documents</span>
  </div>
- <ExternalLink className="w-3.5 h-3.5 text-[#94A3B8]/60 dark:text-white/20 group-hover:text-brand-teal" />
+ <ExternalLink className="w-3.5 h-3.5 text-gray-400/60 dark:text-white/20 group-hover:text-brand-teal" />
  </Link>
  )}
 
  <Link
  to="/services/catalog"
- className="flex items-center justify-between p-3 rounded-lg border border-[#E2E8F0] dark:border-white/[0.06]
- hover:border-brand-gold/30 hover:bg-[#F8FAFC] dark:hover:bg-white/[0.06] transition-all group"
+ className="flex items-center justify-between p-3 rounded-lg shadow-card
+ hover:border-brand-gold/12 hover:bg-gray-50 dark:hover:bg-white/[0.06] transition-all group"
  >
  <div className="flex items-center gap-3">
- <FileText className="w-4 h-4 text-[#94A3B8] dark:text-white/40 group-hover:text-brand-teal" />
- <span className="text-small text-[#0F172A] dark:text-white">Request New Service</span>
+ <FileText className="w-4 h-4 text-gray-400 dark:text-white/40 group-hover:text-brand-teal" />
+ <span className="text-small text-gray-900 dark:text-white">Request New Service</span>
  </div>
- <ExternalLink className="w-3.5 h-3.5 text-[#94A3B8]/60 dark:text-white/20 group-hover:text-brand-teal" />
+ <ExternalLink className="w-3.5 h-3.5 text-gray-400/60 dark:text-white/20 group-hover:text-brand-teal" />
  </Link>
  </div>
  </div>
@@ -829,7 +816,7 @@ export function CaseDetail() {
  <Link
  to="/services/catalog"
  className="block bg-gradient-to-br from-brand-navy to-brand-navy-hover
- rounded-2xl p-4 md:p-5 lg:p-6 relative overflow-hidden group
+ rounded-2xl p-5 md:p-5 lg:p-6 relative overflow-hidden group
  shadow-[0_8px_32px_rgba(var(--brand-navy-rgb),0.35)] hover:shadow-[0_12px_40px_rgba(var(--brand-navy-rgb),0.5)]
  transition-all hover:-translate-y-1 border border-white/[0.08]"
  >
@@ -840,7 +827,7 @@ export function CaseDetail() {
  <div className="relative z-10">
  <div className="flex items-start justify-between mb-4">
  <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
- <Plus className="w-6 h-6 text-white" strokeWidth={2.5} />
+ <Plus className="w-6 h-6 text-white" strokeWidth={1.5} />
  </div>
  <ArrowRight className="w-5 h-5 text-white/80 group-hover:text-white group-hover:translate-x-1 transition-all" />
  </div>

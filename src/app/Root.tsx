@@ -18,7 +18,7 @@ export function Root() {
  const showShell = useShouldShowShell();
 
  return (
- <div className="min-h-screen bg-[#F8FAFC] dark:bg-background transition-colors duration-300">
+ <div className="min-h-screen bg-gray-50 dark:bg-background transition-colors duration-300">
 
  {/* ── Desktop sidebar (md+) ── */}
  {showShell && <SideNav />}
@@ -42,7 +42,7 @@ export function Root() {
  md:pb-0 — no bottom offset on desktop
  */}
  <main className={showShell
- ? "md:pl-[72px] pt-16 md:pt-0 pb-[calc(88px+env(safe-area-inset-bottom))] md:pb-0"
+ ? "md:pl-[220px] lg:pl-[72px] pt-16 md:pt-0 pb-[calc(78px+env(safe-area-inset-bottom))] md:pb-0"
  : ""
  }>
  <Outlet />

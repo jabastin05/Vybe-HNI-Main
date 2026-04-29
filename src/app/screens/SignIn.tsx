@@ -7,7 +7,7 @@ import { VybeLogo } from '../components/VybeLogo';
 export function SignIn() {
  const navigate = useNavigate();
  const [step, setStep] = useState<'email' | 'verification'>('email');
- const [email, setEmail] = useState('arjun.mehta@mehtacapital.com');
+ const [email, setEmail] = useState('');
  const [verificationCode, setVerificationCode] = useState(['', '', '', '', '', '']);
  const [isLoading, setIsLoading] = useState(false);
  const [error, setError] = useState('');
@@ -65,21 +65,19 @@ export function SignIn() {
  };
 
  return (
- <div className="min-h-screen bg-[#F8FAFC] dark:bg-background transition-colors duration-300">
+ <div className="min-h-screen bg-gray-50 dark:bg-background transition-colors duration-300">
 
  {/* ── Top bar ── */}
  <div className="fixed top-0 left-0 right-0 z-50
  bg-white/90 dark:bg-brand-navy/90
  backdrop-blur-[30px]
- border-b border-[#E2E8F0] dark:border-white/[0.06]">
+ border-b border-gray-200 dark:border-white/[0.06]">
  <div className="max-w-[1200px] mx-auto container-padding py-4">
  <div className="flex items-center justify-between">
  <Link to="/" className="flex items-center">
  <VybeLogo width={72} height={44} />
  </Link>
- <div className="hidden md:block">
  <ThemeToggle />
- </div>
  </div>
  </div>
  </div>
@@ -92,7 +90,7 @@ export function SignIn() {
  {step === 'email' && (
  <>
  <div className="bg-white dark:bg-card
- border border-[#E2E8F0] dark:border-white/[0.06]
+ shadow-card
  rounded-2xl p-6 md:p-8
  shadow-[0_4px_24px_rgba(var(--brand-navy-rgb),0.08)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.4)]">
 
@@ -100,10 +98,10 @@ export function SignIn() {
  <div className="h-1 w-12 rounded-full bg-brand-gold mx-auto mb-6" />
 
  <div className="text-center mb-7">
- <h1 className="text-h1 font-normal tracking-tight text-[#0F172A] dark:text-white mb-2">
+ <h1 className="text-h1 font-normal tracking-tight text-gray-900 dark:text-white mb-2">
  Welcome Back
  </h1>
- <p className="text-small text-[#475569] dark:text-white/50">
+ <p className="text-small text-gray-600 dark:text-white/50">
  Sign in to your VYBE account
  </p>
  </div>
@@ -113,10 +111,10 @@ export function SignIn() {
  <button
  type="button"
  onClick={() => handleSSOSignIn('google')}
- className="w-full bg-[#F8FAFC] dark:bg-white/[0.04]
- border border-[#E2E8F0] dark:border-white/[0.08]
+ className="w-full bg-white dark:bg-white/[0.04]
+ shadow-card
  rounded-xl px-4 py-3
- text-small font-normal text-[#0F172A] dark:text-white
+ text-small font-normal text-gray-900 dark:text-white
  hover:bg-white dark:hover:bg-white/[0.08]
  hover:border-brand-navy/20 dark:hover:border-white/20
  hover:shadow-[0_2px_8px_rgba(var(--brand-navy-rgb),0.08)]
@@ -135,12 +133,12 @@ export function SignIn() {
  {/* Divider */}
  <div className="relative mb-5">
  <div className="absolute inset-0 flex items-center">
- <div className="w-full border-t border-[#E2E8F0] dark:border-white/[0.06]" />
+ <div className="w-full border-t border-gray-200 dark:border-white/[0.06]" />
  </div>
  <div className="relative flex justify-center">
  <span className="bg-white dark:bg-card px-3
  text-xs font-normal tracking-[0.08em] uppercase
- text-[#94A3B8]">
+ text-gray-400">
  Or continue with email
  </span>
  </div>
@@ -151,23 +149,23 @@ export function SignIn() {
  <div>
  <label htmlFor="email"
  className="block text-xs font-normal tracking-[0.08em] uppercase
- text-[#475569] dark:text-white/50 mb-2">
+ text-gray-600 dark:text-white/50 mb-2">
  Email Address
  </label>
  <div className="relative">
- <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#94A3B8]" />
+ <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
  <input
  id="email"
  type="email"
  value={email}
  onChange={e => setEmail(e.target.value)}
  placeholder="your@email.com"
- className="w-full bg-[#F8FAFC] dark:bg-white/[0.03]
- border border-[#E2E8F0] dark:border-white/[0.08]
+ className="w-full bg-white dark:bg-white/[0.04]
+ shadow-card
  rounded-xl pl-10 pr-4 py-3
- text-small text-[#0F172A] dark:text-white
- placeholder:text-[#94A3B8]
- focus:outline-none focus:border-brand-navy/40 dark:focus:border-brand-gold/40
+ text-small text-gray-900 dark:text-white
+ placeholder:text-gray-400
+ focus:outline-none focus:border-brand-navy/40 dark:focus:border-brand-gold/15
  focus:ring-2 focus:ring-brand-navy/[0.06]
  transition-all"
  required
@@ -208,8 +206,8 @@ export function SignIn() {
  </button>
  </form>
 
- <div className="mt-6 pt-5 border-t border-[#F1F5F9] dark:border-white/[0.05] text-center">
- <p className="text-caption text-[#475569] dark:text-white/40">
+ <div className="mt-6 pt-5 border-t border-gray-100 dark:border-white/[0.05] text-center">
+ <p className="text-caption text-gray-600 dark:text-white/40">
  Don't have an account?{' '}
  <Link to="/signup"
  className="text-brand-navy dark:text-brand-gold hover:underline font-normal">
@@ -220,11 +218,11 @@ export function SignIn() {
  </div>
 
  {/* Demo note */}
- <div className="mt-4 bg-[#F8FAFC] dark:bg-white/[0.03]
- border border-[#E2E8F0] dark:border-white/[0.06]
+ <div className="mt-4 bg-white dark:bg-white/[0.04]
+ shadow-card
  rounded-xl p-4">
- <p className="text-xs text-[#94A3B8] text-center leading-relaxed">
- <strong className="text-[#475569] dark:text-white/60">Demo Mode:</strong>{' '}
+ <p className="text-xs text-gray-400 text-center leading-relaxed">
+ <strong className="text-gray-600 dark:text-white/60">Demo Mode:</strong>{' '}
  Frontend demonstration. Integrate with a secure authentication provider for production.
  </p>
  </div>
@@ -235,7 +233,7 @@ export function SignIn() {
  {step === 'verification' && (
  <>
  <div className="bg-white dark:bg-card
- border border-[#E2E8F0] dark:border-white/[0.06]
+ shadow-card
  rounded-2xl p-6 md:p-8
  shadow-[0_4px_24px_rgba(var(--brand-navy-rgb),0.08)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.4)]">
 
@@ -244,7 +242,7 @@ export function SignIn() {
 
  <button
  onClick={() => setStep('email')}
- className="mb-5 flex items-center gap-1.5 text-small text-[#475569] dark:text-white/50
+ className="mb-5 flex items-center gap-1.5 text-small text-gray-600 dark:text-white/50
  hover:text-brand-navy dark:hover:text-white transition-colors"
  >
  <ArrowRight className="w-4 h-4 rotate-180" />
@@ -252,10 +250,10 @@ export function SignIn() {
  </button>
 
  <div className="text-center mb-7">
- <h1 className="text-h1 font-normal tracking-tight text-[#0F172A] dark:text-white mb-2">
+ <h1 className="text-h1 font-normal tracking-tight text-gray-900 dark:text-white mb-2">
  Verify Your Email
  </h1>
- <p className="text-small text-[#475569] dark:text-white/50">
+ <p className="text-small text-gray-600 dark:text-white/50">
  Enter the 6-digit code sent to
  </p>
  <p className="text-small font-normal text-brand-navy dark:text-brand-gold mt-1">
@@ -277,15 +275,13 @@ export function SignIn() {
  if (e.key === 'Backspace' && !digit && index > 0)
  document.getElementById(`code-${index - 1}`)?.focus();
  }}
- className="w-11 h-13 text-center text-body font-normal
- bg-[#F8FAFC] dark:bg-white/[0.03]
- border border-[#E2E8F0] dark:border-white/[0.08]
+ className="w-12 h-14 text-center text-body font-normal
+ bg-white dark:bg-white/[0.04]
+ shadow-card
  rounded-xl
- text-[#0F172A] dark:text-white
- focus:outline-none focus:border-brand-navy/50 dark:focus:border-brand-gold/50
- focus:ring-2 focus:ring-brand-navy/[0.06]
- transition-all"
- style={{ height: '52px' }}
+ text-gray-900 dark:text-white
+ focus:outline-none focus:ring-2 focus:ring-brand-primary/30 dark:focus:ring-brand-gold/15
+ transition-all duration-200"
  />
  ))}
  </div>
@@ -300,8 +296,8 @@ export function SignIn() {
  Resend Code
  </button>
  ) : (
- <p className="text-small text-[#475569] dark:text-white/40">
- Resend in <span className="font-normal text-[#0F172A] dark:text-white">{resendTimer}s</span>
+ <p className="text-small text-gray-600 dark:text-white/40">
+ Resend in <span className="font-normal text-gray-900 dark:text-white">{resendTimer}s</span>
  </p>
  )}
  </div>
@@ -337,8 +333,8 @@ export function SignIn() {
  )}
  </button>
 
- <div className="mt-6 pt-5 border-t border-[#F1F5F9] dark:border-white/[0.05] text-center">
- <p className="text-caption text-[#475569] dark:text-white/40">
+ <div className="mt-6 pt-5 border-t border-gray-100 dark:border-white/[0.05] text-center">
+ <p className="text-caption text-gray-600 dark:text-white/40">
  Don't have an account?{' '}
  <Link to="/signup"
  className="text-brand-navy dark:text-brand-gold hover:underline font-normal">
@@ -348,11 +344,11 @@ export function SignIn() {
  </div>
  </div>
 
- <div className="mt-4 bg-[#F8FAFC] dark:bg-white/[0.03]
- border border-[#E2E8F0] dark:border-white/[0.06]
+ <div className="mt-4 bg-white dark:bg-white/[0.04]
+ shadow-card
  rounded-xl p-4">
- <p className="text-xs text-[#94A3B8] text-center leading-relaxed">
- <strong className="text-[#475569] dark:text-white/60">Demo Mode:</strong>{' '}
+ <p className="text-xs text-gray-400 text-center leading-relaxed">
+ <strong className="text-gray-600 dark:text-white/60">Demo Mode:</strong>{' '}
  Frontend demonstration. Integrate with a secure authentication provider for production.
  </p>
  </div>

@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router';
-import { Building2, Plus, FileText, Home, Layers } from 'lucide-react';
+import { Building2, Plus, FileText, Home, Layers, FolderOpen } from 'lucide-react';
 import { useProperties } from '../contexts/PropertiesContext';
 
 export function BottomNav() {
@@ -28,7 +28,7 @@ export function BottomNav() {
 
  const tabs = [
  { path: homePath, activePath: '/my-properties', icon: Home, label: 'Home' },
- { path: '/properties',activePath: '/properties', icon: Building2, label: 'Cases' },
+ { path: '/properties',activePath: '/properties', icon: FolderOpen, label: 'Cases' },
  { path: '/services', activePath: '/services', icon: Layers, label: 'Services' },
  { path: '/documents', activePath: '/documents', icon: FileText, label: 'Docs' },
  ];
@@ -71,12 +71,12 @@ export function BottomNav() {
  >
  <div className="
  w-[48px] h-[48px] rounded-[20px]
- bg-brand-gold
+ bg-brand-primary
  flex items-center justify-center
  group-active:scale-[0.93]
  transition-all duration-150
  ">
- <Plus className="w-[22px] h-[22px] text-brand-navy" strokeWidth={2.8} />
+ <Plus className="w-[22px] h-[22px] text-white" strokeWidth={1.5} />
  </div>
  </Link>
  </div>
@@ -122,9 +122,9 @@ function TabItem({
  ? 'w-[22px] h-[22px] text-brand-navy dark:text-white'
  : 'w-[20px] h-[20px] text-[#B0BAC9] dark:text-white/30'
  }`}
- strokeWidth={active ? 2.2 : 1.7}
+ strokeWidth={1.5}
  />
- <span className={`text-[10px] font-normal leading-none transition-colors duration-200 ${
+ <span className={`text-xs font-normal leading-none transition-colors duration-200 ${
  active
  ? 'text-brand-navy dark:text-white'
  : 'text-[#B0BAC9] dark:text-white/30'

@@ -34,7 +34,7 @@ export function MobileFooterNav() {
  return (
  <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50
  bg-white dark:bg-brand-navy
- border-t border-[#E2E8F0] dark:border-white/[0.08]
+ border-t border-gray-200 dark:border-white/[0.08]
  backdrop-blur-xl">
  <div className="max-w-[1200px] mx-auto container-padding py-3">
  <div className="flex items-center justify-between gap-1">
@@ -42,15 +42,15 @@ export function MobileFooterNav() {
  {/* Gold Add Property FAB */}
  <Link to="/upload" className="relative group flex-shrink-0" title="Add Property">
  <div className="relative w-13 h-13 rounded-2xl flex items-center justify-center
- bg-brand-gold hover:bg-brand-gold-hover
- transition-all duration-[250ms] hover:scale-110"
+ bg-brand-primary hover:bg-brand-primary-hover
+ transition-all duration-200 hover:scale-110"
  style={{ width: '52px', height: '52px' }}>
- <Plus className="w-6 h-6 text-brand-navy" strokeWidth={2.5} />
+ <Plus className="w-6 h-6 text-white" strokeWidth={1.5} />
  </div>
  </Link>
 
  {/* Nav items */}
- <div className="flex items-center gap-1 flex-1 justify-evenly overflow-x-auto">
+ <div className="flex items-center gap-1 flex-1 justify-evenly overflow-x-auto scrollbar-hide">
  {navItems.map((item) => {
  const Icon = item.icon;
  const active = isActive(item.path);
@@ -64,10 +64,10 @@ export function MobileFooterNav() {
  >
  <div className={`
  relative flex flex-col items-center justify-center gap-1
- w-12 h-12 rounded-2xl transition-all duration-[250ms]
+ w-12 h-12 rounded-2xl transition-all duration-200
  ${active
  ? 'bg-brand-navy dark:bg-white text-white dark:text-brand-navy scale-110'
- : 'text-[#94A3B8] dark:text-white/40 hover:text-brand-navy dark:hover:text-white hover:bg-[#F1F5F9] dark:hover:bg-white/10 hover:scale-105'}
+ : 'text-gray-400 dark:text-white/40 hover:text-brand-navy dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/10 hover:scale-105'}
  `}>
  <Icon
  className="w-5 h-5 transition-all"
@@ -83,7 +83,7 @@ export function MobileFooterNav() {
  {/* Tooltip */}
  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2
  opacity-0 group-hover:opacity-100 pointer-events-none
- transition-all duration-[200ms] whitespace-nowrap z-50">
+ transition-all duration-200 whitespace-nowrap z-50">
  <div className="px-2.5 py-1.5 bg-brand-navy text-white rounded-lg
  text-xs font-normal tracking-wide">
  {item.label}

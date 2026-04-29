@@ -1,108 +1,97 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* ── Vybe Brand Tokens — CHANGE COLORS HERE ──────────────── */
-  /* Primary blue */
+  /* ── Logo Colors — exact, never change ───────────────────── */
   --brand-primary:        #1C75BC;
-  --brand-primary-hover:  #155A8F;
-  --brand-primary-active: #0F3E66;
-  /* Navy (sidebar, hero sections, dark backgrounds) */
-  --brand-navy:           #0E3E65;
-  --brand-navy-hover:     #0a3055;
-  /* Gold (accent, CTAs, highlights) */
+  --brand-secondary:      #00B6BD;
+  /* Aliases used throughout components */
+  --brand-primary-hover:  rgba(28, 117, 188, 0.88);
+  --brand-primary-active: rgba(28, 117, 188, 0.75);
+  --brand-navy:           #1C75BC;
+  --brand-navy-hover:     rgba(28, 117, 188, 0.88);
   --brand-gold:           #00B6BD;
-  --brand-gold-hover:     #008E93;
-  --brand-gold-active:    #00686C;
-  /* Teal (secondary accent) */
+  --brand-gold-hover:     rgba(0, 182, 189, 0.88);
+  --brand-gold-active:    rgba(0, 182, 189, 0.75);
   --brand-teal:           #00B6BD;
-  --brand-teal-hover:     #008E93;
-  --brand-teal-active:    #00686C;
-  /* RGB channels for box-shadow rgba() — update if you change the hex above */
+  --brand-teal-hover:     rgba(0, 182, 189, 0.88);
+  --brand-teal-active:    rgba(0, 182, 189, 0.75);
+  /* RGB channels for box-shadow rgba() */
   --brand-primary-rgb:    28, 117, 188;
-  --brand-navy-rgb:       14, 62, 101;
+  --brand-navy-rgb:       28, 117, 188;
   --brand-gold-rgb:       0, 182, 189;
-  --brand-teal-rgb:       0, 182, 189;
   /* ──────────────────────────────────────────────────────── */
 
-  /* ── Vybe HNI Design Tokens ─────────────────────────────── */
-  /* Global colours */
-  --token-navy:           var(--brand-navy);
-  --token-gold:           var(--brand-gold);
-  --token-white:          #FFFFFF;
-  --token-gray-50:        #F8FAFC;
-  --token-gray-100:       #F1F5F9;
-  --token-gray-200:       #E2E8F0;
-  --token-gray-400:       #94A3B8;
-  --token-gray-600:       #475569;
-  --token-gray-900:       #0F172A;
-  --token-green:          #16A34A;
-  --token-yellow:         #F59E0B;
-  --token-red:            #DC2626;
-  --token-blue:           #2563EB;
+  /* ── Neutral Scale ───────────────────────────────────────── */
+  --neutral-0:   #FFFFFF;
+  --neutral-50:  #F9FAFB;
+  --neutral-100: #F3F4F6;
+  --neutral-200: #E5E7EB;
+  --neutral-300: #D1D5DB;
+  --neutral-400: #9CA3AF;
+  --neutral-500: #6B7280;
+  --neutral-600: #4B5563;
+  --neutral-700: #374151;
+  --neutral-800: #1F2937;
+  --neutral-900: #111827;
+  /* ──────────────────────────────────────────────────────── */
 
-  /* Alias colours */
-  --token-bg:             #F8FAFC;
-  --token-surface:        #FFFFFF;
-  --token-text-primary:   #0F172A;
-  --token-text-secondary: #475569;
-  --token-text-tertiary:  #94A3B8;
-  --token-text-inverse:   #FFFFFF;
-  --token-border:         #E2E8F0;
-  --token-border-subtle:  #F1F5F9;
-  --token-primary:        var(--brand-navy);
-  --token-secondary:      var(--brand-gold);
-
-  /* Component tokens */
-  --token-btn-h:          48px;
-  --token-btn-radius:     12px;
-  --token-card-radius:    16px;
-  --token-input-h:        48px;
-  --token-nav-h:          64px;
-
-  /* Motion */
-  --token-fast:   150ms;
-  --token-normal: 250ms;
-  --token-slow:   350ms;
+  /* ── Semantic Tokens — Light Theme ──────────────────────── */
+  /* Backgrounds */
+  --sem-bg:        #FFFFFF;
+  --sem-bg-subtle: #F9FAFB;
+  --sem-bg-card:   #FFFFFF;
+  /* Text */
+  --sem-text:          #111827;
+  --sem-text-secondary: #4B5563;
+  --sem-text-muted:    #9CA3AF;
+  --sem-text-inverse:  #FFFFFF;
+  /* Borders */
+  --sem-border:        #E5E7EB;
+  --sem-border-strong: #9CA3AF;
+  /* State */
+  --sem-success: #22C55E;
+  --sem-warning: #F59E0B;
+  --sem-error:   #EF4444;
   /* ──────────────────────────────────────────────────────── */
 
   --font-size: 16px;
-  --background: #ffffff;
-  --foreground: oklch(0.145 0 0);
-  --card: #ffffff;
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: var(--brand-primary);
-  --primary-foreground: #ffffff;
-  --secondary: oklch(0.95 0.0058 264.53);
-  --secondary-foreground: #030213;
-  --muted: #ececf0;
-  --muted-foreground: #717182;
-  --accent: #e9ebef;
-  --accent-foreground: #030213;
-  --destructive: #d4183d;
+  --background:            var(--sem-bg);
+  --foreground:            var(--sem-text);
+  --card:                  var(--sem-bg-card);
+  --card-foreground:       var(--sem-text);
+  --popover:               var(--sem-bg-card);
+  --popover-foreground:    var(--sem-text);
+  --primary:               var(--brand-primary);
+  --primary-foreground:    #ffffff;
+  --secondary:             var(--neutral-100);
+  --secondary-foreground:  var(--sem-text);
+  --muted:                 var(--neutral-100);
+  --muted-foreground:      var(--sem-text-secondary);
+  --accent:                #E6F2FA;
+  --accent-foreground:     var(--brand-primary);
+  --destructive:           var(--sem-error);
   --destructive-foreground: #ffffff;
-  --border: rgba(0, 0, 0, 0.1);
-  --input: transparent;
-  --input-background: #f3f3f5;
-  --switch-background: #cbced4;
+  --border:                var(--sem-border);
+  --input:                 transparent;
+  --input-background:      var(--neutral-50);
+  --switch-background:     var(--neutral-300);
   --font-weight-medium: 400;
   --font-weight-normal: 400;
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  --ring:                  var(--brand-primary);
+  --chart-1: #1C75BC;
+  --chart-2: #00B6BD;
+  --chart-3: #22C55E;
+  --chart-4: #F59E0B;
+  --chart-5: #EF4444;
   --radius: 0.625rem;
-  --sidebar: #0E3E65;
-  --sidebar-foreground: #ffffff;
-  --sidebar-primary: var(--brand-gold);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar:                    var(--brand-primary);
+  --sidebar-foreground:         #ffffff;
+  --sidebar-primary:            var(--brand-secondary);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent:             rgba(255, 255, 255, 0.12);
+  --sidebar-accent-foreground:  #ffffff;
+  --sidebar-border:             rgba(255, 255, 255, 0.15);
+  --sidebar-ring:               var(--brand-secondary);
 
   /* Responsive Typography - Mobile First */
   --text-h1-mobile: 1.5rem;      /* 24px */
@@ -122,12 +111,8 @@
   --text-body-desktop: 1.125rem; /* 18px */
 
   --text-small-mobile: 0.875rem;   /* 14px */
-  --text-small-tablet: 0.875rem;   /* 14px */
-  --text-small-desktop: 0.875rem;  /* 14px */
 
   --text-caption-mobile: 0.75rem;  /* 12px */
-  --text-caption-tablet: 0.75rem;  /* 12px */
-  --text-caption-desktop: 0.75rem; /* 12px */
 
   /* Line Heights */
   --line-height-h1-mobile: 2rem;     /* 32px */
@@ -150,15 +135,6 @@
   --line-height-caption: 1rem;   /* 16px */
 
   /* 8pt Grid Spacing System */
-  --space-1: 0.25rem;  /* 4px */
-  --space-2: 0.5rem;   /* 8px */
-  --space-3: 0.75rem;  /* 12px */
-  --space-4: 1rem;     /* 16px */
-  --space-5: 1.25rem;  /* 20px */
-  --space-6: 1.5rem;   /* 24px */
-  --space-8: 2rem;     /* 32px */
-  --space-10: 2.5rem;  /* 40px */
-  --space-12: 3rem;    /* 48px */
 
   /* Device-specific padding */
   --padding-mobile: 1rem;    /* 16px */
@@ -176,55 +152,61 @@
   --card-padding-desktop: 1.5rem; /* 24px */
 
   /* Component heights */
-  --button-height-mobile: 3rem;   /* 48px */
-  --button-height-desktop: 3.25rem; /* 52px */
-  --input-height: 3rem; /* 48px */
 
   /* Icon sizes */
-  --icon-size-mobile: 1.25rem; /* 20px */
-  --icon-size-desktop: 1.5rem; /* 24px */
 
   /* Border radius */
-  --radius-card: 0.75rem;   /* 12px */
-  --radius-button: 0.75rem; /* 12px */
 }
 
 .dark {
-  /* ── Dark theme — blue-charcoal palette ── */
-  --background:           #0F1117;   /* page bg — dark blue-charcoal        */
-  --foreground:           #E8EBF2;   /* primary text — off-white             */
-  --card:                 #161B24;   /* card surface — slightly lighter      */
-  --card-foreground:      #E8EBF2;
-  --popover:              #161B24;
-  --popover-foreground:   #E8EBF2;
-  --primary:              var(--brand-primary);
-  --primary-foreground:   #ffffff;
-  --secondary:            #1E2330;   /* secondary surface                    */
-  --secondary-foreground: #E8EBF2;
-  --muted:                #1E2330;   /* muted surface                        */
-  --muted-foreground:     #8892A4;   /* secondary text — slate               */
-  --accent:               #1E2330;
-  --accent-foreground:    #E8EBF2;
-  --destructive:          #EF4444;
+  /* ── Semantic Tokens — Dark Theme ───────────────────────── */
+  --sem-bg:        #0F1117;
+  --sem-bg-subtle: #161B24;
+  --sem-bg-card:   #161B24;
+  --sem-text:          #F9FAFB;
+  --sem-text-secondary: #9CA3AF;
+  --sem-text-muted:    #6B7280;
+  --sem-text-inverse:  #111827;
+  --sem-border:        rgba(255, 255, 255, 0.08);
+  --sem-border-strong: rgba(255, 255, 255, 0.20);
+  /* ─────────────────────────────────────────────────────── */
+
+  /* Brand colors stay exactly the same in dark mode */
+  --background:            var(--sem-bg);
+  --foreground:            var(--sem-text);
+  --card:                  var(--sem-bg-card);
+  --card-foreground:       var(--sem-text);
+  --popover:               var(--sem-bg-card);
+  --popover-foreground:    var(--sem-text);
+  --primary:               var(--brand-primary);   /* #1C75BC — unchanged */
+  --primary-foreground:    #ffffff;
+  --secondary:             #1E2330;
+  --secondary-foreground:  var(--sem-text);
+  --muted:                 #1E2330;
+  --muted-foreground:      var(--sem-text-secondary);
+  --accent:                #1E2330;
+  --accent-foreground:     var(--sem-text);
+  --destructive:           #EF4444;
   --destructive-foreground: #ffffff;
-  --border:               rgba(255, 255, 255, 0.08); /* subtle border       */
-  --input:                #1E2330;
-  --ring:                 rgba(255, 255, 255, 0.15);
+  --border:                var(--sem-border);
+  --input:                 #1E2330;
+  --input-background:      #1E2330;
+  --ring:                  rgba(28, 117, 188, 0.5);
   --font-weight-medium: 400;
   --font-weight-normal: 400;
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar:              #0A0D14;   /* sidebar — darkest layer              */
-  --sidebar-foreground:   #E8EBF2;
-  --sidebar-primary:      var(--brand-primary);
+  --chart-1: #1C75BC;
+  --chart-2: #00B6BD;
+  --chart-3: #22C55E;
+  --chart-4: #F59E0B;
+  --chart-5: #EF4444;
+  --sidebar:                    #0A0D14;
+  --sidebar-foreground:         #F9FAFB;
+  --sidebar-primary:            var(--brand-secondary);  /* #00B6BD — unchanged */
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent:       #1E2330;
-  --sidebar-accent-foreground: #E8EBF2;
-  --sidebar-border:       rgba(255, 255, 255, 0.06);
-  --sidebar-ring:         rgba(255, 255, 255, 0.15);
+  --sidebar-accent:             rgba(255, 255, 255, 0.08);
+  --sidebar-accent-foreground:  #F9FAFB;
+  --sidebar-border:             rgba(255, 255, 255, 0.06);
+  --sidebar-ring:               var(--brand-secondary);
 }
 
 @theme inline {
@@ -346,6 +328,45 @@
 
 /* Bold Contemporary Luxury - Custom Utilities */
 @layer utilities {
+
+  /* ── Scrollbar hiding ── */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ── Premium card shadow scale ── */
+  .shadow-card {
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.04),
+      0 2px 4px rgba(0, 0, 0, 0.04),
+      0 8px 16px rgba(0, 0, 0, 0.04);
+  }
+  .dark .shadow-card {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.05),
+      0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+  .shadow-card-hover {
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.05),
+      0 4px 8px rgba(0, 0, 0, 0.06),
+      0 16px 32px rgba(0, 0, 0, 0.06);
+  }
+  .shadow-float {
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.08),
+      0 16px 40px rgba(0, 0, 0, 0.06);
+  }
+
+  /* ── Base transition for all interactive elements ── */
+  .interactive {
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
   .bg-gradient-radial {
     background-image: radial-gradient(circle, var(--tw-gradient-stops));
   }

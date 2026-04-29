@@ -28,7 +28,7 @@ export function Waitlist() {
  }, [navigate]);
 
  return (
- <div className="min-h-screen h-screen w-full flex items-center justify-center container-padding py-8 bg-[#F8FAFC] dark:bg-background overflow-y-auto">
+ <div className="min-h-screen h-screen w-full flex items-center justify-center container-padding py-8 bg-gray-50 dark:bg-background overflow-y-auto">
  {/* Background Image & Overlay */}
  <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
  <img
@@ -63,8 +63,8 @@ export function Waitlist() {
  <div className="flex justify-center mb-6">
  <div className="relative">
  <div className="absolute inset-0 bg-emerald-500/20 rounded-full blur-[20px]" />
- <div className="relative w-20 h-20 rounded-full bg-brand-navy dark:bg-brand-gold/20 flex items-center justify-center">
- <CheckCircle className="w-10 h-10 text-white" strokeWidth={2.5} />
+ <div className="relative w-20 h-20 rounded-full bg-brand-navy dark:bg-brand-gold/8 flex items-center justify-center">
+ <CheckCircle className="w-10 h-10 text-white" strokeWidth={1.5} />
  </div>
  </div>
  </div>
@@ -94,7 +94,7 @@ export function Waitlist() {
  
  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
  {/* Step 1 */}
- <div className="bg-[#F8FAFC] dark:bg-white/[0.03] border-[0.5px] border-[#E2E8F0] dark:border-white/[0.06] rounded-[12px] p-5 text-center">
+ <div className="bg-white dark:bg-white/[0.04] border-[0.5px] border-gray-200 dark:border-white/[0.06] rounded-[12px] p-5 text-center">
  <div className="w-10 h-10 rounded-[8px] bg-blue-500/10 flex items-center justify-center mb-3 mx-auto">
  <Users className="w-5 h-5 text-blue-500" strokeWidth={1.5} />
  </div>
@@ -107,7 +107,7 @@ export function Waitlist() {
  </div>
 
  {/* Step 2 */}
- <div className="bg-[#F8FAFC] dark:bg-white/[0.03] border-[0.5px] border-[#E2E8F0] dark:border-white/[0.06] rounded-[12px] p-5 text-center">
+ <div className="bg-white dark:bg-white/[0.04] border-[0.5px] border-gray-200 dark:border-white/[0.06] rounded-[12px] p-5 text-center">
  <div className="w-10 h-10 rounded-[8px] bg-[#28FF6E]/10 flex items-center justify-center mb-3 mx-auto">
  <Shield className="w-5 h-5 text-[#28FF6E]" strokeWidth={1.5} />
  </div>
@@ -120,7 +120,7 @@ export function Waitlist() {
  </div>
 
  {/* Step 3 */}
- <div className="bg-[#F8FAFC] dark:bg-white/[0.03] border-[0.5px] border-[#E2E8F0] dark:border-white/[0.06] rounded-[12px] p-5 text-center">
+ <div className="bg-white dark:bg-white/[0.04] border-[0.5px] border-gray-200 dark:border-white/[0.06] rounded-[12px] p-5 text-center">
  <div className="w-10 h-10 rounded-[8px] bg-emerald-500/10 flex items-center justify-center mb-3 mx-auto">
  <TrendingUp className="w-5 h-5 text-emerald-500" strokeWidth={1.5} />
  </div>

@@ -8,7 +8,7 @@ export function ExecutionDashboard() {
  const property = mockPropertyCases.find(p => p.id === id);
 
  if (!property) {
- return <div className="min-h-screen bg-[#F8FAFC] dark:bg-background flex items-center justify-center text-[#94A3B8] dark:text-white/40">Property not found</div>;
+ return <div className="min-h-screen bg-gray-50 dark:bg-background flex items-center justify-center text-gray-400 dark:text-white/40">Property not found</div>;
  }
 
  const activities = [
@@ -30,22 +30,22 @@ export function ExecutionDashboard() {
  const progressPercentage = (completedMilestones / totalMilestones) * 100;
 
  return (
- <div className="min-h-screen bg-[#F8FAFC] dark:bg-background transition-colors duration-300">
+ <div className="min-h-screen bg-gray-50 dark:bg-background transition-colors duration-300">
 
  
  {/* Header - Full Width */}
- <div className="border-b border-[#E2E8F0] dark:border-white/[0.06] bg-white dark:bg-card">
+ <div className="border-b border-gray-200 dark:border-white/[0.06] bg-white dark:bg-card">
  <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-6">
- <Link to="/properties" className="flex items-center gap-2 text-small text-[#475569] dark:text-white/50 hover:text-[#0F172A] dark:hover:text-white mb-4 transition-colors">
+ <Link to="/properties" className="flex items-center gap-2 text-small text-gray-600 dark:text-white/50 hover:text-gray-900 dark:hover:text-white mb-4 transition-colors">
  <ArrowLeft className="w-4 h-4" />
  Back to Cases
  </Link>
  <div className="flex items-start md:items-center justify-between flex-col md:flex-row gap-4">
  <div>
- <div className="text-caption tracking-[0.05em] uppercase text-[#94A3B8] dark:text-white/50 mb-2">
+ <div className="text-caption tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-2">
  Execution Dashboard
  </div>
- <div className="text-h1 tracking-tight text-[#0F172A] dark:text-white mb-2">
+ <div className="text-h1 tracking-tight text-gray-900 dark:text-white mb-2">
  {property.name}
  </div>
  <div className="inline-flex items-center gap-2 bg-purple-500/10 text-purple-600 dark:text-purple-400 px-3 py-1.5 rounded-lg text-caption border border-purple-500/20">
@@ -54,8 +54,8 @@ export function ExecutionDashboard() {
  </div>
  <div className="flex items-center gap-4">
  <div className="text-right">
- <div className="text-caption text-[#94A3B8] dark:text-white/40 mb-1 tracking-wide uppercase">Overall Progress</div>
- <div className="text-h1 tracking-tight text-[#0F172A] dark:text-white/95">{Math.round(progressPercentage)}%</div>
+ <div className="text-caption text-gray-400 dark:text-white/40 mb-1 tracking-wide uppercase">Overall Progress</div>
+ <div className="text-h1 tracking-tight text-gray-900 dark:text-white/95">{Math.round(progressPercentage)}%</div>
  </div>
  <div className="hidden md:block">
  <ThemeToggle />
@@ -68,55 +68,55 @@ export function ExecutionDashboard() {
  <div className="max-w-[1200px] mx-auto container-padding py-6 md:py-8 lg:py-10">
  {/* Status Cards */}
  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6 mb-6 md:mb-8 lg:mb-10">
- <div className="bg-white dark:bg-card border border-[#E2E8F0] dark:border-white/[0.06] rounded-lg p-4 md:p-5 lg:p-6">
- <div className="flex items-center gap-3 mb-4">
- <div className="w-10 h-10 rounded-md bg-brand-gold/10 flex items-center justify-center">
+ <div className="bg-white dark:bg-card shadow-card rounded-lg p-4 md:p-5 lg:p-6">
+ <div className="flex items-center gap-4 mb-4">
+ <div className="w-10 h-10 rounded-md bg-brand-gold/8 flex items-center justify-center">
  <CheckCircle2 className="w-5 h-5 text-emerald-400" />
  </div>
- <div className="text-caption text-[#94A3B8] dark:text-white/40 tracking-wide uppercase">Completed</div>
+ <div className="text-caption text-gray-400 dark:text-white/40 tracking-wide uppercase">Completed</div>
  </div>
- <div className="text-h1 tracking-tight text-[#0F172A] dark:text-white/95">
+ <div className="text-h1 tracking-tight text-gray-900 dark:text-white/95">
  {completedMilestones}/{totalMilestones}
  </div>
  </div>
 
- <div className="bg-white dark:bg-card border border-[#E2E8F0] dark:border-white/[0.06] rounded-lg p-4 md:p-5 lg:p-6">
- <div className="flex items-center gap-3 mb-4">
+ <div className="bg-white dark:bg-card shadow-card rounded-lg p-4 md:p-5 lg:p-6">
+ <div className="flex items-center gap-4 mb-4">
  <div className="w-10 h-10 rounded-md bg-blue-500/10 flex items-center justify-center">
  <Clock className="w-5 h-5 text-blue-400" />
  </div>
- <div className="text-caption text-[#94A3B8] dark:text-white/40 tracking-wide uppercase">In Progress</div>
+ <div className="text-caption text-gray-400 dark:text-white/40 tracking-wide uppercase">In Progress</div>
  </div>
- <div className="text-h1 tracking-tight text-[#0F172A] dark:text-white/95">
+ <div className="text-h1 tracking-tight text-gray-900 dark:text-white/95">
  {mockMilestones.filter(m => m.status === 'in-progress').length}
  </div>
  </div>
 
- <div className="bg-white dark:bg-card border border-[#E2E8F0] dark:border-white/[0.06] rounded-lg p-4 md:p-5 lg:p-6">
- <div className="flex items-center gap-3 mb-4">
+ <div className="bg-white dark:bg-card shadow-card rounded-lg p-4 md:p-5 lg:p-6">
+ <div className="flex items-center gap-4 mb-4">
  <div className="w-10 h-10 rounded-md bg-yellow-500/10 flex items-center justify-center">
  <AlertCircle className="w-5 h-5 text-yellow-400" />
  </div>
- <div className="text-caption text-[#94A3B8] dark:text-white/40 tracking-wide uppercase">Risk Alerts</div>
+ <div className="text-caption text-gray-400 dark:text-white/40 tracking-wide uppercase">Risk Alerts</div>
  </div>
- <div className="text-h1 tracking-tight text-[#0F172A] dark:text-white/95">0</div>
+ <div className="text-h1 tracking-tight text-gray-900 dark:text-white/95">0</div>
  </div>
 
- <div className="bg-white dark:bg-card border border-[#E2E8F0] dark:border-white/[0.06] rounded-lg p-4 md:p-5 lg:p-6">
- <div className="flex items-center gap-3 mb-4">
+ <div className="bg-white dark:bg-card shadow-card rounded-lg p-4 md:p-5 lg:p-6">
+ <div className="flex items-center gap-4 mb-4">
  <div className="w-10 h-10 rounded-md bg-purple-500/10 flex items-center justify-center">
  <FileText className="w-5 h-5 text-purple-400" />
  </div>
- <div className="text-caption text-[#94A3B8] dark:text-white/40 tracking-wide uppercase">Documents</div>
+ <div className="text-caption text-gray-400 dark:text-white/40 tracking-wide uppercase">Documents</div>
  </div>
- <div className="text-h1 tracking-tight text-[#0F172A] dark:text-white/95">{documents.length}</div>
+ <div className="text-h1 tracking-tight text-gray-900 dark:text-white/95">{documents.length}</div>
  </div>
  </div>
 
  <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
  {/* Milestone Tracker */}
- <div className="col-span-2 bg-white dark:bg-card border border-[#E2E8F0] dark:border-white/[0.06] rounded-lg p-10">
- <h3 className="text-small tracking-[0.05em] uppercase text-[#94A3B8] dark:text-white/50 mb-8">
+ <div className="col-span-2 bg-white dark:bg-card shadow-card rounded-lg p-10">
+ <h3 className="text-small tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-8">
  Milestone Timeline
  </h3>
  
@@ -149,7 +149,7 @@ export function ExecutionDashboard() {
  {isCompleted ? (
  <CheckCircle2 className="w-5 h-5 text-emerald-400" />
  ) : (
- <span className={`text-caption ${isInProgress ? 'text-blue-400' : 'text-[#94A3B8] dark:text-white/40'}`}>
+ <span className={`text-caption ${isInProgress ? 'text-blue-400' : 'text-gray-400 dark:text-white/40'}`}>
  {index + 1}
  </span>
  )}
@@ -163,11 +163,11 @@ export function ExecutionDashboard() {
  <div className="flex items-start justify-between mb-2">
  <div>
  <h4 className={`text-body tracking-tight mb-1 ${
- isCompleted || isInProgress ? 'text-[#0F172A]/95 dark:text-white/95' : 'text-[#475569] dark:text-white/50'
+ isCompleted || isInProgress ? 'text-gray-900/95 dark:text-white/95' : 'text-gray-600 dark:text-white/50'
  }`}>
  {milestone.title}
  </h4>
- <p className="text-caption text-[#94A3B8] dark:text-white/40">
+ <p className="text-caption text-gray-400 dark:text-white/40">
  Due: {new Date(milestone.dueDate).toLocaleDateString('en-US', { 
  month: 'short', 
  day: 'numeric', 
@@ -176,7 +176,7 @@ export function ExecutionDashboard() {
  </p>
  </div>
  {isCompleted && milestone.completedDate && (
- <span className="text-caption text-emerald-400 bg-brand-gold/10 px-6 py-2.5 rounded">
+ <span className="text-caption text-emerald-400 bg-brand-gold/8 px-6 py-2.5 rounded">
  Completed {new Date(milestone.completedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
  </span>
  )}
@@ -196,23 +196,23 @@ export function ExecutionDashboard() {
  {/* Right Column */}
  <div className="space-y-6">
  {/* Documents */}
- <div className="bg-white dark:bg-card border border-[#E2E8F0] dark:border-white/[0.06] rounded-lg p-4 md:p-5 lg:p-6">
+ <div className="bg-white dark:bg-card shadow-card rounded-lg p-4 md:p-5 lg:p-6">
  <div className="flex items-center justify-between mb-6">
- <h3 className="text-small tracking-[0.05em] uppercase text-[#94A3B8] dark:text-white/50">
+ <h3 className="text-small tracking-[0.05em] uppercase text-gray-400 dark:text-white/50">
  Documents
  </h3>
  <button className="p-2 bg-brand-navy/5 dark:bg-white/5 rounded-md hover:bg-brand-navy/10 dark:hover:bg-white/10 transition-colors">
- <Upload className="w-4 h-4 text-[#475569] dark:text-white/50" />
+ <Upload className="w-4 h-4 text-gray-600 dark:text-white/50" />
  </button>
  </div>
  <div className="space-y-3">
  {documents.map((doc, index) => (
- <div key={index} className="bg-brand-navy/[0.02] dark:bg-white/[0.02] border border-[#E2E8F0] dark:border-white/[0.06] rounded-md p-4">
+ <div key={index} className="bg-brand-navy/[0.02] dark:bg-white/[0.02] shadow-card rounded-md p-4">
  <div className="flex items-start gap-3">
- <FileText className="w-4 h-4 text-[#94A3B8] dark:text-white/40 mt-0.5 flex-shrink-0" />
+ <FileText className="w-4 h-4 text-gray-400 dark:text-white/40 mt-0.5 flex-shrink-0" />
  <div className="flex-1 min-w-0">
- <div className="text-caption text-[#0F172A] dark:text-white mb-1 truncate">{doc.name}</div>
- <div className="text-caption text-[#94A3B8] dark:text-white/40">{doc.size} • {doc.date}</div>
+ <div className="text-caption text-gray-900 dark:text-white mb-1 truncate">{doc.name}</div>
+ <div className="text-caption text-gray-400 dark:text-white/40">{doc.size} • {doc.date}</div>
  </div>
  </div>
  </div>
@@ -221,22 +221,22 @@ export function ExecutionDashboard() {
  </div>
 
  {/* Partner Contact */}
- <div className="bg-white dark:bg-card border border-[#E2E8F0] dark:border-white/[0.06] rounded-lg p-4 md:p-5 lg:p-6">
- <h3 className="text-small tracking-[0.05em] uppercase text-[#94A3B8] dark:text-white/50 mb-6">
+ <div className="bg-white dark:bg-card shadow-card rounded-lg p-4 md:p-5 lg:p-6">
+ <h3 className="text-small tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-6">
  Your Partner
  </h3>
- <div className="flex items-center gap-3 mb-4">
+ <div className="flex items-center gap-4 mb-4">
  <img
  src={mockPartner.photo}
  alt={mockPartner.name}
  className="w-12 h-12 rounded-lg object-cover"
  />
  <div>
- <div className="text-small text-[#0F172A] dark:text-white/95">{mockPartner.name}</div>
- <div className="text-caption text-[#94A3B8] dark:text-white/40">{mockPartner.role}</div>
+ <div className="text-small text-gray-900 dark:text-white/95">{mockPartner.name}</div>
+ <div className="text-caption text-gray-400 dark:text-white/40">{mockPartner.role}</div>
  </div>
  </div>
- <button className="w-full flex items-center justify-center gap-2 bg-brand-navy/5 dark:bg-white/5 text-[#0F172A] dark:text-white/95 px-4 py-2.5 rounded-md hover:bg-brand-navy/10 dark:hover:bg-white/10 transition-colors text-small tracking-wide border border-[#E2E8F0] dark:border-white/[0.06]">
+ <button className="w-full flex items-center justify-center gap-2 bg-brand-navy/5 dark:bg-white/5 text-gray-900 dark:text-white/95 px-4 py-2.5 rounded-md hover:bg-brand-navy/10 dark:hover:bg-white/10 transition-colors text-small tracking-wide shadow-card">
  <MessageSquare className="w-4 h-4" />
  Send Message
  </button>
@@ -246,9 +246,9 @@ export function ExecutionDashboard() {
  <div className="bg-emerald-500/5 border border-emerald-500/10 rounded-lg p-4 md:p-5 lg:p-6">
  <div className="flex items-center gap-2 mb-2">
  <CheckCircle2 className="w-5 h-5 text-emerald-400" />
- <div className="text-small text-[#0F172A] dark:text-white/95">All Clear</div>
+ <div className="text-small text-gray-900 dark:text-white/95">All Clear</div>
  </div>
- <p className="text-caption text-[#475569] dark:text-white/50">
+ <p className="text-caption text-gray-600 dark:text-white/50">
  No active risk alerts. Project is progressing as planned.
  </p>
  </div>
@@ -256,21 +256,21 @@ export function ExecutionDashboard() {
  </div>
 
  {/* Activity Log */}
- <div className="mt-6 bg-white dark:bg-card border border-[#E2E8F0] dark:border-white/[0.06] rounded-lg p-10">
- <h3 className="text-small tracking-[0.05em] uppercase text-[#94A3B8] dark:text-white/50 mb-8">
+ <div className="mt-6 bg-white dark:bg-card shadow-card rounded-lg p-10">
+ <h3 className="text-small tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-8">
  Activity Log
  </h3>
  <div className="space-y-4">
  {activities.map((activity, index) => (
- <div key={index} className="flex items-start gap-4 py-2.5 border-b border-[#E2E8F0] dark:border-white/[0.06] last:border-0">
- <div className="text-caption text-[#94A3B8] dark:text-white/40 w-32 flex-shrink-0">
+ <div key={index} className="flex items-start gap-4 py-2.5 border-b border-gray-200 dark:border-white/[0.06] last:border-0">
+ <div className="text-caption text-gray-400 dark:text-white/40 w-32 flex-shrink-0">
  {activity.date}
  <br />
  {activity.time}
  </div>
  <div className="flex-1">
- <p className="text-small text-[#0F172A] dark:text-white mb-1">{activity.message}</p>
- <p className="text-caption text-[#94A3B8] dark:text-white/40">by {activity.user}</p>
+ <p className="text-small text-gray-900 dark:text-white mb-1">{activity.message}</p>
+ <p className="text-caption text-gray-400 dark:text-white/40">by {activity.user}</p>
  </div>
  </div>
  ))}
