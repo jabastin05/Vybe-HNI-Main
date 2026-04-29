@@ -1,16 +1,17 @@
 import { useState } from 'react';
-import { Search, Sparkles, ArrowRight, FileText, PenTool, Compass, Clipboard, Flower2, Home, Clock, IndianRupee, Brain, BarChart3, BriefcaseBusiness } from 'lucide-react';
+import { Sparkles, ArrowRight, FileText, PenTool, Compass, Clipboard, Flower2, Home, Clock, IndianRupee, Brain, BarChart3, BriefcaseBusiness } from 'lucide-react';
 import { useNavigate, Link } from 'react-router';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { NotificationDropdown } from '../components/NotificationDropdown';
 import { ServiceCard } from '../components/ServiceCard';
 import { servicesData } from '../data/servicesData';
 
-// Service Categories for horizontal scroll
+// Service Categories
 const serviceCategories = [
  {
  id: 'advisory-intelligence',
  name: 'Advisory & Intelligence',
+ shortName: 'Advisory',
  description: 'Flagship strategy, HABU, deal and exit advisory',
  icon: Brain,
  color: 'from-brand-primary to-brand-teal',
@@ -19,6 +20,7 @@ const serviceCategories = [
  {
  id: 'valuation-financial-intelligence',
  name: 'Valuation & Financial Intelligence',
+ shortName: 'Valuation',
  description: 'Valuation, market, yield and benchmark intelligence',
  icon: BarChart3,
  color: 'from-brand-primary to-brand-teal',
@@ -27,6 +29,7 @@ const serviceCategories = [
  {
  id: 'legal-compliance',
  name: 'Legal & Compliance',
+ shortName: 'Legal',
  description: 'Title, documentation, NOCs and investor due diligence',
  icon: FileText,
  color: 'from-brand-primary to-brand-teal',
@@ -35,6 +38,7 @@ const serviceCategories = [
  {
  id: 'development-design',
  name: 'Development & Design',
+ shortName: 'Development',
  description: 'Planning, design, construction and redevelopment lifecycle',
  icon: PenTool,
  color: 'from-brand-primary to-brand-teal',
@@ -43,6 +47,7 @@ const serviceCategories = [
  {
  id: 'land-intelligence',
  name: 'Land Intelligence',
+ shortName: 'Land Intel',
  description: 'Survey, GIS, drone, soil and zoning data layer',
  icon: Compass,
  color: 'from-brand-primary to-brand-teal',
@@ -51,6 +56,7 @@ const serviceCategories = [
  {
  id: 'documentation-government-interface',
  name: 'Documentation & Government Interface',
+ shortName: 'Govt Docs',
  description: 'Tax, approvals, verification and registration support',
  icon: Clipboard,
  color: 'from-brand-primary to-brand-teal',
@@ -59,6 +65,7 @@ const serviceCategories = [
  {
  id: 'property-lifecycle-services',
  name: 'Property Lifecycle Services',
+ shortName: 'Lifecycle',
  description: 'Rental, tenant, facility and maintenance operations',
  icon: Home,
  color: 'from-brand-primary to-brand-teal',
@@ -67,6 +74,7 @@ const serviceCategories = [
  {
  id: 'specialized-services',
  name: 'Specialized Services',
+ shortName: 'Specialized',
  description: 'Vastu consultation and correction',
  icon: Flower2,
  color: 'from-brand-primary to-brand-teal',
@@ -75,6 +83,7 @@ const serviceCategories = [
  {
  id: 'investor-services',
  name: 'Investor Services',
+ shortName: 'Investors',
  description: 'Curated opportunities, deal evaluation and portfolio advisory',
  icon: BriefcaseBusiness,
  color: 'from-brand-primary to-brand-teal',
@@ -84,18 +93,12 @@ const serviceCategories = [
 
 export function ServiceCatalog() {
  const navigate = useNavigate();
- const [searchQuery, setSearchQuery] = useState('');
  const [selectedCategory, setSelectedCategory] = useState<string>('advisory-intelligence');
  const [selectedService, setSelectedService] = useState<string | null>(null);
 
- // Filter services based on selected category and search
+ // Filter services based on selected category
  const filteredServices = servicesData.filter((service) => {
- const matchesCategory = service.categoryId === selectedCategory;
- const matchesSearch =
- service.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
- service.description.toLowerCase().includes(searchQuery.toLowerCase());
-
- return matchesCategory && (searchQuery === '' || matchesSearch);
+ return service.categoryId === selectedCategory;
  });
 
  const handleServiceClick = (serviceId: string) => {
@@ -134,27 +137,9 @@ export function ServiceCatalog() {
  </div>
  </div>
 
- {/* Search bar inside hero */}
- <div className="relative mb-4">
- <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40" />
- <input
- type="text"
- placeholder="Search services…"
- value={searchQuery}
- onChange={(e) => setSearchQuery(e.target.value)}
- className="w-full pl-10 pr-4 py-3 bg-white/[0.08] border border-white/[0.12] rounded-2xl
- text-sm text-white placeholder:text-white/40
- focus:outline-none focus:border-brand-gold/50 focus:bg-white/[0.12]
- transition-all"
- />
- </div>
-
- {/* Category chip rail — overlaps hero bottom */}
- <div className="relative -mx-4">
- {/* Right fade hint */}
- <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 z-10
- bg-gradient-to-l from-brand-navy to-transparent" />
- <div className="flex gap-2 overflow-x-auto px-4 pb-4 scrollbar-hide">
+ {/* Category grid */}
+ <div className="-mx-1 pb-4">
+ <div className="grid grid-cols-3 gap-2">
  {serviceCategories.map((cat) => {
  const isActive = selectedCategory === cat.id;
  const Icon = cat.icon;
@@ -163,16 +148,19 @@ export function ServiceCatalog() {
  key={cat.id}
  onClick={() => setSelectedCategory(cat.id)}
  className={`
- flex-shrink-0 flex items-center gap-1.5 px-3.5 py-2 rounded-full
- text-xs font-normal transition-all duration-200 whitespace-nowrap
+ min-h-[78px] flex flex-col items-start justify-between gap-2 p-2.5 rounded-xl
+ text-left transition-all duration-200
  ${isActive
- ? 'bg-white text-brand-primary'
+ ? 'bg-white text-brand-primary shadow-[0_8px_22px_rgba(0,0,0,0.14)]'
  : 'bg-white/[0.08] text-white/60 border border-white/[0.12]'
  }
  `}
  >
- <Icon className={`w-3.5 h-3.5 flex-shrink-0 ${isActive ? 'text-brand-teal' : 'text-white/50'}`} />
- {cat.name}
+ <Icon className={`w-4 h-4 flex-shrink-0 ${isActive ? 'text-brand-teal' : 'text-white/50'}`} />
+ <span className="text-[11px] font-normal leading-tight">{cat.shortName}</span>
+ <span className={`text-[10px] font-normal uppercase tracking-[0.05em] ${isActive ? 'text-brand-primary/50' : 'text-white/35'}`}>
+ {cat.serviceCount} services
+ </span>
  </button>
  );
  })}
@@ -293,13 +281,13 @@ export function ServiceCatalog() {
  ) : (
  <div className="flex flex-col items-center justify-center py-16">
  <div className="w-14 h-14 rounded-full bg-[#F1F5F9] dark:bg-white/5 flex items-center justify-center mb-3">
- <Search className="w-6 h-6 text-[#94A3B8] dark:text-white/30" />
+ <Sparkles className="w-6 h-6 text-[#94A3B8] dark:text-white/30" />
  </div>
  <p className="text-sm font-normal text-[#64748B] dark:text-white/50 mb-1">
  No services found
  </p>
  <p className="text-xs text-[#94A3B8] dark:text-white/30">
- Try adjusting your search
+ Try another category
  </p>
  </div>
  )}
@@ -367,7 +355,7 @@ export function ServiceCatalog() {
 
  {/* Main Content */}
  <div className="max-w-[1200px] mx-auto container-padding py-6 md:py-8 lg:py-10">
- {/* Service Categories - Horizontal Scroll */}
+ {/* Service Categories */}
  <div className="mb-6 md:mb-8">
  <div className="flex items-center justify-between mb-3 md:mb-4">
  <h2 className="text-body md:text-body font-normal tracking-[-0.01em] text-[#0F172A] dark:text-white">
@@ -378,12 +366,8 @@ export function ServiceCatalog() {
  </div>
  </div>
 
- {/* Horizontal Scrollable Categories */}
- <div className="relative -mx-4 md:-mx-8 px-4 md:px-8">
- {/* Right fade-edge scroll hint */}
- <div className="pointer-events-none absolute right-0 top-0 bottom-4 w-16 z-10
- bg-gradient-to-l from-background dark:from-background to-transparent" />
- <div className="flex gap-3 md:gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory">
+ {/* Compact Category Grid */}
+ <div className="grid grid-cols-3 xl:grid-cols-9 gap-3">
  {serviceCategories.map((category) => {
  const isSelected = selectedCategory === category.id;
  const Icon = category.icon;
@@ -393,36 +377,35 @@ export function ServiceCatalog() {
  key={category.id}
  onClick={() => setSelectedCategory(category.id)}
  className={`
- flex-shrink-0 w-[280px] md:w-[340px] snap-start
- bg-white dark:bg-card
- rounded-2xl p-5 md:p-6 cursor-pointer
+ min-h-[124px] bg-white dark:bg-card
+ rounded-xl p-3 cursor-pointer
  transition-all duration-300 text-left relative overflow-hidden
  ${isSelected
  ? 'border-2 border-brand-primary shadow-[0_8px_32px_rgba(var(--brand-primary-rgb),0.18)] dark:border-brand-teal dark:shadow-[0_8px_32px_rgba(var(--brand-teal-rgb),0.18)]'
- : 'border border-[#E2E8F0] dark:border-white/[0.06] shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)] hover:shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_60px_-5px_rgba(0,0,0,0.1)] hover:-translate-y-1'
+ : 'border border-[#DDEAF1] dark:border-white/[0.06] shadow-[0_1px_2px_rgba(var(--brand-navy-rgb),0.04)] hover:shadow-[0_10px_26px_-18px_rgba(var(--brand-navy-rgb),0.45)] hover:-translate-y-0.5'
  }
  `}
  >
  {/* Top subtle highlight */}
  <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 dark:via-white/20 to-transparent" />
 
- <div className="flex items-start justify-between gap-4 mb-3">
- <h3 className="text-body md:text-h3 font-normal tracking-[-0.02em] text-[#0F172A] dark:text-white">
- {category.name}
+ <div className="flex items-start justify-between gap-2 mb-3">
+ <h3 className="text-sm font-normal tracking-[-0.01em] leading-tight text-[#0F172A] dark:text-white">
+ {category.shortName}
  </h3>
- <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${isSelected ? 'bg-brand-primary text-white' : 'bg-brand-primary/10 text-brand-primary dark:bg-brand-teal/10 dark:text-brand-teal'}`}>
- <Icon className="w-5 h-5" strokeWidth={1.8} />
+ <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${isSelected ? 'bg-brand-primary text-white' : 'bg-brand-primary/10 text-brand-primary dark:bg-brand-teal/10 dark:text-brand-teal'}`}>
+ <Icon className="w-4 h-4" strokeWidth={1.8} />
  </div>
  </div>
 
  {/* Description */}
- <p className="text-small text-[#475569] dark:text-white/50 leading-relaxed mb-4 line-clamp-2">
+ <p className="text-[11px] leading-snug text-[#475569] dark:text-white/50 mb-3 line-clamp-2">
  {category.description}
  </p>
 
  {/* Service Count */}
- <div className="flex items-center justify-between pt-3 border-t border-[#F1F5F9] dark:border-white/5">
- <span className="text-caption font-normal tracking-[0.05em] uppercase text-[#0F172A]/40 dark:text-white/40">
+ <div className="flex items-center justify-between pt-2 border-t border-[#F1F5F9] dark:border-white/5">
+ <span className="text-[10px] font-normal tracking-[0.05em] uppercase text-[#0F172A]/40 dark:text-white/40">
  {category.serviceCount} services
  </span>
  {isSelected && (
@@ -432,7 +415,6 @@ export function ServiceCatalog() {
  </button>
  );
  })}
- </div>
  </div>
  </div>
 
@@ -449,20 +431,6 @@ export function ServiceCatalog() {
  </div>
  </div>
  )}
-
- {/* Search Bar */}
- <div className="mb-6">
- <div className="relative">
- <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#0F172A]/40 dark:text-white/40" />
- <input
- type="text"
- placeholder="Search services in this category..."
- value={searchQuery}
- onChange={(e) => setSearchQuery(e.target.value)}
- className="w-full pl-12 pr-4 py-4 bg-white dark:bg-card border border-[#E2E8F0] dark:border-white/[0.06] rounded-xl text-small text-[#0F172A] dark:text-white placeholder:text-[#0F172A]/40 dark:placeholder:text-white/40 focus:outline-none focus:border-brand-navy/30 dark:focus:border-brand-gold/30"
- />
- </div>
- </div>
 
  {/* Results Count */}
  <div className="mb-6">
@@ -495,13 +463,13 @@ export function ServiceCatalog() {
  ) : (
  <div className="flex flex-col items-center justify-center py-8 md:py-16">
  <div className="w-16 h-16 rounded-full bg-brand-primary/5 dark:bg-white/5 flex items-center justify-center mb-4">
- <Search className="w-8 h-8 text-[#0F172A]/20 dark:text-white/20" />
+ <Sparkles className="w-8 h-8 text-[#0F172A]/20 dark:text-white/20" />
  </div>
  <p className="text-body text-[#0F172A]/60 dark:text-white/60 mb-2">
  No services found
  </p>
  <p className="text-small text-[#0F172A]/40 dark:text-white/40">
- Try adjusting your search
+ Try another category
  </p>
  </div>
  )}
@@ -532,16 +500,6 @@ export function ServiceCatalog() {
  </div>
 
  </div>
-
- <style>{`
- .scrollbar-hide::-webkit-scrollbar {
- display: none;
- }
- .scrollbar-hide {
- -ms-overflow-style: none;
- scrollbar-width: none;
- }
- `}</style>
  </div>
  );
 }
