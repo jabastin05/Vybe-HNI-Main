@@ -27,11 +27,11 @@ export function BottomNav() {
  const homePath = properties.length > 0 ? '/my-properties' : '/empty-dashboard';
 
  const tabs = [
- { path: homePath, activePath: '/my-properties', icon: Home, label: 'Home' },
+ { path: homePath, activePath: '/my-properties', icon: Home, label: 'Portfolio' },
  { path: '/properties',activePath: '/properties', icon: Building2, label: 'Cases' },
  { path: '/services', activePath: '/services', icon: Layers, label: 'Services' },
  { path: '/documents', activePath: '/documents', icon: FileText, label: 'Docs' },
- ];
+];
 
  return (
  /* Outer shell: pointer-events-none so the transparent gap above the pill

@@ -27,10 +27,10 @@ export function CaseManagement() {
 
  const getServiceColor = (service: string) => {
  switch (service) {
- case 'HABU Report': return 'bg-violet-50 text-violet-700 border-violet-200 dark:bg-violet-500/10 dark:text-violet-300 dark:border-violet-500/20';
- case 'Property Service': return 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-500/10 dark:text-blue-300 dark:border-blue-500/20';
- case 'Lease & Rent': return 'bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-brand-gold/10 dark:text-emerald-300 dark:border-brand-gold/20';
- case 'Sell or Liquidate':return 'bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-500/10 dark:text-orange-300 dark:border-orange-500/20';
+ case 'HABU Report': return 'bg-brand-primary/[0.08] text-brand-primary border-brand-primary/15 dark:bg-brand-primary/15 dark:text-white dark:border-brand-primary/20';
+ case 'Property Service': return 'bg-brand-accent/[0.10] text-[#0C7F86] border-brand-accent/20 dark:bg-brand-accent/15 dark:text-brand-accent dark:border-brand-accent/20';
+ case 'Lease & Rent': return 'bg-[#EEF6FF] text-[#215A93] border-[#CFE4F8] dark:bg-white/[0.06] dark:text-white/80 dark:border-white/10';
+ case 'Sell or Liquidate':return 'bg-[#F3F8FC] text-[#3B5B76] border-[#D9E8F4] dark:bg-white/[0.06] dark:text-white/70 dark:border-white/10';
  default: return 'bg-[#F8FAFC] text-[#475569] border-[#E2E8F0] dark:bg-white/5 dark:text-white/60 dark:border-white/10';
  }
  };
@@ -46,7 +46,23 @@ export function CaseManagement() {
  const isNonOwnProperty = (c: any) => c.serviceRequested === 'HABU Report' && !c.propertyId;
 
  const openCount = cases.filter(c => c.status === 'Open').length;
- const closedCount = cases.filter(c => c.status === 'Closed').length;
+ const attentionCases = cases
+ .filter(c => c.status === 'Open' && ((c.unreadMessages ?? 0) > 0 || (c.progress ?? 0) < 50))
+ .sort((a, b) => (b.unreadMessages ?? 0) - (a.unreadMessages ?? 0) || (a.progress ?? 0) - (b.progress ?? 0));
+ const attentionLead = attentionCases[0];
+
+ const getNextStep = (caseItem: any, milestone: any) => {
+ if ((caseItem.unreadMessages ?? 0) > 0) {
+ return `${caseItem.unreadMessages} unread update${caseItem.unreadMessages > 1 ? 's' : ''}`;
+ }
+ if (milestone?.status === 'pending') {
+ return milestone.title;
+ }
+ if ((caseItem.progress ?? 0) < 100) {
+ return `${caseItem.progress ?? 0}% complete`;
+ }
+ return 'Review final deliverable';
+ };
 
  return (
  <div className="min-h-screen bg-[#F8FAFC] dark:bg-background">
@@ -64,8 +80,9 @@ export function CaseManagement() {
  {/* Title row */}
  <div className="flex items-start justify-between mb-4">
  <div>
- <p className="text-[10px] font-normal tracking-[0.14em] uppercase text-brand-gold mb-1">Services</p>
+ <p className="text-[10px] font-normal tracking-[0.14em] uppercase text-brand-gold mb-1">Execution</p>
  <h1 className="text-2xl font-normal text-white tracking-tight leading-none">Cases</h1>
+ <p className="text-sm text-white/50 mt-1">Active mandates, status, and next steps</p>
  </div>
  <div className="flex items-center gap-2 mt-0.5">
  <RMAccess variant="dark" />
@@ -88,7 +105,7 @@ export function CaseManagement() {
  {[
  { value: cases.length, label: 'Total', highlight: false },
  { value: openCount, label: 'Open', highlight: true },
- { value: closedCount, label: 'Closed', highlight: false },
+ { value: attentionCases.length, label: 'Attention', highlight: false },
  ].map((s, i) => (
  <div key={i} className="bg-white/[0.08] rounded-2xl py-3 text-center">
  <div className={`text-2xl font-normal leading-none mb-0.5 ${
@@ -99,6 +116,29 @@ export function CaseManagement() {
  ))}
  </div>
 
+ {attentionLead && (
+ <div className="mb-4 rounded-2xl border border-white/[0.12] bg-white/[0.08] p-4">
+ <div className="flex items-center justify-between gap-3">
+ <div className="min-w-0">
+ <div className="text-[10px] font-normal tracking-[0.1em] uppercase text-brand-gold mb-1">
+ Priority Queue
+ </div>
+ <div className="text-sm text-white truncate">{attentionLead.propertyName}</div>
+ <div className="text-xs text-white/55 truncate mt-1">
+ {attentionLead.subService || attentionLead.serviceRequested} · {getNextStep(attentionLead, getCurrentMilestone(attentionLead))}
+ </div>
+ </div>
+ <Link
+ to={`/case/${attentionLead.id}`}
+ className="inline-flex items-center gap-1.5 rounded-xl bg-brand-gold px-3 py-2 text-xs font-normal text-brand-navy"
+ >
+ Open
+ <ArrowRight className="w-3.5 h-3.5" />
+ </Link>
+ </div>
+ </div>
+ )}
+
  {/* Hero search */}
  <div className="relative mb-4">
  <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40" />
@@ -106,7 +146,7 @@ export function CaseManagement() {
  type="text"
  value={searchQuery}
  onChange={e => setSearchQuery(e.target.value)}
- placeholder="Search cases…"
+ placeholder="Search cases, properties, or services…"
  className="w-full bg-white/[0.08] border border-white/[0.12] rounded-2xl
  pl-10 pr-4 py-3
  text-sm text-white placeholder:text-white/35
@@ -177,6 +217,7 @@ export function CaseManagement() {
  {filteredCases.map(caseItem => {
  const milestone = getCurrentMilestone(caseItem);
  const isOpen = caseItem.status === 'Open';
+ const nextStep = getNextStep(caseItem, milestone);
 
  return (
  <SwipeableCard
@@ -253,7 +294,7 @@ export function CaseManagement() {
  )}
  </div>
 
- {/* Footer: milestone + date */}
+ {/* Footer: next step + location */}
  <div className="flex items-center justify-between pt-3
  border-t border-[#F1F5F9] dark:border-white/[0.05]">
  <div className="flex items-center gap-1.5 min-w-0">
@@ -261,9 +302,14 @@ export function CaseManagement() {
  ? <CheckCircle2 className="w-3 h-3 text-brand-gold flex-shrink-0" />
  : <Clock className="w-3 h-3 text-[#94A3B8] flex-shrink-0" />
  }
- <span className="text-xs text-[#94A3B8] dark:text-white/40 truncate">
- {milestone.title}
+ <div className="min-w-0">
+ <div className="text-[10px] font-normal tracking-[0.08em] uppercase text-[#B0BAC9] dark:text-white/25">
+ Next Step
+ </div>
+ <span className="text-xs text-[#94A3B8] dark:text-white/40 truncate block">
+ {nextStep}
  </span>
+ </div>
  </div>
  <div className="flex items-center gap-1 flex-shrink-0 ml-2 text-[#94A3B8] dark:text-white/30">
  <MapPin className="w-3 h-3 flex-shrink-0" />
@@ -291,13 +337,13 @@ export function CaseManagement() {
  <div className="flex items-center justify-between gap-4">
  <div>
  <div className="text-xs font-normal tracking-[0.12em] uppercase text-brand-gold mb-2">
- Service Tracking
+ Execution
  </div>
  <h1 className="text-h1 font-normal tracking-tight text-[#0F172A] dark:text-white">
- Case Management
+ Cases
  </h1>
  <p className="text-small text-[#475569] dark:text-white/50 mt-1">
- Track and manage all service requests across your property portfolio
+ Active mandates, progress, and next actions across your portfolio
  </p>
  </div>
  <div className="flex items-center gap-3">
@@ -369,10 +415,46 @@ export function CaseManagement() {
  <div className="text-h1 font-normal tracking-tight text-brand-gold">{openCount}</div>
  </div>
  <div className="bg-white dark:bg-card border border-[#E2E8F0] dark:border-white/[0.06] rounded-2xl card-padding">
- <div className="text-[10px] font-normal tracking-[0.1em] uppercase text-[#94A3B8] mb-2">Closed Cases</div>
- <div className="text-h1 font-normal tracking-tight text-[#475569] dark:text-white/50">{closedCount}</div>
+ <div className="text-[10px] font-normal tracking-[0.1em] uppercase text-[#94A3B8] mb-2">Needs Attention</div>
+ <div className="text-h1 font-normal tracking-tight text-[#475569] dark:text-white/50">{attentionCases.length}</div>
  </div>
  </div>
+
+ {attentionLead && (
+ <div className="mt-4 md:mt-5 rounded-2xl border border-[#D9E8F4] dark:border-white/[0.08] bg-white dark:bg-card p-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+ <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+ <div className="min-w-0">
+ <div className="text-[10px] font-normal tracking-[0.1em] uppercase text-brand-primary mb-2">Priority Queue</div>
+ <div className="text-h3 font-normal tracking-tight text-[#0F172A] dark:text-white truncate">
+ {attentionLead.propertyName}
+ </div>
+ <div className="text-small text-[#475569] dark:text-white/50 mt-1">
+ {attentionLead.subService || attentionLead.serviceRequested} · {attentionLead.propertyLocation}
+ </div>
+ <div className="mt-3 inline-flex items-center gap-2 rounded-xl bg-brand-primary/[0.08] px-3 py-2 text-small text-brand-primary dark:bg-white/[0.06] dark:text-white/80">
+ <Clock className="w-3.5 h-3.5" />
+ <span>Next step: {getNextStep(attentionLead, getCurrentMilestone(attentionLead))}</span>
+ </div>
+ </div>
+ <div className="flex items-center gap-2">
+ <button
+ onClick={() => navigate(`/case/${attentionLead.id}/chat`)}
+ className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#D9E8F4] dark:border-white/10 px-4 py-2.5 text-small text-brand-navy dark:text-white"
+ >
+ <MessageCircle className="w-3.5 h-3.5" />
+ Chat
+ </button>
+ <Link
+ to={`/case/${attentionLead.id}`}
+ className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-brand-navy px-4 py-2.5 text-small font-normal text-white"
+ >
+ Open Case
+ <ArrowRight className="w-3.5 h-3.5" />
+ </Link>
+ </div>
+ </div>
+ </div>
+ )}
 
  {/* Empty state */}
  {filteredCases.length === 0 ? (
@@ -400,6 +482,7 @@ export function CaseManagement() {
  const milestone = getCurrentMilestone(caseItem);
  const MilestoneIcon = milestone.status === 'completed' && milestone.title.toLowerCase().includes('closed')
  ? CheckCircle2 : Clock;
+ const nextStep = getNextStep(caseItem, milestone);
 
  return (
  <div
@@ -454,8 +537,13 @@ export function CaseManagement() {
  </div>
 
  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
- <div className="text-xs text-[#94A3B8] order-2 sm:order-1">
- Created {new Date(caseItem.dateCreated).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+ <div className="order-2 sm:order-1">
+ <div className="text-[10px] font-normal tracking-[0.08em] uppercase text-[#B0BAC9] dark:text-white/25 mb-1">
+ Next Step
+ </div>
+ <div className="text-xs text-[#94A3B8]">
+ {nextStep}
+ </div>
  </div>
  <div className="flex items-center gap-2 w-full sm:w-auto order-1 sm:order-2">
  <button

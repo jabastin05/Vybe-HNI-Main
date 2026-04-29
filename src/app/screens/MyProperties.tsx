@@ -6,9 +6,11 @@ import { NotificationDropdown } from '../components/NotificationDropdown';
 import { RMAccess } from '../components/RMAccess';
 import { SwipeableCard } from '../components/SwipeableCard';
 import { useProperties } from '../contexts/PropertiesContext';
+import { useCases } from '../contexts/CasesContext';
 
 export function MyProperties() {
  const { properties } = useProperties();
+ const { cases } = useCases();
  const navigate = useNavigate();
  const [typeFilter, setTypeFilter] = useState('All');
 
@@ -21,7 +23,7 @@ export function MyProperties() {
  : p.state ? p.state
  : 'N/A';
 
- const totalTypes = new Set(properties.map(p => p.type)).size;
+ const activeCaseCount = cases.filter(c => c.status === 'Open').length;
  const totalCities = new Set(properties.map(p => p.city || p.district || p.state).filter(Boolean)).size;
  const propertyTypes = ['All', ...Array.from(new Set(properties.map(p => p.type).filter(Boolean)))];
  const filteredProperties = typeFilter === 'All'
@@ -49,8 +51,11 @@ export function MyProperties() {
  Portfolio
  </p>
  <h1 className="text-2xl font-normal text-white tracking-tight leading-none">
- My Properties
+ Portfolio
  </h1>
+ <p className="text-sm text-white/50 mt-1">
+ Assets, active mandates, and next actions
+ </p>
  </div>
  <div className="flex items-center gap-2 mt-0.5">
  <RMAccess variant="dark" />
@@ -72,9 +77,9 @@ export function MyProperties() {
  {properties.length > 0 && (
  <div className="grid grid-cols-3 gap-2 mb-4">
  {[
- { value: properties.length, label: 'Properties' },
- { value: totalTypes, label: 'Types' },
- { value: totalCities, label: 'Cities' },
+ { value: properties.length, label: 'Assets' },
+ { value: activeCaseCount, label: 'Active Cases' },
+ { value: totalCities, label: 'Markets' },
  ].map((s, i) => (
  <div key={i} className="bg-white/[0.08] rounded-2xl py-3 text-center">
  <div className={`text-2xl font-normal leading-none mb-0.5 ${
@@ -265,10 +270,10 @@ export function MyProperties() {
  Portfolio
  </div>
  <h1 className="text-h1 font-normal tracking-tight text-[#0F172A] dark:text-white">
- My Properties
+ Portfolio
  </h1>
  <p className="text-small text-[#475569] dark:text-white/50 mt-1">
- Manage your entire property portfolio in one place
+ Assets, active mandates, and portfolio readiness in one place
  </p>
  </div>
  <div className="flex items-center gap-3">
@@ -328,17 +333,17 @@ export function MyProperties() {
  rounded-2xl p-4 md:p-5
  shadow-[0_1px_3px_rgba(0,0,0,0.04)] relative overflow-hidden">
  <div className="absolute left-0 top-4 bottom-4 w-[3px] rounded-r-full bg-brand-gold" />
- <div className="text-[10px] font-normal tracking-[0.1em] uppercase text-[#94A3B8] mb-2 pl-2">Total</div>
+ <div className="text-[10px] font-normal tracking-[0.1em] uppercase text-[#94A3B8] mb-2 pl-2">Assets</div>
  <div className="text-h1 font-normal tracking-tight text-[#0F172A] dark:text-white pl-2">
  {properties.length}
  </div>
  </div>
  <div className="bg-white dark:bg-card border border-[#E2E8F0] dark:border-white/[0.06] rounded-2xl p-4 md:p-5">
- <div className="text-[10px] font-normal tracking-[0.1em] uppercase text-[#94A3B8] mb-2">Types</div>
- <div className="text-h1 font-normal tracking-tight text-[#0F172A] dark:text-white">{totalTypes}</div>
+ <div className="text-[10px] font-normal tracking-[0.1em] uppercase text-[#94A3B8] mb-2">Active Cases</div>
+ <div className="text-h1 font-normal tracking-tight text-brand-gold">{activeCaseCount}</div>
  </div>
  <div className="bg-white dark:bg-card border border-[#E2E8F0] dark:border-white/[0.06] rounded-2xl p-4 md:p-5">
- <div className="text-[10px] font-normal tracking-[0.1em] uppercase text-[#94A3B8] mb-2">Locations</div>
+ <div className="text-[10px] font-normal tracking-[0.1em] uppercase text-[#94A3B8] mb-2">Markets</div>
  <div className="text-h1 font-normal tracking-tight text-[#0F172A] dark:text-white">{totalCities}</div>
  </div>
  </div>

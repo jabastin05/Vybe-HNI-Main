@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router';
-import { Building2, Plus, User, Briefcase, Home, FileText, LayoutDashboard } from 'lucide-react';
+import { Building2, Plus, User, Briefcase, Home, FileText } from 'lucide-react';
 import { useProperties } from '../contexts/PropertiesContext';
 import { VybeLogo } from './VybeLogo';
 
@@ -10,8 +10,8 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
- { icon: Home, label: 'My Properties', path: '/my-properties' },
- { icon: Building2, label: 'Case Management', path: '/properties' },
+ { icon: Home, label: 'Portfolio', path: '/my-properties' },
+ { icon: Building2, label: 'Cases', path: '/properties' },
  { icon: Briefcase, label: 'Services', path: '/services' },
  { icon: FileText, label: 'Documents', path: '/documents' },
  { icon: User, label: 'Profile', path: '/settings' },
