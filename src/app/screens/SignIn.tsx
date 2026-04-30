@@ -68,50 +68,31 @@ export function SignIn() {
  <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-background">
 
  {/* ── Hero ── */}
- <div className="relative bg-gradient-to-br from-[#0B3360] via-brand-navy to-brand-primary/75 dark:from-background dark:to-background px-5 pt-6 pb-6 overflow-hidden flex-shrink-0">
- <div className="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-brand-secondary/[0.05] blur-3xl pointer-events-none" />
-
- {/* Theme toggle */}
- <div className="absolute top-4 right-4">
- <ThemeToggle />
+ <div className="relative bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] px-5 pt-8 pb-6 flex-shrink-0">
+ <div className="absolute top-4 right-4"><ThemeToggle /></div>
+ <div className="flex justify-center mb-5">
+ <VybeLogo width={64} height={40} />
  </div>
-
- {/* Logo */}
- <div className="flex justify-center mb-6">
- <VybeLogo
- width={52} height={32}
- style={{ '--brand-primary': '#ffffff', '--brand-teal': '#ffffff' } as React.CSSProperties}
- />
- </div>
-
  {step === 'email' ? (
  <div className="text-center">
- <h1 className="text-3xl font-normal text-white tracking-tight leading-none mb-2">
- Welcome Back
- </h1>
- <p className="text-sm text-white/50">Sign in to your VYBE account</p>
+ <p className="text-xs tracking-[0.16em] uppercase text-brand-primary mb-2">Sign In</p>
+ <h1 className="text-2xl font-normal text-gray-900 dark:text-white tracking-tight leading-none mb-1.5">Welcome Back</h1>
+ <p className="text-sm text-gray-500 dark:text-white/50">Sign in to your VYBE account</p>
  </div>
  ) : (
- <div>
- <button
- onClick={() => setStep('email')}
- className="flex items-center gap-2 text-white/60 active:text-white transition-colors mb-5"
- >
+ <div className="text-center">
+ <button onClick={() => setStep('email')} className="flex items-center gap-2 text-gray-500 dark:text-white/50 active:text-gray-900 dark:active:text-white transition-colors mb-4 mx-auto">
  <ArrowRight className="w-4 h-4 rotate-180" strokeWidth={1.5} />
  <span className="text-sm">Back</span>
  </button>
- <h1 className="text-3xl font-normal text-white tracking-tight leading-none mb-2">
- Verify Email
- </h1>
- <p className="text-sm text-white/50">
- Code sent to <span className="text-white/80">{email}</span>
- </p>
+ <h1 className="text-2xl font-normal text-gray-900 dark:text-white tracking-tight leading-none mb-1.5">Verify Email</h1>
+ <p className="text-sm text-gray-500 dark:text-white/50">Code sent to <span className="text-brand-primary">{email}</span></p>
  </div>
  )}
  </div>
 
  {/* ── Form area ── */}
- <div className="flex-1 bg-white dark:bg-card rounded-t-3xl -mt-4 relative z-10 overflow-auto">
+ <div className="flex-1 bg-gray-50 dark:bg-background overflow-auto">
  <div className="px-6 pt-8 pb-10 max-w-[460px] mx-auto">
 
  {/* ════════ EMAIL STEP ════════ */}

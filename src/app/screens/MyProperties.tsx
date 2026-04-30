@@ -103,6 +103,26 @@ export function MyProperties() {
           </div>
         )}
 
+        {/* ── Search bar ── */}
+        {properties.length > 0 && (
+          <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.05] px-4 py-3">
+            <div className="relative">
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-white/30" strokeWidth={1.5} />
+              <input
+                type="text"
+                placeholder="Search by name, location or type…"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-white/[0.04] rounded-xl
+                  text-sm text-gray-900 dark:text-white
+                  placeholder:text-gray-400 dark:placeholder:text-white/30
+                  focus:outline-none focus:ring-2 focus:ring-brand-primary/20
+                  transition-all duration-200"
+              />
+            </div>
+          </div>
+        )}
+
         {/* ── Property list ── */}
         {properties.length === 0 ? (
           <div className="flex flex-col items-center justify-center pt-16 pb-8 px-6 text-center">

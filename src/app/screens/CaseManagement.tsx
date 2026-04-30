@@ -3,7 +3,7 @@ import { useCases } from '../contexts/CasesContext';
 import {
   Search, FileText, MapPin, Clock, CheckCircle2,
   ArrowRight, Plus, Building2, MapPinned, MessageCircle, ChevronRight,
-  Sparkles, Key, Wrench, TrendingUp,
+  Sparkles, Key, Wrench, TrendingUp, AlertCircle,
 } from 'lucide-react';
 import { useState } from 'react';
 import { RMAccess } from '../components/RMAccess';
@@ -53,8 +53,39 @@ export function CaseManagement() {
     return firstPending || lastDone || caseItem.milestones[caseItem.milestones.length - 1];
   };
 
+  const getCaseAgeDays = (caseItem: any) => {
+    const createdAt = new Date(caseItem.dateCreated).getTime();
+    if (Number.isNaN(createdAt)) return 0;
+    return Math.max(0, Math.floor((Date.now() - createdAt) / (1000 * 60 * 60 * 24)));
+  };
+
+  const getPriorityMeta = (caseItem: any) => {
+    const ageDays = getCaseAgeDays(caseItem);
+    const unreadScore = (caseItem.unreadMessages || 0) * 35;
+    const ageScore = Math.min(ageDays, 30);
+    const serviceScore =
+      caseItem.serviceRequested === 'Sell or Liquidate' ? 18 :
+      caseItem.serviceRequested === 'Lease & Rent' ? 12 :
+      caseItem.serviceRequested === 'Property Service' ? 8 : 5;
+    const progressScore = typeof caseItem.progress === 'number' && caseItem.progress < 50 ? 10 : 0;
+    const score = unreadScore + ageScore + serviceScore + progressScore;
+    const level = score >= 55 ? 'High' : score >= 32 ? 'Medium' : 'Standard';
+    const reason = caseItem.unreadMessages
+      ? `${caseItem.unreadMessages} unread ${caseItem.unreadMessages === 1 ? 'message' : 'messages'}`
+      : ageDays > 14
+        ? `${ageDays} days open`
+        : getCurrentMilestone(caseItem).title;
+
+    return { score, level, reason, ageDays };
+  };
+
   const openCount   = cases.filter(c => c.status === 'Open').length;
   const closedCount = cases.filter(c => c.status === 'Closed').length;
+  const priorityCases = cases
+    .filter(c => c.status === 'Open')
+    .map(caseItem => ({ caseItem, priority: getPriorityMeta(caseItem) }))
+    .sort((a, b) => b.priority.score - a.priority.score)
+    .slice(0, 3);
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-background">
@@ -126,6 +157,58 @@ export function CaseManagement() {
             ))}
           </div>
         </div>
+
+        {/* ── Priority queue ── */}
+        {priorityCases.length > 0 && (
+          <div className="px-4 pt-5">
+            <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 overflow-hidden">
+              <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 dark:border-white/[0.05]">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-xl bg-brand-primary/10 flex items-center justify-center">
+                    <AlertCircle className="w-4.5 h-4.5 text-brand-primary" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <h2 className="text-sm font-normal text-gray-900 dark:text-white">Priority Queue</h2>
+                    <p className="text-xs text-gray-400 dark:text-white/40">Cases needing attention</p>
+                  </div>
+                </div>
+                <span className="text-xs text-gray-400 dark:text-white/40">{priorityCases.length}</span>
+              </div>
+              {priorityCases.map(({ caseItem, priority }, idx) => {
+                const { Icon, bg, color } = getServiceIcon(caseItem.serviceRequested);
+                return (
+                  <button
+                    key={caseItem.id}
+                    onClick={() => navigate(`/case/${caseItem.id}`)}
+                    className={`w-full flex items-center gap-4 px-5 py-4 text-left active:bg-gray-50 dark:active:bg-white/[0.03] transition-colors ${
+                      idx < priorityCases.length - 1 ? 'border-b border-gray-100 dark:border-white/[0.05]' : ''
+                    }`}
+                  >
+                    <div className={`w-10 h-10 rounded-xl ${bg} flex items-center justify-center flex-shrink-0`}>
+                      <Icon className={`w-5 h-5 ${color}`} strokeWidth={1.5} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-0.5">
+                        <p className="text-sm font-normal text-gray-900 dark:text-white truncate">{caseItem.propertyName}</p>
+                        <span className={`text-[10px] px-1.5 py-0.5 rounded-full flex-shrink-0 ${
+                          priority.level === 'High'
+                            ? 'bg-orange-50 text-orange-700 dark:bg-orange-500/10 dark:text-orange-300'
+                            : 'bg-brand-primary/8 text-brand-primary'
+                        }`}>
+                          {priority.level}
+                        </span>
+                      </div>
+                      <p className="text-xs text-gray-400 dark:text-white/40 truncate">
+                        {caseItem.subService || caseItem.serviceRequested} · {priority.reason}
+                      </p>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-gray-300 dark:text-white/20 flex-shrink-0" strokeWidth={1.5} />
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         {/* ── Cases list ── */}
         {filteredCases.length === 0 ? (
@@ -269,6 +352,67 @@ export function CaseManagement() {
         </div>
 
         <div className="max-w-[1200px] mx-auto container-padding py-6 md:py-8">
+          {priorityCases.length > 0 && (
+            <div className="bg-white dark:bg-card rounded-2xl overflow-hidden mb-5 border border-black/5 dark:border-white/5">
+              <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 dark:border-white/[0.05]">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center">
+                    <AlertCircle className="w-5 h-5 text-brand-primary" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <h2 className="text-base font-normal text-gray-900 dark:text-white">Priority Queue</h2>
+                    <p className="text-xs text-gray-500 dark:text-white/50">Open cases ranked by unread updates, age, and service urgency</p>
+                  </div>
+                </div>
+                <Link
+                  to="/cases"
+                  className="text-xs text-brand-primary hover:text-brand-primary-hover transition-colors"
+                >
+                  {priorityCases.length} active
+                </Link>
+              </div>
+              <div className="grid grid-cols-1 lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-gray-100 dark:divide-white/[0.05]">
+                {priorityCases.map(({ caseItem, priority }) => {
+                  const { Icon, bg, color } = getServiceIcon(caseItem.serviceRequested);
+                  const milestone = getCurrentMilestone(caseItem);
+                  return (
+                    <Link
+                      key={caseItem.id}
+                      to={`/case/${caseItem.id}`}
+                      className="flex items-start gap-4 p-5 hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors"
+                    >
+                      <div className={`w-10 h-10 rounded-xl ${bg} flex items-center justify-center flex-shrink-0`}>
+                        <Icon className={`w-5 h-5 ${color}`} strokeWidth={1.5} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <h3 className="text-sm font-normal text-gray-900 dark:text-white truncate">
+                            {caseItem.propertyName}
+                          </h3>
+                          <span className={`text-[10px] px-1.5 py-0.5 rounded-full flex-shrink-0 ${
+                            priority.level === 'High'
+                              ? 'bg-orange-50 text-orange-700 dark:bg-orange-500/10 dark:text-orange-300'
+                              : 'bg-brand-primary/8 text-brand-primary'
+                          }`}>
+                            {priority.level}
+                          </span>
+                        </div>
+                        <p className="text-xs text-gray-500 dark:text-white/40 truncate mb-2">
+                          {caseItem.subService || caseItem.serviceRequested}
+                        </p>
+                        <div className="flex items-center gap-1.5 text-xs text-gray-400 dark:text-white/30">
+                          <Clock className="w-3 h-3 flex-shrink-0" strokeWidth={1.5} />
+                          <span className="truncate">{priority.reason || milestone.title}</span>
+                        </div>
+                      </div>
+                      <ChevronRight className="w-4 h-4 text-gray-300 dark:text-white/20 flex-shrink-0 mt-1" strokeWidth={1.5} />
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
           <div className="bg-white dark:bg-card rounded-2xl overflow-hidden mb-5">
 
             {/* Filter tabs */}

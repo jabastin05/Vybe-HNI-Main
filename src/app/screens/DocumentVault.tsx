@@ -314,12 +314,19 @@ const CATEGORIES = [
   { id: 'Supporting',  label: 'Supporting',  color: 'gray' },
 ];
 
+const STATUS_FILTERS = [
+  { id: 'all', label: 'All' },
+  { id: 'verified', label: 'Verified' },
+  { id: 'review', label: 'Need Review' },
+] as const;
+
 export function DocumentVault() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedProperty, setSelectedProperty] = useState<string>('all');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedStatus, setSelectedStatus] = useState<(typeof STATUS_FILTERS)[number]['id']>('all');
   const [showPropertyFilter, setShowPropertyFilter] = useState(false);
   const [viewingDocument, setViewingDocument] = useState<Document | null>(null);
 
@@ -334,6 +341,8 @@ export function DocumentVault() {
     };
   });
 
+  const propertyOptions = [{ name: 'all', location: '', count: documents.length }, ...properties];
+
   const categories = CATEGORIES.map(c => ({
     ...c,
     count: c.id === 'all'
@@ -341,13 +350,27 @@ export function DocumentVault() {
       : documents.filter(d => d.category === c.id).length,
   }));
 
+  const totalDocuments = documents.length;
+  const verifiedDocuments = documents.filter(d => d.verified).length;
+  const needReviewDocuments = documents.filter(d => !d.verified).length;
+
+  const statusCounts = {
+    all: documents.length,
+    verified: verifiedDocuments,
+    review: needReviewDocuments,
+  };
+
   const filteredDocuments = documents.filter(doc => {
     const matchesSearch =
       doc.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       doc.propertyName.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesProperty = selectedProperty === 'all' || doc.propertyName === selectedProperty;
     const matchesCategory = selectedCategory === 'all' || doc.category === selectedCategory;
-    return matchesSearch && matchesProperty && matchesCategory;
+    const matchesStatus =
+      selectedStatus === 'all' ||
+      (selectedStatus === 'verified' && doc.verified) ||
+      (selectedStatus === 'review' && !doc.verified);
+    return matchesSearch && matchesProperty && matchesCategory && matchesStatus;
   });
 
   const getFileIcon = (type: string, size = 'md') => {
@@ -391,8 +414,79 @@ export function DocumentVault() {
           </div>
         </div>
 
+        {/* ── KPI Cards ── */}
+        <div className="px-4 pt-5 pb-2">
+          <div className="grid grid-cols-3 gap-3">
+            <div className="bg-white dark:bg-card rounded-2xl p-4 border border-black/5 dark:border-white/5">
+              <div className="text-[10px] font-normal tracking-[0.14em] uppercase text-gray-400 dark:text-white/40 mb-3">
+                Total Docs
+              </div>
+              <div className="text-2xl font-normal tracking-tight text-gray-900 dark:text-white mb-1">{totalDocuments}</div>
+              <div className="text-xs text-gray-400 dark:text-white/40">stored securely</div>
+            </div>
+            <div className="bg-white dark:bg-card rounded-2xl p-4 border border-black/5 dark:border-white/5">
+              <div className="text-[10px] font-normal tracking-[0.14em] uppercase text-gray-400 dark:text-white/40 mb-3">
+                Verified
+              </div>
+              <div className="text-2xl font-normal tracking-tight text-gray-900 dark:text-white mb-1">{verifiedDocuments}</div>
+              <div className="text-xs text-gray-400 dark:text-white/40">files cleared</div>
+            </div>
+            <div className="bg-white dark:bg-card rounded-2xl p-4 border border-black/5 dark:border-white/5">
+              <div className="text-[10px] font-normal tracking-[0.14em] uppercase text-gray-400 dark:text-white/40 mb-3">
+                Review
+              </div>
+              <div className="text-2xl font-normal tracking-tight text-gray-900 dark:text-white mb-1">{needReviewDocuments}</div>
+              <div className="text-xs text-gray-400 dark:text-white/40">need attention</div>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Portfolio Readiness ── */}
+        <div className="px-4 pt-2 pb-4">
+          <div className="bg-white dark:bg-card rounded-2xl p-5 border border-black/5 dark:border-white/5">
+            <div className="flex items-start justify-between gap-3 mb-4">
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="w-8 h-8 rounded-xl bg-brand-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Shield className="w-4 h-4 text-brand-primary" strokeWidth={1.5} />
+                </div>
+                <div className="min-w-0">
+                  <h3 className="text-sm font-normal text-gray-900 dark:text-white">Portfolio Readiness</h3>
+                  <p className="text-xs text-gray-400 dark:text-white/40">Document completeness status</p>
+                </div>
+              </div>
+              <span className="flex-shrink-0 rounded-full bg-brand-primary/10 px-2.5 py-1 text-[10px] font-normal uppercase tracking-[0.12em] text-brand-primary">
+                HABU
+              </span>
+            </div>
+            <div className="space-y-3">
+              {properties.slice(0, 3).map((property) => {
+                const propertyDocs = documents.filter(d => d.propertyName === property.name);
+                const verifiedCount = propertyDocs.filter(d => d.verified).length;
+                const completeness = propertyDocs.length > 0 ? Math.round((verifiedCount / propertyDocs.length) * 100) : 0;
+                return (
+                  <div key={property.name} className="flex items-center justify-between">
+                    <div className="flex-1 min-w-0">
+                      <div className="text-xs font-normal text-gray-900 dark:text-white truncate">{property.name}</div>
+                      <div className="text-xs text-gray-400 dark:text-white/40">{verifiedCount}/{propertyDocs.length} verified</div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-16 h-1.5 bg-gray-100 dark:bg-white/10 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-gradient-to-r from-emerald-400 to-emerald-500 rounded-full transition-all duration-300"
+                          style={{ width: `${completeness}%` }}
+                        />
+                      </div>
+                      <span className="text-xs text-gray-400 dark:text-white/40 w-8 text-right">{completeness}%</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
         {/* ── Search + filters ── */}
-        <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.05]">
+        <div className="bg-white dark:bg-card border-b border-black/5 dark:border-white/5">
           <div className="px-4 pt-3 pb-0">
             <div className="relative">
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -407,6 +501,23 @@ export function DocumentVault() {
                   focus:outline-none focus:ring-2 focus:ring-brand-primary/20
                   transition-all duration-200"
               />
+            </div>
+          </div>
+          <div className="px-4 pt-3">
+            <div className="grid grid-cols-3 gap-2">
+              {STATUS_FILTERS.map((status) => (
+                <button
+                  key={status.id}
+                  onClick={() => setSelectedStatus(status.id)}
+                  className={`min-h-10 rounded-xl px-2 text-xs font-normal transition-all duration-200 ${
+                    selectedStatus === status.id
+                      ? 'bg-brand-primary text-white'
+                      : 'bg-gray-50 text-gray-500 dark:bg-white/[0.04] dark:text-white/50'
+                  }`}
+                >
+                  {status.label}
+                </button>
+              ))}
             </div>
           </div>
           <div className="flex items-center justify-between">
@@ -453,11 +564,11 @@ export function DocumentVault() {
                 <button
                   key={doc.id}
                   onClick={() => setViewingDocument(doc)}
-                  className={`w-full flex items-center gap-4 px-5 py-4 bg-white dark:bg-card active:bg-gray-50 dark:active:bg-white/[0.03] transition-colors duration-150 text-left ${
-                    idx < filteredDocuments.length - 1
-                      ? 'border-b border-gray-100 dark:border-white/[0.05]'
-                      : ''
-                  }`}
+                    className={`w-full flex items-center gap-4 px-5 py-4 bg-white dark:bg-card active:bg-gray-50 dark:active:bg-white/[0.03] transition-colors duration-150 text-left ${
+                      idx < filteredDocuments.length - 1
+                        ? 'border-b border-black/5 dark:border-white/5'
+                        : ''
+                    }`}
                 >
                   <div className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-white/[0.06] flex items-center justify-center flex-shrink-0">
                     {getFileIcon(doc.type)}
@@ -496,7 +607,7 @@ export function DocumentVault() {
                 Filter by Property
               </p>
               <div className="px-3 pb-4 space-y-1 max-h-[60vh] overflow-y-auto">
-                {[{ name: 'all', location: '', count: documents.length }, ...properties].map((p) => (
+                {propertyOptions.map((p) => (
                   <button
                     key={p.name}
                     onClick={() => { setSelectedProperty(p.name); setShowPropertyFilter(false); }}
@@ -541,7 +652,7 @@ export function DocumentVault() {
       <div className="hidden md:block">
 
         {/* Header */}
-        <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06]">
+        <div className="bg-white dark:bg-card border-b border-black/5 dark:border-white/5">
           <div className="max-w-[1200px] mx-auto container-padding py-5 md:py-6">
             <div className="flex items-center justify-between gap-4">
               <div>
@@ -556,6 +667,16 @@ export function DocumentVault() {
                 </p>
               </div>
               <div className="flex items-center gap-3">
+                <button
+                  onClick={() => navigate(id ? `/property/${id}/documents/upload` : '/documents/upload')}
+                  className="inline-flex items-center justify-center gap-2
+                    bg-brand-primary hover:bg-brand-primary-hover text-white
+                    px-5 py-2.5 rounded-xl text-small font-normal
+                    transition-all duration-200"
+                >
+                  <Upload className="w-4 h-4 flex-shrink-0" strokeWidth={1.5} />
+                  <span>Add Document</span>
+                </button>
                 <NotificationDropdown />
                 <ThemeToggle />
               </div>
@@ -563,12 +684,85 @@ export function DocumentVault() {
           </div>
         </div>
 
+        {/* KPI Cards */}
+        <div className="max-w-[1200px] mx-auto container-padding pt-6 pb-0">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div className="bg-white dark:bg-card rounded-2xl p-5 border border-black/5 dark:border-white/5">
+              <div className="text-xs font-normal tracking-[0.14em] uppercase text-gray-400 dark:text-white/40 mb-4">
+                Total Documents
+              </div>
+              <div className="text-3xl font-normal tracking-tight text-gray-900 dark:text-white mb-2">{totalDocuments}</div>
+              <div className="text-sm text-gray-500 dark:text-white/50">encrypted files stored</div>
+            </div>
+            <div className="bg-white dark:bg-card rounded-2xl p-5 border border-black/5 dark:border-white/5">
+              <div className="text-xs font-normal tracking-[0.14em] uppercase text-gray-400 dark:text-white/40 mb-4">
+                Verified Files
+              </div>
+              <div className="text-3xl font-normal tracking-tight text-gray-900 dark:text-white mb-2">{verifiedDocuments}</div>
+              <div className="text-sm text-gray-500 dark:text-white/50">
+                {totalDocuments > 0 ? `${Math.round((verifiedDocuments / totalDocuments) * 100)}% vault readiness` : 'vault readiness pending'}
+              </div>
+            </div>
+            <div className="bg-white dark:bg-card rounded-2xl p-5 border border-black/5 dark:border-white/5">
+              <div className="text-xs font-normal tracking-[0.14em] uppercase text-gray-400 dark:text-white/40 mb-4">
+                Need Review
+              </div>
+              <div className="text-3xl font-normal tracking-tight text-gray-900 dark:text-white mb-2">{needReviewDocuments}</div>
+              <div className="text-sm text-gray-500 dark:text-white/50">
+                {needReviewDocuments === 0 ? 'no pending checks' : 'pending verification'}
+              </div>
+            </div>
+          </div>
+
+          {/* Portfolio Readiness */}
+          <div className="bg-white dark:bg-card rounded-2xl p-6 border border-black/5 dark:border-white/5">
+            <div className="flex items-start justify-between gap-4 mb-6">
+              <div className="flex items-center gap-4 min-w-0">
+                <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Shield className="w-6 h-6 text-brand-primary" strokeWidth={1.5} />
+                </div>
+                <div className="min-w-0">
+                  <h3 className="text-lg font-normal text-gray-900 dark:text-white">Portfolio Readiness</h3>
+                  <p className="text-sm text-gray-500 dark:text-white/50">Document completeness status across your properties</p>
+                </div>
+              </div>
+              <span className="flex-shrink-0 rounded-full bg-brand-primary/10 px-3 py-1.5 text-xs font-normal uppercase tracking-[0.12em] text-brand-primary">
+                HABU
+              </span>
+            </div>
+            <div className="space-y-4">
+              {properties.map((property) => {
+                const propertyDocs = documents.filter(d => d.propertyName === property.name);
+                const verifiedCount = propertyDocs.filter(d => d.verified).length;
+                const completeness = propertyDocs.length > 0 ? Math.round((verifiedCount / propertyDocs.length) * 100) : 0;
+                return (
+                  <div key={property.name} className="flex items-center justify-between p-4 bg-gray-50 dark:bg-white/[0.02] rounded-xl">
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm font-normal text-gray-900 dark:text-white truncate mb-1">{property.name}</div>
+                      <div className="text-xs text-gray-500 dark:text-white/50">{verifiedCount} of {propertyDocs.length} documents verified</div>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <div className="w-24 h-2 bg-gray-200 dark:bg-white/10 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-gradient-to-r from-emerald-400 to-emerald-500 rounded-full transition-all duration-300"
+                          style={{ width: `${completeness}%` }}
+                        />
+                      </div>
+                      <span className="text-sm font-normal text-gray-900 dark:text-white w-10 text-right">{completeness}%</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
         {/* Main Content */}
-        <div className="max-w-[1200px] mx-auto container-padding py-6 md:py-8">
-          <div className="bg-white dark:bg-card rounded-2xl overflow-hidden mb-5">
+        <div className="max-w-[1200px] mx-auto container-padding pt-4 pb-6 md:pt-4 md:pb-8">
+          <div className="bg-white dark:bg-card rounded-2xl overflow-hidden mb-5 border border-black/5 dark:border-white/5">
 
             {/* Category tabs */}
-            <div className="flex overflow-x-auto scrollbar-hide border-b border-gray-100 dark:border-white/[0.05]">
+            <div className="flex overflow-x-auto scrollbar-hide border-b border-black/5 dark:border-white/5">
               {categories.map((cat) => (
                 <button
                   key={cat.id}
@@ -587,17 +781,60 @@ export function DocumentVault() {
               ))}
             </div>
 
-            {/* Search */}
-            <div className="px-4 py-3 border-b border-gray-100 dark:border-white/[0.05]">
-              <div className="relative">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-white/30" strokeWidth={1.5} />
-                <input
-                  type="text"
-                  placeholder="Search documents..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-white/[0.04] rounded-xl text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all duration-200"
-                />
+            {/* Search + filters */}
+            <div className="px-4 py-3 border-b border-black/5 dark:border-white/5">
+              <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto] gap-3">
+                <div className="relative">
+                  <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-white/30" strokeWidth={1.5} />
+                  <input
+                    type="text"
+                    placeholder="Search documents..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-white/[0.04] rounded-xl text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all duration-200"
+                  />
+                </div>
+                <div className="flex items-center rounded-xl bg-gray-50 dark:bg-white/[0.04] p-1">
+                  {STATUS_FILTERS.map((status) => (
+                    <button
+                      key={status.id}
+                      onClick={() => setSelectedStatus(status.id)}
+                      className={`h-9 px-3 rounded-lg text-xs font-normal whitespace-nowrap transition-all duration-200 ${
+                        selectedStatus === status.id
+                          ? 'bg-white text-brand-primary shadow-sm dark:bg-white/10 dark:text-white'
+                          : 'text-gray-500 hover:text-gray-700 dark:text-white/50 dark:hover:text-white/70'
+                      }`}
+                    >
+                      {status.label}
+                      <span className={`ml-1 ${selectedStatus === status.id ? 'text-brand-primary/60 dark:text-white/60' : 'text-gray-300 dark:text-white/20'}`}>
+                        {statusCounts[status.id]}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className="mt-3 flex gap-2 overflow-x-auto scrollbar-hide">
+                {propertyOptions.map((property) => (
+                  <button
+                    key={property.name}
+                    onClick={() => setSelectedProperty(property.name)}
+                    className={`flex-shrink-0 inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-xs font-normal transition-all duration-200 ${
+                      selectedProperty === property.name
+                        ? 'border-brand-primary bg-brand-primary text-white'
+                        : 'border-black/5 bg-white text-gray-500 hover:text-gray-700 dark:border-white/5 dark:bg-white/[0.03] dark:text-white/50 dark:hover:text-white/70'
+                    }`}
+                  >
+                    {property.name === 'all' ? (
+                      <FolderOpen className="w-3.5 h-3.5" strokeWidth={1.5} />
+                    ) : (
+                      <Building2 className="w-3.5 h-3.5" strokeWidth={1.5} />
+                    )}
+                    <span>{property.name === 'all' ? 'All Properties' : property.name}</span>
+                    <span className={selectedProperty === property.name ? 'text-white/60' : 'text-gray-300 dark:text-white/20'}>
+                      {property.count}
+                    </span>
+                  </button>
+                ))}
               </div>
             </div>
 
@@ -617,7 +854,7 @@ export function DocumentVault() {
                   onClick={() => setViewingDocument(doc)}
                   className={`w-full flex items-center gap-4 px-5 py-4 text-left bg-white dark:bg-card hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors duration-150 ${
                     idx < filteredDocuments.length - 1
-                      ? 'border-b border-gray-100 dark:border-white/[0.05]'
+                      ? 'border-b border-black/5 dark:border-white/5'
                       : ''
                   }`}
                 >

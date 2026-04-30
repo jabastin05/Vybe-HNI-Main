@@ -330,14 +330,14 @@ export function Settings() {
  /* ── Menu Home ── */
  <>
  {/* ── Hero ── */}
- <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06]">
+ <div className="relative bg-gradient-to-br from-[#0B3360] via-brand-navy to-brand-primary/75 dark:from-background dark:to-background border-b border-gray-100 dark:border-white/[0.06] overflow-hidden">
  <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-brand-secondary/[0.05] blur-3xl pointer-events-none" />
 
  {/* Avatar + name — centred, editorial */}
  <div className="relative flex flex-col items-center pt-8 pb-6 px-5">
  {/* Avatar */}
  <div className="relative mb-4">
- <div className="w-20 h-20 rounded-full overflow-hidden border-[2px] border-white/20 flex-shrink-0">
+ <div className="w-20 h-20 rounded-full overflow-hidden border-[2px] border-white/20 flex-shrink-0 bg-white/10">
  {profileData.avatarUrl ? (
  <img src={profileData.avatarUrl} alt="Profile" className="w-full h-full object-cover" />
  ) : (
@@ -379,7 +379,7 @@ export function Settings() {
 
  {/* ── RM strip ── */}
  <div className="mx-4 mt-4">
- <div className="bg-white dark:bg-card rounded-2xl overflow-hidden">
+ <div className="bg-white dark:bg-card rounded-2xl overflow-hidden border border-black/5 dark:border-white/5">
  <div className="flex items-center gap-4 px-5 py-4">
  <div className="w-10 h-10 rounded-full bg-brand-primary/10 dark:bg-brand-primary/20 flex items-center justify-center flex-shrink-0">
  <span className="text-sm font-normal text-brand-primary">PS</span>
@@ -400,7 +400,7 @@ export function Settings() {
  <p className="text-xs font-normal uppercase tracking-[0.12em] text-gray-400 dark:text-white/40 mb-2 px-1">
  {group.title}
  </p>
- <div className="bg-white dark:bg-card rounded-2xl overflow-hidden">
+ <div className="bg-white dark:bg-card rounded-2xl overflow-hidden border border-black/5 dark:border-white/5">
  {group.items.map((item, idx) => {
  const Icon = item.icon;
  return (
@@ -430,7 +430,7 @@ export function Settings() {
  <button
  onClick={() => { window.location.href = '/'; }}
  className="w-full flex items-center justify-center gap-2 py-4 rounded-2xl
- bg-white dark:bg-card
+ bg-white dark:bg-card border border-black/5 dark:border-white/5
  text-red-500 dark:text-red-400
  text-sm font-normal
  active:bg-red-50 dark:active:bg-red-500/10 transition-colors duration-150"
@@ -511,7 +511,7 @@ export function Settings() {
  <div className="max-w-[1200px] mx-auto container-padding py-6 md:py-8 lg:py-10">
  {/* Tab Bar - desktop/tablet only */}
  <div className="lg:hidden mb-6">
- <div className="bg-white dark:bg-card shadow-card rounded-xl p-1 overflow-x-auto scrollbar-hide">
+ <div className="bg-white dark:bg-card border border-black/5 dark:border-white/5 rounded-2xl p-1 overflow-x-auto scrollbar-hide">
  <div className="flex gap-1 min-w-max">
  {tabs.map((tab) => (
  <button
@@ -534,7 +534,7 @@ export function Settings() {
  <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
  {/* Desktop Sidebar Tabs */}
  <div className="hidden lg:block w-64 flex-shrink-0">
- <div className="bg-white dark:bg-card shadow-card rounded-xl p-2">
+ <div className="bg-white dark:bg-card border border-black/5 dark:border-white/5 rounded-2xl p-2">
  {tabs.map((tab) => (
  <button
  key={tab.id}
@@ -568,12 +568,12 @@ export function Settings() {
 
  {/* Main Content Area */}
  <div className="flex-1">
- <div className="bg-white dark:bg-card shadow-card rounded-xl card-padding">
+ <div className="bg-white dark:bg-card border border-black/5 dark:border-white/5 rounded-2xl p-5 md:p-6">
  {/* Success Message */}
  {showSaved && (
- <div className="mb-8 p-5 bg-brand-gold/8 border border-brand-gold/20 rounded-xl flex items-center gap-4 backdrop-blur-sm">
+ <div className="mb-6 p-4 bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 rounded-2xl flex items-center gap-3">
  <CheckCircle2 className="w-5 h-5 text-emerald-500" />
- <span className="text-small text-brand-gold dark:text-brand-gold font-normal">Settings saved successfully</span>
+ <span className="text-small text-emerald-700 dark:text-emerald-400 font-normal">Settings saved successfully</span>
  </div>
  )}
 
@@ -623,7 +623,7 @@ export function Settings() {
  </div>
  )}
  </div>
- <div className="bg-white dark:bg-card rounded-2xl overflow-hidden">
+ <div className="bg-white dark:bg-card rounded-2xl overflow-hidden border border-black/5 dark:border-white/5">
  {fields.map(({ key, label, type }, idx) => (
  <div key={key} className={`flex items-center gap-4 px-5 py-4 ${idx < fields.length - 1 ? 'border-b border-gray-100 dark:border-white/[0.05]' : ''}`}>
  <div className="w-28 flex-shrink-0">
@@ -635,7 +635,7 @@ export function Settings() {
  type={type}
  value={tempProfileData[key as keyof typeof tempProfileData]}
  onChange={(e) => setTempProfileData({ ...tempProfileData, [key]: e.target.value })}
- className="w-full bg-gray-50 dark:bg-white/[0.04] rounded-xl px-3 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all"
+ className="w-full bg-gray-50 dark:bg-white/[0.04] rounded-xl px-3 py-2 text-sm text-gray-900 dark:text-white shadow-none focus:shadow-none focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all"
  />
  {validationErrors[key] && <p className="text-xs text-red-500 mt-1">{validationErrors[key]}</p>}
  </div>
@@ -648,7 +648,7 @@ export function Settings() {
  <div className={`flex items-center gap-4 px-5 py-4 border-t border-gray-100 dark:border-white/[0.05]`}>
  <div className="w-28 flex-shrink-0"><p className="text-xs text-gray-400 dark:text-white/40">Role</p></div>
  {isEditingPersonalInfo ? (
- <select value={tempProfileData.primaryRole} onChange={(e) => setTempProfileData({ ...tempProfileData, primaryRole: e.target.value })} className="flex-1 bg-gray-50 dark:bg-white/[0.04] rounded-xl px-3 py-2 text-sm text-gray-900 dark:text-white focus:outline-none">
+ <select value={tempProfileData.primaryRole} onChange={(e) => setTempProfileData({ ...tempProfileData, primaryRole: e.target.value })} className="flex-1 bg-gray-50 dark:bg-white/[0.04] rounded-xl px-3 py-2 text-sm text-gray-900 dark:text-white shadow-none focus:shadow-none focus:outline-none">
  <option value="land-owner">Land Owner</option>
  <option value="strategic-investor">Strategic Investor</option>
  <option value="both">Dual Mandate</option>
@@ -661,7 +661,7 @@ export function Settings() {
  <div className={`flex items-center gap-4 px-5 py-4 border-t border-gray-100 dark:border-white/[0.05]`}>
  <div className="w-28 flex-shrink-0"><p className="text-xs text-gray-400 dark:text-white/40">Portfolio</p></div>
  {isEditingPersonalInfo ? (
- <select value={tempProfileData.portfolioSize} onChange={(e) => setTempProfileData({ ...tempProfileData, portfolioSize: e.target.value })} className="flex-1 bg-gray-50 dark:bg-white/[0.04] rounded-xl px-3 py-2 text-sm text-gray-900 dark:text-white focus:outline-none">
+ <select value={tempProfileData.portfolioSize} onChange={(e) => setTempProfileData({ ...tempProfileData, portfolioSize: e.target.value })} className="flex-1 bg-gray-50 dark:bg-white/[0.04] rounded-xl px-3 py-2 text-sm text-gray-900 dark:text-white shadow-none focus:shadow-none focus:outline-none">
  <option value="1">1 Property</option>
  <option value="2-5">2-5 Properties</option>
  <option value="6-20">6-20 Properties</option>
@@ -677,7 +677,7 @@ export function Settings() {
  {/* Relationship Manager */}
  <div>
  <p className="text-xs font-normal uppercase tracking-[0.12em] text-gray-400 dark:text-white/40 mb-2 px-1">Relationship Manager</p>
- <div className="bg-white dark:bg-card rounded-2xl overflow-hidden">
+ <div className="bg-white dark:bg-card rounded-2xl overflow-hidden border border-black/5 dark:border-white/5">
  <div className="flex items-center gap-4 px-5 py-4">
  <div className="w-10 h-10 rounded-full bg-brand-primary/10 flex items-center justify-center flex-shrink-0">
  <span className="text-sm font-normal text-brand-primary">PS</span>
@@ -694,7 +694,7 @@ export function Settings() {
  {/* Identity Verification */}
  <div>
  <p className="text-xs font-normal uppercase tracking-[0.12em] text-gray-400 dark:text-white/40 mb-2 px-1">Identity Verification</p>
- <div className="bg-white dark:bg-card rounded-2xl overflow-hidden">
+ <div className="bg-white dark:bg-card rounded-2xl overflow-hidden border border-black/5 dark:border-white/5">
  {profileData.documentType ? (
  <div className="flex items-center gap-4 px-5 py-4">
  <div className="w-10 h-10 rounded-xl bg-brand-primary/[0.08] flex items-center justify-center flex-shrink-0">
@@ -730,7 +730,7 @@ export function Settings() {
  {/* Refer & Earn */}
  <div>
  <p className="text-xs font-normal uppercase tracking-[0.12em] text-gray-400 dark:text-white/40 mb-2 px-1">Refer & Earn</p>
- <div className="bg-white dark:bg-card rounded-2xl overflow-hidden">
+ <div className="bg-white dark:bg-card rounded-2xl overflow-hidden border border-black/5 dark:border-white/5">
  <div className="flex items-center gap-4 px-5 py-4">
  <div className="flex-1 min-w-0">
  <p className="text-xs text-gray-400 dark:text-white/40 mb-1">Your referral code</p>
@@ -764,7 +764,7 @@ export function Settings() {
  <div className="space-y-5">
  <div>
  <p className="text-xs font-normal uppercase tracking-[0.12em] text-gray-400 dark:text-white/40 mb-2 px-1">Preferences</p>
- <div className="bg-white dark:bg-card rounded-2xl overflow-hidden">
+ <div className="bg-white dark:bg-card rounded-2xl overflow-hidden border border-black/5 dark:border-white/5">
  {items.map((item, idx) => (
  <div key={item.key} className={`flex items-center gap-4 px-5 py-4 ${idx < items.length - 1 ? 'border-b border-gray-100 dark:border-white/[0.05]' : ''}`}>
  <div className="flex-1 min-w-0">
@@ -801,7 +801,7 @@ export function Settings() {
  <div className="space-y-5">
  <div>
  <p className="text-xs font-normal uppercase tracking-[0.12em] text-gray-400 dark:text-white/40 mb-2 px-1">{orders.length} orders</p>
- <div className="bg-white dark:bg-card rounded-2xl overflow-hidden">
+ <div className="bg-white dark:bg-card rounded-2xl overflow-hidden border border-black/5 dark:border-white/5">
  {orders.map((o, idx) => (
  <div key={o.id} className={`flex items-start gap-4 px-5 py-4 ${idx < orders.length - 1 ? 'border-b border-gray-100 dark:border-white/[0.05]' : ''}`}>
  <div className={`w-2 h-2 rounded-full mt-1.5 flex-shrink-0 ${o.dot}`} />

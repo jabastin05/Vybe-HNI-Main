@@ -3,6 +3,8 @@ import { useNavigate, useParams } from 'react-router';
 import { ArrowLeft, Clock, IndianRupee, CheckCircle, FileText, Sparkles, X, MapPin, Home, Building2 } from 'lucide-react';
 
 import { getServiceById } from '../data/servicesData';
+import { ThemeToggle } from '../components/ThemeToggle';
+import { NotificationDropdown } from '../components/NotificationDropdown';
 
 interface ServiceAttribute {
  name: string;
@@ -120,7 +122,9 @@ export function ServiceDetail() {
  <div className="min-h-screen bg-gray-50 dark:bg-background transition-colors duration-300">
 
  {/* Mobile Hero */}
- <div className="md:hidden bg-gradient-to-br from-[#0B3360] via-brand-navy to-brand-primary/75 dark:from-background dark:to-background px-5 pt-6 pb-6 overflow-hidden">
+ <div className="md:hidden relative bg-gradient-to-br from-[#0B3360] via-brand-navy to-brand-primary/75 dark:from-background dark:to-background px-5 pt-6 pb-6 overflow-hidden">
+ <div className="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-brand-secondary/[0.05] blur-3xl pointer-events-none" />
+ <div className="relative">
  {/* Top bar */}
  <div className="flex items-center mb-5">
  <button
@@ -149,11 +153,12 @@ export function ServiceDetail() {
  </span>
  </div>
  </div>
+ </div>
 
  {/* Desktop Header */}
  <div className="hidden md:block bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06]">
- <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-6">
- <div className="flex items-center justify-between mb-6">
+ <div className="max-w-[1200px] mx-auto container-padding py-5 md:py-6">
+ <div className="flex items-center justify-between gap-4 mb-6">
  <button
  onClick={() => navigate('/services/catalog')}
  className="flex items-center gap-2 text-small text-gray-500 dark:text-white/50 hover:text-gray-900 dark:hover:text-white transition-colors"
@@ -161,6 +166,16 @@ export function ServiceDetail() {
  <ArrowLeft className="w-4 h-4" />
  Back to Catalog
  </button>
+ <div className="flex items-center gap-3">
+ <button
+ onClick={handleRequestService}
+ className="inline-flex items-center justify-center gap-2 bg-brand-primary hover:bg-brand-primary-hover text-white px-5 py-2.5 rounded-xl text-small font-normal transition-all duration-200"
+ >
+ Request Service
+ </button>
+ <NotificationDropdown />
+ <ThemeToggle />
+ </div>
  </div>
 
  <div>
@@ -170,7 +185,7 @@ export function ServiceDetail() {
  <h1 className="text-h1 font-normal tracking-tight text-gray-900 dark:text-white mb-2">
  {serviceData.name}
  </h1>
- <p className="text-body text-gray-600 dark:text-white/50 leading-relaxed">
+ <p className="text-small text-gray-500 dark:text-white/50 leading-relaxed max-w-3xl">
  {serviceData.description}
  </p>
  </div>
@@ -178,7 +193,7 @@ export function ServiceDetail() {
  </div>
 
  {/* Main Content */}
- <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-8 lg:py-10">
+ <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-6 lg:py-8">
  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
  {/* Left Column - Details */}
  <div className="lg:col-span-2 space-y-4 md:space-y-6">
@@ -191,7 +206,7 @@ export function ServiceDetail() {
  {/* Overview Cards */}
  <div className="grid grid-cols-2 gap-4 md:gap-4">
  {/* Price Card */}
- <div className="relative bg-white dark:bg-card rounded-2xl shadow-card p-5 md:p-5">
+ <div className="relative bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-5">
  <div className="flex items-center gap-4 mb-2">
  <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-brand-gold/8 flex items-center justify-center">
  <IndianRupee className="w-4 h-4 md:w-5 md:h-5 text-brand-gold" strokeWidth={1.5} />
@@ -206,7 +221,7 @@ export function ServiceDetail() {
  </div>
 
  {/* TAT Card */}
- <div className="relative bg-white dark:bg-card rounded-2xl shadow-card p-5 md:p-5">
+ <div className="relative bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-5">
  <div className="flex items-center gap-4 mb-2">
  <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-brand-navy/[0.07] dark:bg-white/[0.06] flex items-center justify-center">
  <Clock className="w-4 h-4 md:w-5 md:h-5 text-brand-navy dark:text-white/70" strokeWidth={1.5} />
@@ -222,7 +237,7 @@ export function ServiceDetail() {
  </div>
 
  {/* What's Covered */}
- <div className="bg-white dark:bg-card rounded-2xl shadow-card p-5 md:p-6">
+ <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6">
  <h2 className="text-base font-normal tracking-tight text-gray-900 dark:text-white mb-3">
  What's Covered
  </h2>
@@ -232,7 +247,7 @@ export function ServiceDetail() {
  </div>
 
  {/* Deliverables */}
- <div className="bg-white dark:bg-card rounded-2xl shadow-card p-5 md:p-6">
+ <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6">
  <div className="flex items-center gap-4 mb-5">
  <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-brand-gold/8 flex items-center justify-center">
  <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-brand-gold" strokeWidth={1.5} />
@@ -254,7 +269,7 @@ export function ServiceDetail() {
  </div>
 
  {/* Requirements */}
- <div className="bg-white dark:bg-card rounded-2xl shadow-card p-5 md:p-6">
+ <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6">
  <div className="flex items-center gap-4 mb-5">
  <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-brand-navy/[0.07] dark:bg-white/[0.06] flex items-center justify-center">
  <FileText className="w-4 h-4 md:w-5 md:h-5 text-brand-navy dark:text-white/70" strokeWidth={1.5} />
@@ -278,7 +293,7 @@ export function ServiceDetail() {
  </div>
 
  {/* Execution Partner */}
- <div className="bg-white dark:bg-card rounded-2xl shadow-card p-5 md:p-6">
+ <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6">
  <div className="flex items-center gap-3">
  <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-brand-gold/8 flex items-center justify-center">
  <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-brand-gold" strokeWidth={1.5} />
@@ -298,7 +313,7 @@ export function ServiceDetail() {
  {/* Right Column - CTA */}
  <div className="lg:col-span-1">
  <div className="sticky top-8">
- <div className="bg-white dark:bg-card rounded-2xl shadow-card p-5 md:p-6">
+ <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6">
  <div className="mb-5">
  <div className="text-caption font-normal tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-1.5">
  Starting from

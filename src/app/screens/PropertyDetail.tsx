@@ -4,6 +4,9 @@ import { ArrowLeft, MapPin, Calendar, FileText, CheckCircle2, AlertCircle, Downl
 import { useProperties } from '../contexts/PropertiesContext';
 import { getLocalityInsights } from '../data/localityData';
 import { useState } from 'react';
+import { ThemeToggle } from '../components/ThemeToggle';
+import { NotificationDropdown } from '../components/NotificationDropdown';
+import { RMAccess } from '../components/RMAccess';
 
 export function PropertyDetail() {
  const { id } = useParams<{ id: string }>();
@@ -24,7 +27,7 @@ export function PropertyDetail() {
  <div className="min-h-screen bg-gray-50 dark:bg-background transition-colors duration-300">
 
  <div className="max-w-[1200px] mx-auto container-padding py-6 md:py-8 lg:py-10">
- <div className="bg-white dark:bg-card backdrop-blur-xl rounded-xl shadow-card p-6 md:p-12 lg:p-16 text-center">
+ <div className="bg-white dark:bg-card backdrop-blur-xl rounded-2xl border border-black/5 dark:border-white/5 p-6 md:p-12 lg:p-16 text-center">
  <div className="w-20 h-20 rounded-full bg-brand-navy/5 dark:bg-white/5 flex items-center justify-center mx-auto mb-6">
  <Building2 className="w-10 h-10 text-gray-400 dark:text-white/30" />
  </div>
@@ -285,6 +288,26 @@ export function PropertyDetail() {
  }
  };
 
+ const verifiedDocumentCount = propertyDocuments.filter((doc: any) => doc.status === 'verified').length;
+ const processingDocumentCount = propertyDocuments.filter((doc: any) => doc.status === 'processing').length;
+ const coreDocumentTypes = Object.values(docCategoryTabs)
+ .filter(category => category.weight > 0)
+ .flatMap(category => category.documents);
+ const matchedCoreDocuments = coreDocumentTypes.filter(docType =>
+ propertyDocuments.some((doc: any) =>
+ doc.status === 'verified' &&
+ (doc.documentType === docType || doc.documentType?.includes(docType) || docType.includes(doc.documentType))
+ )
+ );
+ const documentReadiness = coreDocumentTypes.length > 0
+ ? Math.round((matchedCoreDocuments.length / coreDocumentTypes.length) * 100)
+ : 0;
+ const missingCoreCount = Math.max(coreDocumentTypes.length - matchedCoreDocuments.length, 0);
+ const primaryOpportunity = aiOpportunities[0];
+ const primaryRisk = aiRisks[0];
+ const priorityLevel = primaryRisk?.severity === 'high' || missingCoreCount > 0 ? 'high' : 'standard';
+ const marketRank = Math.max(120, 450 - (primaryOpportunity?.opportunityScore || 75) - (verifiedDocumentCount * 2));
+
  return (
  <div className="min-h-screen bg-gray-50 dark:bg-background transition-colors duration-300">
 
@@ -352,6 +375,18 @@ export function PropertyDetail() {
  </span>
  </div>
  </div>
+ <div className="flex items-center gap-3 flex-shrink-0">
+ <Link
+ to={`/property/${property.id}/habu`}
+ className="inline-flex items-center justify-center gap-2 bg-brand-primary hover:bg-brand-primary-hover text-white px-5 py-2.5 rounded-xl text-small font-normal transition-all duration-200"
+ >
+ <Zap className="w-4 h-4" strokeWidth={1.5} />
+ <span>HABU</span>
+ </Link>
+ <RMAccess />
+ <NotificationDropdown />
+ <ThemeToggle />
+ </div>
  </div>
  </div>
  </div>
@@ -359,11 +394,80 @@ export function PropertyDetail() {
 
  {/* Main Content */}
  <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-8 lg:py-10">
+ <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-5 md:mb-6">
+ {[
+ {
+ label: 'Document Readiness',
+ value: `${documentReadiness}%`,
+ helper: missingCoreCount === 0 ? 'core stack complete' : `${missingCoreCount} core gaps`,
+ },
+ {
+ label: 'Verified Files',
+ value: verifiedDocumentCount,
+ helper: processingDocumentCount > 0 ? `${processingDocumentCount} still processing` : 'all clear',
+ },
+ {
+ label: 'Market Signal',
+ value: `#${marketRank}`,
+ helper: `${locationCity} locality rank`,
+ },
+ {
+ label: 'Priority',
+ value: priorityLevel,
+ helper: primaryRisk?.category || 'Portfolio watch',
+ },
+ ].map((item) => (
+ <div key={item.label} className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-4 md:p-5">
+ <div className="text-[11px] md:text-xs font-normal tracking-[0.14em] uppercase text-gray-400 dark:text-white/40 mb-4">
+ {item.label}
+ </div>
+ <div className="text-2xl md:text-3xl font-normal tracking-tight text-gray-900 dark:text-white mb-2 capitalize">
+ {item.value}
+ </div>
+ <div className="text-xs md:text-sm text-gray-500 dark:text-white/50">
+ {item.helper}
+ </div>
+ </div>
+ ))}
+ </div>
+
+ <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6 mb-5 md:mb-6">
+ <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_360px] gap-6 lg:gap-8">
+ <div>
+ <div className="text-xs font-normal tracking-[0.14em] uppercase text-brand-primary mb-5">
+ Decision Snapshot
+ </div>
+ <h2 className="text-2xl md:text-3xl font-normal tracking-tight text-gray-900 dark:text-white mb-4">
+ Present the asset, the gaps, and the next move
+ </h2>
+ <p className="text-sm md:text-base text-gray-600 dark:text-white/50 leading-relaxed max-w-3xl">
+ This view leads with portfolio context for {property.name}. It shows readiness, diligence gaps, market momentum, and the clearest next action before deeper analysis.
+ </p>
+ </div>
+ <div className="space-y-3">
+ <div className="bg-gray-50 dark:bg-white/[0.04] rounded-2xl p-4">
+ <div className="text-xs font-normal tracking-[0.12em] uppercase text-brand-primary mb-2">Opportunity</div>
+ <div className="text-sm md:text-base text-gray-900 dark:text-white">{primaryOpportunity?.title || 'Portfolio upside under review'}</div>
+ </div>
+ <div className="px-4 py-3">
+ <div className="text-xs font-normal tracking-[0.12em] uppercase text-cyan-700 dark:text-cyan-300 mb-2">Risk</div>
+ <div className="text-sm md:text-base text-gray-900 dark:text-white">{primaryRisk?.title || 'No active risk flagged'}</div>
+ </div>
+ <div className="bg-gray-50 dark:bg-white/[0.04] rounded-2xl p-4">
+ <div className="text-xs font-normal tracking-[0.12em] uppercase text-gray-500 dark:text-white/50 mb-2">Missing</div>
+ <div className="text-sm md:text-base text-gray-900 dark:text-white">
+ {missingCoreCount === 0 ? 'No critical documentation gaps' : `${missingCoreCount} critical documentation ${missingCoreCount === 1 ? 'gap' : 'gaps'}`}
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
  {/* Left Column - Property Details */}
  <div className="lg:col-span-2 space-y-6">
  {/* Property Information Card */}
- <div className="bg-white dark:bg-card rounded-2xl shadow-card p-5 md:p-6">
+ <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6">
  <div className="flex items-center justify-between mb-6">
  <h2 className="text-base font-normal tracking-tight text-gray-900 dark:text-white">
  Property Information
@@ -375,7 +479,7 @@ export function PropertyDetail() {
  <div className="text-caption font-normal tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
  Address
  </div>
- <div className="flex items-start gap-4 bg-brand-navy/[0.02] dark:bg-white/[0.02] shadow-card rounded-xl p-4">
+ <div className="flex items-start gap-4 bg-gray-50 dark:bg-white/[0.04] rounded-xl p-4">
  <MapPin className="w-5 h-5 text-gray-400 dark:text-white/40 flex-shrink-0 mt-0.5" />
  <div className="text-small text-gray-900/70 dark:text-white/70">
  {property.address}
@@ -461,7 +565,7 @@ export function PropertyDetail() {
  </div>
 
  {/* Property Specifications Card */}
- <div className="bg-white dark:bg-card rounded-2xl shadow-card p-5 md:p-6">
+ <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6">
  <h2 className="text-base font-normal tracking-tight text-gray-900 dark:text-white mb-5">
  Property Specifications
  </h2>
@@ -545,7 +649,7 @@ export function PropertyDetail() {
  </div>
 
  {/* Connectivity & Nearby Landmarks */}
- <div className="bg-white dark:bg-card rounded-2xl shadow-card p-5 md:p-6">
+ <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6">
  <h2 className="text-base font-normal tracking-tight text-gray-900 dark:text-white mb-5">
  Nearby Landmarks - {property.city || 'Area'}
  </h2>
@@ -633,7 +737,7 @@ export function PropertyDetail() {
  </div>
 
  {/* Locality Insights */}
- <div className="bg-white dark:bg-card rounded-2xl shadow-card p-5 md:p-6">
+ <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6">
  <h2 className="text-base font-normal tracking-tight text-gray-900 dark:text-white mb-4">
  Locality Insights: {property.city || property.district || 'Area'}
  </h2>
@@ -649,11 +753,9 @@ export function PropertyDetail() {
  {/* Insights Grid */}
  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
  {/* Price Insights */}
- <div className="bg-gradient-to-br from-blue-50/50 to-indigo-50/30 dark:from-blue-950/20 dark:to-indigo-950/10 border border-blue-500/20 rounded-xl p-5 relative overflow-hidden group hover: transition-all duration-200">
- <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
- 
+ <div className="bg-gray-50 dark:bg-white/[0.04] border border-black/5 dark:border-white/5 rounded-xl p-5 transition-all duration-200">
  <div className="flex items-center gap-2 mb-3">
- <div className="w-8 h-8 rounded-xl bg-blue-500/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+ <div className="w-8 h-8 rounded-xl bg-blue-500/10 flex items-center justify-center">
  <TrendingUp className="w-4 h-4 text-blue-600 dark:text-blue-400" strokeWidth={1.5} />
  </div>
  <h3 className="text-caption font-normal text-gray-900 dark:text-white/95">Price Insights</h3>
@@ -670,11 +772,9 @@ export function PropertyDetail() {
  </div>
 
  {/* Locality Rank */}
- <div className="bg-gradient-to-br from-pink-50/50 to-rose-50/30 dark:from-pink-950/20 dark:to-rose-950/10 border border-pink-500/20 rounded-xl p-5 relative overflow-hidden group hover: transition-all duration-200">
- <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-pink-500/30 to-transparent" />
- 
+ <div className="bg-gray-50 dark:bg-white/[0.04] border border-black/5 dark:border-white/5 rounded-xl p-5 transition-all duration-200">
  <div className="flex items-center gap-2 mb-3">
- <div className="w-8 h-8 rounded-xl bg-pink-500/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+ <div className="w-8 h-8 rounded-xl bg-pink-500/10 flex items-center justify-center">
  <Award className="w-4 h-4 text-pink-600 dark:text-pink-400" strokeWidth={1.5} />
  </div>
  <h3 className="text-caption font-normal text-gray-900 dark:text-white/95">Locality Rank</h3>
@@ -691,11 +791,9 @@ export function PropertyDetail() {
  </div>
 
  {/* Demographics */}
- <div className="bg-gradient-to-br from-purple-50/50 to-violet-50/30 dark:from-purple-950/20 dark:to-violet-950/10 border border-purple-500/20 rounded-xl p-5 relative overflow-hidden group hover: transition-all duration-200">
- <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-purple-500/30 to-transparent" />
- 
+ <div className="bg-gray-50 dark:bg-white/[0.04] border border-black/5 dark:border-white/5 rounded-xl p-5 transition-all duration-200">
  <div className="flex items-center gap-2 mb-3">
- <div className="w-8 h-8 rounded-xl bg-purple-500/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+ <div className="w-8 h-8 rounded-xl bg-purple-500/10 flex items-center justify-center">
  <Users className="w-4 h-4 text-purple-600 dark:text-purple-400" strokeWidth={1.5} />
  </div>
  <h3 className="text-caption font-normal text-gray-900 dark:text-white/95">Demographics</h3>
@@ -714,7 +812,7 @@ export function PropertyDetail() {
  </div>
 
  {/* AI Insights */}
- <div className="bg-white dark:bg-card rounded-2xl shadow-card p-5 md:p-6">
+ <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6">
  <h2 className="text-base font-normal tracking-[-0.01em] text-gray-900 dark:text-white mb-5">
  AI Market Intelligence
  </h2>
@@ -722,9 +820,7 @@ export function PropertyDetail() {
  {/* Opportunities */}
  <div className="space-y-2.5">
  {aiOpportunities.map((opp) => (
- <div key={opp.id} className="bg-gradient-to-br from-green-50/50 to-lime-50/30 dark:from-green-950/20 dark:to-lime-950/10 border border-green-500/20 rounded-xl p-5 relative overflow-hidden hover: transition-all">
- <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-green-500/30 to-transparent" />
- 
+ <div key={opp.id} className="bg-gray-50 dark:bg-white/[0.04] border border-black/5 dark:border-white/5 rounded-xl p-5 transition-all">
  <div className="flex items-start justify-between gap-4 mb-3">
  <div className="flex items-start gap-4 flex-1 min-w-0">
  <div className="w-9 h-9 rounded-xl bg-green-500/15 flex items-center justify-center flex-shrink-0">
@@ -766,9 +862,7 @@ export function PropertyDetail() {
  {/* Risks */}
  <div className="space-y-2.5 mt-3">
  {aiRisks.map((risk) => (
- <div key={risk.id} className="bg-gradient-to-br from-red-50/50 to-rose-50/30 dark:from-red-950/20 dark:to-rose-950/10 border border-red-500/20 rounded-xl p-5 relative overflow-hidden hover: transition-all">
- <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
- 
+ <div key={risk.id} className="bg-gray-50 dark:bg-white/[0.04] border border-black/5 dark:border-white/5 rounded-xl p-5 transition-all">
  <div className="flex items-start justify-between gap-4 mb-3">
  <div className="flex items-start gap-4 flex-1 min-w-0">
  <div className="w-9 h-9 rounded-xl bg-red-500/15 flex items-center justify-center flex-shrink-0">
@@ -802,7 +896,7 @@ export function PropertyDetail() {
 
  {/* Right Column - Documents */}
  <div className="lg:col-span-1">
- <div className="bg-white dark:bg-card rounded-2xl shadow-card p-5 md:p-7 sticky top-8">
+ <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6 sticky top-8">
  {/* Subtle glass highlight */}
  {/* Header with Trust Score */}
  <div className="flex items-start justify-between mb-8">
@@ -818,7 +912,7 @@ export function PropertyDetail() {
  {/* Trust Score Ring */}
  {propertyDocuments && propertyDocuments.length > 0 && (
  <div className="flex flex-col items-center gap-2">
- <div className="w-16 h-16 rounded-full border-[3px] border-gray-200 dark:border-white/[0.06] flex items-center justify-center relative bg-gradient-to-br from-white/80 to-white/40 dark:from-white/[0.08] dark:to-white/[0.02] shadow-[inset_0_1px_2px_rgba(255,255,255,0.5),0_4px_12px_rgba(0,0,0,0.05)] dark:shadow-[inset_0_1px_2px_rgba(255,255,255,0.05),0_4px_12px_rgba(0,0,0,0.15)]">
+ <div className="w-16 h-16 rounded-full border-[3px] border-gray-200 dark:border-white/[0.06] flex items-center justify-center relative bg-gray-50 dark:bg-white/[0.04]">
  {(() => {
  let totalScore = 0;
  Object.entries(docCategoryTabs).forEach(([key, cat]) => {
@@ -871,7 +965,7 @@ export function PropertyDetail() {
 
  <Link
  to={`/property/${id}/documents/upload`}
- className="w-full mb-6 flex items-center justify-center gap-2 bg-brand-navy hover:bg-brand-navy-hover text-white px-4 py-2.5 rounded-xl text-sm font-normal transition-all hover:-translate-y-0.5"
+ className="w-full mb-6 flex items-center justify-center gap-2 bg-brand-primary hover:bg-brand-primary-hover text-white px-4 py-2.5 rounded-xl text-sm font-normal transition-all"
  >
  <Plus className="w-5 h-5" strokeWidth={1.5} />
  Upload Documents
@@ -906,7 +1000,7 @@ export function PropertyDetail() {
  className="w-full p-4 flex items-center justify-between hover:bg-brand-navy/[0.02] dark:hover:bg-white/[0.02] transition-colors"
  >
  <div className="flex items-center gap-3">
- <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500/15 to-emerald-600/10 flex items-center justify-center">
+ <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
  <FileText className="w-5 h-5 text-emerald-600 dark:text-emerald-400" strokeWidth={1.5} />
  </div>
  <div className="text-left">
@@ -937,10 +1031,10 @@ export function PropertyDetail() {
  categoryDocs.map((doc: any) => (
  <div
  key={doc.id}
- className="bg-white/50 dark:bg-white/[0.02] shadow-card rounded-xl p-3 hover:bg-brand-navy/[0.02] dark:hover:bg-white/[0.04] transition-all group"
+ className="bg-gray-50 dark:bg-white/[0.03] rounded-xl p-3 hover:bg-gray-100 dark:hover:bg-white/[0.05] transition-all group"
  >
  <div className="flex items-center gap-2.5">
- <div className="flex-shrink-0 w-8 h-8 rounded-[8px] bg-gradient-to-br from-emerald-500/15 to-emerald-600/10 flex items-center justify-center">
+ <div className="flex-shrink-0 w-8 h-8 rounded-[8px] bg-emerald-500/10 flex items-center justify-center">
  <FileText className="w-4 h-4 text-emerald-600 dark:text-emerald-400" strokeWidth={1.5} />
  </div>
  
@@ -1002,28 +1096,28 @@ export function PropertyDetail() {
  <div className="space-y-2">
  <Link
  to={`/property/${property.id}/habu`}
- className="flex items-center justify-between w-full bg-brand-navy/[0.02] dark:bg-white/[0.02] hover:bg-brand-navy/[0.04] dark:hover:bg-white/[0.04] shadow-card rounded-lg px-4 py-2.5 text-small text-gray-900 dark:text-white/95 transition-all group"
+ className="flex items-center justify-between w-full bg-gray-50 dark:bg-white/[0.04] hover:bg-gray-100 dark:hover:bg-white/[0.06] rounded-xl px-4 py-2.5 text-small text-gray-900 dark:text-white/95 transition-all group"
  >
  <span>HABU Report</span>
  <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
  </Link>
  <Link
  to="/services?service=lease-rent"
- className="flex items-center justify-between w-full bg-brand-navy/[0.02] dark:bg-white/[0.02] hover:bg-brand-navy/[0.04] dark:hover:bg-white/[0.04] shadow-card rounded-lg px-4 py-2.5 text-small text-gray-900 dark:text-white/95 transition-all group"
+ className="flex items-center justify-between w-full bg-gray-50 dark:bg-white/[0.04] hover:bg-gray-100 dark:hover:bg-white/[0.06] rounded-xl px-4 py-2.5 text-small text-gray-900 dark:text-white/95 transition-all group"
  >
  <span>Lease & Rent</span>
  <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
  </Link>
  <Link
  to="/services?service=sell-liquidate"
- className="flex items-center justify-between w-full bg-brand-navy/[0.02] dark:bg-white/[0.02] hover:bg-brand-navy/[0.04] dark:hover:bg-white/[0.04] shadow-card rounded-lg px-4 py-2.5 text-small text-gray-900 dark:text-white/95 transition-all group"
+ className="flex items-center justify-between w-full bg-gray-50 dark:bg-white/[0.04] hover:bg-gray-100 dark:hover:bg-white/[0.06] rounded-xl px-4 py-2.5 text-small text-gray-900 dark:text-white/95 transition-all group"
  >
  <span>Sell or Liquidate</span>
  <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
  </Link>
  <Link
  to="/services?service=property-service"
- className="flex items-center justify-between w-full bg-brand-navy/[0.02] dark:bg-white/[0.02] hover:bg-brand-navy/[0.04] dark:hover:bg-white/[0.04] shadow-card rounded-lg px-4 py-2.5 text-small text-gray-900 dark:text-white/95 transition-all group"
+ className="flex items-center justify-between w-full bg-gray-50 dark:bg-white/[0.04] hover:bg-gray-100 dark:hover:bg-white/[0.06] rounded-xl px-4 py-2.5 text-small text-gray-900 dark:text-white/95 transition-all group"
  >
  <span>Property Service</span>
  <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
