@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router';
-import { Building2, Plus, ArrowRight, Sparkles, Briefcase, ChevronRight } from 'lucide-react';
+import { Building2, Plus, ArrowRight, Sparkles, Briefcase, ChevronRight, Search } from 'lucide-react';
 import { useState } from 'react';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { NotificationDropdown } from '../components/NotificationDropdown';
@@ -11,6 +11,7 @@ export function MyProperties() {
   const { properties } = useProperties();
   const navigate = useNavigate();
   const [typeFilter, setTypeFilter] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const formatDate = (d: string) =>
     new Date(d).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
@@ -27,8 +28,19 @@ export function MyProperties() {
 
   const propertyTypes = ['All', ...Array.from(new Set(properties.map(p => p.type).filter(Boolean)))];
 
-  const filteredProperties =
+  const typeFilteredProperties =
     typeFilter === 'All' ? properties : properties.filter(p => p.type === typeFilter);
+
+  const filteredProperties = searchQuery.trim()
+    ? typeFilteredProperties.filter(p =>
+        p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        locationLabel(p).toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (p.type || '').toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : typeFilteredProperties;
+
+  const typeCount = (type: string) =>
+    type === 'All' ? properties.length : properties.filter(p => p.type === type).length;
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-background transition-colors duration-300">
@@ -240,23 +252,41 @@ export function MyProperties() {
           ) : (
             <div className="bg-white dark:bg-card rounded-2xl overflow-hidden">
               {/* Filter tabs */}
-              {propertyTypes.length > 1 && (
-                <div className="flex overflow-x-auto scrollbar-hide border-b border-gray-100 dark:border-white/[0.05]">
-                  {propertyTypes.map((type) => (
-                    <button
-                      key={type}
-                      onClick={() => setTypeFilter(type)}
-                      className={`flex-shrink-0 px-5 py-3.5 text-sm font-normal whitespace-nowrap transition-all duration-200 border-b-2 ${
-                        typeFilter === type
-                          ? 'text-brand-primary border-brand-primary'
-                          : 'text-gray-400 dark:text-white/40 border-transparent hover:text-gray-600 dark:hover:text-white/60'
-                      }`}
-                    >
-                      {type}
-                    </button>
-                  ))}
+              <div className="flex overflow-x-auto scrollbar-hide border-b border-gray-100 dark:border-white/[0.05]">
+                {propertyTypes.map((type) => (
+                  <button
+                    key={type}
+                    onClick={() => setTypeFilter(type)}
+                    className={`flex-shrink-0 flex items-center gap-1.5 px-5 py-3.5 text-sm font-normal whitespace-nowrap transition-all duration-200 border-b-2 ${
+                      typeFilter === type
+                        ? 'text-brand-primary border-brand-primary'
+                        : 'text-gray-400 dark:text-white/40 border-transparent hover:text-gray-600 dark:hover:text-white/60'
+                    }`}
+                  >
+                    {type}
+                    <span className={`text-xs ${typeFilter === type ? 'text-brand-primary/60' : 'text-gray-300 dark:text-white/20'}`}>
+                      {typeCount(type)}
+                    </span>
+                  </button>
+                ))}
+              </div>
+              {/* Search row */}
+              <div className="px-4 py-3 border-b border-gray-100 dark:border-white/[0.05]">
+                <div className="relative">
+                  <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-white/30" strokeWidth={1.5} />
+                  <input
+                    type="text"
+                    placeholder="Search by name, location or type…"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-white/[0.04] rounded-xl
+                      text-sm text-gray-900 dark:text-white
+                      placeholder:text-gray-400 dark:placeholder:text-white/30
+                      focus:outline-none focus:ring-2 focus:ring-brand-primary/20
+                      transition-all duration-200"
+                  />
                 </div>
-              )}
+              </div>
 
               {/* Property rows */}
               {filteredProperties.map((property, idx) => (
