@@ -48,7 +48,7 @@ export function ServiceCard({
  shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_40px_-5px_rgba(0,0,0,0.05)]
  transition-all duration-200 overflow-hidden group flex flex-col
  ${isSelected
- ? 'border-2 border-emerald-500 shadow-[0_8px_32px_rgba(16,185,129,0.25)]'
+ ? 'border border-brand-primary shadow-[0_4px_16px_rgba(var(--brand-primary-rgb),0.15)]'
  : 'border border-white/60 dark:border-white/10 hover:shadow-[0_2px_4px_rgba(0,0,0,0.02),0_20px_60px_-5px_rgba(0,0,0,0.1)] hover:-translate-y-1'
  }
  `}

@@ -330,7 +330,7 @@ export function Settings() {
  /* ── Menu Home ── */
  <>
  {/* ── Hero ── */}
- <div className="relative bg-gradient-to-br from-[#0B3360] via-brand-navy to-brand-primary/75 dark:from-background dark:to-background overflow-hidden">
+ <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06]">
  <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-brand-secondary/[0.05] blur-3xl pointer-events-none" />
 
  {/* Avatar + name — centred, editorial */}
@@ -483,19 +483,19 @@ export function Settings() {
  <div className="hidden md:block">
 
  {/* Header - Hidden on inner tabs for mobile/tablet */}
- <div className={`border-b border-gray-200 dark:border-white/[0.06] bg-white dark:bg-card ${
+ <div className={`bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] ${
  activeTab === 'profile' ? '' : 'hidden lg:block'
  }`}>
  <div className="max-w-[1200px] mx-auto container-padding py-5 md:py-6">
  <div className="flex items-center justify-between gap-4">
  <div>
- <div className="text-xs font-normal tracking-[0.12em] uppercase text-brand-gold mb-2">
+ <div className="text-xs font-normal tracking-[0.12em] uppercase text-brand-primary mb-2">
  Account
  </div>
  <h1 className="text-h1 font-normal tracking-tight text-gray-900 dark:text-white">
  My Profile
  </h1>
- <p className="text-small text-gray-600 dark:text-white/50 mt-1">
+ <p className="text-small text-gray-500 dark:text-white/50 mt-1">
  Manage your profile and account preferences
  </p>
  </div>

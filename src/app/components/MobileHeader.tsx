@@ -31,8 +31,7 @@ export function MobileHeader() {
 
  return (
  <header className="md:hidden fixed top-0 left-0 right-0 z-40 h-16
- bg-white/95 dark:bg-background/95
- backdrop-blur-xl
+ bg-white dark:bg-background
  border-b border-gray-100 dark:border-white/[0.05]">
 
  <div className="flex items-center justify-between h-full px-5">

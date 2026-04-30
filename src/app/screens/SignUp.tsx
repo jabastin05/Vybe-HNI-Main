@@ -100,60 +100,41 @@ export function SignUp() {
  };
 
  return (
- <div className="min-h-screen bg-gray-50 dark:bg-background transition-colors duration-300">
+ <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-background">
 
- {/* ── Top bar ── */}
- <div className="fixed top-0 left-0 right-0 z-50
- bg-white/90 dark:bg-brand-navy/90
- backdrop-blur-[30px]
- border-b border-gray-200 dark:border-white/[0.06]">
- <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-5">
- <div className="flex items-center justify-between">
- <Link to="/" className="flex items-center">
- <VybeLogo width={72} height={44} />
- </Link>
- <ThemeToggle />
+ {/* Hero */}
+ <div className="relative bg-gradient-to-br from-[#0B3360] via-brand-navy to-brand-primary/75 dark:from-background dark:to-background px-5 pt-6 pb-6 overflow-hidden flex-shrink-0">
+ <div className="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-brand-secondary/[0.05] blur-3xl pointer-events-none" />
+ <div className="absolute top-4 right-4"><ThemeToggle /></div>
+ <div className="flex justify-center mb-6">
+ <VybeLogo width={52} height={32} style={{ '--brand-primary': '#ffffff', '--brand-teal': '#ffffff' } as React.CSSProperties} />
  </div>
+ {step === 'details' ? (
+ <div className="text-center">
+ <p className="text-xs tracking-[0.16em] uppercase text-white/40 mb-2">Get Started</p>
+ <h1 className="text-3xl font-normal text-white tracking-tight leading-none mb-2">Join VYBE</h1>
+ <p className="text-sm text-white/50">Create your account to start analysing properties</p>
  </div>
+ ) : (
+ <div>
+ <button onClick={() => setStep('details')} className="flex items-center gap-2 text-white/60 active:text-white transition-colors mb-5">
+ <ArrowRight className="w-4 h-4 rotate-180" strokeWidth={1.5} />
+ <span className="text-sm">Back</span>
+ </button>
+ <h1 className="text-3xl font-normal text-white tracking-tight leading-none mb-2">Verify Email</h1>
+ <p className="text-sm text-white/50">Code sent to <span className="text-white/80">{formData.email}</span></p>
+ </div>
+ )}
  </div>
 
- {/* ── Centred form ── */}
- <div className="flex items-center justify-center min-h-screen px-4 pt-24 pb-12">
- <div className="w-full max-w-[420px]">
+ {/* Form */}
+ <div className="flex-1 bg-white dark:bg-card rounded-t-3xl -mt-4 relative z-10 overflow-auto">
+ <div className="px-6 pt-8 pb-10 max-w-[460px] mx-auto">
 
- {/* ════ STEP: details ════ */}
  {step === 'details' && (
  <>
- {/* Card */}
- <div className="bg-white dark:bg-card
- shadow-card
- rounded-2xl p-7 md:p-8
- shadow-[0_4px_24px_rgba(var(--brand-navy-rgb),0.08)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.35)]">
-
- {/* Gold accent bar + heading */}
- <div className="text-center mb-7">
- <div className="h-1 w-10 rounded-full bg-brand-gold mx-auto mb-5" />
- <h1 className="text-h1 font-normal tracking-[-0.02em] text-gray-900 dark:text-white mb-1.5">
- Join VYBE
- </h1>
- <p className="text-small text-gray-600 dark:text-white/50">
- Create your account to start analysing properties
- </p>
- </div>
-
- {/* SSO */}
- <div className="mb-6">
- <button
- type="button"
- onClick={() => handleSSOSignup('google')}
- className="w-full bg-white dark:bg-white/[0.04]
- shadow-card
- rounded-xl px-4 py-3
- text-small font-normal text-gray-900 dark:text-white
- hover:border-brand-navy/20 dark:hover:border-white/20
- hover:shadow-[0_2px_8px_rgba(var(--brand-navy-rgb),0.08)]
- transition-all flex items-center justify-center gap-2.5"
- >
+ <button type="button" onClick={() => handleSSOSignup('google')}
+ className="w-full bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-4 py-3.5 mb-5 text-sm text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/[0.06] transition-all duration-200 flex items-center justify-center gap-2.5">
  <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24">
  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -162,320 +143,94 @@ export function SignUp() {
  </svg>
  Continue with Google
  </button>
+ <div className="flex items-center gap-3 mb-5">
+ <div className="flex-1 h-px bg-gray-100 dark:bg-white/[0.06]" />
+ <span className="text-xs text-gray-400 dark:text-white/30 tracking-[0.08em] uppercase">or</span>
+ <div className="flex-1 h-px bg-gray-100 dark:bg-white/[0.06]" />
  </div>
-
- {/* Divider */}
- <div className="relative mb-6">
- <div className="absolute inset-0 flex items-center">
- <div className="w-full border-t border-gray-200 dark:border-white/[0.06]" />
- </div>
- <div className="relative flex justify-center">
- <span className="bg-white dark:bg-card px-3 text-xs font-normal tracking-[0.08em] uppercase text-gray-400">
- Or continue with email
- </span>
- </div>
- </div>
-
  <form onSubmit={handleSendVerification} className="space-y-4">
-
- {/* Full Name */}
  <div>
- <label htmlFor="name" className="block text-xs font-normal tracking-[0.08em] uppercase text-gray-400 mb-1.5">
- Full Name
- </label>
+ <label htmlFor="name" className="block text-xs tracking-[0.08em] uppercase text-gray-400 dark:text-white/40 mb-1.5">Full Name</label>
  <div className="relative">
- <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
- <input
- id="name" name="name" type="text"
- value={formData.name}
- onChange={handleChange}
- placeholder="John Doe"
- className="w-full bg-white dark:bg-white/[0.04]
- shadow-card
- rounded-xl pl-10 pr-3.5 py-3
- text-small text-gray-900 dark:text-white
- placeholder:text-gray-400 dark:placeholder:text-white/30
- focus:outline-none focus:border-brand-navy/40 dark:focus:border-brand-gold/15
- transition-colors"
- required
- />
+ <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-white/30" strokeWidth={1.5} />
+ <input id="name" name="name" type="text" value={formData.name} onChange={handleChange} placeholder="John Doe"
+ className="w-full bg-white dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl pl-10 pr-4 py-3.5 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all duration-200" required />
  </div>
  </div>
-
- {/* Email */}
  <div>
- <label htmlFor="email" className="block text-xs font-normal tracking-[0.08em] uppercase text-gray-400 mb-1.5">
- Email Address
- </label>
+ <label htmlFor="email" className="block text-xs tracking-[0.08em] uppercase text-gray-400 dark:text-white/40 mb-1.5">Email Address</label>
  <div className="relative">
- <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
- <input
- id="email" name="email" type="email"
- value={formData.email}
- onChange={handleChange}
- placeholder="your@email.com"
- className="w-full bg-white dark:bg-white/[0.04]
- shadow-card
- rounded-xl pl-10 pr-3.5 py-3
- text-small text-gray-900 dark:text-white
- placeholder:text-gray-400 dark:placeholder:text-white/30
- focus:outline-none focus:border-brand-navy/40 dark:focus:border-brand-gold/15
- transition-colors"
- required
- />
+ <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-white/30" strokeWidth={1.5} />
+ <input id="email" name="email" type="email" value={formData.email} onChange={handleChange} placeholder="your@email.com"
+ className="w-full bg-white dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl pl-10 pr-4 py-3.5 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all duration-200" required />
  </div>
  </div>
-
- {/* Phone */}
  <div>
- <label htmlFor="phone" className="block text-xs font-normal tracking-[0.08em] uppercase text-gray-400 mb-1.5">
- Phone Number
- </label>
+ <label htmlFor="phone" className="block text-xs tracking-[0.08em] uppercase text-gray-400 dark:text-white/40 mb-1.5">Phone Number</label>
  <div className="flex gap-2">
- <select
- name="countryCode"
- value={formData.countryCode}
- onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
- className="bg-white dark:bg-white/[0.04]
- shadow-card
- rounded-xl px-3 py-3
- text-small text-gray-900 dark:text-white
- focus:outline-none focus:border-brand-navy/40 dark:focus:border-brand-gold/15
- transition-colors w-[100px]"
- >
- <option value="+91">🇮🇳 +91</option>
- <option value="+1">🇺🇸 +1</option>
- <option value="+44">🇬🇧 +44</option>
- <option value="+971">🇦🇪 +971</option>
- <option value="+65">🇸🇬 +65</option>
- <option value="+61">🇦🇺 +61</option>
- <option value="+852">🇭🇰 +852</option>
- <option value="+86">🇨🇳 +86</option>
- <option value="+81">🇯🇵 +81</option>
- <option value="+82">🇰🇷 +82</option>
+ <select name="countryCode" value={formData.countryCode} onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
+ className="bg-white dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-3 py-3.5 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all duration-200 w-[100px]">
+ <option value="+91">+91</option><option value="+1">+1</option><option value="+44">+44</option>
+ <option value="+971">+971</option><option value="+65">+65</option><option value="+61">+61</option>
+ <option value="+852">+852</option><option value="+86">+86</option><option value="+81">+81</option><option value="+82">+82</option>
  </select>
-
  <div className="relative flex-1">
- <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
- <input
- id="phone" name="phone" type="tel"
- value={formData.phone}
- onChange={handleChange}
- placeholder="9876543210"
- className="w-full bg-white dark:bg-white/[0.04]
- shadow-card
- rounded-xl pl-10 pr-3.5 py-3
- text-small text-gray-900 dark:text-white
- placeholder:text-gray-400 dark:placeholder:text-white/30
- focus:outline-none focus:border-brand-navy/40 dark:focus:border-brand-gold/15
- transition-colors"
- required
- />
+ <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-white/30" strokeWidth={1.5} />
+ <input id="phone" name="phone" type="tel" value={formData.phone} onChange={handleChange} placeholder="9876543210"
+ className="w-full bg-white dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl pl-10 pr-4 py-3.5 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all duration-200" required />
  </div>
  </div>
  </div>
-
- {/* Error */}
  {error && (
- <div className="bg-red-50 dark:bg-red-500/10
- border border-red-200 dark:border-red-500/20
- rounded-xl p-3 flex items-start gap-2.5">
- <AlertCircle className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" />
- <p className="text-small text-red-600 dark:text-red-400">{error}</p>
+ <div className="bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20 rounded-xl p-3 flex items-start gap-2.5">
+ <AlertCircle className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" strokeWidth={1.5} />
+ <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
  </div>
  )}
-
- {/* Terms */}
- <p className="text-xs text-gray-400 text-center leading-relaxed pt-1">
- By continuing you agree to our{' '}
- <span className="text-brand-primary font-normal">Terms & Conditions</span>
- {' '}and{' '}
- <span className="text-brand-primary font-normal">Privacy Policy</span>
+ <p className="text-xs text-gray-400 dark:text-white/30 text-center leading-relaxed">
+ By continuing you agree to our <span className="text-brand-primary">Terms</span> and <span className="text-brand-primary">Privacy Policy</span>
  </p>
-
- {/* CTA */}
- <button
- type="submit"
- disabled={isLoading}
- className="w-full bg-brand-navy hover:bg-brand-navy-hover text-white
- px-6 py-3.5 rounded-xl
- text-small font-normal
- transition-all
- hover:shadow-[0_4px_20px_rgba(var(--brand-navy-rgb),0.40)]
- hover:-translate-y-0.5
- disabled:opacity-50 disabled:cursor-not-allowed disabled:translate-y-0
- flex items-center justify-center gap-2 mt-1"
- >
- {isLoading ? (
- <>
- <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
- Sending Code…
- </>
- ) : (
- <>
- Continue
- <ArrowRight className="w-4 h-4" />
- </>
- )}
+ <button type="submit" disabled={isLoading}
+ className="w-full bg-brand-primary hover:bg-brand-primary-hover text-white px-6 py-4 rounded-xl text-sm font-normal transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+ {isLoading ? (<><div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />Sending Code&hellip;</>) : (<>Continue<ArrowRight className="w-4 h-4" strokeWidth={1.5} /></>)}
  </button>
  </form>
-
- {/* Sign In link */}
- <div className="mt-6 pt-5 border-t border-gray-100 dark:border-white/[0.05] text-center">
- <p className="text-small text-gray-600 dark:text-white/50">
- Already have an account?{' '}
- <Link to="/signin" className="text-brand-primary font-normal hover:underline">
- Sign In
- </Link>
+ <p className="text-sm text-gray-400 dark:text-white/40 text-center mt-6">
+ Already have an account? <Link to="/signin" className="text-brand-primary font-normal">Sign In</Link>
  </p>
- </div>
- </div>
-
- {/* Demo note */}
- <div className="mt-5 bg-brand-navy/[0.04] dark:bg-white/[0.03]
- border border-brand-navy/10 dark:border-white/[0.06]
- rounded-2xl p-5 text-center">
- <p className="text-xs text-gray-400 leading-relaxed">
- <span className="text-brand-primary font-normal">Demo Mode —</span>{' '}
- Frontend demonstration only. Integrate a secure auth provider for production.
- </p>
- </div>
  </>
  )}
 
- {/* ════ STEP: verification ════ */}
  {step === 'verification' && (
  <>
- <div className="bg-white dark:bg-card
- shadow-card
- rounded-2xl p-7 md:p-8
- shadow-[0_4px_24px_rgba(var(--brand-navy-rgb),0.08)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.35)]">
-
- {/* Back */}
- <button
- onClick={() => setStep('details')}
- className="mb-7 text-small text-gray-600 dark:text-white/50
- hover:text-brand-navy dark:hover:text-white
- transition-colors flex items-center gap-1.5"
- >
- <ArrowRight className="w-4 h-4 rotate-180" />
- Change details
- </button>
-
- {/* Gold bar + heading */}
- <div className="text-center mb-7">
- <div className="h-1 w-10 rounded-full bg-brand-gold mx-auto mb-5" />
- <h1 className="text-h1 font-normal tracking-[-0.02em] text-gray-900 dark:text-white mb-2">
- Verify Your Email
- </h1>
- <p className="text-small text-gray-600 dark:text-white/50 mb-1">
- Enter the 6-digit code sent to
- </p>
- <p className="text-small font-normal text-brand-navy dark:text-brand-gold">
- {formData.email}
- </p>
- </div>
-
- {/* OTP boxes */}
- <div className="flex gap-2.5 justify-center mb-7">
+ <div className="flex gap-3 justify-center mb-8 mt-2">
  {verificationCode.map((digit, index) => (
- <input
- key={index}
- id={`code-${index}`}
- type="text"
- inputMode="numeric"
- maxLength={1}
- value={digit}
+ <input key={index} id={`code-${index}`} type="text" inputMode="numeric" maxLength={1} value={digit}
  onChange={(e) => handleCodeChange(index, e.target.value)}
- onKeyDown={(e) => {
- if (e.key === 'Backspace' && !digit && index > 0) {
- document.getElementById(`code-${index - 1}`)?.focus();
- }
- }}
- className="w-12 h-14 text-center text-h3 font-normal
- bg-white dark:bg-white/[0.04]
- shadow-card
- rounded-xl
- text-gray-900 dark:text-white
- focus:outline-none focus:ring-2 focus:ring-brand-primary/30 dark:focus:ring-brand-gold/15
- transition-all duration-200"
- />
+ onKeyDown={(e) => { if (e.key === 'Backspace' && digit === '' && index > 0) document.getElementById(`code-${index - 1}`)?.focus(); }}
+ className="w-12 h-14 text-center text-xl font-normal bg-white dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-primary/30 transition-all duration-200" />
  ))}
  </div>
-
- {/* Resend */}
- <div className="text-center mb-7">
+ <div className="text-center mb-6">
  {canResend ? (
- <button
- onClick={handleResendCode}
- className="text-small font-normal text-brand-navy dark:text-brand-gold hover:underline"
- >
- Resend Code
- </button>
+ <button onClick={handleResendCode} className="text-sm text-brand-primary font-normal">Resend Code</button>
  ) : (
- <p className="text-small text-gray-400">
- Resend in{' '}
- <span className="font-normal text-gray-600 dark:text-white/60">{resendTimer}s</span>
- </p>
+ <p className="text-sm text-gray-400 dark:text-white/40">Resend in <span className="text-gray-600 dark:text-white/60">{resendTimer}s</span></p>
  )}
  </div>
-
- {/* Error */}
  {error && (
- <div className="bg-red-50 dark:bg-red-500/10
- border border-red-200 dark:border-red-500/20
- rounded-xl p-3 flex items-start gap-2.5 mb-5">
- <AlertCircle className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" />
- <p className="text-small text-red-600 dark:text-red-400">{error}</p>
+ <div className="bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20 rounded-xl p-3 flex items-start gap-2.5 mb-5">
+ <AlertCircle className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" strokeWidth={1.5} />
+ <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
  </div>
  )}
-
- {/* Verify CTA */}
- <button
- onClick={handleVerify}
- disabled={isLoading || verificationCode.some(d => !d)}
- className="w-full bg-brand-navy hover:bg-brand-navy-hover text-white
- px-6 py-3.5 rounded-xl
- text-small font-normal
- transition-all
- hover:shadow-[0_4px_20px_rgba(var(--brand-navy-rgb),0.40)]
- hover:-translate-y-0.5
- disabled:opacity-50 disabled:cursor-not-allowed disabled:translate-y-0
- flex items-center justify-center gap-2"
- >
- {isLoading ? (
- <>
- <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
- Verifying…
- </>
- ) : (
- <>
- Verify & Continue
- <ArrowRight className="w-4 h-4" />
- </>
- )}
+ <button onClick={handleVerify} disabled={isLoading || verificationCode.some(d => d === '')}
+ className="w-full bg-brand-primary hover:bg-brand-primary-hover text-white px-6 py-4 rounded-xl text-sm font-normal transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+ {isLoading ? (<><div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />Verifying&hellip;</>) : (<>Verify & Continue<ArrowRight className="w-4 h-4" strokeWidth={1.5} /></>)}
  </button>
-
- {/* Sign In link */}
- <div className="mt-6 pt-5 border-t border-gray-100 dark:border-white/[0.05] text-center">
- <p className="text-small text-gray-600 dark:text-white/50">
- Already have an account?{' '}
- <Link to="/signin" className="text-brand-primary font-normal hover:underline">
- Sign In
- </Link>
+ <p className="text-sm text-gray-400 dark:text-white/40 text-center mt-6">
+ Already have an account? <Link to="/signin" className="text-brand-primary font-normal">Sign In</Link>
  </p>
- </div>
- </div>
-
- {/* Demo note */}
- <div className="mt-5 bg-brand-navy/[0.04] dark:bg-white/[0.03]
- border border-brand-navy/10 dark:border-white/[0.06]
- rounded-2xl p-5 text-center">
- <p className="text-xs text-gray-400 leading-relaxed">
- <span className="text-brand-primary font-normal">Demo Mode —</span>{' '}
- Frontend demonstration only. Integrate a secure auth provider for production.
- </p>
- </div>
  </>
  )}
 

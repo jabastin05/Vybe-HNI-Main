@@ -8,7 +8,7 @@ export function TermsAndConditions() {
 
  
  {/* Header */}
- <div className="border-b border-gray-200 dark:border-white/[0.06] bg-white dark:bg-card">
+ <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06]">
  <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-6">
  <div className="flex items-center justify-between">
  <div className="flex items-center gap-4">
@@ -25,7 +25,7 @@ export function TermsAndConditions() {
  <div className="text-h1 tracking-tight text-gray-900 dark:text-white/95">
  Terms & Conditions
  </div>
- <p className="text-small text-gray-600 dark:text-white/50 mt-1">
+ <p className="text-small text-gray-500 dark:text-white/50 mt-1">
  Last updated: March 17, 2026
  </p>
  </div>

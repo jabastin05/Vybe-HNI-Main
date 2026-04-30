@@ -45,7 +45,8 @@ export function SideNav() {
  flex-col
  w-[220px] lg:w-[72px]
  overflow-visible
- bg-sidebar
+ bg-gradient-to-b from-[#0B3360] via-brand-navy to-brand-primary
+ dark:from-[#0E2040] dark:via-[#0A1830] dark:to-[#060A14]
  border-r border-white/[0.06]
  transition-all duration-200">
 

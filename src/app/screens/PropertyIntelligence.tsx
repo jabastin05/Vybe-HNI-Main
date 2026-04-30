@@ -69,7 +69,7 @@ export function PropertyIntelligence() {
 
  
  {/* Header - Full Width */}
- <div className="border-b border-gray-200 dark:border-white/[0.06] bg-white dark:bg-card">
+ <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06]">
  <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-6">
  <div className="flex items-center justify-between">
  {/* Left: Back Button + Property Name */}

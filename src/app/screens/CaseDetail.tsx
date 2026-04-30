@@ -174,13 +174,12 @@ export function CaseDetail() {
  </div>
 
  {/* ── Desktop Header (hidden md:block) ─────────────── */}
- <div className="hidden md:block border-b border-gray-200 dark:border-white/[0.06] bg-white dark:bg-card">
+ <div className="hidden md:block bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06]">
  <div className="max-w-[1200px] mx-auto container-padding py-3 md:py-4">
  {/* Back Button */}
  <Link
  to={backUrl}
- className="flex items-center gap-2 text-small text-gray-600 dark:text-white/50
- hover:text-gray-900 dark:hover:text-white transition-colors mb-3 md:mb-4 w-fit"
+ className="flex items-center gap-2 text-small text-gray-500 dark:text-white/50 hover:text-gray-900 dark:hover:text-white transition-colors mb-3 md:mb-4 w-fit"
  >
  <ArrowLeft className="w-4 h-4" />
  <span>{backLabel}</span>

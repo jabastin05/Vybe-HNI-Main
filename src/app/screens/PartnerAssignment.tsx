@@ -14,7 +14,7 @@ export function PartnerAssignment() {
  {/* Main Content with responsive padding for side nav */}
  <div className="lg:pl-[88px]">
  {/* Header - Full Width */}
- <div className="border-b border-gray-200 dark:border-white/[0.06] bg-white dark:bg-card">
+ <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06]">
  <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-6">
  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
  {/* Left: Back Button + Page Title */}

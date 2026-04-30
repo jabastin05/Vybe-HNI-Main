@@ -412,13 +412,13 @@ export function PropertyUpload() {
  </div>
 
  {/* ── Desktop Header (hidden md:block) ────────────── */}
- <div className="hidden md:block border-b border-gray-200 dark:border-white/[0.06] bg-white dark:bg-card sticky md:top-0 z-30">
+ <div className="hidden md:block bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] sticky md:top-0 z-30">
  <div className="max-w-[1200px] mx-auto container-padding py-6">
  <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
  <div className="flex flex-col gap-2">
  <Link
  to="/properties"
- className="flex items-center gap-2 text-small text-gray-600 dark:text-white/50 hover:text-gray-900 dark:hover:text-white transition-colors w-fit"
+ className="flex items-center gap-2 text-small text-gray-500 dark:text-white/50 hover:text-gray-900 dark:hover:text-white transition-colors w-fit"
  >
  <ArrowLeft className="w-4 h-4" />
  Back to Properties

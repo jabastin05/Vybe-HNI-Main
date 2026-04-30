@@ -45,7 +45,7 @@ export function HabuReportView() {
  return (
  <div className="min-h-screen bg-gray-50 dark:bg-background flex flex-col">
  {/* Header */}
- <div className="sticky top-0 z-50 border-b border-gray-200 dark:border-white/[0.06] bg-white dark:bg-card backdrop-blur-md">
+ <div className="sticky top-0 z-50 bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] backdrop-blur-md">
  <div className="max-w-[1200px] mx-auto container-padding h-16 flex items-center justify-between">
  <div className="flex items-center gap-4">
  <button 

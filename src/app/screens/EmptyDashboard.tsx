@@ -46,11 +46,11 @@ export function EmptyDashboard() {
  <div className="min-h-screen bg-gray-50 dark:bg-background transition-colors duration-300">
 
  {/* Desktop header */}
- <header className="hidden md:block border-b border-gray-200 dark:border-white/[0.06] bg-white dark:bg-card">
+ <header className="hidden md:block bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06]">
  <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-5">
  <div className="flex items-center justify-between">
  <div>
- <div className="text-xs font-normal tracking-[0.12em] uppercase text-brand-gold mb-1">
+ <div className="text-xs font-normal tracking-[0.12em] uppercase text-brand-primary mb-2">
  Command Centre
  </div>
  <h1 className="text-h2 font-normal tracking-tight text-gray-900 dark:text-white leading-none">
@@ -68,28 +68,33 @@ export function EmptyDashboard() {
  {/* Mobile: immersive hero */}
  <div className="md:hidden">
 
- {/* Navy hero */}
- <div className="relative bg-gradient-to-br from-brand-navy via-brand-navy to-brand-navy/85 dark:bg-background dark:from-background dark:to-background px-5 pt-6 pb-8 overflow-hidden">
- <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-brand-gold/[0.05] blur-3xl pointer-events-none" />
- <div className="absolute -bottom-10 -left-10 w-48 h-48 rounded-full bg-brand-gold/[0.04] blur-xl pointer-events-none" />
+ {/* Hero */}
+ <div className="relative bg-gradient-to-br from-[#0B3360] via-brand-navy to-brand-primary/75 dark:from-background dark:to-background px-5 pt-6 pb-8 overflow-hidden">
+ <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-brand-secondary/[0.06] blur-3xl pointer-events-none" />
 
  <div className="relative">
- <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-gold/8 border border-brand-gold/25 mb-4">
- <span className="w-1.5 h-1.5 rounded-full bg-brand-gold" />
- <span className="text-xs font-normal tracking-[0.1em] uppercase text-brand-gold">Portfolio Ready</span>
+ {/* Status badge */}
+ <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/20 mb-4">
+ <span className="w-1.5 h-1.5 rounded-full bg-brand-secondary" />
+ <span className="text-xs font-normal tracking-[0.1em] uppercase text-white/80">Portfolio Ready</span>
  </div>
 
- <h1 className="text-3xl font-normal text-white tracking-tight leading-[1.2] mb-2">
- {firstName ? `Welcome,
-${firstName}` : "Welcome"}
+ <h1 className="text-3xl font-normal text-white tracking-tight leading-tight mb-2">
+ {firstName ? `Welcome,\n${firstName}` : "Welcome"}
  </h1>
  <p className="text-sm text-white/50 leading-relaxed mb-7 max-w-[280px]">
  Add your first property to unlock HABU analysis, document vault, and premium services.
  </p>
 
+ {/* CTA — white button for max visibility on both themes */}
  <button
  onClick={() => navigate("/upload")}
- className="flex items-center gap-2 bg-brand-primary active:bg-brand-primary-active text-white font-normal px-6 py-3.5 rounded-2xl text-sm active:scale-[0.98] transition-all duration-150"
+ className="flex items-center gap-2
+ bg-white dark:bg-white/15
+ text-brand-primary dark:text-white
+ font-normal px-6 py-3.5 rounded-2xl text-sm
+ active:scale-[0.98] active:bg-white/90 dark:active:bg-white/25
+ transition-all duration-150"
  >
  <Plus className="w-4 h-4" strokeWidth={1.5} />
  Add Property to VYBE

@@ -121,7 +121,7 @@ export function DocumentUpload() {
  </div>
 
  {/* ── Desktop Header ── */}
- <div className="hidden md:block border-b border-gray-200 dark:border-white/[0.06] bg-white dark:bg-card">
+ <div className="hidden md:block bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06]">
  <div className="max-w-[1200px] mx-auto container-padding py-5 md:py-6">
  <div className="flex items-center justify-between gap-4">
  <div className="flex items-center gap-4">
@@ -129,10 +129,10 @@ export function DocumentUpload() {
  onClick={() => navigate(id ? `/property/${id}/documents` : '/documents')}
  className="w-9 h-9 rounded-xl bg-brand-navy/[0.04] dark:bg-white/[0.04] hover:bg-brand-navy/[0.08] dark:hover:bg-white/[0.08] flex items-center justify-center transition-colors"
  >
- <ArrowLeft className="w-4 h-4 text-gray-600 dark:text-white/50" />
+ <ArrowLeft className="w-4 h-4 text-gray-500 dark:text-white/50" />
  </button>
  <div>
- <div className="text-xs font-normal tracking-[0.12em] uppercase text-white/40 mb-2">
+ <div className="text-xs font-normal tracking-[0.12em] uppercase text-brand-primary mb-2">
  Document Vault
  </div>
  <h1 className="text-h1 font-normal tracking-tight text-gray-900 dark:text-white">
