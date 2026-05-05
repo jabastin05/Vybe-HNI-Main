@@ -27,7 +27,8 @@ import {
  Copy,
  LogOut,
  Scale,
- ShieldCheck
+ ShieldCheck,
+ Pencil
 } from 'lucide-react';
 
 export function Settings() {
@@ -611,12 +612,15 @@ export function Settings() {
  {!isEditingPersonalInfo ? (
  <button
  onClick={() => { setIsEditingPersonalInfo(true); setTempProfileData({ firstName: profileData.firstName, lastName: profileData.lastName, email: profileData.email, phone: profileData.phone, primaryRole: profileData.primaryRole, portfolioSize: profileData.portfolioSize, referralCode: profileData.referralCode, country: profileData.country }); }}
- className="text-caption font-normal leading-none text-brand-primary hover:text-brand-primary-hover transition-colors"
- >Edit</button>
+ className="inline-flex items-center justify-center gap-1.5 h-8 px-3 rounded-lg bg-brand-primary/[0.08] text-brand-primary hover:bg-brand-primary/[0.12] text-caption font-semibold leading-none transition-colors"
+ >
+ <Pencil className="w-3.5 h-3.5" strokeWidth={1.5} />
+ Edit
+ </button>
  ) : (
  <div className="flex items-center gap-3">
- <button onClick={() => { setIsEditingPersonalInfo(false); setValidationErrors({}); }} className="text-caption font-normal leading-none text-gray-400 hover:text-gray-600 dark:hover:text-white/60 transition-colors">Cancel</button>
- <button onClick={handleSaveProfile} disabled={isSaving} className="text-caption font-normal leading-none text-brand-primary hover:text-brand-primary-hover transition-colors flex items-center gap-1">
+ <button onClick={() => { setIsEditingPersonalInfo(false); setValidationErrors({}); }} className="inline-flex items-center justify-center h-8 px-3 rounded-lg bg-brand-navy/[0.04] dark:bg-white/[0.04] text-gray-500 dark:text-white/50 hover:bg-brand-navy/[0.08] dark:hover:bg-white/[0.08] text-caption font-semibold leading-none transition-colors">Cancel</button>
+ <button onClick={handleSaveProfile} disabled={isSaving} className="inline-flex items-center justify-center gap-1.5 h-8 px-3 rounded-lg bg-brand-primary text-white hover:bg-brand-primary-hover disabled:opacity-60 text-caption font-semibold leading-none transition-colors">
  {isSaving ? <Loader2 className="w-3 h-3 animate-spin" /> : null}
  {isSaving ? 'Saving…' : 'Save'}
  </button>

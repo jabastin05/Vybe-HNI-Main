@@ -36,14 +36,15 @@ export function ExecutionDashboard() {
  {/* Header - Full Width */}
  <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] shadow-header">
  <div className="max-w-[1500px] mx-auto container-padding py-4 md:py-6">
+ <div className="flex items-start md:items-center justify-between flex-col md:flex-row gap-4">
+ <div className="flex items-start gap-4 min-w-0">
  <Link
  to="/cases"
- className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-brand-navy/[0.04] dark:bg-white/[0.04] hover:bg-brand-navy/[0.08] dark:hover:bg-white/[0.08] flex-shrink-0 transition-colors mb-4"
+ className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-brand-navy/[0.04] dark:bg-white/[0.04] hover:bg-brand-navy/[0.08] dark:hover:bg-white/[0.08] flex-shrink-0 transition-colors"
  >
  <ArrowLeft className="w-4 h-4 text-gray-500 dark:text-white/50" />
  </Link>
- <div className="flex items-start md:items-center justify-between flex-col md:flex-row gap-4">
- <div>
+ <div className="min-w-0">
  <div className="text-caption tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-2">
  Project Tracker
  </div>
@@ -52,6 +53,7 @@ export function ExecutionDashboard() {
  </div>
  <div className="inline-flex items-center gap-2 bg-purple-500/10 text-purple-600 dark:text-purple-400 px-3 py-1.5 rounded-lg text-caption border border-purple-500/20">
  In Progress
+ </div>
  </div>
  </div>
  <div className="flex items-center gap-4">

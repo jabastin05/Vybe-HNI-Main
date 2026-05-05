@@ -180,11 +180,11 @@ export function MyProperties() {
                         {property.name}
                       </h3>
                       <div className="flex items-center gap-2">
-                        <span className="text-caption text-gray-400 dark:text-white/40 truncate">{locationLabel(property)}</span>
+                        <span className="text-caption text-gray-500 dark:text-white/40 truncate">{locationLabel(property)}</span>
                         {property.type && (
                           <>
-                            <span className="text-gray-200 dark:text-white/10 flex-shrink-0">·</span>
-                            <span className="text-caption text-gray-400 dark:text-white/30 flex-shrink-0">{property.type}</span>
+                            <span className="text-gray-300 dark:text-white/10 flex-shrink-0">·</span>
+                            <span className="text-caption text-gray-500 dark:text-white/30 flex-shrink-0">{property.type}</span>
                           </>
                         )}
                       </div>
@@ -203,9 +203,9 @@ export function MyProperties() {
                 active:bg-gray-50 transition-colors duration-150"
             >
               <div className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-white/5 flex items-center justify-center flex-shrink-0">
-                <Plus className="w-4 h-4 text-gray-400" strokeWidth={1.5} />
+                <Plus className="w-4 h-4 text-gray-500" strokeWidth={1.5} />
               </div>
-              <span className="text-small font-medium text-gray-400 dark:text-white/40">Add Another Property</span>
+              <span className="text-small font-medium text-gray-500 dark:text-white/40">Add Another Property</span>
             </Link>
           </div>
         )}
@@ -362,23 +362,23 @@ export function MyProperties() {
                     <h3 className="text-small font-semibold text-gray-900 dark:text-white truncate mb-0.5">
                       {property.name}
                     </h3>
-                    <div className="flex items-center gap-2 text-caption text-gray-400 dark:text-white/40">
+                    <div className="flex items-center gap-2 text-caption text-gray-500 dark:text-white/40">
                       <span className="truncate">{locationLabel(property)}</span>
                       {property.type && (
                         <>
-                          <span className="text-gray-200 dark:text-white/10">·</span>
+                          <span className="text-gray-300 dark:text-white/10">·</span>
                           <span className="flex-shrink-0">{property.type}</span>
                         </>
                       )}
                       {property.buildingType && (
                         <>
-                          <span className="text-gray-200 dark:text-white/10">·</span>
+                          <span className="text-gray-300 dark:text-white/10">·</span>
                           <span className="flex-shrink-0 capitalize">{property.buildingType}</span>
                         </>
                       )}
                     </div>
                   </div>
-                  <span className="text-caption text-gray-400 dark:text-white/30 flex-shrink-0">
+                  <span className="text-caption text-gray-500 dark:text-white/30 flex-shrink-0">
                     {formatDate(property.dateAdded)}
                   </span>
                   <ChevronRight className="w-4 h-4 text-gray-300 dark:text-white/20 flex-shrink-0" strokeWidth={1.5} />
@@ -391,9 +391,9 @@ export function MyProperties() {
                 className="flex items-center gap-4 px-5 py-4 border-t border-dashed border-gray-200 dark:border-white/[0.08] hover:bg-gray-50 dark:hover:bg-white/[0.02] transition-colors duration-150"
               >
                 <div className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-white/5 flex items-center justify-center flex-shrink-0">
-                  <Plus className="w-4 h-4 text-gray-400" strokeWidth={1.5} />
+                  <Plus className="w-4 h-4 text-gray-500" strokeWidth={1.5} />
                 </div>
-                  <span className="text-small font-medium text-gray-400 dark:text-white/40">Add Another Property</span>
+                  <span className="text-small font-medium text-gray-500 dark:text-white/40">Add Another Property</span>
               </Link>
             </div>
           )}

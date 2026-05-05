@@ -191,25 +191,26 @@ export function CaseDetail() {
  className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-brand-navy/[0.04] dark:bg-white/[0.04] hover:bg-brand-navy/[0.08] dark:hover:bg-white/[0.08] flex-shrink-0 transition-colors"
  >
  <ArrowLeft className="w-4 h-4 text-gray-500 dark:text-white/50" />
- </Link>
- <div className="flex-1 min-w-0">
- <div className="flex flex-col gap-2">
- <div className="flex items-baseline gap-4 flex-wrap">
- <h1 className="text-h2 tracking-tight text-gray-900 dark:text-white leading-none">
- {caseItem.caseId}
- </h1>
- <div className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg border text-caption font-normal flex-shrink-0 ${
- getServiceColor(caseItem.serviceRequested)
- }`}>
- <FileText className="w-3.5 h-3.5" />
- <span>{caseItem.subService || caseItem.serviceRequested}</span>
- </div>
- </div>
- </div>
- </div>
- </div>
+	 </Link>
+	 <div className="flex-1 min-w-0">
+	 <div className="text-caption font-medium tracking-[0.12em] uppercase text-brand-primary mb-2.5">
+	 Case Detail
+	 </div>
+	 <div className="flex flex-col items-start gap-3">
+	 <h1 className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white leading-none">
+	 {caseItem.caseId}
+	 </h1>
+	 <div className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg border text-small font-normal flex-shrink-0 ${
+	 getServiceColor(caseItem.serviceRequested)
+	 }`}>
+	 <FileText className="w-4 h-4" />
+	 <span>{caseItem.subService || caseItem.serviceRequested}</span>
+	 </div>
+	 </div>
+	 </div>
+	 </div>
 
- {/* Right: Action Buttons */}
+	 {/* Right: Action Buttons */}
  <div className="flex flex-row items-center gap-2 md:gap-4 flex-shrink-0">
  {/* Chat Button */}
  <button

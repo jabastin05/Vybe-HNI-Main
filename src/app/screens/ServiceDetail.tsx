@@ -181,13 +181,26 @@ export function ServiceDetail() {
  {/* Desktop Header */}
  <div className="hidden md:block bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] shadow-header">
  <div className="max-w-[1500px] mx-auto container-padding py-5 md:py-6">
- <div className="flex items-center justify-between gap-4 mb-6">
+ <div className="flex items-start justify-between gap-4">
+ <div className="flex items-start gap-4 min-w-0">
  <button
  onClick={() => navigate('/services')}
  className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-brand-navy/[0.04] dark:bg-white/[0.04] hover:bg-brand-navy/[0.08] dark:hover:bg-white/[0.08] flex-shrink-0 transition-colors"
  >
  <ArrowLeft className="w-4 h-4 text-gray-500 dark:text-white/50" />
  </button>
+ <div className="min-w-0">
+ <div className="text-caption font-medium tracking-[0.12em] uppercase text-brand-primary mb-2">
+ {serviceData.categoryName}
+ </div>
+ <h1 className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white mb-2">
+ {serviceData.name}
+ </h1>
+ <p className="text-small text-gray-500 dark:text-white/50 leading-relaxed max-w-3xl">
+ {serviceData.description}
+ </p>
+ </div>
+ </div>
  <div className="flex items-center gap-3">
  <button
  onClick={handleRequestService}
@@ -198,18 +211,6 @@ export function ServiceDetail() {
  <NotificationDropdown />
  <ThemeToggle />
  </div>
- </div>
-
- <div>
- <div className="text-caption font-medium tracking-[0.12em] uppercase text-brand-primary mb-2">
- {serviceData.categoryName}
- </div>
- <h1 className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white mb-2">
- {serviceData.name}
- </h1>
- <p className="text-small text-gray-500 dark:text-white/50 leading-relaxed max-w-3xl">
- {serviceData.description}
- </p>
  </div>
  </div>
  </div>
