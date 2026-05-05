@@ -25,26 +25,26 @@ export function HABUReport() {
 
  
  {/* Header - Full Width */}
- <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06]">
- <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-6">
+ <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] shadow-header">
+ <div className="max-w-[1500px] mx-auto container-padding py-4 md:py-6">
  <div className="flex items-center justify-between">
  {/* Left: Back Button + Page Title */}
  <div className="flex items-center gap-4">
  <Link 
  to={`/property/${id}`} 
- className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-brand-navy/5 dark:bg-white/5 hover:bg-brand-navy/10 dark:hover:bg-white/10 transition-colors text-gray-600 dark:text-white/50"
+ className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-brand-navy/[0.04] dark:bg-white/[0.04] hover:bg-brand-navy/[0.08] dark:hover:bg-white/[0.08] flex-shrink-0 transition-colors"
  >
- <ArrowLeft className="w-4 h-4" />
+ <ArrowLeft className="w-4 h-4 text-gray-500 dark:text-white/50" />
  </Link>
  <div>
  <h1 className="text-caption tracking-wider uppercase text-gray-400 dark:text-white/50 mb-2">
- Intelligence Report
+ Property Analysis
  </h1>
  <div className="text-h1 tracking-tight text-gray-900 dark:text-white">
- HABU Report
+ Best Use Report
  </div>
  <p className="text-small text-gray-600 dark:text-white/60 mt-1">
- High-value Analysis & Best-use Understanding
+ AI-powered Highest & Best Use Analysis
  </p>
  </div>
  </div>
@@ -57,7 +57,7 @@ export function HABUReport() {
  </div>
  </div>
 
- <div className="max-w-[1200px] mx-auto container-padding py-6 md:py-8 lg:py-10">
+ <div className="max-w-[1500px] mx-auto container-padding py-6 md:py-8 lg:py-10">
  {/* Header */}
  <div className="mb-10">
  <h2 className="text-h1 tracking-tight text-gray-900 dark:text-white mb-2">
@@ -90,7 +90,7 @@ export function HABUReport() {
  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
  </svg>
- <span className="text-caption font-normal tracking-wider uppercase">Vybe recommended</span>
+ <span className="text-caption font-medium tracking-wider uppercase">Vybe recommended</span>
  </div>
  </div>
  )}
@@ -100,14 +100,14 @@ export function HABUReport() {
  {/* Strategy Number & Name */}
  <div className="mb-6">
  <div className="flex items-center gap-4 mb-3">
- <div className="w-8 h-8 rounded-lg bg-brand-navy/5 dark:bg-white/5 flex items-center justify-center text-small font-normal text-gray-600 dark:text-white/50">
+ <div className="w-8 h-8 rounded-lg bg-brand-navy/5 dark:bg-white/5 flex items-center justify-center text-small font-medium text-gray-600 dark:text-white/50">
  {index + 1}
  </div>
  <div className={`inline-flex px-2.5 py-1 rounded-md text-caption tracking-wide font-normal ${riskColors.bg} ${riskColors.text} border ${riskColors.border} capitalize`}>
  {strategy.riskLevel} Risk
  </div>
  </div>
- <h3 className="text-body tracking-tight text-gray-900 dark:text-white/95 font-normal mb-2">
+ <h3 className="text-body tracking-tight text-gray-900 dark:text-white/95 font-semibold mb-2">
  {strategy.name}
  </h3>
  <p className="text-small text-gray-600 dark:text-white/50 leading-relaxed">
@@ -121,7 +121,7 @@ export function HABUReport() {
  Expected ROI
  </div>
  <div className="flex items-baseline gap-2">
- <div className="text-[42px] tracking-tight font-light text-brand-gold dark:text-emerald-400">
+ <div className="text-h1 tracking-tight font-semibold text-brand-gold dark:text-emerald-400">
  {strategy.roi}
  </div>
  <div className="text-h1 tracking-tight text-brand-gold/60 dark:text-emerald-400/60">
@@ -145,7 +145,7 @@ export function HABUReport() {
  <DollarSign className="w-4 h-4 text-gray-400 dark:text-white/40" />
  <span className="text-caption text-gray-600 dark:text-white/50">Capital Required</span>
  </div>
- <span className="text-small font-normal text-gray-900 dark:text-white/95">
+ <span className="text-small font-semibold text-gray-900 dark:text-white/95">
  {strategy.capitalRequired}
  </span>
  </div>
@@ -156,7 +156,7 @@ export function HABUReport() {
  <Building2 className="w-4 h-4 text-gray-400 dark:text-white/40" />
  <span className="text-caption text-gray-600 dark:text-white/50">Timeline</span>
  </div>
- <span className="text-small font-normal text-gray-900 dark:text-white/95">
+ <span className="text-small font-semibold text-gray-900 dark:text-white/95">
  {strategy.timeline}
  </span>
  </div>
@@ -167,7 +167,7 @@ export function HABUReport() {
  <Zap className="w-4 h-4 text-gray-400 dark:text-white/40" />
  <span className="text-caption text-gray-600 dark:text-white/50">Management Effort</span>
  </div>
- <span className="text-small font-normal text-gray-900 dark:text-white/95">
+ <span className="text-small font-semibold text-gray-900 dark:text-white/95">
  {strategy.effort}
  </span>
  </div>
@@ -194,7 +194,7 @@ export function HABUReport() {
  {/* Comparison Matrix */}
  <div className="bg-white dark:bg-card shadow-card rounded-xl overflow-hidden">
  <div className="container-padding py-5 border-b border-gray-200 dark:border-white/[0.06] bg-brand-navy/[0.01] dark:bg-white/[0.01]">
- <h3 className="text-body tracking-tight text-gray-900 dark:text-white/95 font-normal">
+ <h3 className="text-body tracking-tight text-gray-900 dark:text-white/95 font-semibold">
  Side-by-Side Comparison
  </h3>
  </div>
@@ -220,7 +220,7 @@ export function HABUReport() {
  </td>
  {mockStrategies.map((strategy) => (
  <td key={strategy.id} className="text-center px-6 py-5">
- <span className="text-body font-normal text-brand-gold dark:text-emerald-400">
+ <span className="text-body font-semibold text-brand-gold dark:text-emerald-400">
  {strategy.roi}%
  </span>
  </td>

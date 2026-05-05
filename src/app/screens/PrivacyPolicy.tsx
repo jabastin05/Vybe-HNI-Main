@@ -8,15 +8,15 @@ export function PrivacyPolicy() {
 
  
  {/* Header */}
- <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06]">
- <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-6">
+ <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] shadow-header">
+ <div className="max-w-[1500px] mx-auto container-padding py-4 md:py-6">
  <div className="flex items-center justify-between">
  <div className="flex items-center gap-4">
  <Link 
  to="/settings" 
- className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white dark:bg-white/[0.04] hover:bg-gray-100 dark:hover:bg-white/10 transition-colors text-gray-600 dark:text-white/50"
+ className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-brand-navy/[0.04] dark:bg-white/[0.04] hover:bg-brand-navy/[0.08] dark:hover:bg-white/[0.08] flex-shrink-0 transition-colors"
  >
- <ArrowLeft className="w-4 h-4" />
+ <ArrowLeft className="w-4 h-4 text-gray-500 dark:text-white/50" />
  </Link>
  <div>
  <h1 className="text-caption tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
@@ -44,7 +44,7 @@ export function PrivacyPolicy() {
  <div className="space-y-8 text-gray-900 dark:text-white/80">
  {/* Introduction */}
  <div>
- <h2 className="text-h2 font-normal text-gray-900 dark:text-white mb-4">Introduction</h2>
+ <h2 className="text-h2 font-semibold text-gray-900 dark:text-white mb-4">Introduction</h2>
  <p className="text-small leading-relaxed mb-3">
  VYBE ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our property intelligence platform.
  </p>
@@ -52,7 +52,7 @@ export function PrivacyPolicy() {
 
  {/* Section 1 */}
  <div>
- <h2 className="text-h2 font-normal text-gray-900 dark:text-white mb-4">1. Information We Collect</h2>
+ <h2 className="text-h2 font-semibold text-gray-900 dark:text-white mb-4">1. Information We Collect</h2>
  <p className="text-small leading-relaxed mb-3">
  We collect information that you provide directly to us, including:
  </p>
@@ -67,7 +67,7 @@ export function PrivacyPolicy() {
 
  {/* Section 2 */}
  <div>
- <h2 className="text-h2 font-normal text-gray-900 dark:text-white mb-4">2. How We Use Your Information</h2>
+ <h2 className="text-h2 font-semibold text-gray-900 dark:text-white mb-4">2. How We Use Your Information</h2>
  <p className="text-small leading-relaxed mb-3">
  We use the information we collect to:
  </p>
@@ -83,7 +83,7 @@ export function PrivacyPolicy() {
 
  {/* Section 3 */}
  <div>
- <h2 className="text-h2 font-normal text-gray-900 dark:text-white mb-4">3. Data Security</h2>
+ <h2 className="text-h2 font-semibold text-gray-900 dark:text-white mb-4">3. Data Security</h2>
  <p className="text-small leading-relaxed mb-3">
  We implement appropriate technical and organizational security measures to protect your personal information. This includes encryption of sensitive data, secure storage systems, and regular security audits.
  </p>
@@ -94,7 +94,7 @@ export function PrivacyPolicy() {
 
  {/* Section 4 */}
  <div>
- <h2 className="text-h2 font-normal text-gray-900 dark:text-white mb-4">4. Data Sharing and Disclosure</h2>
+ <h2 className="text-h2 font-semibold text-gray-900 dark:text-white mb-4">4. Data Sharing and Disclosure</h2>
  <p className="text-small leading-relaxed mb-3">
  We do not sell your personal information. We may share your information only in the following circumstances:
  </p>
@@ -109,7 +109,7 @@ export function PrivacyPolicy() {
 
  {/* Section 5 */}
  <div>
- <h2 className="text-h2 font-normal text-gray-900 dark:text-white mb-4">5. Your Rights and Choices</h2>
+ <h2 className="text-h2 font-semibold text-gray-900 dark:text-white mb-4">5. Your Rights and Choices</h2>
  <p className="text-small leading-relaxed mb-3">
  You have the right to:
  </p>
@@ -124,7 +124,7 @@ export function PrivacyPolicy() {
 
  {/* Section 6 */}
  <div>
- <h2 className="text-h2 font-normal text-gray-900 dark:text-white mb-4">6. Data Retention</h2>
+ <h2 className="text-h2 font-semibold text-gray-900 dark:text-white mb-4">6. Data Retention</h2>
  <p className="text-small leading-relaxed mb-3">
  We retain your information for as long as necessary to provide our services and comply with legal obligations. Property documents and analysis reports may be retained longer for legal and regulatory purposes.
  </p>
@@ -132,7 +132,7 @@ export function PrivacyPolicy() {
 
  {/* Section 7 */}
  <div>
- <h2 className="text-h2 font-normal text-gray-900 dark:text-white mb-4">7. Children's Privacy</h2>
+ <h2 className="text-h2 font-semibold text-gray-900 dark:text-white mb-4">7. Children's Privacy</h2>
  <p className="text-small leading-relaxed mb-3">
  Our services are not directed to individuals under 18 years of age. We do not knowingly collect personal information from children.
  </p>
@@ -140,7 +140,7 @@ export function PrivacyPolicy() {
 
  {/* Section 8 */}
  <div>
- <h2 className="text-h2 font-normal text-gray-900 dark:text-white mb-4">8. Changes to This Privacy Policy</h2>
+ <h2 className="text-h2 font-semibold text-gray-900 dark:text-white mb-4">8. Changes to This Privacy Policy</h2>
  <p className="text-small leading-relaxed mb-3">
  We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.
  </p>
@@ -148,7 +148,7 @@ export function PrivacyPolicy() {
 
  {/* Section 9 */}
  <div>
- <h2 className="text-h2 font-normal text-gray-900 dark:text-white mb-4">9. Contact Us</h2>
+ <h2 className="text-h2 font-semibold text-gray-900 dark:text-white mb-4">9. Contact Us</h2>
  <p className="text-small leading-relaxed">
  If you have any questions about this Privacy Policy, please contact us at privacy@vybe.com
  </p>

@@ -26,7 +26,7 @@ export function PropertyDetail() {
  return (
  <div className="min-h-screen bg-gray-50 dark:bg-background transition-colors duration-300">
 
- <div className="max-w-[1200px] mx-auto container-padding py-6 md:py-8 lg:py-10">
+ <div className="max-w-[1500px] mx-auto container-padding py-6 md:py-8 lg:py-10">
  <div className="bg-white dark:bg-card backdrop-blur-xl rounded-2xl border border-black/5 dark:border-white/5 p-6 md:p-12 lg:p-16 text-center">
  <div className="w-20 h-20 rounded-full bg-brand-navy/5 dark:bg-white/5 flex items-center justify-center mx-auto mb-6">
  <Building2 className="w-10 h-10 text-gray-400 dark:text-white/30" />
@@ -38,11 +38,11 @@ export function PropertyDetail() {
  The property you're looking for doesn't exist or has been removed.
  </p>
  <Link
- to="/properties"
+ to="/my-properties"
  className="flex items-center gap-2 text-small text-gray-500 dark:text-white/50 hover:text-gray-900 dark:hover:text-white transition-colors"
  >
  <ArrowLeft className="w-4 h-4" />
- Back to Case Management
+ Back to My Properties
  </Link>
  </div>
  </div>
@@ -318,15 +318,15 @@ export function PropertyDetail() {
  {/* Back */}
  <Link to="/my-properties" className="flex items-center gap-2 text-white/60 active:text-white transition-colors duration-200 mb-5">
  <ArrowLeft className="w-4 h-4" strokeWidth={1.5} />
- <span className="text-sm">Properties</span>
+ <span className="text-small">Properties</span>
  </Link>
 
  {/* Title + subtitle */}
- <p className="text-xs tracking-[0.16em] uppercase text-white/40 mb-2">Property Details</p>
- <h1 className="text-3xl font-normal text-white tracking-tight leading-none mb-2">
+ <p className="text-caption tracking-[0.16em] uppercase text-white/40 mb-2">Property Details</p>
+ <h1 className="text-h1 font-semibold text-white tracking-tight leading-none mb-2">
  {property.name}
  </h1>
- <div className="flex items-center gap-2 text-sm text-white/50">
+ <div className="flex items-center gap-2 text-small text-white/50">
  {property.type && <span>{property.type}</span>}
  {property.buildingType && <><span className="text-white/20">·</span><span className="capitalize">{property.buildingType}</span></>}
  {(property.city || property.state) && (
@@ -343,34 +343,33 @@ export function PropertyDetail() {
  </div>
 
  {/* ── Desktop header (hidden mobile) ── */}
- <div className="hidden md:block bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06]">
- <div className="max-w-[1200px] mx-auto container-padding py-6">
+ <div className="hidden md:block bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] shadow-header">
+ <div className="max-w-[1500px] mx-auto container-padding py-6">
  <div className="flex flex-col gap-4">
  <Link
  to="/my-properties"
- className="flex items-center gap-2 text-small text-gray-500 dark:text-white/50 hover:text-gray-900 dark:hover:text-white transition-colors w-fit"
+ className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-brand-navy/[0.04] dark:bg-white/[0.04] hover:bg-brand-navy/[0.08] dark:hover:bg-white/[0.08] flex-shrink-0 transition-colors w-fit"
  >
- <ArrowLeft className="w-4 h-4" />
- Back to Properties
+ <ArrowLeft className="w-4 h-4 text-gray-500 dark:text-white/50" />
  </Link>
  <div className="flex items-start md:items-center justify-between gap-4">
  <div>
- <div className="text-xs font-normal tracking-[0.12em] uppercase text-brand-primary mb-2.5">
+ <div className="text-caption font-medium tracking-[0.12em] uppercase text-brand-primary mb-2.5">
  Property Details
  </div>
- <h1 className="text-h1 font-normal tracking-tight text-gray-900 dark:text-white mb-2">
+ <h1 className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white mb-2">
  {property.name}
  </h1>
  <div className="flex flex-wrap items-center gap-2">
- <span className="text-xs font-normal tracking-[0.06em] uppercase bg-brand-navy/[0.06] dark:bg-white/[0.07] text-brand-navy dark:text-white/60 px-2.5 py-1 rounded-lg">
+ <span className="text-caption font-medium tracking-[0.06em] uppercase bg-brand-navy/[0.06] dark:bg-white/[0.07] text-brand-navy dark:text-white/60 px-2.5 py-1 rounded-lg">
  {property.type}
  </span>
  {property.buildingType && (
- <span className="text-xs font-normal tracking-[0.06em] uppercase bg-brand-navy/[0.06] dark:bg-white/[0.07] text-brand-navy dark:text-white/60 px-2.5 py-1 rounded-lg capitalize">
+ <span className="text-caption font-medium tracking-[0.06em] uppercase bg-brand-navy/[0.06] dark:bg-white/[0.07] text-brand-navy dark:text-white/60 px-2.5 py-1 rounded-lg capitalize">
  {property.buildingType}
  </span>
  )}
- <span className="text-xs text-gray-400 dark:text-white/40">
+ <span className="text-caption text-gray-400 dark:text-white/40">
  Added {formatDate(property.dateAdded)}
  </span>
  </div>
@@ -378,10 +377,10 @@ export function PropertyDetail() {
  <div className="flex items-center gap-3 flex-shrink-0">
  <Link
  to={`/property/${property.id}/habu`}
- className="inline-flex items-center justify-center gap-2 bg-brand-primary hover:bg-brand-primary-hover text-white px-5 py-2.5 rounded-xl text-small font-normal transition-all duration-200"
+ className="inline-flex items-center justify-center gap-2 bg-brand-primary hover:bg-brand-primary-hover text-white px-5 py-2.5 rounded-xl text-small font-semibold transition-all duration-200"
  >
  <Zap className="w-4 h-4" strokeWidth={1.5} />
- <span>HABU</span>
+ <span>Best Use Report</span>
  </Link>
  <RMAccess />
  <NotificationDropdown />
@@ -393,69 +392,80 @@ export function PropertyDetail() {
  </div>
 
  {/* Main Content */}
- <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-8 lg:py-10">
+ <div className="max-w-[1500px] mx-auto container-padding py-4 md:py-8 lg:py-10">
  <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-5 md:mb-6">
- {[
- {
- label: 'Document Readiness',
- value: `${documentReadiness}%`,
- helper: missingCoreCount === 0 ? 'core stack complete' : `${missingCoreCount} core gaps`,
- },
- {
- label: 'Verified Files',
- value: verifiedDocumentCount,
- helper: processingDocumentCount > 0 ? `${processingDocumentCount} still processing` : 'all clear',
- },
- {
- label: 'Market Signal',
- value: `#${marketRank}`,
- helper: `${locationCity} locality rank`,
- },
- {
- label: 'Priority',
- value: priorityLevel,
- helper: primaryRisk?.category || 'Portfolio watch',
- },
- ].map((item) => (
- <div key={item.label} className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-4 md:p-5">
- <div className="text-[11px] md:text-xs font-normal tracking-[0.14em] uppercase text-gray-400 dark:text-white/40 mb-4">
- {item.label}
+ {/* Document Readiness */}
+ <div className="bg-white dark:bg-card rounded-2xl p-5 border border-black/5 dark:border-white/5 shadow-card">
+ <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4">
+ <FileText className="w-5 h-5 text-blue-500" strokeWidth={1.5} />
  </div>
- <div className="text-2xl md:text-3xl font-normal tracking-tight text-gray-900 dark:text-white mb-2 capitalize">
- {item.value}
+ <div className="text-caption font-medium tracking-[0.14em] uppercase text-gray-400 dark:text-white/40 mb-4">Document Readiness</div>
+ <div className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white mb-2">{documentReadiness}%</div>
+ <div className="text-small text-gray-500 dark:text-white/50">
+ {missingCoreCount === 0 ? 'core stack complete' : `${missingCoreCount} core gaps`}
  </div>
- <div className="text-xs md:text-sm text-gray-500 dark:text-white/50">
- {item.helper}
- </div>
- </div>
- ))}
  </div>
 
- <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6 mb-5 md:mb-6">
+ {/* Verified Files */}
+ <div className="bg-white dark:bg-card rounded-2xl p-5 border border-black/5 dark:border-white/5 shadow-card">
+ <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-4">
+ <CheckCircle2 className="w-5 h-5 text-emerald-500" strokeWidth={1.5} />
+ </div>
+ <div className="text-caption font-medium tracking-[0.14em] uppercase text-gray-400 dark:text-white/40 mb-4">Verified Files</div>
+ <div className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white mb-2">{verifiedDocumentCount}</div>
+ <div className="text-small text-gray-500 dark:text-white/50">
+ {processingDocumentCount > 0 ? `${processingDocumentCount} still processing` : 'all clear'}
+ </div>
+ </div>
+
+ {/* Market Signal */}
+ <div className="bg-white dark:bg-card rounded-2xl p-5 border border-black/5 dark:border-white/5 shadow-card">
+ <div className="w-10 h-10 rounded-xl bg-brand-teal/10 flex items-center justify-center mb-4">
+ <TrendingUp className="w-5 h-5 text-brand-teal" strokeWidth={1.5} />
+ </div>
+ <div className="text-caption font-medium tracking-[0.14em] uppercase text-gray-400 dark:text-white/40 mb-4">Market Signal</div>
+ <div className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white mb-2">#{marketRank}</div>
+ <div className="text-small text-gray-500 dark:text-white/50">{locationCity} locality rank</div>
+ </div>
+
+ {/* Priority */}
+ <div className="bg-white dark:bg-card rounded-2xl p-5 border border-black/5 dark:border-white/5 shadow-card">
+ <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 ${
+ priorityLevel === 'high' ? 'bg-orange-500/10' : 'bg-violet-500/10'
+ }`}>
+ <Zap className={`w-5 h-5 ${priorityLevel === 'high' ? 'text-orange-500' : 'text-violet-500'}`} strokeWidth={1.5} />
+ </div>
+ <div className="text-caption font-medium tracking-[0.14em] uppercase text-gray-400 dark:text-white/40 mb-4">Priority</div>
+ <div className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white mb-2 capitalize">{priorityLevel}</div>
+ <div className="text-small text-gray-500 dark:text-white/50">{primaryRisk?.category || 'Portfolio watch'}</div>
+ </div>
+ </div>
+
+ <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6 mb-5 md:mb-6 shadow-card">
  <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_360px] gap-6 lg:gap-8">
  <div>
- <div className="text-xs font-normal tracking-[0.14em] uppercase text-brand-primary mb-5">
+ <div className="text-caption font-medium tracking-[0.14em] uppercase text-brand-primary mb-5">
  Decision Snapshot
  </div>
- <h2 className="text-2xl md:text-3xl font-normal tracking-tight text-gray-900 dark:text-white mb-4">
+ <h2 className="text-h2 md:text-h1 font-semibold tracking-tight text-gray-900 dark:text-white mb-4">
  Present the asset, the gaps, and the next move
  </h2>
- <p className="text-sm md:text-base text-gray-600 dark:text-white/50 leading-relaxed max-w-3xl">
+ <p className="text-small md:text-body text-gray-600 dark:text-white/50 leading-relaxed max-w-3xl">
  This view leads with portfolio context for {property.name}. It shows readiness, diligence gaps, market momentum, and the clearest next action before deeper analysis.
  </p>
  </div>
  <div className="space-y-3">
  <div className="bg-gray-50 dark:bg-white/[0.04] rounded-2xl p-4">
- <div className="text-xs font-normal tracking-[0.12em] uppercase text-brand-primary mb-2">Opportunity</div>
- <div className="text-sm md:text-base text-gray-900 dark:text-white">{primaryOpportunity?.title || 'Portfolio upside under review'}</div>
+ <div className="text-caption font-medium tracking-[0.12em] uppercase text-brand-primary mb-2">Opportunity</div>
+ <div className="text-small md:text-body text-gray-900 dark:text-white">{primaryOpportunity?.title || 'Portfolio upside under review'}</div>
  </div>
  <div className="px-4 py-3">
- <div className="text-xs font-normal tracking-[0.12em] uppercase text-cyan-700 dark:text-cyan-300 mb-2">Risk</div>
- <div className="text-sm md:text-base text-gray-900 dark:text-white">{primaryRisk?.title || 'No active risk flagged'}</div>
+ <div className="text-caption font-medium tracking-[0.12em] uppercase text-cyan-700 dark:text-cyan-300 mb-2">Risk</div>
+ <div className="text-small md:text-body text-gray-900 dark:text-white">{primaryRisk?.title || 'No active risk flagged'}</div>
  </div>
  <div className="bg-gray-50 dark:bg-white/[0.04] rounded-2xl p-4">
- <div className="text-xs font-normal tracking-[0.12em] uppercase text-gray-500 dark:text-white/50 mb-2">Missing</div>
- <div className="text-sm md:text-base text-gray-900 dark:text-white">
+ <div className="text-caption font-medium tracking-[0.12em] uppercase text-gray-500 dark:text-white/50 mb-2">Missing</div>
+ <div className="text-small md:text-body text-gray-900 dark:text-white">
  {missingCoreCount === 0 ? 'No critical documentation gaps' : `${missingCoreCount} critical documentation ${missingCoreCount === 1 ? 'gap' : 'gaps'}`}
  </div>
  </div>
@@ -467,16 +477,16 @@ export function PropertyDetail() {
  {/* Left Column - Property Details */}
  <div className="lg:col-span-2 space-y-6">
  {/* Property Information Card */}
- <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6">
+ <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6 shadow-card">
  <div className="flex items-center justify-between mb-6">
- <h2 className="text-base font-normal tracking-tight text-gray-900 dark:text-white">
+ <h2 className="text-body font-semibold tracking-tight text-gray-900 dark:text-white">
  Property Information
  </h2>
  </div>
 
  {/* Address Section */}
  <div className="mb-6">
- <div className="text-caption font-normal tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
  Address
  </div>
  <div className="flex items-start gap-4 bg-gray-50 dark:bg-white/[0.04] rounded-xl p-4">
@@ -491,7 +501,7 @@ export function PropertyDetail() {
  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
  {property.country && (
  <div>
- <div className="text-caption font-normal tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
  Country
  </div>
  <div className="text-small text-gray-900 dark:text-white/95">
@@ -501,7 +511,7 @@ export function PropertyDetail() {
  )}
  {property.state && (
  <div>
- <div className="text-caption font-normal tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
  State
  </div>
  <div className="text-small text-gray-900 dark:text-white/95">
@@ -511,7 +521,7 @@ export function PropertyDetail() {
  )}
  {property.city && (
  <div>
- <div className="text-caption font-normal tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
  City
  </div>
  <div className="text-small text-gray-900 dark:text-white/95">
@@ -521,7 +531,7 @@ export function PropertyDetail() {
  )}
  {property.district && (
  <div>
- <div className="text-caption font-normal tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
  District
  </div>
  <div className="text-small text-gray-900 dark:text-white/95">
@@ -531,7 +541,7 @@ export function PropertyDetail() {
  )}
  {property.latitude && (
  <div>
- <div className="text-caption font-normal tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
  Latitude
  </div>
  <div className="text-small text-gray-900 dark:text-white/95">
@@ -541,7 +551,7 @@ export function PropertyDetail() {
  )}
  {property.longitude && (
  <div>
- <div className="text-caption font-normal tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
  Longitude
  </div>
  <div className="text-small text-gray-900 dark:text-white/95">
@@ -554,10 +564,10 @@ export function PropertyDetail() {
  {/* Zoning */}
  {property.zoning && (
  <div>
- <div className="text-caption font-normal tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
  Zoning
  </div>
- <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 px-4 py-2.5 rounded-lg text-small font-normal">
+ <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 px-4 py-2.5 rounded-lg text-small font-semibold">
  {property.zoning}
  </div>
  </div>
@@ -565,14 +575,14 @@ export function PropertyDetail() {
  </div>
 
  {/* Property Specifications Card */}
- <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6">
- <h2 className="text-base font-normal tracking-tight text-gray-900 dark:text-white mb-5">
+ <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6 shadow-card">
+ <h2 className="text-body font-semibold tracking-tight text-gray-900 dark:text-white mb-5">
  Property Specifications
  </h2>
 
  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
  <div>
- <div className="text-caption font-normal tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
  Building Type
  </div>
  <div className="text-small text-gray-900 dark:text-white/95 capitalize">
@@ -580,7 +590,7 @@ export function PropertyDetail() {
  </div>
  </div>
  <div>
- <div className="text-caption font-normal tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
  Property Type
  </div>
  <div className="text-small text-gray-900 dark:text-white/95">
@@ -588,7 +598,7 @@ export function PropertyDetail() {
  </div>
  </div>
  <div>
- <div className="text-caption font-normal tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
  Plot Size
  </div>
  <div className="text-small text-gray-900 dark:text-white/95">
@@ -596,7 +606,7 @@ export function PropertyDetail() {
  </div>
  </div>
  <div>
- <div className="text-caption font-normal tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
  Built-up Area
  </div>
  <div className="text-small text-gray-900 dark:text-white/95">
@@ -604,7 +614,7 @@ export function PropertyDetail() {
  </div>
  </div>
  <div>
- <div className="text-caption font-normal tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
  Year of Construction
  </div>
  <div className="text-small text-gray-900 dark:text-white/95">
@@ -612,7 +622,7 @@ export function PropertyDetail() {
  </div>
  </div>
  <div>
- <div className="text-caption font-normal tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
  Number of Floors
  </div>
  <div className="text-small text-gray-900 dark:text-white/95">
@@ -620,7 +630,7 @@ export function PropertyDetail() {
  </div>
  </div>
  <div>
- <div className="text-caption font-normal tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
  Survey Number
  </div>
  <div className="text-small text-gray-900 dark:text-white/95">
@@ -628,7 +638,7 @@ export function PropertyDetail() {
  </div>
  </div>
  <div>
- <div className="text-caption font-normal tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
  Current Usage
  </div>
  <div className="text-small text-gray-900 dark:text-white/95">
@@ -637,7 +647,7 @@ export function PropertyDetail() {
  </div>
  {property.rentalIncome && (
  <div className="col-span-2">
- <div className="text-caption font-normal tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
  Rental Income
  </div>
  <div className="text-small text-gray-900 dark:text-white/95">
@@ -649,8 +659,8 @@ export function PropertyDetail() {
  </div>
 
  {/* Connectivity & Nearby Landmarks */}
- <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6">
- <h2 className="text-base font-normal tracking-tight text-gray-900 dark:text-white mb-5">
+ <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6 shadow-card">
+ <h2 className="text-body font-semibold tracking-tight text-gray-900 dark:text-white mb-5">
  Nearby Landmarks - {property.city || 'Area'}
  </h2>
 
@@ -660,7 +670,7 @@ export function PropertyDetail() {
  onClick={() => setShowMapModal(true)}
  >
  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-blue-500/5" />
- <button className="relative inline-flex items-center gap-2 bg-brand-navy text-white px-5 py-2.5 rounded-xl text-sm font-normal group-hover:-translate-y-0.5 transition-all duration-200">
+ <button className="relative inline-flex items-center gap-2 bg-brand-navy text-white px-5 py-2.5 rounded-xl text-small font-semibold group-hover:-translate-y-0.5 transition-all duration-200">
  <MapPin className="w-4 h-4" />
  View on Map
  </button>
@@ -683,7 +693,7 @@ export function PropertyDetail() {
  key={key}
  onClick={() => setSelectedLandmarkCategory(key)}
  className={`flex-shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full
- text-xs font-normal whitespace-nowrap transition-all duration-200 ${
+ text-caption font-normal whitespace-nowrap transition-all duration-200 ${
  selectedLandmarkCategory === key
  ? 'bg-brand-primary text-white'
  : 'bg-brand-navy/[0.05] dark:bg-white/[0.05] text-gray-900 dark:text-white border border-gray-100 dark:border-white/[0.06]'
@@ -698,7 +708,7 @@ export function PropertyDetail() {
 
  {/* Landmarks List */}
  <div className="space-y-4 mb-4">
- <h3 className="text-small font-normal tracking-tight text-gray-900 dark:text-white/95">
+ <h3 className="text-small font-semibold tracking-tight text-gray-900 dark:text-white/95">
  {selectedLandmarkCategory === 'schools' && 'Schools'}
  {selectedLandmarkCategory === 'busStops' && 'Bus Stops'}
  {selectedLandmarkCategory === 'hospitals' && 'Hospitals'}
@@ -717,7 +727,7 @@ export function PropertyDetail() {
  }}
  className="w-full flex items-center justify-between py-2.5 border-b border-gray-200 dark:border-white/[0.06] hover:bg-brand-navy/[0.02] dark:hover:bg-white/[0.02] transition-all group"
  >
- <span className="text-small font-normal text-gray-900 dark:text-white/90 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">
+ <span className="text-small font-semibold text-gray-900 dark:text-white/90 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">
  {landmark.name}
  </span>
  <div className="inline-flex items-center gap-1.5 text-small text-gray-600 dark:text-white/50">
@@ -730,15 +740,15 @@ export function PropertyDetail() {
 
  <button 
  onClick={() => setShowMapModal(true)}
- className="w-full bg-brand-navy/[0.05] dark:bg-white/[0.05] hover:bg-brand-navy/10 text-gray-900 dark:text-white px-4 py-2.5 rounded-xl text-sm font-normal transition-all"
+ className="w-full bg-brand-navy/[0.05] dark:bg-white/[0.05] hover:bg-brand-navy/10 text-gray-900 dark:text-white px-4 py-2.5 rounded-xl text-small font-semibold transition-all"
  >
  View All on Map
  </button>
  </div>
 
  {/* Locality Insights */}
- <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6">
- <h2 className="text-base font-normal tracking-tight text-gray-900 dark:text-white mb-4">
+ <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6 shadow-card">
+ <h2 className="text-body font-semibold tracking-tight text-gray-900 dark:text-white mb-4">
  Locality Insights: {property.city || property.district || 'Area'}
  </h2>
 
@@ -758,12 +768,12 @@ export function PropertyDetail() {
  <div className="w-8 h-8 rounded-xl bg-blue-500/10 flex items-center justify-center">
  <TrendingUp className="w-4 h-4 text-blue-600 dark:text-blue-400" strokeWidth={1.5} />
  </div>
- <h3 className="text-caption font-normal text-gray-900 dark:text-white/95">Price Insights</h3>
+ <h3 className="text-caption font-semibold text-gray-900 dark:text-white/95">Price Insights</h3>
  </div>
- <div className="mb-1.5 text-xs font-normal tracking-[0.05em] uppercase text-gray-600 dark:text-white/50">
+ <div className="mb-1.5 text-caption font-medium tracking-[0.05em] uppercase text-gray-600 dark:text-white/50">
  Average Asking Price in {property.city || 'Area'}
  </div>
- <div className="text-base font-normal tracking-tight text-gray-900 dark:text-white mb-1">
+ <div className="text-body font-semibold tracking-tight text-gray-900 dark:text-white mb-1">
  ₹{localityData.avgPrice}<span className="text-caption text-emerald-500 dark:text-emerald-400">{localityData.priceUnit}</span>
  </div>
  <div className="text-caption text-gray-600 dark:text-white/50">
@@ -777,15 +787,15 @@ export function PropertyDetail() {
  <div className="w-8 h-8 rounded-xl bg-pink-500/10 flex items-center justify-center">
  <Award className="w-4 h-4 text-pink-600 dark:text-pink-400" strokeWidth={1.5} />
  </div>
- <h3 className="text-caption font-normal text-gray-900 dark:text-white/95">Locality Rank</h3>
+ <h3 className="text-caption font-semibold text-gray-900 dark:text-white/95">Locality Rank</h3>
  </div>
- <div className="text-small font-normal tracking-tight text-gray-900 dark:text-white mb-1.5">
+ <div className="text-small font-semibold tracking-tight text-gray-900 dark:text-white mb-1.5">
  #{localityData.localityRank} in {localityData.state}
  </div>
  <div className="text-caption text-gray-600 dark:text-white/50 mb-3">
  Based on demand, livability, and activity
  </div>
- <button className="text-caption font-normal text-gray-900 dark:text-white/95 underline hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">
+ <button className="text-caption font-semibold text-gray-900 dark:text-white/95 underline hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">
  Know More About {property.city || 'Area'}
  </button>
  </div>
@@ -796,9 +806,9 @@ export function PropertyDetail() {
  <div className="w-8 h-8 rounded-xl bg-purple-500/10 flex items-center justify-center">
  <Users className="w-4 h-4 text-purple-600 dark:text-purple-400" strokeWidth={1.5} />
  </div>
- <h3 className="text-caption font-normal text-gray-900 dark:text-white/95">Demographics</h3>
+ <h3 className="text-caption font-semibold text-gray-900 dark:text-white/95">Demographics</h3>
  </div>
- <div className="text-base font-normal tracking-tight text-gray-900 dark:text-white mb-1">
+ <div className="text-body font-semibold tracking-tight text-gray-900 dark:text-white mb-1">
  {localityData.demographicType}
  </div>
  <div className="text-caption text-gray-600 dark:text-white/50 mb-2">
@@ -812,8 +822,8 @@ export function PropertyDetail() {
  </div>
 
  {/* AI Insights */}
- <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6">
- <h2 className="text-base font-normal tracking-[-0.01em] text-gray-900 dark:text-white mb-5">
+ <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6 shadow-card">
+ <h2 className="text-body font-semibold tracking-[-0.01em] text-gray-900 dark:text-white mb-5">
  AI Market Intelligence
  </h2>
 
@@ -827,13 +837,13 @@ export function PropertyDetail() {
  <Lightbulb className="w-4.5 h-4.5 text-green-600 dark:text-green-400" strokeWidth={1.5} />
  </div>
  <div className="flex-1 min-w-0">
- <h3 className="text-small font-normal text-gray-900 dark:text-white mb-0.5">{opp.title}</h3>
- <p className="text-xs font-normal uppercase tracking-[0.05em] text-gray-400 dark:text-white/40">{opp.category}</p>
+ <h3 className="text-small font-semibold text-gray-900 dark:text-white mb-0.5">{opp.title}</h3>
+ <p className="text-caption font-normal uppercase tracking-[0.05em] text-gray-400 dark:text-white/40">{opp.category}</p>
  </div>
  </div>
  <div className="text-right flex-shrink-0">
- <div className="text-sm font-normal text-green-600 dark:text-green-400 leading-none mb-1">{opp.opportunityScore}</div>
- <div className="text-xs font-normal uppercase tracking-[0.05em] text-gray-400 dark:text-white/40">Score</div>
+ <div className="text-small font-semibold text-green-600 dark:text-green-400 leading-none mb-1">{opp.opportunityScore}</div>
+ <div className="text-caption font-normal uppercase tracking-[0.05em] text-gray-400 dark:text-white/40">Score</div>
  </div>
  </div>
 
@@ -869,8 +879,8 @@ export function PropertyDetail() {
  <AlertCircle className="w-4.5 h-4.5 text-gray-900 dark:text-white" strokeWidth={1.5} />
  </div>
  <div className="flex-1 min-w-0">
- <h3 className="text-small font-normal text-gray-900 dark:text-white mb-0.5">{risk.title}</h3>
- <p className="text-xs font-normal uppercase tracking-[0.05em] text-gray-400 dark:text-white/40">{risk.category}</p>
+ <h3 className="text-small font-semibold text-gray-900 dark:text-white mb-0.5">{risk.title}</h3>
+ <p className="text-caption font-normal uppercase tracking-[0.05em] text-gray-400 dark:text-white/40">{risk.category}</p>
  </div>
  </div>
  <div className="px-2.5 py-1 rounded-md bg-red-500/15 flex-shrink-0">
@@ -896,12 +906,12 @@ export function PropertyDetail() {
 
  {/* Right Column - Documents */}
  <div className="lg:col-span-1">
- <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6 sticky top-8">
+ <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6 sticky top-8 shadow-card">
  {/* Subtle glass highlight */}
  {/* Header with Trust Score */}
  <div className="flex items-start justify-between mb-8">
  <div>
- <h2 className="text-base font-normal tracking-tight text-gray-900 dark:text-white mb-2">
+ <h2 className="text-body font-semibold tracking-tight text-gray-900 dark:text-white mb-2">
  Document Vault
  </h2>
  <p className="text-caption text-gray-600 dark:text-white/50">
@@ -929,15 +939,15 @@ export function PropertyDetail() {
  <circle cx="50" cy="50" r="44" className="stroke-emerald-500 transition-all duration-1000" strokeWidth="5" fill="none" strokeDasharray="276.46" strokeDashoffset={276.46 - (276.46 * currentScore) / 100} strokeLinecap="round" />
  </svg>
  <div className="flex flex-col items-center">
- <span className="text-small font-normal text-emerald-600 dark:text-emerald-400">{currentScore}</span>
- <span className="text-xs font-normal uppercase tracking-[0.05em] text-gray-400 dark:text-white/40">Score</span>
+ <span className="text-small font-semibold text-emerald-600 dark:text-emerald-400">{currentScore}</span>
+ <span className="text-caption font-normal uppercase tracking-[0.05em] text-gray-400 dark:text-white/40">Score</span>
  </div>
  </>
  );
  })()}
  </div>
  <div className="text-center">
- <div className="text-xs font-normal uppercase tracking-[0.05em] text-gray-400 dark:text-white/40">Trust Level</div>
+ <div className="text-caption font-normal uppercase tracking-[0.05em] text-gray-400 dark:text-white/40">Trust Level</div>
  <div className="text-caption font-normal text-emerald-600 dark:text-emerald-400 mt-0.5">
  {(() => {
  let totalScore = 0;
@@ -965,7 +975,7 @@ export function PropertyDetail() {
 
  <Link
  to={`/property/${id}/documents/upload`}
- className="w-full mb-6 flex items-center justify-center gap-2 bg-brand-primary hover:bg-brand-primary-hover text-white px-4 py-2.5 rounded-xl text-sm font-normal transition-all"
+ className="w-full mb-6 flex items-center justify-center gap-2 bg-brand-primary hover:bg-brand-primary-hover text-white px-4 py-2.5 rounded-xl text-small font-semibold transition-all"
  >
  <Plus className="w-5 h-5" strokeWidth={1.5} />
  Upload Documents
@@ -1005,7 +1015,7 @@ export function PropertyDetail() {
  </div>
  <div className="text-left">
  <div className="flex items-center gap-2">
- <h3 className="text-small font-normal text-gray-900 dark:text-white/95">{cat.title}</h3>
+ <h3 className="text-small font-semibold text-gray-900 dark:text-white/95">{cat.title}</h3>
  {isComplete && <div className="w-1.5 h-1.5 rounded-full bg-brand-navy dark:bg-white animate-pulse" />}
  </div>
  <p className="text-caption text-gray-600 dark:text-white/50 mt-0.5">
@@ -1016,7 +1026,7 @@ export function PropertyDetail() {
  
  <div className="flex items-center gap-3">
  <div className="text-right">
- <div className="text-small font-normal text-emerald-600 dark:text-emerald-400">
+ <div className="text-small font-semibold text-emerald-600 dark:text-emerald-400">
  {percentage}%
  </div>
  </div>
@@ -1039,7 +1049,7 @@ export function PropertyDetail() {
  </div>
  
  <div className="flex-1 min-w-0">
- <div className="text-caption font-normal text-gray-900 dark:text-white mb-0.5 truncate">
+ <div className="text-caption font-semibold text-gray-900 dark:text-white mb-0.5 truncate">
  {doc.name}
  </div>
  <div className="flex items-center gap-2 text-caption">
@@ -1079,7 +1089,7 @@ export function PropertyDetail() {
  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-black/5 to-black/10 dark:from-white/5 dark:to-white/10 flex items-center justify-center mx-auto mb-5 shadow-inner">
  <Upload className="w-8 h-8 text-gray-400 dark:text-white/30" strokeWidth={1.5} />
  </div>
- <h3 className="text-small font-normal text-gray-900 dark:text-white mb-2">
+ <h3 className="text-small font-semibold text-gray-900 dark:text-white mb-2">
  No Documents Yet
  </h3>
  <p className="text-caption text-gray-600 dark:text-white/50 max-w-xs mx-auto">
@@ -1090,7 +1100,7 @@ export function PropertyDetail() {
 
  {/* Quick Actions */}
  <div className="mt-6 pt-6 border-t border-gray-200 dark:border-white/[0.06]">
- <div className="text-caption font-normal tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-3">
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-3">
  Quick Actions
  </div>
  <div className="space-y-2">
@@ -1098,7 +1108,7 @@ export function PropertyDetail() {
  to={`/property/${property.id}/habu`}
  className="flex items-center justify-between w-full bg-gray-50 dark:bg-white/[0.04] hover:bg-gray-100 dark:hover:bg-white/[0.06] rounded-xl px-4 py-2.5 text-small text-gray-900 dark:text-white/95 transition-all group"
  >
- <span>HABU Report</span>
+ <span>Best Use Report</span>
  <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
  </Link>
  <Link
@@ -1157,7 +1167,7 @@ export function PropertyDetail() {
  <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-[12px] p-4 mb-6">
  <div className="flex items-center gap-4 mb-2">
  <Building2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
- <div className="text-small font-normal text-gray-900 dark:text-white/95">
+ <div className="text-small font-semibold text-gray-900 dark:text-white/95">
  {property.buildingType} - {property.type}
  </div>
  </div>
@@ -1169,10 +1179,10 @@ export function PropertyDetail() {
  {/* Mandatory Documents */}
  <div className="mb-8">
  <div className="flex items-center gap-2 mb-4">
- <div className="text-small font-normal tracking-tight text-gray-900 dark:text-white/95">
+ <div className="text-small font-semibold tracking-tight text-gray-900 dark:text-white/95">
  Mandatory Documents
  </div>
- <div className="bg-red-500/10 text-gray-900 dark:text-white px-6 py-2.5 rounded-md text-caption font-normal tracking-[0.05em] uppercase">
+ <div className="bg-red-500/10 text-gray-900 dark:text-white px-6 py-2.5 rounded-md text-caption font-medium tracking-[0.05em] uppercase">
  Required
  </div>
  </div>
@@ -1188,7 +1198,7 @@ export function PropertyDetail() {
  <Upload className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
  </div>
  <div>
- <div className="text-small font-normal text-gray-900 dark:text-white/95">
+ <div className="text-small font-semibold text-gray-900 dark:text-white/95">
  {docType}
  </div>
  <div className="text-caption text-gray-600 dark:text-white/50">
@@ -1221,10 +1231,10 @@ export function PropertyDetail() {
  {/* Optional Documents */}
  <div>
  <div className="flex items-center gap-2 mb-4">
- <div className="text-small font-normal tracking-tight text-gray-900 dark:text-white/95">
+ <div className="text-small font-semibold tracking-tight text-gray-900 dark:text-white/95">
  Optional Documents
  </div>
- <div className="bg-blue-500/10 text-blue-600 dark:text-blue-400 px-6 py-2.5 rounded-md text-caption font-normal tracking-[0.05em] uppercase">
+ <div className="bg-blue-500/10 text-blue-600 dark:text-blue-400 px-6 py-2.5 rounded-md text-caption font-medium tracking-[0.05em] uppercase">
  Recommended
  </div>
  </div>
@@ -1240,7 +1250,7 @@ export function PropertyDetail() {
  <Upload className="w-5 h-5 text-blue-600 dark:text-blue-400" />
  </div>
  <div>
- <div className="text-small font-normal text-gray-900 dark:text-white/95">
+ <div className="text-small font-semibold text-gray-900 dark:text-white/95">
  {docType}
  </div>
  <div className="text-caption text-gray-600 dark:text-white/50">
@@ -1279,13 +1289,13 @@ export function PropertyDetail() {
  <div className="flex items-center gap-3">
  <button
  onClick={() => setShowDocumentModal(false)}
- className="px-6 py-2.5 rounded-[12px] text-small font-normal text-gray-900 dark:text-white/95 bg-brand-navy/5 dark:bg-white/5 hover:bg-brand-navy/10 dark:hover:bg-white/10 transition-all"
+ className="px-6 py-2.5 rounded-[12px] text-small font-semibold text-gray-900 dark:text-white/95 bg-brand-navy/5 dark:bg-white/5 hover:bg-brand-navy/10 dark:hover:bg-white/10 transition-all"
  >
  Cancel
  </button>
  <button
  onClick={() => setShowDocumentModal(false)}
- className="px-6 py-2.5 rounded-[12px] text-small font-normal text-white bg-brand-navy dark:bg-white hover:bg-brand-navy/90 dark:hover:bg-white/90 transition-all"
+ className="px-6 py-2.5 rounded-[12px] text-small font-semibold text-white bg-brand-navy dark:bg-white hover:bg-brand-navy/90 dark:hover:bg-white/90 transition-all"
  >
  Done
  </button>
@@ -1324,7 +1334,7 @@ export function PropertyDetail() {
  <div className="grid grid-cols-1 lg:grid-cols-3 h-[calc(90vh-140px)]">
  {/* Landmarks List - Left Side */}
  <div className="lg:col-span-1 border-r border-gray-200 dark:border-white/[0.06] overflow-y-auto card-padding">
- <div className="text-caption font-normal tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-4">
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-4">
  Category
  </div>
  
@@ -1332,7 +1342,7 @@ export function PropertyDetail() {
  <div className="space-y-2 mb-6">
  <button 
  onClick={() => setSelectedLandmarkCategory('schools')}
- className={`w-full flex items-center gap-4 px-4 py-2.5 rounded-[12px] text-small font-normal transition-all ${
+ className={`w-full flex items-center gap-4 px-4 py-2.5 rounded-[12px] text-small font-semibold transition-all ${
  selectedLandmarkCategory === 'schools'
  ? 'bg-brand-navy dark:bg-white text-white'
  : 'bg-brand-navy/[0.05] dark:bg-white/[0.05] text-gray-900 dark:text-white'
@@ -1346,7 +1356,7 @@ export function PropertyDetail() {
  </button>
  <button 
  onClick={() => setSelectedLandmarkCategory('busStops')}
- className={`w-full flex items-center gap-4 px-4 py-2.5 rounded-[12px] text-small font-normal transition-all ${
+ className={`w-full flex items-center gap-4 px-4 py-2.5 rounded-[12px] text-small font-semibold transition-all ${
  selectedLandmarkCategory === 'busStops'
  ? 'bg-brand-navy dark:bg-white text-white'
  : 'bg-brand-navy/[0.05] dark:bg-white/[0.05] text-gray-900 dark:text-white'
@@ -1360,7 +1370,7 @@ export function PropertyDetail() {
  </button>
  <button 
  onClick={() => setSelectedLandmarkCategory('hospitals')}
- className={`w-full flex items-center gap-4 px-4 py-2.5 rounded-[12px] text-small font-normal transition-all ${
+ className={`w-full flex items-center gap-4 px-4 py-2.5 rounded-[12px] text-small font-semibold transition-all ${
  selectedLandmarkCategory === 'hospitals'
  ? 'bg-brand-navy dark:bg-white text-white'
  : 'bg-brand-navy/[0.05] dark:bg-white/[0.05] text-gray-900 dark:text-white'
@@ -1374,7 +1384,7 @@ export function PropertyDetail() {
  </button>
  <button 
  onClick={() => setSelectedLandmarkCategory('banks')}
- className={`w-full flex items-center gap-4 px-4 py-2.5 rounded-[12px] text-small font-normal transition-all ${
+ className={`w-full flex items-center gap-4 px-4 py-2.5 rounded-[12px] text-small font-semibold transition-all ${
  selectedLandmarkCategory === 'banks'
  ? 'bg-brand-navy dark:bg-white text-white'
  : 'bg-brand-navy/[0.05] dark:bg-white/[0.05] text-gray-900 dark:text-white'
@@ -1388,7 +1398,7 @@ export function PropertyDetail() {
  </button>
  <button 
  onClick={() => setSelectedLandmarkCategory('temples')}
- className={`w-full flex items-center gap-4 px-4 py-2.5 rounded-[12px] text-small font-normal transition-all ${
+ className={`w-full flex items-center gap-4 px-4 py-2.5 rounded-[12px] text-small font-semibold transition-all ${
  selectedLandmarkCategory === 'temples'
  ? 'bg-brand-navy dark:bg-white text-white'
  : 'bg-brand-navy/[0.05] dark:bg-white/[0.05] text-gray-900 dark:text-white'
@@ -1402,7 +1412,7 @@ export function PropertyDetail() {
  </button>
  <button 
  onClick={() => setSelectedLandmarkCategory('shopping')}
- className={`w-full flex items-center gap-4 px-4 py-2.5 rounded-[12px] text-small font-normal transition-all ${
+ className={`w-full flex items-center gap-4 px-4 py-2.5 rounded-[12px] text-small font-semibold transition-all ${
  selectedLandmarkCategory === 'shopping'
  ? 'bg-brand-navy dark:bg-white text-white'
  : 'bg-brand-navy/[0.05] dark:bg-white/[0.05] text-gray-900 dark:text-white'
@@ -1417,7 +1427,7 @@ export function PropertyDetail() {
  </div>
 
  {/* Landmarks in Selected Category */}
- <div className="text-caption font-normal tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-4">
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-4">
  Nearby Locations
  </div>
  <div className="space-y-2">
@@ -1431,7 +1441,7 @@ export function PropertyDetail() {
  : 'bg-brand-navy/[0.02] dark:bg-white/[0.02] border-2 border-transparent hover:bg-brand-navy/[0.04] dark:hover:bg-white/[0.04]'
  }`}
  >
- <div className="text-small font-normal text-gray-900 dark:text-white mb-1">
+ <div className="text-small font-semibold text-gray-900 dark:text-white mb-1">
  {landmark.name}
  </div>
  <div className="flex items-center gap-2 text-caption text-gray-600 dark:text-white/50">
@@ -1466,7 +1476,7 @@ export function PropertyDetail() {
  </div>
  <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
  <div className="bg-white dark:bg-card px-3 py-2.5 rounded-lg shadow-card">
- <div className="text-caption font-normal text-gray-900 dark:text-white/95">
+ <div className="text-caption font-semibold text-gray-900 dark:text-white/95">
  {property.name}
  </div>
  </div>
@@ -1489,7 +1499,7 @@ export function PropertyDetail() {
  </div>
  <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
  <div className="bg-white dark:bg-card px-3 py-2.5 rounded-lg shadow-card">
- <div className="text-caption font-normal text-gray-900 dark:text-white mb-1">
+ <div className="text-caption font-semibold text-gray-900 dark:text-white mb-1">
  {selectedLandmark.name}
  </div>
  <div className="text-caption text-gray-600 dark:text-white/50 flex items-center gap-1">
@@ -1522,7 +1532,7 @@ export function PropertyDetail() {
  <MapPin className="w-5 h-5 text-emerald-500" />
  </div>
  <div className="flex-1">
- <div className="text-caption font-normal tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-1">
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-1">
  Interactive Map Preview
  </div>
  <div className="text-small text-gray-900/70 dark:text-white/70">

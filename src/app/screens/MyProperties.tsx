@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router';
-import { Building2, Plus, ArrowRight, Sparkles, Briefcase, ChevronRight, Search } from 'lucide-react';
+import { Building2, Plus, ArrowRight, Sparkles, Briefcase, ChevronRight, Search, MapPin, LayoutGrid } from 'lucide-react';
 import { useState } from 'react';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { NotificationDropdown } from '../components/NotificationDropdown';
@@ -56,12 +56,12 @@ export function MyProperties() {
           <div className="relative">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-xs tracking-[0.16em] uppercase text-white/40 mb-2">Portfolio</p>
-                <h1 className="text-3xl font-normal text-white tracking-tight leading-none">
+                <p className="text-caption font-medium tracking-[0.16em] uppercase text-white/50 mb-2">Portfolio</p>
+                <h1 className="text-h1 font-semibold text-white tracking-tight leading-none">
                   My Properties
                 </h1>
                 {properties.length > 0 && (
-                  <p className="text-sm text-white/50 mt-2">
+                  <p className="text-small text-white/50 mt-2">
                     {properties.length} {properties.length === 1 ? 'property' : 'properties'} · {totalCities} {totalCities === 1 ? 'city' : 'cities'}
                   </p>
                 )}
@@ -72,7 +72,7 @@ export function MyProperties() {
                   to="/upload"
                   className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl
                     bg-white/15 active:bg-white/25 text-white
-                    text-xs font-normal transition-all duration-200"
+                    text-caption font-semibold transition-all duration-200"
                 >
                   <Plus className="w-3.5 h-3.5" strokeWidth={1.5} />
                   Add
@@ -90,9 +90,9 @@ export function MyProperties() {
                 <button
                   key={type}
                   onClick={() => setTypeFilter(type)}
-                  className={`flex-shrink-0 px-5 py-3.5 text-xs font-normal whitespace-nowrap transition-all duration-200 border-b-2 ${
+                  className={`flex-shrink-0 px-5 py-3.5 text-caption whitespace-nowrap transition-all duration-200 border-b-2 ${
                     typeFilter === type
-                      ? 'text-brand-primary border-brand-primary'
+                      ? 'text-brand-primary border-brand-primary font-semibold'
                       : 'text-gray-400 border-transparent'
                   }`}
                 >
@@ -114,7 +114,7 @@ export function MyProperties() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-white/[0.04] rounded-xl
-                  text-sm text-gray-900 dark:text-white
+                  text-small text-gray-900 dark:text-white
                   placeholder:text-gray-400 dark:placeholder:text-white/30
                   focus:outline-none focus:ring-2 focus:ring-brand-primary/20
                   transition-all duration-200"
@@ -129,13 +129,13 @@ export function MyProperties() {
             <div className="w-16 h-16 rounded-2xl bg-brand-primary/[0.06] flex items-center justify-center mb-5">
               <Building2 className="w-8 h-8 text-brand-primary" strokeWidth={1.5} />
             </div>
-            <h2 className="text-lg font-normal text-gray-900 dark:text-white mb-2">No Properties Yet</h2>
-            <p className="text-sm text-gray-400 max-w-[240px] leading-relaxed mb-8">
-              Start building your portfolio. Add your first property to unlock HABU analysis and services.
+            <h2 className="text-body font-semibold text-gray-900 dark:text-white mb-2">No Properties Yet</h2>
+            <p className="text-small text-gray-400 max-w-[240px] leading-relaxed mb-8">
+              Start building your portfolio. Add your first property to unlock best use analysis and services.
             </p>
             <Link
               to="/upload"
-              className="inline-flex items-center gap-2 bg-brand-primary text-white px-6 py-3 rounded-xl text-sm font-normal active:scale-[0.98] transition-transform"
+              className="inline-flex items-center gap-2 bg-brand-primary text-white px-6 py-3 rounded-xl text-small font-semibold active:scale-[0.98] transition-transform"
             >
               <Plus className="w-4 h-4" strokeWidth={1.5} />
               Add First Property
@@ -150,7 +150,7 @@ export function MyProperties() {
                   actions={[
                     {
                       icon: <Sparkles className="w-5 h-5" strokeWidth={1.5} />,
-                      label: 'HABU',
+                      label: 'Best Use',
                       bgColor: 'bg-brand-navy',
                       textColor: 'text-white',
                       onClick: () => navigate(`/property/${property.id}/habu`),
@@ -176,15 +176,15 @@ export function MyProperties() {
                       <Building2 className="w-5 h-5 text-brand-primary" strokeWidth={1.5} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-normal text-gray-900 dark:text-white truncate mb-1">
+                  <h3 className="text-small font-semibold text-gray-900 dark:text-white truncate mb-1">
                         {property.name}
                       </h3>
                       <div className="flex items-center gap-2">
-                        <span className="text-xs text-gray-400 dark:text-white/40 truncate">{locationLabel(property)}</span>
+                        <span className="text-caption text-gray-400 dark:text-white/40 truncate">{locationLabel(property)}</span>
                         {property.type && (
                           <>
                             <span className="text-gray-200 dark:text-white/10 flex-shrink-0">·</span>
-                            <span className="text-xs text-gray-400 dark:text-white/30 flex-shrink-0">{property.type}</span>
+                            <span className="text-caption text-gray-400 dark:text-white/30 flex-shrink-0">{property.type}</span>
                           </>
                         )}
                       </div>
@@ -205,7 +205,7 @@ export function MyProperties() {
               <div className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-white/5 flex items-center justify-center flex-shrink-0">
                 <Plus className="w-4 h-4 text-gray-400" strokeWidth={1.5} />
               </div>
-              <span className="text-sm font-normal text-gray-400 dark:text-white/40">Add Another Property</span>
+              <span className="text-small font-medium text-gray-400 dark:text-white/40">Add Another Property</span>
             </Link>
           </div>
         )}
@@ -217,14 +217,14 @@ export function MyProperties() {
       <div className="hidden md:block">
 
         {/* Page header */}
-        <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06]">
-          <div className="max-w-[1200px] mx-auto container-padding py-5 md:py-6">
+        <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] shadow-header">
+          <div className="max-w-[1500px] mx-auto container-padding py-5 md:py-6">
             <div className="flex items-center justify-between gap-4">
               <div>
-                <div className="text-xs font-normal tracking-[0.12em] uppercase text-brand-primary mb-2">
+                <div className="text-caption font-medium tracking-[0.12em] uppercase text-brand-primary mb-2">
                   Portfolio
                 </div>
-                <h1 className="text-h1 font-normal tracking-tight text-gray-900 dark:text-white">
+                <h1 className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white">
                   My Properties
                 </h1>
                 <p className="text-small text-gray-500 dark:text-white/50 mt-1">
@@ -236,7 +236,7 @@ export function MyProperties() {
                   to="/upload"
                   className="inline-flex items-center justify-center gap-2
                     bg-brand-primary hover:bg-brand-primary-hover text-white
-                    px-5 py-2.5 rounded-xl text-small font-normal
+                    px-5 py-2.5 rounded-xl text-small font-semibold
                     transition-all duration-200"
                 >
                   <Plus className="w-4 h-4 flex-shrink-0" />
@@ -251,40 +251,76 @@ export function MyProperties() {
         </div>
 
         {/* Desktop content */}
-        <div className="max-w-[1200px] mx-auto container-padding py-6 md:py-8">
+        <div className="max-w-[1500px] mx-auto container-padding py-6 md:py-8">
+
+          {/* Stats bar — only when properties exist */}
+          {properties.length > 0 && (
+            <div className="grid grid-cols-3 gap-4 mb-6">
+              {/* Total Properties */}
+              <div className="bg-white dark:bg-card rounded-2xl p-5 border border-black/5 dark:border-white/5 shadow-card">
+                <div className="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center mb-4">
+                  <Building2 className="w-5 h-5 text-brand-primary" strokeWidth={1.5} />
+                </div>
+                <div className="text-caption font-medium tracking-[0.14em] uppercase text-gray-400 dark:text-white/40 mb-4">Properties</div>
+                <div className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white mb-2">{properties.length}</div>
+                <div className="text-small text-gray-500 dark:text-white/50">total in portfolio</div>
+              </div>
+
+              {/* Cities */}
+              <div className="bg-white dark:bg-card rounded-2xl p-5 border border-black/5 dark:border-white/5 shadow-card">
+                <div className="w-10 h-10 rounded-xl bg-brand-teal/10 flex items-center justify-center mb-4">
+                  <MapPin className="w-5 h-5 text-brand-teal" strokeWidth={1.5} />
+                </div>
+                <div className="text-caption font-medium tracking-[0.14em] uppercase text-gray-400 dark:text-white/40 mb-4">Cities</div>
+                <div className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white mb-2">{totalCities}</div>
+                <div className="text-small text-gray-500 dark:text-white/50">across locations</div>
+              </div>
+
+              {/* Property Types */}
+              <div className="bg-white dark:bg-card rounded-2xl p-5 border border-black/5 dark:border-white/5 shadow-card">
+                <div className="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center mb-4">
+                  <LayoutGrid className="w-5 h-5 text-purple-500" strokeWidth={1.5} />
+                </div>
+                <div className="text-caption font-medium tracking-[0.14em] uppercase text-gray-400 dark:text-white/40 mb-4">Types</div>
+                <div className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white mb-2">{propertyTypes.length - 1 || 1}</div>
+                <div className="text-small text-gray-500 dark:text-white/50">property categories</div>
+              </div>
+            </div>
+          )}
+
           {properties.length === 0 ? (
             <div className="bg-white dark:bg-card rounded-2xl shadow-card p-16 text-center">
               <div className="w-16 h-16 rounded-2xl bg-brand-primary/[0.06] flex items-center justify-center mx-auto mb-5">
                 <Building2 className="w-8 h-8 text-brand-primary" strokeWidth={1.5} />
               </div>
-              <h2 className="text-h1 font-normal tracking-tight text-gray-900 dark:text-white mb-3">No Properties Yet</h2>
+              <h2 className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white mb-3">No Properties Yet</h2>
               <p className="text-body text-gray-600 dark:text-white/50 max-w-md mx-auto mb-8 leading-relaxed">
-                Add your first property to unlock HABU analysis, document storage, and premium services.
+                Add your first property to unlock best use analysis, document storage, and premium services.
               </p>
               <Link
                 to="/upload"
-                className="inline-flex items-center gap-2 bg-brand-primary hover:bg-brand-primary-hover text-white px-6 py-3 rounded-xl text-small font-normal transition-all"
+                className="inline-flex items-center gap-2 bg-brand-primary hover:bg-brand-primary-hover text-white px-6 py-3 rounded-xl text-small font-semibold transition-all"
               >
                 <Plus className="w-4 h-4" strokeWidth={1.5} />
                 Add Your First Property
               </Link>
             </div>
           ) : (
-            <div className="bg-white dark:bg-card rounded-2xl overflow-hidden">
+            <div className="bg-white dark:bg-card rounded-2xl overflow-hidden shadow-card">
               {/* Filter tabs */}
               <div className="flex overflow-x-auto scrollbar-hide border-b border-gray-100 dark:border-white/[0.05]">
                 {propertyTypes.map((type) => (
                   <button
                     key={type}
                     onClick={() => setTypeFilter(type)}
-                    className={`flex-shrink-0 flex items-center gap-1.5 px-5 py-3.5 text-sm font-normal whitespace-nowrap transition-all duration-200 border-b-2 ${
+                    className={`flex-shrink-0 flex items-center gap-1.5 px-5 py-3.5 text-small whitespace-nowrap transition-all duration-200 border-b-2 ${
                       typeFilter === type
-                        ? 'text-brand-primary border-brand-primary'
+                        ? 'text-brand-primary border-brand-primary md:font-semibold'
                         : 'text-gray-400 dark:text-white/40 border-transparent hover:text-gray-600 dark:hover:text-white/60'
                     }`}
                   >
                     {type}
-                    <span className={`text-xs ${typeFilter === type ? 'text-brand-primary/60' : 'text-gray-300 dark:text-white/20'}`}>
+                    <span className={`text-caption ${typeFilter === type ? 'text-brand-primary/60' : 'text-gray-300 dark:text-white/20'}`}>
                       {typeCount(type)}
                     </span>
                   </button>
@@ -300,7 +336,7 @@ export function MyProperties() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-white/[0.04] rounded-xl
-                      text-sm text-gray-900 dark:text-white
+                      text-small text-gray-900 dark:text-white
                       placeholder:text-gray-400 dark:placeholder:text-white/30
                       focus:outline-none focus:ring-2 focus:ring-brand-primary/20
                       transition-all duration-200"
@@ -323,10 +359,10 @@ export function MyProperties() {
                     <Building2 className="w-5 h-5 text-brand-primary" strokeWidth={1.5} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-sm font-normal text-gray-900 dark:text-white truncate mb-0.5">
+                    <h3 className="text-small font-semibold text-gray-900 dark:text-white truncate mb-0.5">
                       {property.name}
                     </h3>
-                    <div className="flex items-center gap-2 text-xs text-gray-400 dark:text-white/40">
+                    <div className="flex items-center gap-2 text-caption text-gray-400 dark:text-white/40">
                       <span className="truncate">{locationLabel(property)}</span>
                       {property.type && (
                         <>
@@ -342,7 +378,7 @@ export function MyProperties() {
                       )}
                     </div>
                   </div>
-                  <span className="text-xs text-gray-400 dark:text-white/30 flex-shrink-0">
+                  <span className="text-caption text-gray-400 dark:text-white/30 flex-shrink-0">
                     {formatDate(property.dateAdded)}
                   </span>
                   <ChevronRight className="w-4 h-4 text-gray-300 dark:text-white/20 flex-shrink-0" strokeWidth={1.5} />
@@ -357,7 +393,7 @@ export function MyProperties() {
                 <div className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-white/5 flex items-center justify-center flex-shrink-0">
                   <Plus className="w-4 h-4 text-gray-400" strokeWidth={1.5} />
                 </div>
-                <span className="text-sm text-gray-400 dark:text-white/40">Add Another Property</span>
+                  <span className="text-small font-medium text-gray-400 dark:text-white/40">Add Another Property</span>
               </Link>
             </div>
           )}

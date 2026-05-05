@@ -36,7 +36,7 @@ export function ExecutionTracker() {
  { name: 'Legal Due Diligence', status: 'completed', completedDate: 'Feb 15, 2024' },
  { name: 'Concept Design Freeze', status: 'completed', completedDate: 'Mar 10, 2024' },
  { name: 'Financial Feasibility', status: 'completed', completedDate: 'Mar 25, 2024' },
- { name: 'Partner Assignment', status: 'completed', completedDate: 'Apr 5, 2024' },
+ { name: 'Expert Assignment', status: 'completed', completedDate: 'Apr 5, 2024' },
  ],
  },
  {
@@ -105,16 +105,16 @@ export function ExecutionTracker() {
 
  
  {/* Header - Full Width */}
- <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06]">
- <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-6">
+ <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] shadow-header">
+ <div className="max-w-[1500px] mx-auto container-padding py-4 md:py-6">
  <div className="flex items-center justify-between">
  {/* Left: Back Button + Page Title */}
  <div className="flex items-center gap-4">
  <Link 
- to="/properties"
- className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-brand-navy/5 dark:bg-white/5 hover:bg-brand-navy/10 dark:hover:bg-white/10 transition-colors text-gray-600 dark:text-white/50"
+ to="/cases"
+ className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-brand-navy/[0.04] dark:bg-white/[0.04] hover:bg-brand-navy/[0.08] dark:hover:bg-white/[0.08] flex-shrink-0 transition-colors"
  >
- <ArrowLeft className="w-4 h-4" />
+ <ArrowLeft className="w-4 h-4 text-gray-500 dark:text-white/50" />
  </Link>
  <div>
  <div className="text-caption tracking-wider uppercase text-gray-400 dark:text-white/50 mb-2">
@@ -140,7 +140,7 @@ export function ExecutionTracker() {
  </div>
  </div>
 
- <div className="max-w-[1200px] mx-auto container-padding py-6 md:py-8 lg:py-10">
+ <div className="max-w-[1500px] mx-auto container-padding py-6 md:py-8 lg:py-10">
  {/* Summary Cards */}
  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8 md:mb-10">
  {/* Overall Progress */}
@@ -148,7 +148,7 @@ export function ExecutionTracker() {
  <div className="text-caption tracking-widest uppercase text-gray-400 dark:text-white/40 mb-3">
  Overall Progress
  </div>
- <div className="text-h1 tracking-tight text-gray-900 dark:text-white/95 font-light mb-3">
+ <div className="text-h1 tracking-tight text-gray-900 dark:text-white/95 font-semibold mb-3">
  40%
  </div>
  <div className="h-2 bg-brand-navy/5 dark:bg-white/5 rounded-full overflow-hidden">
@@ -164,7 +164,7 @@ export function ExecutionTracker() {
  Current Phase
  </div>
  </div>
- <div className="text-body tracking-tight text-gray-900 dark:text-white/95 font-normal">
+ <div className="text-body tracking-tight text-gray-900 dark:text-white/95 font-semibold">
  Regulatory Approvals
  </div>
  <div className="text-caption text-gray-600 dark:text-white/50 mt-1">
@@ -180,7 +180,7 @@ export function ExecutionTracker() {
  Days Elapsed
  </div>
  </div>
- <div className="text-h1 tracking-tight text-gray-900 dark:text-white/95 font-light">
+ <div className="text-h1 tracking-tight text-gray-900 dark:text-white/95 font-semibold">
  178
  </div>
  <div className="text-caption text-gray-600 dark:text-white/50 mt-1">
@@ -196,7 +196,7 @@ export function ExecutionTracker() {
  Active Tasks
  </div>
  </div>
- <div className="text-h1 tracking-tight text-gray-900 dark:text-white/95 font-light">
+ <div className="text-h1 tracking-tight text-gray-900 dark:text-white/95 font-semibold">
  3
  </div>
  <div className="text-caption text-gray-600 dark:text-white/50 mt-1">
@@ -211,7 +211,7 @@ export function ExecutionTracker() {
  <div>
  <div className="bg-white dark:bg-card shadow-card rounded-xl overflow-hidden">
  <div className="container-padding py-4 md:py-6 border-b border-gray-200 dark:border-white/[0.06]">
- <h3 className="text-body tracking-tight text-gray-900 dark:text-white/95 font-normal">
+ <h3 className="text-body tracking-tight text-gray-900 dark:text-white/95 font-semibold">
  Execution Timeline
  </h3>
  <p className="text-small text-gray-400 dark:text-white/40 mt-1">
@@ -243,7 +243,7 @@ export function ExecutionTracker() {
  className="w-full flex items-center justify-between mb-2 text-left hover:opacity-80 transition-opacity"
  >
  <div>
- <h4 className="text-body font-normal text-gray-900 dark:text-white mb-1">
+ <h4 className="text-body font-semibold text-gray-900 dark:text-white mb-1">
  Phase {phase.id}: {phase.name}
  </h4>
  <div className="text-caption text-gray-400 dark:text-white/40">
@@ -269,7 +269,7 @@ export function ExecutionTracker() {
  <div className="mb-4">
  <div className="flex items-center justify-between mb-2">
  <div className="text-caption text-gray-600 dark:text-white/50">Progress</div>
- <div className="text-caption font-normal text-gray-900 dark:text-white/95">{phase.progress}%</div>
+ <div className="text-caption font-semibold text-gray-900 dark:text-white/95">{phase.progress}%</div>
  </div>
  <div className="h-2 bg-brand-navy/5 dark:bg-white/5 rounded-full overflow-hidden">
  <div 
@@ -343,7 +343,7 @@ export function ExecutionTracker() {
  <div className="px-6 py-5 border-b border-gray-200 dark:border-white/[0.06]">
  <div className="flex items-center gap-2">
  <Users className="w-4 h-4 text-gray-400 dark:text-white/40" />
- <h3 className="text-body tracking-tight text-gray-900 dark:text-white/95 font-normal">
+ <h3 className="text-body tracking-tight text-gray-900 dark:text-white/95 font-semibold">
  Core Team
  </h3>
  </div>
@@ -351,19 +351,19 @@ export function ExecutionTracker() {
  <div className="p-4 md:p-5 lg:p-6 space-y-3">
  <div className="flex items-center justify-between">
  <div className="text-small text-gray-600 dark:text-white/50">Project Manager</div>
- <div className="text-small font-normal text-gray-900 dark:text-white/95">Rajesh Malhotra</div>
+ <div className="text-small font-semibold text-gray-900 dark:text-white/95">Rajesh Malhotra</div>
  </div>
  <div className="flex items-center justify-between">
  <div className="text-small text-gray-600 dark:text-white/50">Architect</div>
- <div className="text-small font-normal text-gray-900 dark:text-white/95">Assigned</div>
+ <div className="text-small font-semibold text-gray-900 dark:text-white/95">Assigned</div>
  </div>
  <div className="flex items-center justify-between">
  <div className="text-small text-gray-600 dark:text-white/50">Legal Counsel</div>
- <div className="text-small font-normal text-gray-900 dark:text-white/95">Assigned</div>
+ <div className="text-small font-semibold text-gray-900 dark:text-white/95">Assigned</div>
  </div>
  <div className="flex items-center justify-between">
  <div className="text-small text-gray-600 dark:text-white/50">Contractor</div>
- <div className="text-small font-normal text-gray-400 dark:text-white/40">Pending</div>
+ <div className="text-small font-medium text-gray-400 dark:text-white/40">Pending</div>
  </div>
  </div>
  </div>
@@ -371,7 +371,7 @@ export function ExecutionTracker() {
  {/* Performance Metrics */}
  <div className="bg-white dark:bg-card shadow-card rounded-xl overflow-hidden">
  <div className="px-6 py-5 border-b border-gray-200 dark:border-white/[0.06]">
- <h3 className="text-body tracking-tight text-gray-900 dark:text-white/95 font-normal">
+ <h3 className="text-body tracking-tight text-gray-900 dark:text-white/95 font-semibold">
  Performance Metrics
  </h3>
  </div>
@@ -379,7 +379,7 @@ export function ExecutionTracker() {
  <div>
  <div className="flex items-center justify-between mb-2">
  <div className="text-caption text-gray-600 dark:text-white/50">Budget Utilization</div>
- <div className="text-small font-normal text-gray-900 dark:text-white/95">28%</div>
+ <div className="text-small font-semibold text-gray-900 dark:text-white/95">28%</div>
  </div>
  <div className="h-1.5 bg-brand-navy/5 dark:bg-white/5 rounded-full overflow-hidden">
  <div className="h-full bg-brand-navy dark:bg-white rounded-full" style={{ width: '28%' }}></div>
@@ -388,7 +388,7 @@ export function ExecutionTracker() {
  <div>
  <div className="flex items-center justify-between mb-2">
  <div className="text-caption text-gray-600 dark:text-white/50">Timeline Adherence</div>
- <div className="text-small font-normal text-brand-gold">98%</div>
+ <div className="text-small font-semibold text-brand-gold">98%</div>
  </div>
  <div className="h-1.5 bg-brand-navy/5 dark:bg-white/5 rounded-full overflow-hidden">
  <div className="h-full bg-brand-navy dark:bg-white rounded-full" style={{ width: '98%' }}></div>
@@ -397,7 +397,7 @@ export function ExecutionTracker() {
  <div>
  <div className="flex items-center justify-between mb-2">
  <div className="text-caption text-gray-600 dark:text-white/50">Quality Score</div>
- <div className="text-small font-normal text-gray-900 dark:text-white/95">4.8/5</div>
+ <div className="text-small font-semibold text-gray-900 dark:text-white/95">4.8/5</div>
  </div>
  <div className="h-1.5 bg-brand-navy/5 dark:bg-white/5 rounded-full overflow-hidden">
  <div className="h-full bg-brand-navy dark:bg-white rounded-full" style={{ width: '96%' }}></div>
@@ -415,8 +415,8 @@ export function ExecutionTracker() {
  </div>
  
  {/* Heading - Glass-Data Heading/H1 Style */}
- <h4 className="text-body font-normal text-gray-900 dark:text-white mb-6 tracking-tight">
- Contact Execution Partner
+ <h4 className="text-body font-semibold text-gray-900 dark:text-white mb-6 tracking-tight">
+ Contact Your Expert
  </h4>
 
  {/* Contact Info - Glass-Data Body/Main Style */}
@@ -432,7 +432,7 @@ export function ExecutionTracker() {
  </div>
 
  {/* Send Message Button - Institutional Style */}
- <button className="w-full bg-brand-navy dark:bg-white text-white dark:text-gray-900 px-6 py-2.5 rounded-lg text-small font-normal tracking-wide transition-all hover:bg-brand-navy/90 dark:hover:bg-white/90 inline-flex items-center justify-center gap-2">
+ <button className="w-full bg-brand-navy dark:bg-white text-white dark:text-gray-900 px-6 py-2.5 rounded-lg text-small font-semibold tracking-wide transition-all hover:bg-brand-navy/90 dark:hover:bg-white/90 inline-flex items-center justify-center gap-2">
  <MessageCircle className="w-4 h-4" />
  Send Message
  </button>

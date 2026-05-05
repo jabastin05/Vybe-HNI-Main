@@ -62,7 +62,7 @@ export const router = createBrowserRouter([
  },
  {
  path: "properties",
- Component: CaseManagement,
+ element: <Navigate to="/my-properties" replace />,
  },
  {
  path: "settings",
@@ -110,10 +110,6 @@ export const router = createBrowserRouter([
  },
  {
  path: "services",
- Component: ServiceCatalog,
- },
- {
- path: "services/catalog",
  Component: ServiceCatalog,
  },
  {

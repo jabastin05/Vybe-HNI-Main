@@ -3,6 +3,7 @@ import { useCases, CaseMilestone } from '../contexts/CasesContext';
 import { useProperties } from '../contexts/PropertiesContext';
 import { ArrowLeft, FileText, MapPin, Calendar, Download, ExternalLink, CheckCircle2, Clock, Building2, TrendingUp, Users, DollarSign, Eye, FileDown, MessageCircle, Upload, CheckCircle, Plus, ArrowRight, Zap } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { toast } from 'sonner';
 import { servicesData } from '../data/servicesData';
 
 export function CaseDetail() {
@@ -12,8 +13,8 @@ export function CaseDetail() {
  const { getProperty } = useProperties();
  const [isUpdating, setIsUpdating] = useState(false);
 
- const backUrl = '/properties';
- const backLabel = 'Back to Case Management';
+ const backUrl = '/cases';
+ const backLabel = 'Back to Cases';
 
  const caseItem = getCase(id || '');
 
@@ -48,7 +49,7 @@ export function CaseDetail() {
  <h2 className="text-h1 text-gray-900 dark:text-white mb-4">Case not found</h2>
  <Link 
  to="/properties"
- className="text-brand-gold hover:text-brand-gold-hover text-small font-normal"
+ className="text-brand-gold hover:text-brand-gold-hover text-small font-semibold"
  >
  Back to Case Management
  </Link>
@@ -60,7 +61,7 @@ export function CaseDetail() {
 
  // Get the actual property from PropertiesContext if propertyId exists
  const property = caseItem.propertyId ? getProperty(caseItem.propertyId) : null;
- const isHABU = caseItem.serviceRequested === 'HABU Report';
+ const isHABU = caseItem.serviceRequested === 'Best Use Report';
  const hasDocuments = property && property.documents && property.documents.length > 0;
 
  // Get service data to show required documents
@@ -74,37 +75,31 @@ export function CaseDetail() {
 
  const handleMilestoneToggle = async (milestoneId: string) => {
  if (!caseItem || isUpdating) return;
- 
+
  setIsUpdating(true);
- 
- const updatedMilestones = caseItem.milestones?.map(milestone => {
+
+ const toggledTitle = caseItem.milestones?.find(m => m.id === milestoneId)?.title ?? '';
+ const willComplete = caseItem.milestones?.find(m => m.id === milestoneId)?.status === 'pending';
+
+ const updatedMilestones = (caseItem.milestones?.map(milestone => {
  if (milestone.id === milestoneId) {
- // Toggle the milestone status
- const newStatus = milestone.status === 'pending' ? 'completed' : 'pending';
- const newDate = newStatus === 'completed' 
+ const newStatus: 'completed' | 'pending' = milestone.status === 'pending' ? 'completed' : 'pending';
+ const newDate = newStatus === 'completed'
  ? new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
  : undefined;
- 
- return {
- ...milestone,
- status: newStatus,
- date: newDate,
- };
+ return { ...milestone, status: newStatus, date: newDate };
  }
  return milestone;
- }) || [];
+ }) || []) as import('../contexts/CasesContext').CaseMilestone[];
 
- // Calculate new progress
  const completedCount = updatedMilestones.filter(m => m.status === 'completed').length;
  const totalCount = updatedMilestones.length;
  const newProgress = Math.round((completedCount / totalCount) * 100);
 
- // Check if "Case closed" milestone is completed
  const caseClosedMilestone = updatedMilestones.find(m => m.title === 'Case closed');
  const newStatus = caseClosedMilestone?.status === 'completed' ? 'Closed' : 'Open';
  const dateClosed = newStatus === 'Closed' ? new Date().toISOString() : undefined;
 
- // Update the case
  updateCase(caseItem.id, {
  milestones: updatedMilestones,
  progress: newProgress,
@@ -112,12 +107,23 @@ export function CaseDetail() {
  dateClosed,
  });
 
- setTimeout(() => setIsUpdating(false), 300);
+ setTimeout(() => {
+ setIsUpdating(false);
+ if (willComplete) {
+ if (newStatus === 'Closed') {
+ toast.success('Case closed', { description: `All milestones completed.` });
+ } else {
+ toast.success('Milestone completed', { description: toggledTitle });
+ }
+ } else {
+ toast.info('Milestone reopened', { description: toggledTitle });
+ }
+ }, 300);
  };
 
  const getServiceColor = (service: string) => {
  switch (service) {
- case 'HABU Report':
+ case 'Best Use Report':
  return 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20';
  case 'Property Service':
  return 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20';
@@ -143,9 +149,9 @@ export function CaseDetail() {
  <div className="flex items-center justify-between mb-5">
  <Link to={backUrl} className="flex items-center gap-2 text-white/60 active:text-white transition-colors duration-200">
  <ArrowLeft className="w-4 h-4" strokeWidth={1.5} />
- <span className="text-sm">Cases</span>
+ <span className="text-small">Cases</span>
  </Link>
- <span className={`text-xs px-2.5 py-1 rounded-full ${
+ <span className={`text-caption px-2.5 py-1 rounded-full ${
  caseItem.status === 'Open'
  ? 'bg-brand-secondary/20 text-white'
  : 'bg-white/10 text-white/60'
@@ -155,11 +161,11 @@ export function CaseDetail() {
  </div>
 
  {/* Title + subtitle */}
- <p className="text-xs tracking-[0.16em] uppercase text-white/40 mb-2">Case ID</p>
- <h1 className="text-3xl font-normal tracking-tight text-white leading-none mb-2">
+ <p className="text-caption tracking-[0.16em] uppercase text-white/40 mb-2">Case ID</p>
+ <h1 className="text-h1 font-semibold tracking-tight text-white leading-none mb-2">
  {caseItem.caseId}
  </h1>
- <div className="flex items-center gap-2 text-sm text-white/50">
+ <div className="flex items-center gap-2 text-small text-white/50">
  <span>{caseItem.subService || caseItem.serviceRequested}</span>
  {caseItem.propertyLocation && (
  <>
@@ -174,20 +180,18 @@ export function CaseDetail() {
  </div>
 
  {/* ── Desktop Header (hidden md:block) ─────────────── */}
- <div className="hidden md:block bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06]">
- <div className="max-w-[1200px] mx-auto container-padding py-3 md:py-4">
- {/* Back Button */}
- <Link
- to={backUrl}
- className="flex items-center gap-2 text-small text-gray-500 dark:text-white/50 hover:text-gray-900 dark:hover:text-white transition-colors mb-3 md:mb-4 w-fit"
- >
- <ArrowLeft className="w-4 h-4" />
- <span>{backLabel}</span>
- </Link>
-
+ <div className="hidden md:block bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] shadow-header">
+ <div className="max-w-[1500px] mx-auto container-padding py-3 md:py-4">
  {/* Header Content */}
  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 md:gap-4">
  {/* Left: Case Details */}
+ <div className="flex items-start sm:items-center gap-4 flex-1 min-w-0">
+ <Link
+ to={backUrl}
+ className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-brand-navy/[0.04] dark:bg-white/[0.04] hover:bg-brand-navy/[0.08] dark:hover:bg-white/[0.08] flex-shrink-0 transition-colors"
+ >
+ <ArrowLeft className="w-4 h-4 text-gray-500 dark:text-white/50" />
+ </Link>
  <div className="flex-1 min-w-0">
  <div className="flex flex-col gap-2">
  <div className="flex items-baseline gap-4 flex-wrap">
@@ -199,6 +203,7 @@ export function CaseDetail() {
  }`}>
  <FileText className="w-3.5 h-3.5" />
  <span>{caseItem.subService || caseItem.serviceRequested}</span>
+ </div>
  </div>
  </div>
  </div>
@@ -217,7 +222,7 @@ export function CaseDetail() {
  <MessageCircle className="w-4 h-4 flex-shrink-0" />
  <span>Chat</span>
  {caseItem.unreadMessages && caseItem.unreadMessages > 0 && (
- <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-normal
+ <span className="absolute -top-1 -right-1 bg-red-500 text-white text-caption font-normal
  rounded-full w-5 h-5 flex items-center justify-center
  shadow-lg animate-pulse">
  {caseItem.unreadMessages}
@@ -242,13 +247,13 @@ export function CaseDetail() {
  </div>
 
  {/* Main Content */}
- <div className="flex-1 pt-6 md:pt-8 pb-20 md:pb-8 container-padding">
- <div className="max-w-[1200px] mx-auto">
+ <div className="flex-1">
+ <div className="max-w-[1500px] mx-auto container-padding pt-6 md:pt-8 pb-20 md:pb-8">
  {/* Case Progress */}
  {caseItem.milestones && caseItem.milestones.length > 0 && (
- <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-3 md:p-5 lg:p-6 mb-6">
+ <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-3 md:p-5 lg:p-6 mb-6 shadow-card">
  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 md:mb-8">
- <h2 className="text-small font-normal text-gray-900 dark:text-white">
+ <h2 className="text-small font-semibold text-gray-900 dark:text-white">
  Case progress
  </h2>
  <div className="text-small text-gray-600 dark:text-white/50">
@@ -384,19 +389,19 @@ export function CaseDetail() {
 
  {/* HABU Report Preview Section (Only for closed HABU cases) */}
  {isHABU && caseItem.status === 'Closed' && caseItem.habuPlans && caseItem.habuPlans.length > 0 && (
- <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5 md:p-5 lg:p-6 mb-6">
+ <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5 md:p-5 lg:p-6 mb-6 shadow-card">
  <div className="mb-8 flex flex-col sm:flex-row sm:items-start justify-between gap-4">
  <div>
- <h2 className="text-body font-normal text-gray-900 dark:text-white mb-1">
- HABU Report Ready
+ <h2 className="text-body font-semibold text-gray-900 dark:text-white mb-1">
+ Best Use Report Ready
  </h2>
  <p className="text-small text-gray-600 dark:text-white/50">
- Your High-value Analysis & Best-use Understanding report analysis is now available below
+ Your Best Use Analysis report is now available below
  </p>
  </div>
  <Link
  to="/report/habu"
- className="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-navy hover:bg-brand-navy-hover text-white rounded-xl text-small font-normal transition-all whitespace-nowrap hover: relative overflow-hidden group"
+ className="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-navy hover:bg-brand-navy-hover text-white rounded-xl text-small font-semibold transition-all whitespace-nowrap hover: relative overflow-hidden group"
  >
  <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent pointer-events-none rounded-xl" />
  <ExternalLink className="w-4 h-4 relative z-10 group-hover:scale-110 transition-transform" />
@@ -487,16 +492,16 @@ export function CaseDetail() {
  </div>
  <div className="flex-1">
  <div className="flex items-center gap-2 mb-1">
- <span className="text-xs tracking-[0.05em] uppercase font-normal text-gray-400 dark:text-white/40">
+ <span className="text-caption tracking-[0.05em] uppercase font-normal text-gray-400 dark:text-white/40">
  OPTION {plan.optionNumber}
  </span>
  {plan.badge === 'recommended' && (
- <span className="px-1.5 py-0.5 bg-brand-primary text-white text-xs font-normal tracking-wider uppercase rounded">
+ <span className="px-1.5 py-0.5 bg-brand-primary text-white text-caption font-medium tracking-wider uppercase rounded">
  RECOMMENDED
  </span>
  )}
  </div>
- <h3 className="text-small font-normal text-gray-900 dark:text-white leading-tight">
+ <h3 className="text-small font-semibold text-gray-900 dark:text-white leading-tight">
  {plan.title}
  </h3>
  </div>
@@ -513,10 +518,10 @@ export function CaseDetail() {
  : 'bg-white dark:bg-card shadow-card'
  }`}
  >
- <div className="text-xs tracking-[0.05em] uppercase font-normal text-gray-400 dark:text-white/40 mb-1">
+ <div className="text-caption tracking-[0.05em] uppercase font-normal text-gray-400 dark:text-white/40 mb-1">
  {metric.label}
  </div>
- <div className={`text-small font-normal tracking-tight ${
+ <div className={`text-small font-semibold tracking-tight ${
  metric.highlight
  ? themeStyles.highlightText
  : 'text-gray-900 dark:text-white'
@@ -534,9 +539,9 @@ export function CaseDetail() {
 
  {/* Insights Section */}
  <div className={`rounded-xl p-5 border ${themeStyles.insightBg} ${themeStyles.insightBorder}`}>
- <div className="text-xs tracking-[0.05em] uppercase font-normal mb-2"
+ <div className="text-caption tracking-[0.05em] uppercase font-normal mb-2"
  style={{ color: plan.insights?.type === 'why' ? '#16a34a' : '#dc2626' }}>
- {plan.insights?.type === 'why' ? 'WHY THIS WORKS' : 'FOR MORE DETAILS DOWNLOAD HABU REPORT'}
+ {plan.insights?.type === 'why' ? 'WHY THIS WORKS' : 'FOR MORE DETAILS DOWNLOAD BEST USE REPORT'}
  </div>
  <ul className={`space-y-1.5 ${themeStyles.insightText}`}>
  {plan.insights?.points?.map((point, index) => (
@@ -558,15 +563,15 @@ export function CaseDetail() {
  {/* Left Column - Main Info */}
  <div className="lg:col-span-2 space-y-6">
  {/* Property Information */}
- <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5 md:p-5 lg:p-6">
- <h2 className="text-base font-normal tracking-tight text-gray-900 dark:text-white mb-6">
+ <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5 md:p-5 lg:p-6 shadow-card">
+ <h2 className="text-body font-semibold tracking-tight text-gray-900 dark:text-white mb-6">
  Property Information
  </h2>
  
  <div className="space-y-4">
  <div>
  <div className="text-caption text-gray-400 dark:text-white/40 mb-1">Property Name</div>
- <div className="text-small font-normal text-gray-900 dark:text-white">
+ <div className="text-small font-semibold text-gray-900 dark:text-white">
  {caseItem.propertyName}
  </div>
  </div>
@@ -594,9 +599,9 @@ export function CaseDetail() {
 
  {/* Documents (Only for owned properties) */}
  {property && hasDocuments && (
- <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5 md:p-5 lg:p-6">
+ <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5 md:p-5 lg:p-6 shadow-card">
  <div className="flex items-center justify-between mb-6">
- <h2 className="text-base font-normal tracking-tight text-gray-900 dark:text-white">
+ <h2 className="text-body font-semibold tracking-tight text-gray-900 dark:text-white">
  Linked Documents
  </h2>
  <Link
@@ -619,7 +624,7 @@ export function CaseDetail() {
  <FileText className="w-5 h-5 text-purple-500" />
  </div>
  <div>
- <div className="text-small font-normal text-gray-900 dark:text-white">
+ <div className="text-small font-semibold text-gray-900 dark:text-white">
  {doc.name}
  </div>
  <div className="text-caption text-gray-400 dark:text-white/40">
@@ -643,9 +648,9 @@ export function CaseDetail() {
 
  {/* Case Documents (Documents attached directly to the case) */}
  {caseItem.documents && caseItem.documents.length > 0 && (
- <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5 md:p-5 lg:p-6">
+ <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5 md:p-5 lg:p-6 shadow-card">
  <div className="flex items-center justify-between mb-6">
- <h2 className="text-base font-normal tracking-tight text-gray-900 dark:text-white">
+ <h2 className="text-body font-semibold tracking-tight text-gray-900 dark:text-white">
  Case Documents
  </h2>
  </div>
@@ -671,7 +676,7 @@ export function CaseDetail() {
  <FileText className="w-5 h-5 text-purple-500" />
  </div>
  <div>
- <div className="text-small font-normal text-gray-900 dark:text-white">
+ <div className="text-small font-semibold text-gray-900 dark:text-white">
  {doc.name}
  </div>
  <div className="text-caption text-gray-400 dark:text-white/40">
@@ -689,7 +694,7 @@ export function CaseDetail() {
 
  {/* Message when documents not available */}
  {!property && (
- <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5 md:p-5 lg:p-6">
+ <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5 md:p-5 lg:p-6 shadow-card">
  <div className="text-center py-6">
  <FileText className="w-12 h-12 text-gray-400/60 dark:text-white/20 mx-auto mb-3" />
  <p className="text-small text-gray-600 dark:text-white/60">
@@ -701,8 +706,8 @@ export function CaseDetail() {
 
  {/* Required Documents for Service */}
  {serviceRequirements.length > 0 && (
- <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5 md:p-5 lg:p-6">
- <h2 className="text-base font-normal tracking-tight text-gray-900 dark:text-white mb-6">
+ <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5 md:p-5 lg:p-6 shadow-card">
+ <h2 className="text-body font-semibold tracking-tight text-gray-900 dark:text-white mb-6">
  Required Documents for Service
  </h2>
  
@@ -717,7 +722,7 @@ export function CaseDetail() {
  <Upload className="w-5 h-5 text-orange-600 dark:text-orange-400" />
  </div>
  <div className="flex-1">
- <div className="text-small font-normal text-gray-900 dark:text-white mb-1">
+ <div className="text-small font-semibold text-gray-900 dark:text-white mb-1">
  {requirement}
  </div>
  <div className="text-caption text-gray-600 dark:text-white/50">
@@ -744,8 +749,8 @@ export function CaseDetail() {
  {/* Right Column - Timeline & Metadata */}
  <div className="space-y-6">
  {/* Quick Actions */}
- <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5 md:p-5 lg:p-6">
- <h2 className="text-base font-normal tracking-tight text-gray-900 dark:text-white mb-4">
+ <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl p-5 md:p-5 lg:p-6 shadow-card">
+ <h2 className="text-body font-semibold tracking-tight text-gray-900 dark:text-white mb-4">
  Quick Actions
  </h2>
 
@@ -831,7 +836,7 @@ export function CaseDetail() {
  <ArrowRight className="w-5 h-5 text-white/80 group-hover:text-white group-hover:translate-x-1 transition-all" />
  </div>
 
- <h3 className="text-body font-normal text-white mb-2 tracking-tight">
+ <h3 className="text-body font-semibold text-white mb-2 tracking-tight">
  Add Service
  </h3>
  <p className="text-small text-white/90 leading-relaxed">

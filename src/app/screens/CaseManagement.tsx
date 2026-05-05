@@ -28,7 +28,7 @@ export function CaseManagement() {
 
   const getServiceColor = (service: string) => {
     switch (service) {
-      case 'HABU Report':      return 'bg-violet-50 text-violet-700 border-violet-200 dark:bg-violet-500/10 dark:text-violet-300 dark:border-violet-500/20';
+      case 'Best Use Report':      return 'bg-violet-50 text-violet-700 border-violet-200 dark:bg-violet-500/10 dark:text-violet-300 dark:border-violet-500/20';
       case 'Property Service': return 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-500/10 dark:text-blue-300 dark:border-blue-500/20';
       case 'Lease & Rent':     return 'bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-brand-gold/8 dark:text-emerald-300 dark:border-brand-gold/20';
       case 'Sell or Liquidate':return 'bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-500/10 dark:text-orange-300 dark:border-orange-500/20';
@@ -38,7 +38,7 @@ export function CaseManagement() {
 
   const getServiceIcon = (service: string) => {
     switch (service) {
-      case 'HABU Report':      return { Icon: Sparkles,   bg: 'bg-violet-50 dark:bg-violet-500/10',  color: 'text-violet-600 dark:text-violet-400' };
+      case 'Best Use Report':      return { Icon: Sparkles,   bg: 'bg-violet-50 dark:bg-violet-500/10',  color: 'text-violet-600 dark:text-violet-400' };
       case 'Lease & Rent':     return { Icon: Key,        bg: 'bg-emerald-50 dark:bg-emerald-500/10', color: 'text-emerald-600 dark:text-emerald-400' };
       case 'Sell or Liquidate':return { Icon: TrendingUp, bg: 'bg-orange-50 dark:bg-orange-500/10',  color: 'text-orange-600 dark:text-orange-400' };
       case 'Property Service': return { Icon: Wrench,     bg: 'bg-blue-50 dark:bg-blue-500/10',      color: 'text-blue-600 dark:text-blue-400' };
@@ -101,19 +101,19 @@ export function CaseManagement() {
           <div className="relative">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-xs tracking-[0.16em] uppercase text-white/40 mb-2">Services</p>
-                <h1 className="text-3xl font-normal text-white tracking-tight leading-none">Cases</h1>
-                <p className="text-sm text-white/50 mt-2">
+                <p className="text-caption tracking-[0.16em] uppercase text-white/40 mb-2">Services</p>
+                <h1 className="text-h1 font-semibold text-white tracking-tight leading-none">Cases</h1>
+                <p className="text-small text-white/50 mt-2">
                   {openCount} open · {closedCount} closed
                 </p>
               </div>
               <div className="flex items-center gap-2">
                 <RMAccess variant="dark" />
                 <Link
-                  to="/services/catalog"
+                  to="/services"
                   className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl
                     bg-white/15 active:bg-white/25 text-white
-                    text-xs font-normal transition-all duration-200"
+                    text-caption font-semibold transition-all duration-200"
                 >
                   <Plus className="w-3.5 h-3.5" strokeWidth={1.5} />
                   New
@@ -134,7 +134,7 @@ export function CaseManagement() {
                 onChange={e => setSearchQuery(e.target.value)}
                 placeholder="Search cases…"
                 className="w-full bg-gray-50 dark:bg-white/[0.04] rounded-xl
-                  pl-10 pr-4 py-3 text-sm text-gray-900 dark:text-white
+                  pl-10 pr-4 py-3 text-small text-gray-900 dark:text-white
                   placeholder:text-gray-400 dark:placeholder:text-white/30
                   focus:outline-none focus:ring-2 focus:ring-brand-primary/20
                   transition-all duration-200"
@@ -146,7 +146,7 @@ export function CaseManagement() {
               <button
                 key={s}
                 onClick={() => setStatusFilter(s)}
-                className={`flex-shrink-0 px-5 py-3.5 text-xs font-normal whitespace-nowrap transition-all duration-200 border-b-2 ${
+                className={`flex-shrink-0 px-5 py-3.5 text-caption font-normal whitespace-nowrap transition-all duration-200 border-b-2 ${
                   statusFilter === s
                     ? 'text-brand-primary border-brand-primary'
                     : 'text-gray-400 border-transparent'
@@ -168,11 +168,11 @@ export function CaseManagement() {
                     <AlertCircle className="w-4.5 h-4.5 text-brand-primary" strokeWidth={1.5} />
                   </div>
                   <div>
-                    <h2 className="text-sm font-normal text-gray-900 dark:text-white">Priority Queue</h2>
-                    <p className="text-xs text-gray-400 dark:text-white/40">Cases needing attention</p>
+                    <h2 className="text-small font-semibold text-gray-900 dark:text-white">Priority Queue</h2>
+                    <p className="text-caption text-gray-400 dark:text-white/40">Auto-ranked by unread updates, age & urgency</p>
                   </div>
                 </div>
-                <span className="text-xs text-gray-400 dark:text-white/40">{priorityCases.length}</span>
+                <span className="text-caption text-gray-400 dark:text-white/40">{priorityCases.length}</span>
               </div>
               {priorityCases.map(({ caseItem, priority }, idx) => {
                 const { Icon, bg, color } = getServiceIcon(caseItem.serviceRequested);
@@ -189,8 +189,8 @@ export function CaseManagement() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-0.5">
-                        <p className="text-sm font-normal text-gray-900 dark:text-white truncate">{caseItem.propertyName}</p>
-                        <span className={`text-[10px] px-1.5 py-0.5 rounded-full flex-shrink-0 ${
+                        <p className="text-small font-semibold text-gray-900 dark:text-white truncate">{caseItem.propertyName}</p>
+                        <span className={`text-caption px-1.5 py-0.5 rounded-full flex-shrink-0 ${
                           priority.level === 'High'
                             ? 'bg-orange-50 text-orange-700 dark:bg-orange-500/10 dark:text-orange-300'
                             : 'bg-brand-primary/8 text-brand-primary'
@@ -198,7 +198,7 @@ export function CaseManagement() {
                           {priority.level}
                         </span>
                       </div>
-                      <p className="text-xs text-gray-400 dark:text-white/40 truncate">
+                      <p className="text-caption text-gray-400 dark:text-white/40 truncate">
                         {caseItem.subService || caseItem.serviceRequested} · {priority.reason}
                       </p>
                     </div>
@@ -216,18 +216,18 @@ export function CaseManagement() {
             <div className="w-14 h-14 rounded-2xl bg-gray-100 dark:bg-white/5 flex items-center justify-center mb-4">
               <FileText className="w-7 h-7 text-gray-400" strokeWidth={1.5} />
             </div>
-            <h3 className="text-base font-normal text-gray-900 dark:text-white mb-2">
+            <h3 className="text-body font-semibold text-gray-900 dark:text-white mb-2">
               {searchQuery || statusFilter !== 'All' ? 'No cases found' : 'No cases yet'}
             </h3>
-            <p className="text-sm text-gray-400 mb-6 max-w-[220px] leading-relaxed">
+            <p className="text-small text-gray-400 mb-6 max-w-[220px] leading-relaxed">
               {searchQuery || statusFilter !== 'All'
                 ? 'Try adjusting your search or filter'
                 : 'Request a service to create your first case'}
             </p>
             {!searchQuery && statusFilter === 'All' && (
               <Link
-                to="/services/catalog"
-                className="flex items-center gap-2 bg-brand-primary text-white px-5 py-3 rounded-xl text-sm font-normal"
+                to="/services"
+                className="flex items-center gap-2 bg-brand-primary text-white px-5 py-3 rounded-xl text-small font-semibold"
               >
                 <Plus className="w-4 h-4" strokeWidth={1.5} />
                 Request Service
@@ -282,10 +282,15 @@ export function CaseManagement() {
                       {/* Content */}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-start justify-between gap-2 mb-1">
-                          <h3 className="text-sm font-normal text-gray-900 dark:text-white truncate">
-                            {caseItem.propertyName}
-                          </h3>
-                          <span className={`text-xs px-2 py-0.5 rounded-full flex-shrink-0 ${
+                          <div className="min-w-0">
+                            <div className="text-caption font-semibold tracking-[0.06em] uppercase text-brand-primary mb-0.5">
+                              {caseItem.caseId}
+                            </div>
+                            <h3 className="text-small font-semibold text-gray-900 dark:text-white truncate">
+                              {caseItem.propertyName}
+                            </h3>
+                          </div>
+                          <span className={`text-caption px-2 py-0.5 rounded-full flex-shrink-0 ${
                             isOpen
                               ? 'text-brand-primary bg-brand-primary/8'
                               : 'text-gray-400 bg-gray-100 dark:bg-white/8 dark:text-white/40'
@@ -293,12 +298,12 @@ export function CaseManagement() {
                             {caseItem.status}
                           </span>
                         </div>
-                        <p className="text-xs text-gray-500 dark:text-white/40 truncate mb-1">
+                        <p className="text-caption text-gray-500 dark:text-white/40 truncate mb-1">
                           {caseItem.subService || caseItem.serviceRequested}
                         </p>
                         <div className="flex items-center gap-1.5">
                           <Clock className="w-3 h-3 text-gray-300 dark:text-white/20 flex-shrink-0" strokeWidth={1.5} />
-                          <p className="text-xs text-gray-400 dark:text-white/30 truncate">{milestone.title}</p>
+                          <p className="text-caption text-gray-400 dark:text-white/30 truncate">{milestone.title}</p>
                         </div>
                       </div>
 
@@ -318,14 +323,14 @@ export function CaseManagement() {
       <div className="hidden md:block">
 
         {/* Page header */}
-        <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06]">
-          <div className="max-w-[1200px] mx-auto container-padding py-5 md:py-6">
+        <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] shadow-header">
+          <div className="max-w-[1500px] mx-auto container-padding py-5 md:py-6">
             <div className="flex items-center justify-between gap-4">
               <div>
-                <div className="text-xs font-normal tracking-[0.12em] uppercase text-brand-primary mb-2">
-                  Service Tracking
+                <div className="text-caption font-medium tracking-[0.12em] uppercase text-brand-primary mb-2">
+                  Cases
                 </div>
-                <h1 className="text-h1 font-normal tracking-tight text-gray-900 dark:text-white">
+                <h1 className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white">
                   Case Management
                 </h1>
                 <p className="text-small text-gray-500 dark:text-white/50 mt-1">
@@ -334,9 +339,9 @@ export function CaseManagement() {
               </div>
               <div className="flex items-center gap-3">
                 <Link
-                  to="/services/catalog"
+                  to="/services"
                   className="bg-brand-navy hover:bg-brand-navy-hover text-white
-                    px-5 py-2.5 rounded-xl text-small font-normal transition-all
+                    px-5 py-2.5 rounded-xl text-small font-semibold transition-all
                     hover:shadow-[0_4px_16px_rgba(var(--brand-navy-rgb),0.35)] hover:-translate-y-0.5
                     flex items-center justify-center gap-2"
                 >
@@ -351,22 +356,64 @@ export function CaseManagement() {
           </div>
         </div>
 
-        <div className="max-w-[1200px] mx-auto container-padding py-6 md:py-8">
+        <div className="max-w-[1500px] mx-auto container-padding py-6 md:py-8">
+
+          {/* KPI Cards */}
+          <div className="grid grid-cols-4 gap-4 mb-6">
+            <div className="bg-white dark:bg-card rounded-2xl p-5 border border-black/5 dark:border-white/5 shadow-card">
+              <div className="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center mb-4">
+                <FileText className="w-5 h-5 text-brand-primary" strokeWidth={1.5} />
+              </div>
+              <div className="text-caption font-medium tracking-[0.14em] uppercase text-gray-400 dark:text-white/40 mb-4">Total Cases</div>
+              <div className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white mb-2">{cases.length}</div>
+              <div className="text-small text-gray-500 dark:text-white/50">service requests</div>
+            </div>
+
+            <div className="bg-white dark:bg-card rounded-2xl p-5 border border-black/5 dark:border-white/5 shadow-card">
+              <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center mb-4">
+                <Clock className="w-5 h-5 text-amber-500" strokeWidth={1.5} />
+              </div>
+              <div className="text-caption font-medium tracking-[0.14em] uppercase text-gray-400 dark:text-white/40 mb-4">Open</div>
+              <div className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white mb-2">{openCount}</div>
+              <div className="text-small text-gray-500 dark:text-white/50">in progress</div>
+            </div>
+
+            <div className="bg-white dark:bg-card rounded-2xl p-5 border border-black/5 dark:border-white/5 shadow-card">
+              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-4">
+                <CheckCircle2 className="w-5 h-5 text-emerald-500" strokeWidth={1.5} />
+              </div>
+              <div className="text-caption font-medium tracking-[0.14em] uppercase text-gray-400 dark:text-white/40 mb-4">Closed</div>
+              <div className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white mb-2">{closedCount}</div>
+              <div className="text-small text-gray-500 dark:text-white/50">completed</div>
+            </div>
+
+            <div className="bg-white dark:bg-card rounded-2xl p-5 border border-black/5 dark:border-white/5 shadow-card">
+              <div className="w-10 h-10 rounded-xl bg-violet-500/10 flex items-center justify-center mb-4">
+                <MessageCircle className="w-5 h-5 text-violet-500" strokeWidth={1.5} />
+              </div>
+              <div className="text-caption font-medium tracking-[0.14em] uppercase text-gray-400 dark:text-white/40 mb-4">Unread</div>
+              <div className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white mb-2">
+                {cases.reduce((sum, c) => sum + (c.unreadMessages || 0), 0)}
+              </div>
+              <div className="text-small text-gray-500 dark:text-white/50">messages pending</div>
+            </div>
+          </div>
+
           {priorityCases.length > 0 && (
-            <div className="bg-white dark:bg-card rounded-2xl overflow-hidden mb-5 border border-black/5 dark:border-white/5">
+            <div className="bg-white dark:bg-card rounded-2xl overflow-hidden mb-5 border border-black/5 dark:border-white/5 shadow-card">
               <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 dark:border-white/[0.05]">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center">
                     <AlertCircle className="w-5 h-5 text-brand-primary" strokeWidth={1.5} />
                   </div>
                   <div>
-                    <h2 className="text-base font-normal text-gray-900 dark:text-white">Priority Queue</h2>
-                    <p className="text-xs text-gray-500 dark:text-white/50">Open cases ranked by unread updates, age, and service urgency</p>
+                    <h2 className="text-small font-semibold text-gray-900 dark:text-white">Priority Queue</h2>
+                    <p className="text-caption text-gray-500 dark:text-white/50">Open cases ranked by unread updates, age, and service urgency</p>
                   </div>
                 </div>
                 <Link
                   to="/cases"
-                  className="text-xs text-brand-primary hover:text-brand-primary-hover transition-colors"
+                  className="text-caption text-brand-primary hover:text-brand-primary-hover transition-colors"
                 >
                   {priorityCases.length} active
                 </Link>
@@ -386,10 +433,10 @@ export function CaseManagement() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1">
-                          <h3 className="text-sm font-normal text-gray-900 dark:text-white truncate">
+                          <h3 className="text-small font-semibold text-gray-900 dark:text-white truncate">
                             {caseItem.propertyName}
                           </h3>
-                          <span className={`text-[10px] px-1.5 py-0.5 rounded-full flex-shrink-0 ${
+                          <span className={`text-caption px-1.5 py-0.5 rounded-full flex-shrink-0 ${
                             priority.level === 'High'
                               ? 'bg-orange-50 text-orange-700 dark:bg-orange-500/10 dark:text-orange-300'
                               : 'bg-brand-primary/8 text-brand-primary'
@@ -397,10 +444,10 @@ export function CaseManagement() {
                             {priority.level}
                           </span>
                         </div>
-                        <p className="text-xs text-gray-500 dark:text-white/40 truncate mb-2">
+                        <p className="text-caption text-gray-500 dark:text-white/40 truncate mb-2">
                           {caseItem.subService || caseItem.serviceRequested}
                         </p>
-                        <div className="flex items-center gap-1.5 text-xs text-gray-400 dark:text-white/30">
+                        <div className="flex items-center gap-1.5 text-caption text-gray-400 dark:text-white/30">
                           <Clock className="w-3 h-3 flex-shrink-0" strokeWidth={1.5} />
                           <span className="truncate">{priority.reason || milestone.title}</span>
                         </div>
@@ -413,7 +460,7 @@ export function CaseManagement() {
             </div>
           )}
 
-          <div className="bg-white dark:bg-card rounded-2xl overflow-hidden mb-5">
+          <div className="bg-white dark:bg-card rounded-2xl overflow-hidden mb-5 shadow-card">
 
             {/* Filter tabs */}
             <div className="flex border-b border-gray-100 dark:border-white/[0.05]">
@@ -421,15 +468,15 @@ export function CaseManagement() {
                 <button
                   key={s}
                   onClick={() => setStatusFilter(s)}
-                  className={`flex-shrink-0 px-5 py-3.5 text-sm font-normal whitespace-nowrap transition-all duration-200 border-b-2 ${
+                  className={`flex-shrink-0 px-5 py-3.5 text-small whitespace-nowrap transition-all duration-200 border-b-2 ${
                     statusFilter === s
-                      ? 'text-brand-primary border-brand-primary'
+                      ? 'text-brand-primary border-brand-primary md:font-semibold'
                       : 'text-gray-400 dark:text-white/40 border-transparent hover:text-gray-600 dark:hover:text-white/60'
                   }`}
                 >
                   {s}
                   {s !== 'All' && (
-                    <span className={`ml-1.5 text-xs ${
+                    <span className={`ml-1.5 text-caption ${
                       statusFilter === s ? 'text-brand-primary/60' : 'text-gray-300 dark:text-white/20'
                     }`}>
                       {s === 'Open' ? openCount : closedCount}
@@ -451,7 +498,7 @@ export function CaseManagement() {
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
                   placeholder="Search by case ID, property, or service…"
-                  className="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-white/[0.04] rounded-xl text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all duration-200"
+                  className="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-white/[0.04] rounded-xl text-small text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all duration-200"
                 />
               </div>
             </div>
@@ -462,18 +509,18 @@ export function CaseManagement() {
                 <div className="w-14 h-14 rounded-2xl bg-gray-100 dark:bg-white/5 flex items-center justify-center mb-4">
                   <FileText className="w-7 h-7 text-gray-400" strokeWidth={1.5} />
                 </div>
-                <p className="text-base text-gray-900 dark:text-white mb-1">
+                <p className="text-small font-semibold text-gray-900 dark:text-white mb-1">
                   {searchQuery || statusFilter !== 'All' ? 'No cases found' : 'No cases yet'}
                 </p>
-                <p className="text-sm text-gray-400 mb-5">
+                <p className="text-small text-gray-400 mb-5">
                   {searchQuery || statusFilter !== 'All'
                     ? 'Try adjusting your search'
                     : 'Request a service to get started'}
                 </p>
                 {!searchQuery && statusFilter === 'All' && (
                   <Link
-                    to="/services/catalog"
-                    className="flex items-center gap-2 bg-brand-primary text-white px-5 py-2.5 rounded-xl text-sm"
+                    to="/services"
+                    className="flex items-center gap-2 bg-brand-primary text-white px-5 py-2.5 rounded-xl text-small font-semibold"
                   >
                     <Plus className="w-4 h-4" strokeWidth={1.5} />
                     Request Service
@@ -500,10 +547,13 @@ export function CaseManagement() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-0.5">
-                        <h3 className="text-sm font-normal text-gray-900 dark:text-white truncate">
+                        <span className="text-caption font-semibold tracking-[0.06em] uppercase text-brand-primary flex-shrink-0">
+                          {caseItem.caseId}
+                        </span>
+                        <h3 className="text-small font-semibold text-gray-900 dark:text-white truncate">
                           {caseItem.propertyName}
                         </h3>
-                        <span className={`text-xs px-2 py-0.5 rounded-full flex-shrink-0 ${
+                        <span className={`text-caption px-2 py-0.5 rounded-full flex-shrink-0 ${
                           isOpen
                             ? 'text-brand-primary bg-brand-primary/8'
                             : 'text-gray-400 bg-gray-100 dark:bg-white/8 dark:text-white/40'
@@ -511,11 +561,11 @@ export function CaseManagement() {
                           {caseItem.status}
                         </span>
                       </div>
-                      <p className="text-xs text-gray-500 dark:text-white/40 truncate">
+                      <p className="text-caption text-gray-500 dark:text-white/40 truncate">
                         {caseItem.subService || caseItem.serviceRequested} · {caseItem.propertyLocation}
                       </p>
                     </div>
-                    <div className="text-xs text-gray-400 dark:text-white/30 flex-shrink-0 flex items-center gap-1">
+                    <div className="text-caption text-gray-400 dark:text-white/30 flex-shrink-0 flex items-center gap-1">
                       <Clock className="w-3 h-3" strokeWidth={1.5} />
                       {milestone.title}
                     </div>

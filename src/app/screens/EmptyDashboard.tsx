@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 const capabilities = [
  {
  icon: Sparkles,
- title: 'HABU Engine',
+ title: 'Best Use Analysis',
  description: 'AI-driven Highest & Best Use analysis',
  iconBg: 'bg-brand-gold/8 dark:bg-brand-gold/8',
  iconColor: 'text-brand-gold',
@@ -46,14 +46,14 @@ export function EmptyDashboard() {
  <div className="min-h-screen bg-gray-50 dark:bg-background transition-colors duration-300">
 
  {/* Desktop header */}
- <header className="hidden md:block bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06]">
- <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-5">
+ <header className="hidden md:block bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] shadow-header">
+ <div className="max-w-[1500px] mx-auto container-padding py-4 md:py-5">
  <div className="flex items-center justify-between">
  <div>
- <div className="text-xs font-normal tracking-[0.12em] uppercase text-brand-primary mb-2">
- Command Centre
+ <div className="text-caption font-medium tracking-[0.12em] uppercase text-brand-primary mb-2">
+ Dashboard
  </div>
- <h1 className="text-h2 font-normal tracking-tight text-gray-900 dark:text-white leading-none">
+ <h1 className="text-h2 font-semibold tracking-tight text-gray-900 dark:text-white leading-none">
  Welcome{firstName ? `, ${firstName}` : ""}
  </h1>
  </div>
@@ -76,14 +76,14 @@ export function EmptyDashboard() {
  {/* Status badge */}
  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/20 mb-4">
  <span className="w-1.5 h-1.5 rounded-full bg-brand-secondary" />
- <span className="text-xs font-normal tracking-[0.1em] uppercase text-white/80">Portfolio Ready</span>
+ <span className="text-caption font-medium tracking-[0.1em] uppercase text-white/80">Portfolio Ready</span>
  </div>
 
- <h1 className="text-3xl font-normal text-white tracking-tight leading-tight mb-2">
+ <h1 className="text-h1 font-semibold text-white tracking-tight leading-tight mb-2">
  {firstName ? `Welcome,\n${firstName}` : "Welcome"}
  </h1>
- <p className="text-sm text-white/50 leading-relaxed mb-7 max-w-[280px]">
- Add your first property to unlock HABU analysis, document vault, and premium services.
+ <p className="text-small text-white/50 leading-relaxed mb-7 max-w-[280px]">
+ Add your first property to unlock best use analysis, document vault, and premium services.
  </p>
 
  {/* CTA — white button for max visibility on both themes */}
@@ -92,7 +92,7 @@ export function EmptyDashboard() {
  className="flex items-center gap-2
  bg-white dark:bg-white/15
  text-brand-primary dark:text-white
- font-normal px-6 py-3.5 rounded-2xl text-sm
+ font-normal px-6 py-3.5 rounded-2xl text-small
  active:scale-[0.98] active:bg-white/90 dark:active:bg-white/25
  transition-all duration-150"
  >
@@ -104,7 +104,7 @@ export function EmptyDashboard() {
 
  {/* Capability list */}
  <div className="px-4 pt-5">
- <p className="text-xs font-normal tracking-[0.1em] uppercase text-gray-400 mb-3 px-1">
+ <p className="text-caption font-medium tracking-[0.1em] uppercase text-gray-400 mb-3 px-1">
  Unlocks when you add a property
  </p>
  <div className="flex flex-col gap-3">
@@ -114,8 +114,8 @@ export function EmptyDashboard() {
  <f.icon className={`w-5 h-5 ${f.iconColor}`} strokeWidth={1.6} />
  </div>
  <div className="flex-1 min-w-0">
- <div className="text-sm font-normal text-gray-900 dark:text-white">{f.title}</div>
- <div className="text-xs text-gray-400 dark:text-white/40 mt-0.5">{f.description}</div>
+ <div className="text-small font-semibold text-gray-900 dark:text-white">{f.title}</div>
+ <div className="text-caption text-gray-400 dark:text-white/40 mt-0.5">{f.description}</div>
  </div>
  <svg className="w-4 h-4 text-[#CBD5E1] dark:text-white/20 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
  <rect x="5" y="11" width="14" height="10" rx="2" />
@@ -135,22 +135,22 @@ export function EmptyDashboard() {
  <div className="w-20 h-20 rounded-2xl bg-brand-navy dark:bg-brand-gold/8 flex items-center justify-center mx-auto mb-6">
  <Building2 className="w-10 h-10 text-white dark:text-brand-gold" strokeWidth={1.5} />
  </div>
- <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-gold/8 border border-brand-gold/25 text-xs font-normal tracking-[0.08em] text-brand-gold uppercase mb-5">
+ <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-gold/8 border border-brand-gold/25 text-caption font-medium tracking-[0.08em] text-brand-gold uppercase mb-5">
  <span className="w-1.5 h-1.5 rounded-full bg-brand-gold" />
  Portfolio Ready
  </div>
- <h2 className="text-h1 font-normal tracking-[-0.02em] text-gray-900 dark:text-white mb-3">Add Your First Property</h2>
- <p className="text-body text-gray-600 dark:text-white/50 max-w-lg mx-auto leading-relaxed mb-8">
- Unlock the full power of the VYBE platform — HABU analysis, document vault, and execution services tailored to your asset.
+ <h2 className="text-h2 font-semibold tracking-tight text-gray-900 dark:text-white mb-3">Add Your First Property</h2>
+ <p className="text-small text-gray-600 dark:text-white/50 max-w-lg mx-auto leading-relaxed mb-8">
+ Unlock the full power of the VYBE platform — best use analysis, document vault, and execution services tailored to your asset.
  </p>
- <button onClick={() => navigate("/upload")} className="inline-flex items-center gap-2 bg-brand-navy hover:bg-brand-navy-hover text-white px-7 py-3.5 rounded-xl text-small font-normal transition-all hover: hover:-translate-y-0.5">
+ <button onClick={() => navigate("/upload")} className="inline-flex items-center gap-2 bg-brand-navy hover:bg-brand-navy-hover text-white px-7 py-3.5 rounded-xl text-small font-semibold transition-all hover: hover:-translate-y-0.5">
  <Plus className="w-4 h-4" strokeWidth={1.5} />
  Add Property to VYBE
  </button>
  </div>
 
  <div className="mb-5 text-center">
- <div className="text-xs font-normal tracking-[0.1em] uppercase text-gray-400">Unlocks these capabilities</div>
+ <div className="text-caption font-medium tracking-[0.1em] uppercase text-gray-400">Unlocks these capabilities</div>
  </div>
  <div className="grid grid-cols-3 gap-4">
  {capabilities.map((f, i) => (
@@ -161,7 +161,7 @@ export function EmptyDashboard() {
  <div className={`w-14 h-14 rounded-xl ${f.iconBg} flex items-center justify-center mx-auto mb-4`}>
  <f.icon className={`w-7 h-7 ${f.iconColor}`} strokeWidth={1.5} />
  </div>
- <h3 className="text-body font-normal tracking-tight text-gray-900 dark:text-white mb-1.5">{f.title}</h3>
+ <h3 className="text-small font-semibold tracking-tight text-gray-900 dark:text-white mb-1.5">{f.title}</h3>
  <p className="text-caption text-gray-600 dark:text-white/40 leading-relaxed">{f.description}</p>
  </div>
  ))}

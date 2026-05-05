@@ -78,7 +78,7 @@ export function CaseChat() {
  <h2 className="text-h1 text-gray-900 dark:text-white mb-4">Case not found</h2>
  <Link 
  to="/cases"
- className="text-brand-gold hover:text-emerald-400 text-small font-normal"
+ className="text-brand-gold hover:text-emerald-400 text-small font-semibold"
  >
  Back to Case Management
  </Link>
@@ -126,27 +126,26 @@ export function CaseChat() {
  };
 
  return (
- <div className="bg-gray-50 dark:bg-background">
+ <div className="fixed left-0 right-0 top-16 bottom-[calc(78px+env(safe-area-inset-bottom))] md:left-[220px] md:top-0 md:bottom-0 lg:left-[72px] overflow-hidden bg-gray-50 dark:bg-background">
 
 
- <div className="flex flex-col min-h-screen overflow-hidden" >
+ <div className="flex h-full min-h-0 flex-col overflow-hidden" >
  {/* Spacer for mobile bottom nav on non-flex content above */}
  {/* Header */}
- <div className="bg-white dark:bg-card border-b border-gray-200 dark:border-white/[0.06] container-padding py-3 md:py-6 flex-shrink-0">
- <div className="max-w-[1200px] mx-auto">
+ <div className="bg-white dark:bg-card border-b border-gray-200 dark:border-white/[0.06] container-padding py-3 md:py-5 flex-shrink-0 shadow-header">
+ <div className="max-w-[1120px] mx-auto">
+ <div className="flex items-start md:items-center gap-4">
  <button
  onClick={() => navigate(`/case/${id}`)}
- className="flex items-center gap-2 text-small text-gray-600 dark:text-white/50 hover:text-gray-900 dark:hover:text-white mb-3 md:mb-4 transition-colors"
+ className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-brand-navy/[0.04] dark:bg-white/[0.04] hover:bg-brand-navy/[0.08] dark:hover:bg-white/[0.08] flex-shrink-0 transition-colors"
  >
- <ArrowLeft className="w-4 h-4" />
- Back to Case Details
+ <ArrowLeft className="w-4 h-4 text-gray-500 dark:text-white/50" />
  </button>
- 
  <div>
- <div className="text-caption tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
  Case Chat
  </div>
- <h1 className="text-h1 tracking-tight text-gray-900 dark:text-white leading-none mb-2">
+ <h1 className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white leading-none mb-2">
  {caseItem.caseId}
  </h1>
  <p className="text-small text-gray-600 dark:text-white/50">
@@ -155,19 +154,20 @@ export function CaseChat() {
  </div>
  </div>
  </div>
+ </div>
 
  {/* Chat Messages */}
- <div className="flex-1 overflow-y-auto min-h-0 container-padding py-3 md:py-6">
- <div className="max-w-4xl mx-auto space-y-4 md:space-y-6 h-full">
+ <div className="flex-1 min-h-0 overflow-y-auto container-padding py-4 md:py-6">
+ <div className="max-w-[920px] mx-auto flex min-h-full flex-col justify-end gap-4 md:gap-6">
  {messages.map((msg) => (
  <div
  key={msg.id}
  className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
  >
- <div className={`max-w-[70%] ${msg.sender === 'user' ? 'order-2' : 'order-1'}`}>
+ <div className={`max-w-[86%] sm:max-w-[78%] lg:max-w-[68%] ${msg.sender === 'user' ? 'order-2' : 'order-1'}`}>
  {/* Sender Name and Timestamp */}
  <div className={`flex items-center gap-2 mb-2 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
- <span className="text-caption font-normal text-gray-600 dark:text-white/50">
+ <span className="text-caption font-semibold text-gray-600 dark:text-white/50">
  {msg.senderName}
  </span>
  <span className="text-caption text-gray-400 dark:text-white/40">
@@ -177,7 +177,7 @@ export function CaseChat() {
 
  {/* Message Bubble */}
  <div
- className={`rounded-xl px-5 py-3 ${
+ className={`rounded-2xl px-4 py-3 md:px-5 ${
  msg.sender === 'user'
  ? 'bg-brand-primary text-white'
  : 'bg-white dark:bg-card shadow-card text-gray-900 dark:text-white'
@@ -199,7 +199,7 @@ export function CaseChat() {
  >
  {getFileIcon(att.type)}
  <div className="flex-1 min-w-0">
- <div className={`text-small font-normal truncate ${
+ <div className={`text-small font-semibold truncate ${
  msg.sender === 'user' ? 'text-white' : 'text-gray-900 dark:text-white'
  }`}>
  {att.name}
@@ -231,8 +231,8 @@ export function CaseChat() {
  </div>
 
  {/* Message Input */}
- <div className="bg-white dark:bg-card border-t border-gray-200 dark:border-white/[0.06] container-padding py-3 md:py-6 flex-shrink-0">
- <div className="max-w-4xl mx-auto">
+ <div className="flex-shrink-0 bg-white dark:bg-card border-t border-gray-200 dark:border-white/[0.06] container-padding py-3 md:py-4 shadow-[0_-8px_24px_rgba(15,23,42,0.04)]">
+ <div className="max-w-[920px] mx-auto">
  {/* Attachments Preview */}
  {attachments.length > 0 && (
  <div className="mb-3 md:mb-4 flex flex-wrap gap-2">
@@ -289,7 +289,7 @@ export function CaseChat() {
  }}
  placeholder="Type message..."
  rows={1}
- className="w-full px-3 md:px-4 py-2 md:py-2.5 bg-transparent text-small text-gray-900 dark:text-white
+ className="w-full px-3 md:px-4 py-2.5 bg-transparent text-small text-gray-900 dark:text-white
  placeholder:text-gray-400 dark:placeholder:text-white/40 focus:outline-none
  resize-none max-h-32"
  />

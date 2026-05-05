@@ -10,9 +10,8 @@ export function BottomNav() {
  if (path === '/my-properties')
  return location.pathname === '/my-properties' ||
  (location.pathname.startsWith('/property/') && location.pathname.includes('/detail'));
- if (path === '/properties')
+ if (path === '/cases')
  return (
- location.pathname === '/properties' ||
  location.pathname === '/cases' ||
  (location.pathname.startsWith('/property/') && !location.pathname.includes('/detail')) ||
  location.pathname.startsWith('/case')
@@ -28,7 +27,7 @@ export function BottomNav() {
 
  const tabs = [
  { path: homePath, activePath: '/my-properties', icon: Home, label: 'Home' },
- { path: '/properties',activePath: '/properties', icon: FolderOpen, label: 'Cases' },
+ { path: '/cases', activePath: '/cases', icon: FolderOpen, label: 'Cases' },
  { path: '/services', activePath: '/services', icon: Layers, label: 'Services' },
  { path: '/documents', activePath: '/documents', icon: FileText, label: 'Docs' },
  ];
@@ -124,7 +123,7 @@ function TabItem({
  }`}
  strokeWidth={1.5}
  />
- <span className={`text-xs font-normal leading-none transition-colors duration-200 ${
+ <span className={`text-caption font-normal leading-none transition-colors duration-200 ${
  active
  ? 'text-brand-navy dark:text-white'
  : 'text-[#B0BAC9] dark:text-white/30'

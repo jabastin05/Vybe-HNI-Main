@@ -146,7 +146,7 @@ export function Onboarding() {
  value={data.firstName}
  onChange={e => setData({...data, firstName: e.target.value})}
  placeholder="John"
- className="w-full bg-white dark:bg-white/[0.04] shadow-card rounded-xl px-5 py-2.5 text-gray-900 dark:text-white text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-gray-200 dark:focus:border-white/20 focus:bg-gray-100 dark:focus:bg-white/[0.06] transition-all"
+ className="w-full bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-5 py-2.5 text-gray-900 dark:text-white text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-brand-primary/30 dark:focus:border-white/20 focus:bg-white dark:focus:bg-white/[0.06] transition-all"
  />
  </div>
  <div>
@@ -156,7 +156,7 @@ export function Onboarding() {
  value={data.lastName}
  onChange={e => setData({...data, lastName: e.target.value})}
  placeholder="Doe"
- className="w-full bg-white dark:bg-white/[0.04] shadow-card rounded-xl px-5 py-2.5 text-gray-900 dark:text-white text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-gray-200 dark:focus:border-white/20 focus:bg-gray-100 dark:focus:bg-white/[0.06] transition-all"
+ className="w-full bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-5 py-2.5 text-gray-900 dark:text-white text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-brand-primary/30 dark:focus:border-white/20 focus:bg-white dark:focus:bg-white/[0.06] transition-all"
  />
  </div>
  </div>
@@ -169,7 +169,7 @@ export function Onboarding() {
  value={data.email}
  onChange={e => setData({...data, email: e.target.value})}
  placeholder="john.doe@example.com"
- className="w-full bg-white dark:bg-white/[0.04] shadow-card rounded-xl px-5 py-2.5 text-gray-900 dark:text-white text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-gray-200 dark:focus:border-white/20 focus:bg-gray-100 dark:focus:bg-white/[0.06] transition-all"
+ className="w-full bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-5 py-2.5 text-gray-900 dark:text-white text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-brand-primary/30 dark:focus:border-white/20 focus:bg-white dark:focus:bg-white/[0.06] transition-all"
  />
  </div>
  <div>
@@ -181,7 +181,7 @@ export function Onboarding() {
  value={data.phone}
  onChange={e => setData({...data, phone: e.target.value})}
  placeholder="98765 43210"
- className="w-full bg-white dark:bg-white/[0.04] shadow-card rounded-xl pl-11 pr-5 py-2.5 text-gray-900 dark:text-white text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-gray-200 dark:focus:border-white/20 focus:bg-gray-100 dark:focus:bg-white/[0.06] transition-all"
+ className="w-full bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl pl-11 pr-5 py-2.5 text-gray-900 dark:text-white text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-brand-primary/30 dark:focus:border-white/20 focus:bg-white dark:focus:bg-white/[0.06] transition-all"
  />
  </div>
  </div>
@@ -193,7 +193,7 @@ export function Onboarding() {
  {[
  { id: 'land-owner', label: 'Land Owner', icon: Building2, desc: 'Monetize existing prime assets' },
  { id: 'strategic-investor', label: 'Strategic Investor', icon: TrendingUp, desc: 'Acquire & develop high-yield land' },
- { id: 'both', label: 'Dual Mandate', icon: Briefcase, desc: 'Owner & opportunistic buyer' },
+ { id: 'both', label: 'Owner & Buyer', icon: Briefcase, desc: 'Own assets & explore new deals' },
  ].map((role) => (
  <button
  key={role.id}
@@ -369,7 +369,7 @@ export function Onboarding() {
  value={data.referralCode}
  onChange={e => setData({...data, referralCode: e.target.value})}
  placeholder="Enter referral code (optional)"
- className="w-full bg-white dark:bg-white/[0.04] shadow-card rounded-xl pl-11 pr-5 py-2.5 text-gray-900 dark:text-white text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-gray-200 dark:focus:border-white/20 focus:bg-gray-100 dark:focus:bg-white/[0.06] transition-all"
+ className="w-full bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl pl-11 pr-5 py-2.5 text-gray-900 dark:text-white text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-brand-primary/30 dark:focus:border-white/20 focus:bg-white dark:focus:bg-white/[0.06] transition-all"
  />
  </div>
  </div>

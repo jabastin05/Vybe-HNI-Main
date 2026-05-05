@@ -15,7 +15,7 @@ export function ExecutionDashboard() {
  { date: '2026-02-18', time: '14:32', type: 'document', message: 'Site survey report uploaded', user: mockPartner.name },
  { date: '2026-02-17', time: '10:15', message: 'Initial site assessment completed', user: mockPartner.name },
  { date: '2026-02-15', time: '16:45', type: 'milestone', message: 'Milestone: Partner Assignment - Completed', user: 'System' },
- { date: '2026-02-14', time: '09:20', message: 'Case status updated to In Execution', user: 'System' },
+ { date: '2026-02-14', time: '09:20', message: 'Case status updated to In Progress', user: 'System' },
  { date: '2026-02-12', time: '11:30', type: 'document', message: 'HABU report finalized', user: 'AI Engine' },
  ];
 
@@ -34,22 +34,24 @@ export function ExecutionDashboard() {
 
  
  {/* Header - Full Width */}
- <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06]">
- <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-6">
- <Link to="/properties" className="flex items-center gap-2 text-small text-gray-600 dark:text-white/50 hover:text-gray-900 dark:hover:text-white mb-4 transition-colors">
- <ArrowLeft className="w-4 h-4" />
- Back to Cases
+ <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] shadow-header">
+ <div className="max-w-[1500px] mx-auto container-padding py-4 md:py-6">
+ <Link
+ to="/cases"
+ className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-brand-navy/[0.04] dark:bg-white/[0.04] hover:bg-brand-navy/[0.08] dark:hover:bg-white/[0.08] flex-shrink-0 transition-colors mb-4"
+ >
+ <ArrowLeft className="w-4 h-4 text-gray-500 dark:text-white/50" />
  </Link>
  <div className="flex items-start md:items-center justify-between flex-col md:flex-row gap-4">
  <div>
  <div className="text-caption tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-2">
- Execution Dashboard
+ Project Tracker
  </div>
- <div className="text-h1 tracking-tight text-gray-900 dark:text-white mb-2">
+ <div className="text-h1 tracking-tight md:font-semibold text-gray-900 dark:text-white mb-2">
  {property.name}
  </div>
  <div className="inline-flex items-center gap-2 bg-purple-500/10 text-purple-600 dark:text-purple-400 px-3 py-1.5 rounded-lg text-caption border border-purple-500/20">
- In Execution
+ In Progress
  </div>
  </div>
  <div className="flex items-center gap-4">
@@ -65,51 +67,51 @@ export function ExecutionDashboard() {
  </div>
  </div>
 
- <div className="max-w-[1200px] mx-auto container-padding py-6 md:py-8 lg:py-10">
+ <div className="max-w-[1500px] mx-auto container-padding py-6 md:py-8 lg:py-10">
  {/* Status Cards */}
  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6 mb-6 md:mb-8 lg:mb-10">
- <div className="bg-white dark:bg-card shadow-card rounded-lg p-4 md:p-5 lg:p-6">
- <div className="flex items-center gap-4 mb-4">
- <div className="w-10 h-10 rounded-md bg-brand-gold/8 flex items-center justify-center">
- <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+ {/* Completed */}
+ <div className="bg-white dark:bg-card rounded-2xl p-5 border border-black/5 dark:border-white/5 shadow-card">
+ <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-4">
+ <CheckCircle2 className="w-5 h-5 text-emerald-500" strokeWidth={1.5} />
  </div>
- <div className="text-caption text-gray-400 dark:text-white/40 tracking-wide uppercase">Completed</div>
- </div>
- <div className="text-h1 tracking-tight text-gray-900 dark:text-white/95">
+ <div className="text-caption font-medium tracking-[0.14em] uppercase text-gray-400 dark:text-white/40 mb-4">Completed</div>
+ <div className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white mb-2">
  {completedMilestones}/{totalMilestones}
  </div>
+ <div className="text-small text-gray-500 dark:text-white/50">milestones done</div>
  </div>
 
- <div className="bg-white dark:bg-card shadow-card rounded-lg p-4 md:p-5 lg:p-6">
- <div className="flex items-center gap-4 mb-4">
- <div className="w-10 h-10 rounded-md bg-blue-500/10 flex items-center justify-center">
- <Clock className="w-5 h-5 text-blue-400" />
+ {/* In Progress */}
+ <div className="bg-white dark:bg-card rounded-2xl p-5 border border-black/5 dark:border-white/5 shadow-card">
+ <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4">
+ <Clock className="w-5 h-5 text-blue-500" strokeWidth={1.5} />
  </div>
- <div className="text-caption text-gray-400 dark:text-white/40 tracking-wide uppercase">In Progress</div>
- </div>
- <div className="text-h1 tracking-tight text-gray-900 dark:text-white/95">
+ <div className="text-caption font-medium tracking-[0.14em] uppercase text-gray-400 dark:text-white/40 mb-4">In Progress</div>
+ <div className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white mb-2">
  {mockMilestones.filter(m => m.status === 'in-progress').length}
  </div>
+ <div className="text-small text-gray-500 dark:text-white/50">active milestones</div>
  </div>
 
- <div className="bg-white dark:bg-card shadow-card rounded-lg p-4 md:p-5 lg:p-6">
- <div className="flex items-center gap-4 mb-4">
- <div className="w-10 h-10 rounded-md bg-yellow-500/10 flex items-center justify-center">
- <AlertCircle className="w-5 h-5 text-yellow-400" />
+ {/* Risk Alerts */}
+ <div className="bg-white dark:bg-card rounded-2xl p-5 border border-black/5 dark:border-white/5 shadow-card">
+ <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center mb-4">
+ <AlertCircle className="w-5 h-5 text-amber-500" strokeWidth={1.5} />
  </div>
- <div className="text-caption text-gray-400 dark:text-white/40 tracking-wide uppercase">Risk Alerts</div>
- </div>
- <div className="text-h1 tracking-tight text-gray-900 dark:text-white/95">0</div>
+ <div className="text-caption font-medium tracking-[0.14em] uppercase text-gray-400 dark:text-white/40 mb-4">Risk Alerts</div>
+ <div className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white mb-2">0</div>
+ <div className="text-small text-gray-500 dark:text-white/50">no flags raised</div>
  </div>
 
- <div className="bg-white dark:bg-card shadow-card rounded-lg p-4 md:p-5 lg:p-6">
- <div className="flex items-center gap-4 mb-4">
- <div className="w-10 h-10 rounded-md bg-purple-500/10 flex items-center justify-center">
- <FileText className="w-5 h-5 text-purple-400" />
+ {/* Documents */}
+ <div className="bg-white dark:bg-card rounded-2xl p-5 border border-black/5 dark:border-white/5 shadow-card">
+ <div className="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center mb-4">
+ <FileText className="w-5 h-5 text-purple-500" strokeWidth={1.5} />
  </div>
- <div className="text-caption text-gray-400 dark:text-white/40 tracking-wide uppercase">Documents</div>
- </div>
- <div className="text-h1 tracking-tight text-gray-900 dark:text-white/95">{documents.length}</div>
+ <div className="text-caption font-medium tracking-[0.14em] uppercase text-gray-400 dark:text-white/40 mb-4">Documents</div>
+ <div className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white mb-2">{documents.length}</div>
+ <div className="text-small text-gray-500 dark:text-white/50">files uploaded</div>
  </div>
  </div>
 
@@ -162,7 +164,7 @@ export function ExecutionDashboard() {
  <div className="flex-1 pb-4">
  <div className="flex items-start justify-between mb-2">
  <div>
- <h4 className={`text-body tracking-tight mb-1 ${
+ <h4 className={`text-body tracking-tight md:font-medium mb-1 ${
  isCompleted || isInProgress ? 'text-gray-900/95 dark:text-white/95' : 'text-gray-600 dark:text-white/50'
  }`}>
  {milestone.title}
@@ -223,7 +225,7 @@ export function ExecutionDashboard() {
  {/* Partner Contact */}
  <div className="bg-white dark:bg-card shadow-card rounded-lg p-4 md:p-5 lg:p-6">
  <h3 className="text-small tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-6">
- Your Partner
+ Your Expert
  </h3>
  <div className="flex items-center gap-4 mb-4">
  <img

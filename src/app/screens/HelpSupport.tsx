@@ -78,18 +78,18 @@ export function HelpSupport() {
 
  
  {/* Header */}
- <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06]">
- <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-6">
+ <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] shadow-header">
+ <div className="max-w-[1500px] mx-auto container-padding py-4 md:py-6">
  <div className="flex items-center justify-between">
- <div>
+ <div className="flex items-start gap-4">
  <Link
  to="/settings"
- className="flex items-center gap-2 text-small text-gray-600 dark:text-white/50 hover:text-gray-900 dark:hover:text-white mb-3 md:mb-4 transition-colors"
+ className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-brand-navy/[0.04] dark:bg-white/[0.04] hover:bg-brand-navy/[0.08] dark:hover:bg-white/[0.08] flex-shrink-0 transition-colors"
  >
- <ArrowLeft className="w-4 h-4" />
- Back to Settings
+ <ArrowLeft className="w-4 h-4 text-gray-500 dark:text-white/50" />
  </Link>
- <div className="text-h1 tracking-tight text-gray-900 dark:text-white">
+ <div>
+ <div className="text-h1 font-normal md:font-semibold tracking-tight text-gray-900 dark:text-white">
  Help & Support
  </div>
  <p className="text-small text-gray-500 dark:text-white/50 mt-1">
@@ -104,7 +104,7 @@ export function HelpSupport() {
  </div>
 
  {/* Main Content */}
- <div className="max-w-[1200px] mx-auto container-padding py-6 md:py-8 lg:py-10">
+ <div className="max-w-[1500px] mx-auto container-padding py-6 md:py-8 lg:py-10">
  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
  {/* Contact Cards - Left Column */}
  <div className="lg:col-span-1 space-y-6">
@@ -115,7 +115,7 @@ export function HelpSupport() {
  <HeadphonesIcon className="w-6 h-6 text-brand-gold" />
  </div>
  <div>
- <div className="text-h2 tracking-tight font-normal text-gray-900 dark:text-white">
+ <div className="text-h2 tracking-tight font-semibold text-gray-900 dark:text-white">
  Contact Us
  </div>
  <div className="text-small text-gray-600 dark:text-white/50">
@@ -136,7 +136,7 @@ export function HelpSupport() {
  </div>
  <a 
  href="mailto:support@vybe.in"
- className="text-small font-normal text-brand-gold hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors break-all"
+ className="text-small font-semibold text-brand-gold hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors break-all"
  >
  support@vybe.in
  </a>
@@ -159,7 +159,7 @@ export function HelpSupport() {
  </div>
  <a 
  href="tel:+918047182000"
- className="text-small font-normal text-brand-gold hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors tracking-wider"
+ className="text-small font-semibold text-brand-gold hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors tracking-wider"
  >
  +91 80471 82000
  </a>
@@ -175,7 +175,7 @@ export function HelpSupport() {
  <div className="rounded-xl bg-white/80 dark:bg-card backdrop-blur-xl shadow-card p-4 md:p-5 lg:p-6 dark:">
  <div className="flex items-center gap-2 mb-4">
  <BookOpen className="w-5 h-5 text-brand-gold" />
- <div className="text-body font-normal text-gray-900 dark:text-white">
+ <div className="text-body font-semibold text-gray-900 dark:text-white">
  Helpful Resources
  </div>
  </div>
@@ -184,7 +184,7 @@ export function HelpSupport() {
  href="#" 
  className="block p-3 rounded-lg hover:bg-brand-navy/[0.02] dark:hover:bg-white/[0.02] transition-colors group"
  >
- <div className="text-small font-normal text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+ <div className="text-small font-semibold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
  Getting Started Guide
  </div>
  <div className="text-caption text-gray-600 dark:text-white/50 mt-0.5">
@@ -195,7 +195,7 @@ export function HelpSupport() {
  href="#" 
  className="block p-3 rounded-lg hover:bg-brand-navy/[0.02] dark:hover:bg-white/[0.02] transition-colors group"
  >
- <div className="text-small font-normal text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+ <div className="text-small font-semibold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
  Video Tutorials
  </div>
  <div className="text-caption text-gray-600 dark:text-white/50 mt-0.5">
@@ -206,7 +206,7 @@ export function HelpSupport() {
  href="#" 
  className="block p-3 rounded-lg hover:bg-brand-navy/[0.02] dark:hover:bg-white/[0.02] transition-colors group"
  >
- <div className="text-small font-normal text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+ <div className="text-small font-semibold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
  API Documentation
  </div>
  <div className="text-caption text-gray-600 dark:text-white/50 mt-0.5">
@@ -223,7 +223,7 @@ export function HelpSupport() {
  {/* FAQ Header */}
  <div className="flex items-center gap-4 mb-6">
  <MessageSquare className="w-6 h-6 text-brand-gold" />
- <div className="text-h1 tracking-tight font-normal text-gray-900 dark:text-white">
+ <div className="text-h1 tracking-tight font-semibold text-gray-900 dark:text-white">
  Frequently Asked Questions
  </div>
  </div>
@@ -246,9 +246,9 @@ export function HelpSupport() {
  <button
  key={category.id}
  onClick={() => setSelectedCategory(category.id)}
- className={`px-4 py-2.5 rounded-lg text-small font-normal transition-all ${
+ className={`px-4 py-2.5 rounded-lg text-small transition-all ${
  selectedCategory === category.id
- ? 'bg-brand-navy dark:bg-white text-white'
+ ? 'bg-brand-navy dark:bg-white text-white font-semibold'
  : 'bg-brand-navy/[0.02] dark:bg-white/[0.02] text-gray-600 dark:text-white/50 hover:bg-brand-navy/[0.04] dark:hover:bg-white/[0.04] hover:text-gray-900 dark:hover:text-white'
  }`}
  >
@@ -270,7 +270,7 @@ export function HelpSupport() {
  className="w-full flex items-start justify-between gap-4 p-5 text-left transition-colors hover:bg-brand-navy/[0.01] dark:hover:bg-white/[0.01]"
  >
  <div className="flex-1">
- <div className="text-small font-normal text-gray-900 dark:text-white">
+ <div className="text-small font-semibold text-gray-900 dark:text-white">
  {faq.question}
  </div>
  </div>
@@ -306,7 +306,7 @@ export function HelpSupport() {
  setSearchQuery('');
  setSelectedCategory('all');
  }}
- className="mt-4 px-4 py-2.5 text-small font-normal text-brand-gold hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors"
+ className="mt-4 px-4 py-2.5 text-small font-semibold text-brand-gold hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors"
  >
  Clear filters
  </button>
@@ -321,11 +321,12 @@ export function HelpSupport() {
  </div>
  <a
  href="mailto:support@vybe.in"
- className="inline-flex items-center gap-2 px-6 py-2.5 bg-brand-navy dark:bg-white hover:bg-brand-navy/90 dark:hover:bg-white/90 text-white rounded-lg transition-all text-small font-normal hover:"
+ className="inline-flex items-center gap-2 px-6 py-2.5 bg-brand-navy dark:bg-white hover:bg-brand-navy/90 dark:hover:bg-white/90 text-white rounded-lg transition-all text-small font-semibold hover:"
  >
  <Mail className="w-4 h-4" />
  Contact Support
  </a>
+ </div>
  </div>
  </div>
  </div>

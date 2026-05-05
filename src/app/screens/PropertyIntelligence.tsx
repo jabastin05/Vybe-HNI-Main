@@ -69,16 +69,16 @@ export function PropertyIntelligence() {
 
  
  {/* Header - Full Width */}
- <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06]">
- <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-6">
+ <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] shadow-header">
+ <div className="max-w-[1500px] mx-auto container-padding py-4 md:py-6">
  <div className="flex items-center justify-between">
  {/* Left: Back Button + Property Name */}
  <div className="flex items-center gap-4">
  <Link 
- to="/properties" 
- className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-brand-navy/5 dark:bg-white/5 hover:bg-brand-navy/10 dark:hover:bg-white/10 transition-colors text-gray-600 dark:text-white/50"
+ to="/my-properties"
+ className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-brand-navy/[0.04] dark:bg-white/[0.04] hover:bg-brand-navy/[0.08] dark:hover:bg-white/[0.08] flex-shrink-0 transition-colors"
  >
- <ArrowLeft className="w-4 h-4" />
+ <ArrowLeft className="w-4 h-4 text-gray-500 dark:text-white/50" />
  </Link>
  <div>
  <h1 className="text-caption tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-2">
@@ -113,7 +113,7 @@ export function PropertyIntelligence() {
  Report In Progress
  </h3>
  <p className="text-small text-gray-600 dark:text-white/50 leading-relaxed mb-8">
- The HABU report is currently being generated. We will notify you once it is ready.
+ Your Best Use Analysis is being prepared. We will notify you once it is ready.
  </p>
  <button
  onClick={() => setShowReportModal(false)}
@@ -126,7 +126,7 @@ export function PropertyIntelligence() {
  </div>
  )}
 
- <div className="max-w-[1200px] mx-auto container-padding py-6 md:py-8 lg:py-10">
+ <div className="max-w-[1500px] mx-auto container-padding py-6 md:py-8 lg:py-10">
  {/* Analyzing Stage - Special Layout */}
  {property.status === 'analyzing' && (
  <div className="space-y-6">
@@ -139,7 +139,7 @@ export function PropertyIntelligence() {
  <Activity className="w-4 h-4 text-yellow-500" />
  </div>
  <div>
- <h2 className="text-small tracking-tight text-gray-900 dark:text-white/95 font-normal">
+ <h2 className="text-small tracking-tight text-gray-900 dark:text-white/95 font-semibold">
  VYBE Team Analysis
  </h2>
  <p className="text-caption text-gray-600 dark:text-white/50">
@@ -147,7 +147,7 @@ export function PropertyIntelligence() {
  </p>
  </div>
  </div>
- <div className="text-xs tracking-widest uppercase text-yellow-500 bg-yellow-500/10 px-2.5 py-1 rounded-lg flex items-center gap-1.5">
+ <div className="text-caption tracking-widest uppercase text-yellow-500 bg-yellow-500/10 px-2.5 py-1 rounded-lg flex items-center gap-1.5">
  <div className="w-1.5 h-1.5 rounded-full bg-brand-navy dark:bg-white animate-pulse" />
  In Progress
  </div>
@@ -163,11 +163,11 @@ export function PropertyIntelligence() {
  <div className="w-8 h-8 rounded-lg bg-yellow-500/20 flex items-center justify-center">
  <FileText className="w-4 h-4 text-yellow-600 dark:text-yellow-400" />
  </div>
- <h3 className="text-small font-normal tracking-tight text-gray-900 dark:text-white/95">
+ <h3 className="text-small font-semibold tracking-tight text-gray-900 dark:text-white/95">
  Documents Uploaded
  </h3>
  </div>
- <div className="text-h1 font-normal text-yellow-600 dark:text-yellow-400 leading-none">
+ <div className="text-h1 font-semibold text-yellow-600 dark:text-yellow-400 leading-none">
  {property.documentCount || 0}
  </div>
  </div>
@@ -180,7 +180,7 @@ export function PropertyIntelligence() {
  className="bg-emerald-500/10 border border-emerald-500/20 rounded-lg px-2.5 py-1 flex items-center gap-1.5"
  >
  <CheckCircle2 className="w-3 h-3 text-emerald-500 flex-shrink-0" />
- <span className="text-caption font-normal text-gray-900/70 dark:text-white/70 tracking-tight">{doc}</span>
+ <span className="text-caption font-semibold text-gray-900/70 dark:text-white/70 tracking-tight">{doc}</span>
  </div>
  ))}
  {(property.documentCount || 0) > 6 && (
@@ -209,7 +209,7 @@ export function PropertyIntelligence() {
  <div className="w-8 h-8 rounded-lg bg-blue-500/30 flex items-center justify-center">
  <Activity className="w-4 h-4 text-blue-600 dark:text-blue-400" />
  </div>
- <h3 className="text-small font-normal tracking-tight text-gray-900 dark:text-white/95">
+ <h3 className="text-small font-semibold tracking-tight text-gray-900 dark:text-white/95">
  Analysis Progress
  </h3>
  </div>
@@ -223,24 +223,24 @@ export function PropertyIntelligence() {
  {/* Timeline Info */}
  <div className="pt-3 border-t border-gray-200 dark:border-white/[0.06] grid grid-cols-2 gap-3">
  <div className="bg-white/60 dark:bg-brand-navy/30 rounded-lg p-2.5">
- <div className="text-xs tracking-wider uppercase text-blue-600 dark:text-blue-400 mb-1">
+ <div className="text-caption tracking-wider uppercase text-blue-600 dark:text-blue-400 mb-1">
  Completion
  </div>
- <div className="text-body font-normal text-gray-900 dark:text-white/95 leading-none mb-0.5">
+ <div className="text-body font-semibold text-gray-900 dark:text-white/95 leading-none mb-0.5">
  2-3 Days
  </div>
- <div className="text-xs text-gray-600 dark:text-white/50">
+ <div className="text-caption text-gray-600 dark:text-white/50">
  Mar 13-14, 2026
  </div>
  </div>
  <div className="bg-white/60 dark:bg-brand-navy/30 rounded-lg p-2.5">
- <div className="text-xs tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-1">
+ <div className="text-caption tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-1">
  Next Update
  </div>
- <div className="text-body font-normal text-gray-900 dark:text-white/95 leading-none mb-0.5">
+ <div className="text-body font-semibold text-gray-900 dark:text-white/95 leading-none mb-0.5">
  6 hours
  </div>
- <div className="text-xs text-gray-600 dark:text-white/50">
+ <div className="text-caption text-gray-600 dark:text-white/50">
  Today, 8:00 PM
  </div>
  </div>
@@ -267,15 +267,15 @@ export function PropertyIntelligence() {
  <div className="p-4">
  <div className="space-y-3">
  <div>
- <div className="text-xs tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-1">Address</div>
+ <div className="text-caption tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-1">Address</div>
  <div className="text-caption text-gray-900 dark:text-white/95 font-normal leading-snug">{property.location}</div>
  </div>
  <div>
- <div className="text-xs tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-1">Coordinates</div>
+ <div className="text-caption tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-1">Coordinates</div>
  <div className="text-caption text-gray-600 dark:text-white/50 tracking-wider">12.9716° N, 77.5946° E</div>
  </div>
  <div className="pt-2 border-t border-gray-200 dark:border-white/[0.06]">
- <div className="flex items-center gap-1.5 text-xs text-emerald-500">
+ <div className="flex items-center gap-1.5 text-caption text-emerald-500">
  <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
  Verified from documents
  </div>
@@ -296,7 +296,7 @@ export function PropertyIntelligence() {
  Property Details
  </h3>
  </div>
- <div className="text-xs tracking-widest uppercase text-blue-500 bg-blue-500/10 px-6 py-2.5 rounded">
+ <div className="text-caption tracking-widest uppercase text-blue-500 bg-blue-500/10 px-6 py-2.5 rounded">
  AI Verified
  </div>
  </div>
@@ -304,33 +304,33 @@ export function PropertyIntelligence() {
  <div className="p-4 bg-white/60 dark:bg-brand-navy/30 backdrop-blur-sm">
  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-3">
  <div className="bg-white dark:bg-card shadow-card rounded-lg p-3">
- <div className="text-xs tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-1">Survey No.</div>
+ <div className="text-caption tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-1">Survey No.</div>
  <div className="text-small text-gray-900 dark:text-white/95 font-normal">{property.surveyNumber}</div>
  </div>
  <div className="bg-white dark:bg-card shadow-card rounded-lg p-3">
- <div className="text-xs tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-1">Land Area</div>
+ <div className="text-caption tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-1">Land Area</div>
  <div className="text-small text-gray-900 dark:text-white/95 font-normal">{property.parcelSize}</div>
  </div>
  <div className="bg-white dark:bg-card shadow-card rounded-lg p-3">
- <div className="text-xs tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-1">Ownership</div>
+ <div className="text-caption tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-1">Ownership</div>
  <div className="text-small text-gray-900 dark:text-white/95 font-normal">Freehold</div>
  </div>
  </div>
  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
  <div className="bg-white dark:bg-card shadow-card rounded-lg p-3">
- <div className="text-xs tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-1">District</div>
+ <div className="text-caption tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-1">District</div>
  <div className="text-caption text-gray-900 dark:text-white/95 font-normal">Bangalore Urban</div>
  </div>
  <div className="bg-white dark:bg-card shadow-card rounded-lg p-3">
- <div className="text-xs tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-1">State</div>
+ <div className="text-caption tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-1">State</div>
  <div className="text-caption text-gray-900 dark:text-white/95 font-normal">Karnataka</div>
  </div>
  <div className="bg-white dark:bg-card shadow-card rounded-lg p-3">
- <div className="text-xs tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-1">Zoning</div>
+ <div className="text-caption tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-1">Zoning</div>
  <div className="text-caption text-gray-900 dark:text-white/95 font-normal">Residential</div>
  </div>
  <div className="bg-white dark:bg-card shadow-card rounded-lg p-3">
- <div className="text-xs tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-1">Road Access</div>
+ <div className="text-caption tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-1">Road Access</div>
  <div className="text-caption text-gray-900 dark:text-white/95 font-normal">30ft Arterial</div>
  </div>
  </div>
@@ -358,7 +358,7 @@ export function PropertyIntelligence() {
  <CheckCircle2 className="w-4 h-4 text-emerald-500" />
  <span className="text-caption text-emerald-600 dark:text-emerald-400 font-normal">Clear Title</span>
  </div>
- <div className="text-xs text-gray-600 dark:text-white/50">Verified Feb 18, 2026</div>
+ <div className="text-caption text-gray-600 dark:text-white/50">Verified Feb 18, 2026</div>
  </div>
  <div className="space-y-2">
  <div className="flex items-center justify-between py-1.5 border-b border-gray-200 dark:border-white/[0.06]">
@@ -411,12 +411,12 @@ export function PropertyIntelligence() {
  </div>
  </div>
  <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-2.5">
- <div className="text-xs tracking-wider uppercase text-blue-600 dark:text-blue-400 mb-0.5">Utilities</div>
+ <div className="text-caption tracking-wider uppercase text-blue-600 dark:text-blue-400 mb-0.5">Utilities</div>
  <div className="flex flex-wrap gap-1">
  {['Water', 'Electricity', 'Sewage', 'Gas'].map((utility, index) => (
  <div key={index} className="bg-emerald-500/20 rounded px-1.5 py-0.5 flex items-center gap-1">
  <CheckCircle2 className="w-2 h-2 text-emerald-500" />
- <span className="text-xs text-emerald-600 dark:text-emerald-400 font-normal">{utility}</span>
+ <span className="text-caption text-emerald-600 dark:text-emerald-400 font-normal">{utility}</span>
  </div>
  ))}
  </div>
@@ -447,7 +447,7 @@ export function PropertyIntelligence() {
  }`}></div>
  <span className="text-caption text-gray-900 dark:text-white/95">{signal.label}</span>
  </div>
- <span className="text-xs font-normal text-gray-600 dark:text-white/50">{signal.distance}</span>
+ <span className="text-caption font-normal text-gray-600 dark:text-white/50">{signal.distance}</span>
  </div>
  <div className="h-0.5 rounded-full bg-brand-navy/5 dark:bg-white/5 overflow-hidden">
  <div 
@@ -461,7 +461,7 @@ export function PropertyIntelligence() {
  ))}
  </div>
  <div className="mt-3 pt-3 border-t border-gray-200 dark:border-white/[0.06]">
- <div className="flex items-center gap-2 text-xs text-gray-400 dark:text-white/40">
+ <div className="flex items-center gap-2 text-caption text-gray-400 dark:text-white/40">
  <div className="flex items-center gap-1">
  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
  <span>Positive</span>
@@ -478,13 +478,13 @@ export function PropertyIntelligence() {
  </div>
  )}
 
- {/* HABU Report Preview Section - First */}
+ {/* Best Use Report Preview Section - First */}
  {property.status !== 'analyzing' && (
  <div className="mb-8 bg-gradient-to-br from-blue-500/5 to-purple-500/5 border-2 border-blue-500/20 dark:border-blue-400/20 rounded-xl p-5 md:p-5 lg:p-6">
  <div className="flex items-center gap-4 mb-6">
  <FileText className="w-6 h-6 text-blue-500" />
- <h2 className="text-h1 tracking-tight text-gray-900 dark:text-white/95 font-normal">
- HABU Report Preview
+ <h2 className="text-h1 tracking-tight text-gray-900 dark:text-white/95 font-semibold">
+ Best Use Report Preview
  </h2>
  <div className="ml-auto flex items-center gap-3">
  <button
@@ -492,7 +492,7 @@ export function PropertyIntelligence() {
  className="bg-white dark:bg-card text-gray-900 dark:text-white shadow-card px-4 py-2.5 rounded-lg text-small tracking-wide transition-all hover:bg-brand-navy/5 dark:hover:bg-white/5 inline-flex items-center gap-2"
  >
  <Download className="w-4 h-4" />
- Download HABU Report
+ Download Best Use Report
  </button>
  <Link
  to="/report/habu"
@@ -508,7 +508,7 @@ export function PropertyIntelligence() {
  <div className="bg-white dark:bg-card border border-blue-500/30 dark:border-blue-400/30 rounded-lg p-4 md:p-5 lg:p-6">
  <div className="flex items-center justify-between mb-6">
  <div>
- <h3 className="text-h2 tracking-tight text-gray-900 dark:text-white/95 font-normal mb-2">
+ <h3 className="text-h2 tracking-tight text-gray-900 dark:text-white/95 font-semibold mb-2">
  Strategic Investment Options
  </h3>
  <p className="text-small text-gray-600 dark:text-white/50">
@@ -542,7 +542,7 @@ export function PropertyIntelligence() {
  <div className="text-caption text-gray-400 dark:text-white/40 tracking-wider uppercase mb-2">
  Option {index + 1}
  </div>
- <h4 className="text-body tracking-tight text-gray-900 dark:text-white/95 font-normal mb-2">
+ <h4 className="text-body tracking-tight text-gray-900 dark:text-white/95 font-semibold mb-2">
  {strategy.name}
  </h4>
  <p className="text-caption text-gray-600 dark:text-white/50 leading-relaxed line-clamp-2">
@@ -553,7 +553,7 @@ export function PropertyIntelligence() {
  <div className="space-y-4 mb-4">
  <div className="flex items-center justify-between">
  <span className="text-caption text-gray-400 dark:text-white/40 uppercase tracking-wide">ROI</span>
- <span className="text-body tracking-tight text-brand-gold font-normal">{strategy.roi}%</span>
+ <span className="text-body tracking-tight text-brand-gold font-semibold">{strategy.roi}%</span>
  </div>
  <div className="flex items-center justify-between">
  <span className="text-caption text-gray-400 dark:text-white/40 uppercase tracking-wide">Capital</span>
@@ -596,7 +596,7 @@ export function PropertyIntelligence() {
  <MapPinned className="w-5 h-5 text-emerald-500" />
  </div>
  <div>
- <h2 className="text-body tracking-tight text-gray-900 dark:text-white/95 font-normal">
+ <h2 className="text-body tracking-tight text-gray-900 dark:text-white/95 font-semibold">
  Exact Location
  </h2>
  <p className="text-small text-gray-600 dark:text-white/50">
@@ -647,7 +647,7 @@ export function PropertyIntelligence() {
  <Building2 className="w-5 h-5 text-blue-500" />
  </div>
  <div>
- <h2 className="text-small tracking-tight text-gray-900 dark:text-white/95 font-normal">
+ <h2 className="text-small tracking-tight text-gray-900 dark:text-white/95 font-semibold">
  Property Data Preview
  </h2>
  <p className="text-caption text-gray-600 dark:text-white/50">
@@ -665,22 +665,22 @@ export function PropertyIntelligence() {
  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
  <div className="bg-white dark:bg-card shadow-card rounded-xl p-4">
  <div className="text-caption tracking-widest uppercase text-gray-400 dark:text-white/40 mb-2">District</div>
- <div className="text-body text-gray-900 dark:text-white/95 font-normal">Bangalore Urban</div>
+ <div className="text-body text-gray-900 dark:text-white/95 font-semibold">Bangalore Urban</div>
  </div>
 
  <div className="bg-white dark:bg-card shadow-card rounded-xl p-4">
  <div className="text-caption tracking-widest uppercase text-gray-400 dark:text-white/40 mb-2">State</div>
- <div className="text-body text-gray-900 dark:text-white/95 font-normal">Karnataka</div>
+ <div className="text-body text-gray-900 dark:text-white/95 font-semibold">Karnataka</div>
  </div>
 
  <div className="bg-white dark:bg-card shadow-card rounded-xl p-4">
  <div className="text-caption tracking-widest uppercase text-gray-400 dark:text-white/40 mb-2">Survey No.</div>
- <div className="text-body text-gray-900 dark:text-white/95 font-normal">{property.surveyNumber}</div>
+ <div className="text-body text-gray-900 dark:text-white/95 font-semibold">{property.surveyNumber}</div>
  </div>
 
  <div className="bg-white dark:bg-card shadow-card rounded-xl p-4">
  <div className="text-caption tracking-widest uppercase text-gray-400 dark:text-white/40 mb-2">Land Area</div>
- <div className="text-body text-gray-900 dark:text-white/95 font-normal">{property.parcelSize}</div>
+ <div className="text-body text-gray-900 dark:text-white/95 font-semibold">{property.parcelSize}</div>
  </div>
  </div>
 
@@ -706,7 +706,7 @@ export function PropertyIntelligence() {
  <div className="text-caption tracking-widest uppercase text-emerald-600 dark:text-emerald-400 mb-1">Encumbrance Status</div>
  <div className="flex items-center gap-2">
  <CheckCircle2 className="w-5 h-5 text-emerald-500" />
- <span className="text-body text-emerald-500 font-normal">Clear Title</span>
+ <span className="text-body text-emerald-500 font-semibold">Clear Title</span>
  </div>
  </div>
  <div className="flex flex-wrap gap-2 items-center">
@@ -786,11 +786,11 @@ export function PropertyIntelligence() {
  <div className="space-y-4">
  <div className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-white/[0.06]">
  <span className="text-caption text-gray-600 dark:text-white/50">FSI Available</span>
- <span className="text-body text-gray-900 dark:text-white/95 font-normal">2.5x</span>
+ <span className="text-body text-gray-900 dark:text-white/95 font-semibold">2.5x</span>
  </div>
  <div className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-white/[0.06]">
  <span className="text-caption text-gray-600 dark:text-white/50">Max Buildable</span>
- <span className="text-body text-gray-900 dark:text-white/95 font-normal">12,500 sq ft</span>
+ <span className="text-body text-gray-900 dark:text-white/95 font-semibold">12,500 sq ft</span>
  </div>
  <div className="flex justify-between items-center py-2">
  <span className="text-caption text-gray-600 dark:text-white/50">Approval Status</span>

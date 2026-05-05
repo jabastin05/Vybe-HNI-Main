@@ -36,7 +36,7 @@ export function MobileFooterNav() {
  bg-white dark:bg-brand-navy
  border-t border-gray-200 dark:border-white/[0.08]
  backdrop-blur-xl">
- <div className="max-w-[1200px] mx-auto container-padding py-3">
+ <div className="max-w-[1500px] mx-auto container-padding py-3">
  <div className="flex items-center justify-between gap-1">
 
  {/* Gold Add Property FAB */}
@@ -85,7 +85,7 @@ export function MobileFooterNav() {
  opacity-0 group-hover:opacity-100 pointer-events-none
  transition-all duration-200 whitespace-nowrap z-50">
  <div className="px-2.5 py-1.5 bg-brand-navy text-white rounded-lg
- text-xs font-normal tracking-wide">
+ text-caption font-normal tracking-wide">
  {item.label}
  </div>
  </div>

@@ -14,7 +14,7 @@ export function PageHeader({ label, title, subtitle, className = '', action }: P
  <div className="flex items-start justify-between gap-4">
  <div className="flex-1">
  {label && (
- <div className="text-xs tracking-[0.05em] uppercase font-normal text-gray-900/40 dark:text-white/40 mb-2">
+ <div className="text-caption tracking-[0.05em] uppercase font-normal text-gray-900/40 dark:text-white/40 mb-2">
  {label}
  </div>
  )}

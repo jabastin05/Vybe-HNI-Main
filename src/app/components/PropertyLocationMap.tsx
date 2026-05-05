@@ -110,8 +110,8 @@ export function PropertyLocationMap({ latitude, longitude, onLocationSelect }: P
  <div className="absolute top-4 left-4 right-4 bg-white/95 dark:bg-brand-navy/95 backdrop-blur-md 
  shadow-card rounded-lg px-4 py-2.5 
  shadow-lg pointer-events-none z-[1000]">
- <p className="text-xs text-gray-900/70 dark:text-white/70 flex items-center gap-2">
- <span className="text-emerald-500 text-sm">📍</span>
+ <p className="text-caption text-gray-900/70 dark:text-white/70 flex items-center gap-2">
+ <span className="text-emerald-500 text-small">📍</span>
  Click anywhere on the map to set property location
  </p>
  </div>

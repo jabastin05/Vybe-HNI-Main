@@ -11,7 +11,7 @@ interface NavItem {
 
 const navItems: NavItem[] = [
  { icon: Home, label: 'My Properties', path: '/my-properties' },
- { icon: FolderOpen, label: 'Case Management', path: '/properties' },
+ { icon: FolderOpen, label: 'Cases', path: '/cases' },
  { icon: Briefcase, label: 'Services', path: '/services' },
  { icon: FileText, label: 'Documents', path: '/documents' },
  { icon: User, label: 'Profile', path: '/settings' },
@@ -22,8 +22,9 @@ export function SideNav() {
  const { properties } = useProperties();
 
  const isActive = (path: string) => {
- if (path === '/properties')
- return location.pathname === '/properties' || location.pathname === '/cases';
+ if (path === '/cases')
+ return location.pathname === '/cases' ||
+ (location.pathname.startsWith('/case') && !location.pathname.includes('/documents'));
  if (path === '/my-properties')
  return location.pathname === '/my-properties' ||
  (location.pathname.startsWith('/property/') && location.pathname.includes('/detail'));
@@ -61,7 +62,7 @@ export function SideNav() {
            className="flex-shrink-0 opacity-90 group-hover:opacity-100 transition-opacity"
            style={{ '--brand-primary': '#ffffff', '--brand-teal': '#ffffff' } as React.CSSProperties}
          />
- <span className="lg:hidden text-white font-normal text-sm tracking-wide opacity-90">
+ <span className="lg:hidden text-white font-normal text-small tracking-wide opacity-90">
    VYBE
  </span>
  </Link>
@@ -77,7 +78,7 @@ export function SideNav() {
  transition-all duration-200"
  >
  <Plus className="w-5 h-5 text-white flex-shrink-0" strokeWidth={1.5} />
- <span className="lg:hidden text-white text-sm font-normal">Add Property</span>
+ <span className="lg:hidden text-white text-small font-normal">Add Property</span>
  </Link>
  </div>
 
@@ -108,7 +109,7 @@ export function SideNav() {
  }`}
  strokeWidth={1.5}
  />
- <span className={`lg:hidden text-sm font-normal truncate ${
+ <span className={`lg:hidden text-small font-normal truncate ${
  isActive(item.path) ? 'text-brand-navy' : 'text-white/60 group-hover:text-white'
  }`}>
  {item.label}
@@ -134,7 +135,7 @@ function NavTip({ children, label }: { children: React.ReactNode; label: string 
  -translate-x-1 group-hover/tip:translate-x-0
  transition-all duration-150 whitespace-nowrap">
  <div className="px-3 py-2 bg-sidebar border border-white/10 rounded-xl">
- <span className="text-xs font-normal text-white tracking-wide">
+ <span className="text-caption font-normal text-white tracking-wide">
  {label}
  </span>
  {/* Arrow */}

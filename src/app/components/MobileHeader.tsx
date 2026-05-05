@@ -45,7 +45,7 @@ export function MobileHeader() {
  ) : (
  <div className="w-full h-full bg-brand-primary/10 dark:bg-brand-primary/20
  flex items-center justify-center">
- <span className="text-sm font-normal text-brand-primary leading-none">
+ <span className="text-small font-normal text-brand-primary leading-none">
  {initial}
  </span>
  </div>

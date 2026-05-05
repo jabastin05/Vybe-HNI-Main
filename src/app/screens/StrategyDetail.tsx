@@ -51,13 +51,13 @@ export function StrategyDetail() {
  {/* Main Content with equal padding for side nav */}
  <div className="px-8">
  {/* Header */}
- <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06]">
- <div className="max-w-[1200px] mx-auto container-padding py-4 md:py-6">
- <Link to={`/property/${id}/habu`} className="flex items-center gap-2 text-small text-gray-600 dark:text-white/50 hover:text-gray-900 dark:hover:text-white mb-4 transition-colors">
- <ArrowLeft className="w-4 h-4" />
- Back to HABU Report
- </Link>
+ <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] shadow-header">
+ <div className="max-w-[1500px] mx-auto container-padding py-4 md:py-6">
  <div className="flex items-start justify-between">
+ <div className="flex items-start gap-4">
+ <Link to={`/property/${id}/habu`} className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-brand-navy/[0.04] dark:bg-white/[0.04] hover:bg-brand-navy/[0.08] dark:hover:bg-white/[0.08] flex-shrink-0 transition-colors">
+ <ArrowLeft className="w-4 h-4 text-gray-500 dark:text-white/50" />
+ </Link>
  <div>
  <div className="text-caption tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-2">
  Strategy Analysis
@@ -68,6 +68,7 @@ export function StrategyDetail() {
  <p className="text-small text-gray-600 dark:text-white/50 max-w-2xl">
  {strategy.description}
  </p>
+ </div>
  </div>
  <div className="flex items-center gap-3">
  <div className="hidden md:block">
@@ -85,7 +86,7 @@ export function StrategyDetail() {
  </div>
  </div>
 
- <div className="max-w-[1200px] mx-auto container-padding py-6 md:py-8 lg:py-10">
+ <div className="max-w-[1500px] mx-auto container-padding py-6 md:py-8 lg:py-10">
  {/* Financial Projections */}
  <div className="bg-white dark:bg-card shadow-card rounded-lg p-10 mb-6">
  <h3 className="text-small tracking-[0.05em] uppercase text-gray-400 dark:text-white/50 mb-8">

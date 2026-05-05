@@ -47,10 +47,10 @@ export function RMAccess({ variant = 'light' }: { variant?: 'light' | 'dark' }) 
  }`}
  >
  <Phone className={`w-3.5 h-3.5 md:w-4 md:h-4 ${variant === 'dark' ? 'text-white' : 'text-brand-primary'}`} />
- <span className={`text-xs md:text-sm font-normal hidden sm:inline ${variant === 'dark' ? 'text-white' : 'text-brand-primary'}`}>
+ <span className={`text-caption md:text-small font-normal hidden sm:inline ${variant === 'dark' ? 'text-white' : 'text-brand-primary'}`}>
  Request a Call
  </span>
- <span className={`text-xs font-normal sm:hidden ${variant === 'dark' ? 'text-white' : 'text-brand-primary'}`}>
+ <span className={`text-caption font-normal sm:hidden ${variant === 'dark' ? 'text-white' : 'text-brand-primary'}`}>
  Call
  </span>
  </button>
@@ -64,10 +64,10 @@ export function RMAccess({ variant = 'light' }: { variant?: 'light' | 'dark' }) 
  {/* Modal Header */}
  <div className="flex items-start justify-between p-6 border-b border-gray-200 dark:border-white/[0.05]">
  <div>
- <h2 className="text-xl font-normal text-gray-900 dark:text-white mb-1">
+ <h2 className="text-h3 font-normal text-gray-900 dark:text-white mb-1">
  Request a Call Back
  </h2>
- <p className="text-sm text-gray-600 dark:text-white/50">
+ <p className="text-small text-gray-600 dark:text-white/50">
  Your RM {rm.name} will reach out to you
  </p>
  </div>
@@ -84,21 +84,21 @@ export function RMAccess({ variant = 'light' }: { variant?: 'light' | 'dark' }) 
  {/* RM Info Card */}
  <div className="flex items-center gap-4 p-4 bg-brand-gold/5 border border-brand-gold/20 rounded-xl">
  <div className="w-12 h-12 rounded-full bg-brand-navy flex items-center justify-center flex-shrink-0">
- <span className="text-base font-normal text-white">
+ <span className="text-body font-normal text-white">
  {rm.initials}
  </span>
  </div>
  <div className="flex-1">
- <div className="text-sm font-normal text-gray-900 dark:text-white leading-tight mb-0.5">
+ <div className="text-small font-normal text-gray-900 dark:text-white leading-tight mb-0.5">
  {rm.name}
  </div>
- <div className="text-xs text-gray-600 dark:text-white/50 leading-tight">
+ <div className="text-caption text-gray-600 dark:text-white/50 leading-tight">
  Relationship Manager
  </div>
  </div>
  <div className="flex items-center gap-1.5">
  <div className="w-2 h-2 rounded-full bg-brand-teal animate-pulse" />
- <span className="text-xs text-brand-teal font-normal">
+ <span className="text-caption text-brand-teal font-normal">
  Available
  </span>
  </div>
@@ -106,7 +106,7 @@ export function RMAccess({ variant = 'light' }: { variant?: 'light' | 'dark' }) 
 
  {/* Availability Section (Optional) */}
  <div>
- <label className="text-xs font-normal text-gray-900/70 dark:text-white/70 mb-2 block uppercase tracking-wide">
+ <label className="text-caption font-normal text-gray-900/70 dark:text-white/70 mb-2 block uppercase tracking-wide">
  Preferred Availability <span className="text-gray-400 dark:text-white/40 normal-case">(Optional)</span>
  </label>
  
@@ -120,7 +120,7 @@ export function RMAccess({ variant = 'light' }: { variant?: 'light' | 'dark' }) 
  onChange={(e) => setSelectedDate(e.target.value)}
  min={new Date().toISOString().split('T')[0]}
  className="w-full pl-10 pr-3 py-2.5 bg-white dark:bg-card shadow-card
- rounded-xl text-sm text-gray-900 dark:text-white
+ rounded-xl text-small text-gray-900 dark:text-white
  focus:outline-none focus:border-brand-gold/15 transition-all"
  />
  </div>
@@ -133,7 +133,7 @@ export function RMAccess({ variant = 'light' }: { variant?: 'light' | 'dark' }) 
  value={selectedTime}
  onChange={(e) => setSelectedTime(e.target.value)}
  className="w-full pl-10 pr-3 py-2.5 bg-white dark:bg-card shadow-card
- rounded-xl text-sm text-gray-900 dark:text-white
+ rounded-xl text-small text-gray-900 dark:text-white
  focus:outline-none focus:border-brand-gold/15 transition-all"
  />
  </div>
@@ -142,7 +142,7 @@ export function RMAccess({ variant = 'light' }: { variant?: 'light' | 'dark' }) 
 
  {/* Notes */}
  <div>
- <label className="text-xs font-normal text-gray-900/70 dark:text-white/70 mb-2 block uppercase tracking-wide">
+ <label className="text-caption font-normal text-gray-900/70 dark:text-white/70 mb-2 block uppercase tracking-wide">
  Notes <span className="text-gray-400 dark:text-white/40 normal-case">(Optional)</span>
  </label>
  <textarea
@@ -151,14 +151,14 @@ export function RMAccess({ variant = 'light' }: { variant?: 'light' | 'dark' }) 
  placeholder="Add any specific topics you'd like to discuss..."
  rows={3}
  className="w-full px-4 py-3 bg-white dark:bg-card shadow-card
- rounded-xl text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/40
+ rounded-xl text-small text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/40
  focus:outline-none focus:border-brand-gold/15 transition-all resize-none"
  />
  </div>
 
  {/* Info Message */}
  <div className="p-3 bg-blue-500/5 border border-blue-500/20 rounded-lg">
- <p className="text-xs text-gray-900/70 dark:text-white/70 leading-relaxed">
+ <p className="text-caption text-gray-900/70 dark:text-white/70 leading-relaxed">
  {selectedDate && selectedTime 
  ? `Your RM will call you on ${new Date(selectedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} at ${selectedTime}`
  : 'Your RM will reach out to you within 2 business hours'}
@@ -171,7 +171,7 @@ export function RMAccess({ variant = 'light' }: { variant?: 'light' | 'dark' }) 
  <button
  onClick={() => setIsModalOpen(false)}
  className="flex-1 px-4 py-2.5 bg-white dark:bg-card shadow-card
- rounded-xl text-sm font-normal text-gray-900 dark:text-white
+ rounded-xl text-small font-normal text-gray-900 dark:text-white
  hover:bg-brand-navy/5 dark:hover:bg-white/5 transition-all"
  >
  Cancel
@@ -180,7 +180,7 @@ export function RMAccess({ variant = 'light' }: { variant?: 'light' | 'dark' }) 
  onClick={handleSubmitRequest}
  disabled={isSubmitting || isSuccess}
  className="flex-1 px-4 py-2.5 bg-brand-primary hover:bg-brand-primary-hover
- rounded-xl text-sm font-normal text-white
+ rounded-xl text-small font-normal text-white
  disabled:opacity-50 disabled:cursor-not-allowed
  transition-all flex items-center justify-center gap-2"
  >

@@ -230,10 +230,10 @@ export function ExpertAdvisorChat({ onClose, propertyContext }: ExpertAdvisorCha
  <Sparkles className="w-5 h-5 text-white" />
  </div>
  <div>
- <div className="text-sm font-normal text-gray-900 dark:text-white">
+ <div className="text-small font-normal text-gray-900 dark:text-white">
  Expert Advisor
  </div>
- <div className="text-xs text-gray-600 dark:text-white/50 flex items-center gap-1.5">
+ <div className="text-caption text-gray-600 dark:text-white/50 flex items-center gap-1.5">
  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
  Strategic AI Counsel
  </div>
@@ -257,11 +257,11 @@ export function ExpertAdvisorChat({ onClose, propertyContext }: ExpertAdvisorCha
  <div className="flex gap-4 justify-end">
  <div className="flex flex-col items-end max-w-[80%]">
  <div className="px-4 py-3 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-500 text-white">
- <p className="text-sm leading-relaxed whitespace-pre-wrap">
+ <p className="text-small leading-relaxed whitespace-pre-wrap">
  {message.content}
  </p>
  </div>
- <div className="text-xs text-gray-400 dark:text-white/40 mt-1.5">
+ <div className="text-caption text-gray-400 dark:text-white/40 mt-1.5">
  {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
  </div>
  </div>
@@ -278,13 +278,13 @@ export function ExpertAdvisorChat({ onClose, propertyContext }: ExpertAdvisorCha
  </div>
  <div className="flex flex-col max-w-[85%]">
  <div className="px-4 py-3 rounded-2xl bg-gradient-to-br from-black/[0.03] to-black/[0.06] dark:from-white/[0.03] dark:to-white/[0.06] shadow-card">
- <p className="text-sm leading-relaxed text-gray-900 dark:text-white/95 whitespace-pre-wrap">
+ <p className="text-small leading-relaxed text-gray-900 dark:text-white/95 whitespace-pre-wrap">
  {message.content.split('**').map((part, i) => 
  i % 2 === 0 ? part : <strong key={i} className="font-normal">{part}</strong>
  )}
  </p>
  </div>
- <div className="text-xs text-gray-400 dark:text-white/40 mt-1.5">
+ <div className="text-caption text-gray-400 dark:text-white/40 mt-1.5">
  {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
  </div>
 
@@ -294,19 +294,19 @@ export function ExpertAdvisorChat({ onClose, propertyContext }: ExpertAdvisorCha
  <div className="flex items-start gap-2 mb-3">
  <Shield className="w-4 h-4 text-orange-600 dark:text-orange-400 flex-shrink-0 mt-0.5" />
  <div>
- <div className="text-xs font-normal text-orange-600 dark:text-orange-400 uppercase tracking-wider mb-1">
+ <div className="text-caption font-normal text-orange-600 dark:text-orange-400 uppercase tracking-wider mb-1">
  Confirmation Required
  </div>
- <div className="text-xs text-gray-900 dark:text-white/95 font-normal mb-1">
+ <div className="text-caption text-gray-900 dark:text-white/95 font-normal mb-1">
  {message.confirmationData.action}
  </div>
- <div className="text-xs text-gray-600 dark:text-white/50 mb-2">
+ <div className="text-caption text-gray-600 dark:text-white/50 mb-2">
  {message.confirmationData.impact}
  </div>
  {message.confirmationData.risks && (
  <div className="space-y-1 mb-3">
  {message.confirmationData.risks.map((risk, idx) => (
- <div key={idx} className="flex items-start gap-1.5 text-xs text-orange-600 dark:text-orange-400">
+ <div key={idx} className="flex items-start gap-1.5 text-caption text-orange-600 dark:text-orange-400">
  <AlertTriangle className="w-3 h-3 flex-shrink-0 mt-0.5" />
  {risk}
  </div>
@@ -316,14 +316,14 @@ export function ExpertAdvisorChat({ onClose, propertyContext }: ExpertAdvisorCha
  <div className="flex gap-2">
  <button
  onClick={() => handleConfirm(message.id)}
- className="flex-1 px-3 py-2 rounded-xl bg-gradient-to-br from-emerald-500 to-green-500 text-white text-xs font-normal hover: transition-all flex items-center justify-center gap-1.5"
+ className="flex-1 px-3 py-2 rounded-xl bg-gradient-to-br from-emerald-500 to-green-500 text-white text-caption font-normal hover: transition-all flex items-center justify-center gap-1.5"
  >
  <CheckCircle2 className="w-3.5 h-3.5" />
  Confirm & Execute
  </button>
  <button
  onClick={() => setPendingConfirmation(null)}
- className="px-4 py-2 rounded-xl bg-brand-navy/5 dark:bg-white/5 text-gray-900/70 dark:text-white/70 text-xs font-normal hover:bg-brand-navy/10 dark:hover:bg-white/10 transition-all"
+ className="px-4 py-2 rounded-xl bg-brand-navy/5 dark:bg-white/5 text-gray-900/70 dark:text-white/70 text-caption font-normal hover:bg-brand-navy/10 dark:hover:bg-white/10 transition-all"
  >
  Cancel
  </button>
@@ -337,7 +337,7 @@ export function ExpertAdvisorChat({ onClose, propertyContext }: ExpertAdvisorCha
  {message.escalationAvailable && (
  <button
  onClick={handleEscalate}
- className="mt-3 flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 text-xs font-normal hover:bg-blue-500/20 transition-all"
+ className="mt-3 flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 text-caption font-normal hover:bg-blue-500/20 transition-all"
  >
  <Phone className="w-3.5 h-3.5" />
  Connect with Human Advisor
@@ -351,7 +351,7 @@ export function ExpertAdvisorChat({ onClose, propertyContext }: ExpertAdvisorCha
  <button
  key={idx}
  onClick={() => handleSend(suggestion)}
- className="w-full text-left px-4 py-2.5 rounded-xl bg-white dark:bg-card shadow-card text-xs text-gray-900/70 dark:text-white/70 hover:border-gray-200 dark:hover:border-white/[0.15] hover:bg-brand-navy/[0.02] dark:hover:bg-white/[0.02] transition-all flex items-center justify-between group"
+ className="w-full text-left px-4 py-2.5 rounded-xl bg-white dark:bg-card shadow-card text-caption text-gray-900/70 dark:text-white/70 hover:border-gray-200 dark:hover:border-white/[0.15] hover:bg-brand-navy/[0.02] dark:hover:bg-white/[0.02] transition-all flex items-center justify-between group"
  >
  <span>{suggestion}</span>
  <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -365,7 +365,7 @@ export function ExpertAdvisorChat({ onClose, propertyContext }: ExpertAdvisorCha
 
  {message.type === 'system' && (
  <div className="flex justify-center">
- <div className="px-4 py-2 rounded-xl bg-blue-500/10 border border-blue-500/20 text-xs text-blue-600 dark:text-blue-400 flex items-center gap-2">
+ <div className="px-4 py-2 rounded-xl bg-blue-500/10 border border-blue-500/20 text-caption text-blue-600 dark:text-blue-400 flex items-center gap-2">
  <Clock className="w-3 h-3" />
  {message.content}
  </div>
@@ -402,7 +402,7 @@ export function ExpertAdvisorChat({ onClose, propertyContext }: ExpertAdvisorCha
  onChange={(e) => setInputValue(e.target.value)}
  onKeyPress={(e) => e.key === 'Enter' && handleSend(inputValue)}
  placeholder="Ask for strategic counsel..."
- className="flex-1 px-4 py-3 rounded-2xl bg-white dark:bg-card shadow-card text-sm text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/40 focus:outline-none focus:border-purple-500/50 dark:focus:border-purple-500/50 transition-colors"
+ className="flex-1 px-4 py-3 rounded-2xl bg-white dark:bg-card shadow-card text-small text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/40 focus:outline-none focus:border-purple-500/50 dark:focus:border-purple-500/50 transition-colors"
  />
  <button
  onClick={() => handleSend(inputValue)}
@@ -412,7 +412,7 @@ export function ExpertAdvisorChat({ onClose, propertyContext }: ExpertAdvisorCha
  <Send className="w-5 h-5" />
  </button>
  </div>
- <div className="text-xs text-gray-400 dark:text-white/40 mt-2 text-center">
+ <div className="text-caption text-gray-400 dark:text-white/40 mt-2 text-center">
  Strategic AI counsel • Human verification available for all decisions
  </div>
  </div>

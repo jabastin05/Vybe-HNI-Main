@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, ReactNode, useEffect, useMemo, useCallback } from 'react';
 
-export type ServiceType = 'HABU Report' | 'Property Service' | 'Lease & Rent' | 'Sell or Liquidate';
+export type ServiceType = 'Best Use Report' | 'Property Service' | 'Lease & Rent' | 'Sell or Liquidate';
 export type CaseStatus = 'Open' | 'Closed';
 
 // Sub-service types for each main service
@@ -76,7 +76,7 @@ export interface Case {
 
 interface CasesContextType {
  cases: Case[];
- addCase: (caseData: Omit<Case, 'id' | 'caseId' | 'dateCreated'>) => void;
+ addCase: (caseData: Omit<Case, 'id' | 'caseId' | 'dateCreated'>) => string;
  removeCase: (id: string) => void;
  getCase: (id: string) => Case | undefined;
  updateCase: (id: string, updates: Partial<Case>) => void;
@@ -108,7 +108,7 @@ export function CasesProvider({ children }: { children: ReactNode }) {
  
  // Add a sample closed HABU case if none exists
  const hasClosedHABU = deduplicatedCases.some((c: Case) => 
- c.serviceRequested === 'HABU Report' && c.status === 'Closed'
+ c.serviceRequested === 'Best Use Report' && c.status === 'Closed'
  );
  
  // Check if the specific sample case already exists
@@ -119,7 +119,7 @@ export function CasesProvider({ children }: { children: ReactNode }) {
  const sampleClosedHABU: Case = {
  id: 'sample-habu-closed',
  caseId: 'CASE-2026-001',
- serviceRequested: 'HABU Report',
+ serviceRequested: 'Best Use Report',
  propertyId: 'prop-1',
  propertyName: 'Prestige Tech Park',
  propertyLocation: 'Whitefield, Bangalore',
@@ -380,7 +380,7 @@ export function CasesProvider({ children }: { children: ReactNode }) {
  {
  id: 'sample-case-6',
  caseId: 'CASE-2026-006',
- serviceRequested: 'HABU Report',
+ serviceRequested: 'Best Use Report',
  propertyId: 'prop-6',
  propertyName: 'Salarpuria Sattva Knowledge City',
  propertyLocation: 'HITEC City, Hyderabad',
@@ -439,7 +439,7 @@ export function CasesProvider({ children }: { children: ReactNode }) {
  return `CASE-${year}-${String(count).padStart(3, '0')}`;
  };
 
- const addCase = useCallback((caseData: Omit<Case, 'id' | 'caseId' | 'dateCreated'>) => {
+ const addCase = useCallback((caseData: Omit<Case, 'id' | 'caseId' | 'dateCreated'>): string => {
  const newCase: Case = {
  ...caseData,
  id: `case-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
@@ -452,6 +452,7 @@ export function CasesProvider({ children }: { children: ReactNode }) {
  dateCreated: new Date().toISOString(),
  };
  setCases(prev => [newCase, ...prev]);
+ return newCase.id;
  }, [cases.length]);
 
  const removeCase = useCallback((id: string) => {

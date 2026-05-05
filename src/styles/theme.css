@@ -75,7 +75,7 @@
   --input:                 transparent;
   --input-background:      var(--neutral-50);
   --switch-background:     var(--neutral-300);
-  --font-weight-medium: 400;
+  --font-weight-medium: 600;
   --font-weight-normal: 400;
   --ring:                  var(--brand-primary);
   --chart-1: #1C75BC;
@@ -192,7 +192,7 @@
   --input:                 #1E2330;
   --input-background:      #1E2330;
   --ring:                  rgba(28, 117, 188, 0.5);
-  --font-weight-medium: 400;
+  --font-weight-medium: 600;
   --font-weight-normal: 400;
   --chart-1: #1C75BC;
   --chart-2: #00B6BD;
@@ -270,7 +270,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
+    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
     font-weight: 400;
   }
 
@@ -341,25 +341,60 @@
   /* ── Premium card shadow scale ── */
   .shadow-card {
     box-shadow:
-      0 0 0 1px rgba(0, 0, 0, 0.04),
-      0 2px 4px rgba(0, 0, 0, 0.04),
-      0 8px 16px rgba(0, 0, 0, 0.04);
+      0 1px 4px rgba(107, 114, 128, 0.07),
+      0 4px 16px rgba(107, 114, 128, 0.05);
+  }
+  @media (min-width: 768px) {
+    .shadow-card {
+      box-shadow:
+        0 1px 4px rgba(107, 114, 128, 0.08),
+        0 6px 20px rgba(107, 114, 128, 0.06);
+    }
   }
   .dark .shadow-card {
     box-shadow:
-      0 0 0 1px rgba(255, 255, 255, 0.05),
-      0 2px 8px rgba(0, 0, 0, 0.3);
+      0 0 0 1px rgba(255, 255, 255, 0.04),
+      0 2px 8px rgba(0, 0, 0, 0.18),
+      0 8px 24px rgba(0, 0, 0, 0.12);
   }
   .shadow-card-hover {
     box-shadow:
       0 0 0 1px rgba(0, 0, 0, 0.05),
-      0 4px 8px rgba(0, 0, 0, 0.06),
-      0 16px 32px rgba(0, 0, 0, 0.06);
+      0 4px 12px rgba(0, 0, 0, 0.07),
+      0 18px 36px rgba(0, 0, 0, 0.08);
+  }
+  .dark .shadow-card-hover {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.07),
+      0 4px 16px rgba(0, 0, 0, 0.35),
+      0 18px 44px rgba(0, 0, 0, 0.26),
+      0 0 48px rgba(28, 117, 188, 0.06);
   }
   .shadow-float {
     box-shadow:
-      0 4px 12px rgba(0, 0, 0, 0.08),
-      0 16px 40px rgba(0, 0, 0, 0.06);
+      0 4px 16px rgba(0, 0, 0, 0.08),
+      0 20px 48px rgba(0, 0, 0, 0.07);
+  }
+  .dark .shadow-float {
+    box-shadow:
+      0 4px 20px rgba(0, 0, 0, 0.35),
+      0 20px 56px rgba(0, 0, 0, 0.28);
+  }
+
+  /* ── Desktop page header depth (md+ only) ── */
+  @media (min-width: 768px) {
+    .shadow-header {
+      box-shadow:
+        0 1px 0 rgba(0, 0, 0, 0.03),
+        0 4px 20px rgba(0, 0, 0, 0.035),
+        0 1px 4px rgba(0, 0, 0, 0.03);
+    }
+    .dark .shadow-header {
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.04),
+        0 4px 24px rgba(0, 0, 0, 0.32),
+        0 1px 4px rgba(0, 0, 0, 0.22);
+    }
   }
 
   /* ── Base transition for all interactive elements ── */
@@ -406,6 +441,8 @@
     .text-h1 {
       font-size: var(--text-h1-desktop);
       line-height: var(--line-height-h1-desktop);
+      font-weight: 700 !important;
+      letter-spacing: -0.02em;
     }
   }
 
@@ -426,6 +463,8 @@
     .text-h2 {
       font-size: var(--text-h2-desktop);
       line-height: var(--line-height-h2-desktop);
+      font-weight: 600 !important;
+      letter-spacing: -0.01em;
     }
   }
 
@@ -446,6 +485,7 @@
     .text-h3 {
       font-size: var(--text-h3-desktop);
       line-height: var(--line-height-h3-desktop);
+      font-weight: 600 !important;
     }
   }
 
@@ -475,10 +515,22 @@
     font-weight: var(--font-weight-normal);
   }
 
+  @media (min-width: 768px) {
+    .text-small {
+      font-size: 0.9375rem; /* 15px */
+    }
+  }
+
   .text-caption {
     font-size: var(--text-caption-mobile);
     line-height: var(--line-height-caption);
-    font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-normal);
+  }
+
+  @media (min-width: 768px) {
+    .text-caption {
+      font-size: 0.8125rem; /* 13px */
+    }
   }
 
   /* Responsive Container Padding */

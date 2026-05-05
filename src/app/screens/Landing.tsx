@@ -56,13 +56,13 @@ export function Landing() {
  return (
  <div className="min-h-screen bg-gray-50 dark:bg-background text-gray-900 selection:bg-emerald-500/30">
  {/* Navbar */}
- <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-[1200px] bg-white/80 backdrop-blur-xl border border-white/20 rounded-full px-6 py-3 flex items-center justify-between">
- <Link to="/" className="text-2xl font-normal tracking-tight text-gray-900">
+ <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-[1500px] bg-white/80 backdrop-blur-xl border border-white/20 rounded-full px-6 py-3 flex items-center justify-between">
+ <Link to="/" className="text-h2 font-semibold tracking-tight text-gray-900">
  VYBE
  </Link>
 
  {/* Desktop Links */}
- <div className="hidden md:flex items-center gap-8 text-sm font-normal text-gray-600">
+ <div className="hidden md:flex items-center gap-8 text-small font-normal text-gray-600">
  <a href="#platform" className="hover:text-emerald-600 transition-colors">Platform</a>
  <a href="#features" className="hover:text-emerald-600 transition-colors">Features</a>
  <a href="#insights" className="hover:text-emerald-600 transition-colors">Market Insights</a>
@@ -71,10 +71,10 @@ export function Landing() {
 
  {/* Auth Buttons */}
  <div className="hidden md:flex items-center gap-4">
- <Link to="/signin" className="text-sm font-normal text-gray-900 hover:text-emerald-600 transition-colors">
+ <Link to="/signin" className="text-small font-semibold text-gray-900 hover:text-emerald-600 transition-colors">
  Login
  </Link>
- <Link to="/signup" className="flex items-center gap-2 dark:bg-background hover:bg-black/90 dark:hover:bg-white/90 text-black px-5 py-2.5 rounded-full text-sm font-normal transition-all shadow-brand-gold/8 hover:shadow-brand-gold/40">
+ <Link to="/signup" className="flex items-center gap-2 dark:bg-background hover:bg-black/90 dark:hover:bg-white/90 text-black px-5 py-2.5 rounded-full text-small font-semibold transition-all shadow-brand-gold/8 hover:shadow-brand-gold/40">
  Get Started
  <ArrowRight className="w-4 h-4" />
  </Link>
@@ -98,17 +98,17 @@ export function Landing() {
  exit={{ opacity: 0, y: -20 }}
  className="fixed inset-0 z-40 bg-white/95 backdrop-blur-xl pt-24 px-6 md:hidden flex flex-col"
  >
- <div className="flex flex-col gap-6 text-xl font-normal text-gray-900 mb-6 md:mb-8 lg:mb-10">
+ <div className="flex flex-col gap-6 text-h3 font-semibold text-gray-900 mb-6 md:mb-8 lg:mb-10">
  <a href="#platform" onClick={() => setIsMobileMenuOpen(false)}>Platform</a>
  <a href="#features" onClick={() => setIsMobileMenuOpen(false)}>Features</a>
  <a href="#insights" onClick={() => setIsMobileMenuOpen(false)}>Market Insights</a>
  <a href="#how-it-works" onClick={() => setIsMobileMenuOpen(false)}>How It Works</a>
  </div>
  <div className="flex flex-col gap-4 mt-auto pb-12">
- <Link to="/signin" className="w-full py-4 text-center border border-gray-200 rounded-xl text-lg font-normal">
+ <Link to="/signin" className="w-full py-4 text-center border border-gray-200 rounded-xl text-body font-normal">
  Login
  </Link>
- <Link to="/signup" className="w-full py-4 text-center dark:bg-background text-black rounded-xl text-lg font-normal">
+ <Link to="/signup" className="w-full py-4 text-center dark:bg-background text-black rounded-xl text-body font-normal">
  Get Started
  </Link>
  </div>
@@ -119,13 +119,13 @@ export function Landing() {
  {/* Hero Section */}
  <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden">
  {/* Background gradient blur */}
- <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[800px] bg-gradient-to-b from-gray-200 via-blue-50 to-transparent rounded-full blur-[100px] opacity-60 -z-10" />
+ <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1500px] h-[800px] bg-gradient-to-b from-gray-200 via-blue-50 to-transparent rounded-full blur-[100px] opacity-60 -z-10" />
  
  <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
  <motion.div 
  initial={{ opacity: 0, y: 20 }}
  animate={{ opacity: 1, y: 0 }}
- className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/50 border border-gray-200 backdrop-blur-md mb-8 text-sm font-normal text-gray-600"
+ className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/50 border border-gray-200 backdrop-blur-md mb-8 text-small font-normal text-gray-600"
  >
  <span className="w-2 h-2 rounded-full bg-black dark:bg-white animate-pulse" />
  Institutional Intelligence for Real Estate owners.
@@ -135,7 +135,7 @@ export function Landing() {
  initial={{ opacity: 0, y: 20 }}
  animate={{ opacity: 1, y: 0 }}
  transition={{ delay: 0.1 }}
- className="text-5xl md:text-7xl lg:text-[84px] font-normal tracking-tight text-gray-500 leading-[1.1] mb-8"
+ className="text-h1 md:text-h1 lg:text-h1 font-normal tracking-tight text-gray-500 leading-[1.1] mb-8"
  >
  Monetize <span className="text-gray-900">Land</span><br />
  With Precise <span className="text-gray-900">Strategy & Execution.</span>
@@ -145,7 +145,7 @@ export function Landing() {
  initial={{ opacity: 0, y: 20 }}
  animate={{ opacity: 1, y: 0 }}
  transition={{ delay: 0.2 }}
- className="text-lg md:text-xl text-gray-600 max-w-2xl mb-16 leading-relaxed"
+ className="text-body md:text-h3 text-gray-600 max-w-2xl mb-16 leading-relaxed"
  >
  Vybe analyzes your land through real-time market intelligence, structures the most viable investment path, and deploys verified execution partners to deliver results.
  </motion.p>
@@ -158,8 +158,8 @@ export function Landing() {
  className="w-full max-w-4xl relative z-10 bg-white/80 backdrop-blur-2xl border border-white/40 p-4 md:p-5 lg:p-6 md:p-4 md:p-5 lg:p-6 rounded-[32px] flex flex-col md:flex-row items-center justify-between gap-6"
  >
  <div className="text-left flex-1">
- <h3 className="text-xl font-normal text-gray-900 mb-1">Check Real time Market Value</h3>
- <p className="text-sm text-gray-500">Enter details to generate AI-backed initial estimates</p>
+ <h3 className="text-h3 font-semibold text-gray-900 mb-1">Check Real time Market Value</h3>
+ <p className="text-small text-gray-500">Enter details to generate AI-backed initial estimates</p>
  </div>
  <div className="flex w-full md:w-auto flex-col sm:flex-row gap-4 flex-1">
  <input 
@@ -199,9 +199,9 @@ export function Landing() {
 
  {/* Features Section */}
  <section id="features" className="py-24 px-6 bg-white relative">
- <div className="max-w-[1200px] mx-auto">
+ <div className="max-w-[1500px] mx-auto">
  <div className="text-center mb-20">
- <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-gray-900">
+ <h2 className="text-h1 md:text-h1 font-semibold tracking-tight text-gray-900">
  Everything You Need <span className="text-gray-400">in One Platform</span>
  </h2>
  </div>
@@ -228,10 +228,10 @@ export function Landing() {
  <div className={`mb-4 inline-flex p-3 rounded-xl ${activeFeature === idx ? 'bg-emerald-50 text-emerald-600' : 'bg-gray-50 dark:bg-background text-gray-500'}`}>
  {feature.icon}
  </div>
- <h3 className={`text-2xl font-normal mb-3 tracking-tight ${activeFeature === idx ? 'text-gray-900' : 'text-gray-600'}`}>
+ <h3 className={`text-h2 font-semibold mb-3 tracking-tight ${activeFeature === idx ? 'text-gray-900' : 'text-gray-600'}`}>
  {feature.title}
  </h3>
- <p className="text-gray-500 leading-relaxed text-sm md:text-base mb-6">
+ <p className="text-gray-500 leading-relaxed text-small md:text-body mb-6">
  {feature.desc}
  </p>
  
@@ -244,7 +244,7 @@ export function Landing() {
  className="grid grid-cols-2 gap-3"
  >
  {feature.tags.map((tag, tagIdx) => (
- <div key={tagIdx} className="bg-gray-50 dark:bg-background/80 border border-gray-200 rounded-xl p-3 text-xs font-normal text-gray-700">
+ <div key={tagIdx} className="bg-gray-50 dark:bg-background/80 border border-gray-200 rounded-xl p-3 text-caption font-normal text-gray-700">
  {tag}
  </div>
  ))}
@@ -281,12 +281,12 @@ export function Landing() {
 
  {/* Role Selection Section */}
  <section className="py-24 px-6 bg-gray-50 dark:bg-background relative">
- <div className="max-w-[1200px] mx-auto">
+ <div className="max-w-[1500px] mx-auto">
  <div className="text-center mb-16">
- <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-gray-900 mb-4">
+ <h2 className="text-h1 md:text-h1 font-semibold tracking-tight text-gray-900 mb-4">
  Choose Your Role
  </h2>
- <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+ <p className="text-body text-gray-500 max-w-2xl mx-auto">
  Vybe transforms real estate by giving you the tools and insights for your specific journey
  </p>
  </div>
@@ -301,8 +301,8 @@ export function Landing() {
  <Eye className="w-8 h-8 text-white/90" strokeWidth={1.5} />
  <div className="w-6 h-6 rounded-full bg-white/20" />
  </div>
- <h3 className="text-2xl font-normal mb-4">Casual User</h3>
- <div className="space-y-4 text-white/90 text-sm md:text-base leading-relaxed">
+ <h3 className="text-h2 font-semibold mb-4">Casual User</h3>
+ <div className="space-y-4 text-white/90 text-small md:text-body leading-relaxed">
  <p>Stay informed on real estate trends</p>
  <p>Access market insights, trends, and expert analysis to understand the real estate landscape.</p>
  </div>
@@ -317,16 +317,16 @@ export function Landing() {
  <Building2 className="w-8 h-8 text-white/90" strokeWidth={1.5} />
  <div className="w-6 h-6 rounded-full bg-white/20" />
  </div>
- <h3 className="text-2xl font-normal mb-4">Asset Owner</h3>
- <div className="space-y-4 text-white/90 text-sm md:text-base leading-relaxed">
+ <h3 className="text-h2 font-semibold mb-4">Asset Owner</h3>
+ <div className="space-y-4 text-white/90 text-small md:text-body leading-relaxed">
  <p>Maximize property value and performance</p>
  <p>Get feasibility reports, optimization insights, and tools to unlock the full potential of your assets.</p>
  </div>
  </motion.div>
  </div>
 
- <div className="mt-12 text-center flex items-center justify-center gap-2 text-sm text-gray-400">
- <span className="text-yellow-500 text-lg leading-none">💡</span>
+ <div className="mt-12 text-center flex items-center justify-center gap-2 text-small text-gray-400">
+ <span className="text-yellow-500 text-body leading-none">💡</span>
  <p><span className="font-normal text-gray-500">Pro tip:</span> Start with "Casual User" mode to explore without commitment</p>
  </div>
  </div>
@@ -339,9 +339,9 @@ export function Landing() {
  <div className="absolute inset-0 dark:bg-background/80" />
  </div>
 
- <div className="max-w-[1200px] mx-auto relative z-10">
+ <div className="max-w-[1500px] mx-auto relative z-10">
  <div className="mb-20">
- <h2 className="text-4xl md:text-5xl font-normal tracking-tight">
+ <h2 className="text-h1 md:text-h1 font-semibold tracking-tight">
  The VYBE <span className="text-brand-gold">Lifecycle</span>
  </h2>
  </div>
@@ -366,13 +366,13 @@ export function Landing() {
  whileInView={{ scale: 1 }}
  transition={{ delay: idx * 0.2, type: "spring", stiffness: 200 }}
  viewport={{ once: true }}
- className="w-14 h-14 rounded-full bg-black dark:bg-white border-2 border-brand-gold flex items-center justify-center text-xl font-normal text-brand-gold mb-6 relative z-10 shadow-[0_0_20px_rgba(var(--brand-gold-rgb),0.30)]"
+ className="w-14 h-14 rounded-full bg-black dark:bg-white border-2 border-brand-gold flex items-center justify-center text-h3 font-normal text-brand-gold mb-6 relative z-10 shadow-[0_0_20px_rgba(var(--brand-gold-rgb),0.30)]"
  >
  {step.num}
  </motion.div>
  <div className="md:text-center">
- <h4 className="text-xl font-normal mb-3">{step.title}</h4>
- <p className="text-gray-400 leading-relaxed text-sm">{step.desc}</p>
+ <h4 className="text-h3 font-semibold mb-3">{step.title}</h4>
+ <p className="text-gray-400 leading-relaxed text-small">{step.desc}</p>
  </div>
  </div>
  ))}
@@ -388,20 +388,20 @@ export function Landing() {
  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/10 blur-[80px] rounded-full pointer-events-none" />
  
  <div className="relative z-10">
- <div className="inline-flex items-center px-4 py-2.5 rounded-full bg-gray-50 dark:bg-background text-sm font-normal text-gray-600 mb-8">
+ <div className="inline-flex items-center px-4 py-2.5 rounded-full bg-gray-50 dark:bg-background text-small font-normal text-gray-600 mb-8">
  ✨ Start Your Journey
  </div>
  
- <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-gray-900 mb-8 leading-[1.2]">
+ <h2 className="text-h1 md:text-h1 font-semibold tracking-tight text-gray-900 mb-8 leading-[1.2]">
  Ready to Unlock <span className="text-gray-400">Your Land's Potential?</span>
  </h2>
  
- <p className="text-lg text-gray-500 mb-6 md:mb-8 lg:mb-10 max-w-2xl mx-auto">
+ <p className="text-body text-gray-500 mb-6 md:mb-8 lg:mb-10 max-w-2xl mx-auto">
  Join forward-thinking land owners and institutions who are utilizing data-driven strategies to maximize asset value with VYBE.
  </p>
  
  <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
- <Link to="/signup" className="w-full sm:w-auto container-padding py-4 md:py-6 dark:bg-background hover:bg-black/90 dark:hover:bg-white/90 text-black rounded-full text-base font-normal transition-all hover: flex items-center justify-center gap-2">
+ <Link to="/signup" className="w-full sm:w-auto container-padding py-4 md:py-6 dark:bg-background hover:bg-black/90 dark:hover:bg-white/90 text-black rounded-full text-body font-normal transition-all hover: flex items-center justify-center gap-2">
  Get Started Now <ArrowRight className="w-4 h-4" />
  </Link>
  
@@ -409,16 +409,16 @@ export function Landing() {
  
  <div className="grid grid-cols-2 md:grid-cols-3 gap-8 pt-12 border-t border-gray-100">
  <div>
- <div className="text-3xl font-normal text-gray-900 mb-1">10K+</div>
- <div className="text-sm text-gray-500 uppercase tracking-wider font-normal">Acres Analyzed</div>
+ <div className="text-h1 font-semibold text-gray-900 mb-1">10K+</div>
+ <div className="text-small text-gray-500 uppercase tracking-wider font-normal">Acres Analyzed</div>
  </div>
  <div>
- <div className="text-3xl font-normal text-gray-900 mb-1">99.9%</div>
- <div className="text-sm text-gray-500 uppercase tracking-wider font-normal">Uptime</div>
+ <div className="text-h1 font-semibold text-gray-900 mb-1">99.9%</div>
+ <div className="text-small text-gray-500 uppercase tracking-wider font-normal">Uptime</div>
  </div>
  <div className="col-span-2 md:col-span-1">
- <div className="text-3xl font-normal text-gray-900 mb-1">18M+</div>
- <div className="text-sm text-gray-500 uppercase tracking-wider font-normal">USD Value Unlocked</div>
+ <div className="text-h1 font-semibold text-gray-900 mb-1">18M+</div>
+ <div className="text-small text-gray-500 uppercase tracking-wider font-normal">USD Value Unlocked</div>
  </div>
  </div>
  </div>
@@ -427,10 +427,10 @@ export function Landing() {
 
  {/* Footer */}
  <footer className="bg-[#030213] text-white pt-24 pb-12 px-6">
- <div className="max-w-[1200px] mx-auto">
+ <div className="max-w-[1500px] mx-auto">
  <div className="grid grid-cols-2 md:grid-cols-5 gap-12 mb-20">
  <div className="col-span-2">
- <Link to="/" className="text-3xl font-normal tracking-tight mb-6 inline-block">
+ <Link to="/" className="text-h1 font-semibold tracking-tight mb-6 inline-block">
  VYBE
  </Link>
  <p className="text-gray-400 max-w-sm mb-8">
@@ -450,8 +450,8 @@ export function Landing() {
  </div>
  
  <div>
- <h5 className="font-normal text-white mb-6 uppercase tracking-wider text-xs">Platform</h5>
- <ul className="flex flex-col gap-4 text-sm text-gray-400">
+ <h5 className="font-semibold text-white mb-6 uppercase tracking-wider text-caption">Platform</h5>
+ <ul className="flex flex-col gap-4 text-small text-gray-400">
  <li><a href="#" className="hover:text-brand-gold transition-colors">Features</a></li>
  <li><a href="#" className="hover:text-brand-gold transition-colors">Pricing</a></li>
  <li><a href="#" className="hover:text-brand-gold transition-colors">Security</a></li>
@@ -460,8 +460,8 @@ export function Landing() {
  </div>
  
  <div>
- <h5 className="font-normal text-white mb-6 uppercase tracking-wider text-xs">Resources</h5>
- <ul className="flex flex-col gap-4 text-sm text-gray-400">
+ <h5 className="font-semibold text-white mb-6 uppercase tracking-wider text-caption">Resources</h5>
+ <ul className="flex flex-col gap-4 text-small text-gray-400">
  <li><a href="#" className="hover:text-brand-gold transition-colors">Documentation</a></li>
  <li><a href="#" className="hover:text-brand-gold transition-colors">API Reference</a></li>
  <li><a href="#" className="hover:text-brand-gold transition-colors">Blog</a></li>
@@ -470,8 +470,8 @@ export function Landing() {
  </div>
  
  <div>
- <h5 className="font-normal text-white mb-6 uppercase tracking-wider text-xs">Company</h5>
- <ul className="flex flex-col gap-4 text-sm text-gray-400">
+ <h5 className="font-semibold text-white mb-6 uppercase tracking-wider text-caption">Company</h5>
+ <ul className="flex flex-col gap-4 text-small text-gray-400">
  <li><a href="#" className="hover:text-brand-gold transition-colors">About Us</a></li>
  <li><a href="#" className="hover:text-brand-gold transition-colors">Careers</a></li>
  <li><a href="#" className="hover:text-brand-gold transition-colors">Contact</a></li>
@@ -480,7 +480,7 @@ export function Landing() {
  </div>
  </div>
  
- <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+ <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-small text-gray-500">
  <p>© 2026 VYBE Platform. All rights reserved.</p>
  <div className="flex gap-6">
  <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>

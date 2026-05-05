@@ -68,25 +68,25 @@ export function SignIn() {
  <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-background">
 
  {/* ── Hero ── */}
- <div className="relative bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] px-5 pt-8 pb-6 flex-shrink-0">
+ <div className="relative bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] shadow-header px-5 pt-8 pb-6 flex-shrink-0">
  <div className="absolute top-4 right-4"><ThemeToggle /></div>
  <div className="flex justify-center mb-5">
  <VybeLogo width={64} height={40} />
  </div>
  {step === 'email' ? (
  <div className="text-center">
- <p className="text-xs tracking-[0.16em] uppercase text-brand-primary mb-2">Sign In</p>
- <h1 className="text-2xl font-normal text-gray-900 dark:text-white tracking-tight leading-none mb-1.5">Welcome Back</h1>
- <p className="text-sm text-gray-500 dark:text-white/50">Sign in to your VYBE account</p>
+ <p className="text-caption tracking-[0.16em] uppercase text-brand-primary mb-2">Sign In</p>
+ <h1 className="text-h2 font-semibold text-gray-900 dark:text-white tracking-tight leading-none mb-1.5">Welcome Back</h1>
+ <p className="text-small text-gray-500 dark:text-white/50">Sign in to your VYBE account</p>
  </div>
  ) : (
  <div className="text-center">
  <button onClick={() => setStep('email')} className="flex items-center gap-2 text-gray-500 dark:text-white/50 active:text-gray-900 dark:active:text-white transition-colors mb-4 mx-auto">
  <ArrowRight className="w-4 h-4 rotate-180" strokeWidth={1.5} />
- <span className="text-sm">Back</span>
+ <span className="text-small">Back</span>
  </button>
- <h1 className="text-2xl font-normal text-gray-900 dark:text-white tracking-tight leading-none mb-1.5">Verify Email</h1>
- <p className="text-sm text-gray-500 dark:text-white/50">Code sent to <span className="text-brand-primary">{email}</span></p>
+ <h1 className="text-h2 font-semibold text-gray-900 dark:text-white tracking-tight leading-none mb-1.5">Verify Email</h1>
+ <p className="text-small text-gray-500 dark:text-white/50">Code sent to <span className="text-brand-primary">{email}</span></p>
  </div>
  )}
  </div>
@@ -105,7 +105,7 @@ export function SignIn() {
  className="w-full bg-gray-50 dark:bg-white/[0.04]
  border border-gray-200 dark:border-white/[0.08]
  rounded-xl px-4 py-3.5 mb-5
- text-sm text-gray-900 dark:text-white
+ text-small text-gray-900 dark:text-white
  hover:bg-gray-100 dark:hover:bg-white/[0.06]
  transition-all duration-200 flex items-center justify-center gap-2.5"
  >
@@ -121,13 +121,13 @@ export function SignIn() {
  {/* Divider */}
  <div className="flex items-center gap-3 mb-5">
  <div className="flex-1 h-px bg-gray-100 dark:bg-white/[0.06]" />
- <span className="text-xs text-gray-400 dark:text-white/30 tracking-[0.08em] uppercase">or</span>
+ <span className="text-caption text-gray-400 dark:text-white/30 tracking-[0.08em] uppercase">or</span>
  <div className="flex-1 h-px bg-gray-100 dark:bg-white/[0.06]" />
  </div>
 
  <form onSubmit={handleSendCode} className="space-y-4">
  <div>
- <label htmlFor="email" className="block text-xs tracking-[0.08em] uppercase text-gray-400 dark:text-white/40 mb-1.5">
+ <label htmlFor="email" className="block text-caption tracking-[0.08em] uppercase text-gray-400 dark:text-white/40 mb-1.5">
  Email Address
  </label>
  <div className="relative">
@@ -140,7 +140,7 @@ export function SignIn() {
  className="w-full bg-white dark:bg-white/[0.04]
  border border-gray-200 dark:border-white/[0.08]
  rounded-xl pl-10 pr-4 py-3.5
- text-sm text-gray-900 dark:text-white
+ text-small text-gray-900 dark:text-white
  placeholder:text-gray-400 dark:placeholder:text-white/30
  focus:outline-none focus:ring-2 focus:ring-brand-primary/20
  transition-all duration-200"
@@ -152,7 +152,7 @@ export function SignIn() {
  {error && (
  <div className="bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20 rounded-xl p-3 flex items-start gap-2.5">
  <AlertCircle className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" strokeWidth={1.5} />
- <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+ <p className="text-small text-red-600 dark:text-red-400">{error}</p>
  </div>
  )}
 
@@ -160,7 +160,7 @@ export function SignIn() {
  type="submit"
  disabled={isLoading}
  className="w-full bg-brand-primary hover:bg-brand-primary-hover text-white
- px-6 py-4 rounded-xl text-sm font-normal
+ px-6 py-4 rounded-xl text-small font-semibold
  transition-all duration-200
  disabled:opacity-50 disabled:cursor-not-allowed
  flex items-center justify-center gap-2"
@@ -173,7 +173,7 @@ export function SignIn() {
  </button>
  </form>
 
- <p className="text-sm text-gray-400 dark:text-white/40 text-center mt-6">
+ <p className="text-small text-gray-400 dark:text-white/40 text-center mt-6">
  Don't have an account?{' '}
  <Link to="/signup" className="text-brand-primary font-normal">Sign Up</Link>
  </p>
@@ -196,7 +196,7 @@ export function SignIn() {
  if (e.key === 'Backspace' && !digit && index > 0)
  document.getElementById(`code-${index - 1}`)?.focus();
  }}
- className="w-12 h-14 text-center text-xl font-normal
+ className="w-12 h-14 text-center text-h3 font-normal
  bg-white dark:bg-white/[0.04]
  border border-gray-200 dark:border-white/[0.08]
  rounded-xl text-gray-900 dark:text-white
@@ -208,11 +208,11 @@ export function SignIn() {
 
  <div className="text-center mb-6">
  {canResend ? (
- <button onClick={handleResendCode} className="text-sm text-brand-primary font-normal">
+ <button onClick={handleResendCode} className="text-small text-brand-primary font-normal">
  Resend Code
  </button>
  ) : (
- <p className="text-sm text-gray-400 dark:text-white/40">
+ <p className="text-small text-gray-400 dark:text-white/40">
  Resend in <span className="text-gray-600 dark:text-white/60">{resendTimer}s</span>
  </p>
  )}
@@ -221,7 +221,7 @@ export function SignIn() {
  {error && (
  <div className="bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20 rounded-xl p-3 flex items-start gap-2.5 mb-5">
  <AlertCircle className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" strokeWidth={1.5} />
- <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+ <p className="text-small text-red-600 dark:text-red-400">{error}</p>
  </div>
  )}
 
@@ -229,7 +229,7 @@ export function SignIn() {
  onClick={handleVerify}
  disabled={isLoading || verificationCode.some(d => !d)}
  className="w-full bg-brand-primary hover:bg-brand-primary-hover text-white
- px-6 py-4 rounded-xl text-sm font-normal
+ px-6 py-4 rounded-xl text-small font-semibold
  transition-all duration-200
  disabled:opacity-50 disabled:cursor-not-allowed
  flex items-center justify-center gap-2"
@@ -241,7 +241,7 @@ export function SignIn() {
  )}
  </button>
 
- <p className="text-sm text-gray-400 dark:text-white/40 text-center mt-6">
+ <p className="text-small text-gray-400 dark:text-white/40 text-center mt-6">
  Don't have an account?{' '}
  <Link to="/signup" className="text-brand-primary font-normal">Sign Up</Link>
  </p>

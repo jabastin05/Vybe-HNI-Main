@@ -100,12 +100,12 @@ export function NotificationDropdown() {
              {/* Header */}
              <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 dark:border-white/[0.05] flex-shrink-0">
                <div>
-                 <h3 className="text-sm font-normal text-gray-900 dark:text-white">Notifications</h3>
-                 {unread > 0 && <p className="text-xs text-gray-400 dark:text-white/40 mt-0.5">{unread} unread</p>}
+                 <h3 className="text-small font-normal text-gray-900 dark:text-white">Notifications</h3>
+                 {unread > 0 && <p className="text-caption text-gray-400 dark:text-white/40 mt-0.5">{unread} unread</p>}
                </div>
                <div className="flex items-center gap-3">
                  {unread > 0 && (
-                   <button onClick={markAllRead} className="flex items-center gap-1 text-xs text-brand-primary hover:text-brand-primary-hover transition-colors">
+                   <button onClick={markAllRead} className="flex items-center gap-1 text-caption text-brand-primary hover:text-brand-primary-hover transition-colors">
                      <Check className="w-3 h-3" strokeWidth={1.5} />
                      Mark all read
                    </button>
@@ -126,8 +126,8 @@ export function NotificationDropdown() {
                    <div className="w-12 h-12 rounded-2xl bg-gray-100 dark:bg-white/5 flex items-center justify-center mb-3">
                      <Bell className="w-5 h-5 text-gray-400 dark:text-white/30" strokeWidth={1.5} />
                    </div>
-                   <p className="text-sm text-gray-500 dark:text-white/40">All caught up</p>
-                   <p className="text-xs text-gray-400 dark:text-white/25 mt-1">No new notifications</p>
+                   <p className="text-small text-gray-500 dark:text-white/40">All caught up</p>
+                   <p className="text-caption text-gray-400 dark:text-white/25 mt-1">No new notifications</p>
                  </div>
                ) : (
                  notifications.map((n, idx) => {
@@ -153,7 +153,7 @@ export function NotificationDropdown() {
                        {/* Content */}
                        <div className="flex-1 min-w-0">
                          <div className="flex items-start justify-between gap-2">
-                           <p className={`text-sm leading-snug ${!n.read ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-white/60'}`}>
+                           <p className={`text-small leading-snug ${!n.read ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-white/60'}`}>
                              {n.title}
                            </p>
                            <button
@@ -166,10 +166,10 @@ export function NotificationDropdown() {
                              <X className="w-3 h-3" strokeWidth={1.5} />
                            </button>
                          </div>
-                         <p className="text-xs text-gray-500 dark:text-white/40 mt-0.5 leading-relaxed">{n.message}</p>
+                         <p className="text-caption text-gray-500 dark:text-white/40 mt-0.5 leading-relaxed">{n.message}</p>
                          <div className="flex items-center gap-1 mt-1.5">
                            <Clock className="w-3 h-3 text-gray-300 dark:text-white/20" strokeWidth={1.5} />
-                           <span className="text-xs text-gray-400 dark:text-white/30">{n.time}</span>
+                           <span className="text-caption text-gray-400 dark:text-white/30">{n.time}</span>
                          </div>
                        </div>
 
@@ -184,7 +184,7 @@ export function NotificationDropdown() {
              {/* Footer */}
              {notifications.length > 0 && (
                <div className="px-5 py-3.5 border-t border-gray-100 dark:border-white/[0.05] flex-shrink-0">
-                 <button className="w-full text-center text-xs text-brand-primary hover:text-brand-primary-hover transition-colors py-1">
+                 <button className="w-full text-center text-caption text-brand-primary hover:text-brand-primary-hover transition-colors py-1">
                    View all notifications
                  </button>
                </div>

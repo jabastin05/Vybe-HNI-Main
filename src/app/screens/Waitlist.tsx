@@ -78,7 +78,7 @@ export function Waitlist() {
  </div>
 
  {/* Main Heading */}
- <h2 className="text-h1 font-normal tracking-[-0.02em] text-[#1A1A1A] dark:text-white leading-tight mb-3">
+ <h2 className="text-h1 font-semibold tracking-[-0.02em] text-[#1A1A1A] dark:text-white leading-tight mb-3">
  You're on the list!
  </h2>
  
@@ -88,7 +88,7 @@ export function Waitlist() {
 
  {/* What Happens Next Section */}
  <div className="mb-8">
- <h3 className="text-small font-normal text-[#1A1A1A] dark:text-white mb-5 tracking-tight">
+ <h3 className="text-small font-semibold text-[#1A1A1A] dark:text-white mb-5 tracking-tight">
  What Happens Next
  </h3>
  
@@ -98,7 +98,7 @@ export function Waitlist() {
  <div className="w-10 h-10 rounded-[8px] bg-blue-500/10 flex items-center justify-center mb-3 mx-auto">
  <Users className="w-5 h-5 text-blue-500" strokeWidth={1.5} />
  </div>
- <div className="text-small font-normal text-[#1A1A1A] dark:text-white mb-1">
+ <div className="text-small font-semibold text-[#1A1A1A] dark:text-white mb-1">
  Review Process
  </div>
  <div className="text-caption text-[#8E8E93] leading-snug">
@@ -111,7 +111,7 @@ export function Waitlist() {
  <div className="w-10 h-10 rounded-[8px] bg-[#28FF6E]/10 flex items-center justify-center mb-3 mx-auto">
  <Shield className="w-5 h-5 text-[#28FF6E]" strokeWidth={1.5} />
  </div>
- <div className="text-small font-normal text-[#1A1A1A] dark:text-white mb-1">
+ <div className="text-small font-semibold text-[#1A1A1A] dark:text-white mb-1">
  Verification
  </div>
  <div className="text-caption text-[#8E8E93] leading-snug">
@@ -124,7 +124,7 @@ export function Waitlist() {
  <div className="w-10 h-10 rounded-[8px] bg-emerald-500/10 flex items-center justify-center mb-3 mx-auto">
  <TrendingUp className="w-5 h-5 text-emerald-500" strokeWidth={1.5} />
  </div>
- <div className="text-small font-normal text-[#1A1A1A] dark:text-white mb-1">
+ <div className="text-small font-semibold text-[#1A1A1A] dark:text-white mb-1">
  Activation
  </div>
  <div className="text-caption text-[#8E8E93] leading-snug">

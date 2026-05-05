@@ -4,6 +4,7 @@ import { ArrowLeft, Upload, FileText, CheckCircle2, AlertCircle, MapPin, Map as 
 import { Link } from 'react-router';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { useProperties } from '../contexts/PropertiesContext';
+import { toast } from 'sonner';
 
 type Step = 'details' | 'documents' | 'review';
 
@@ -60,6 +61,7 @@ export function PropertyUpload() {
  const [uploadedDocs, setUploadedDocs] = useState<UploadedDocument[]>([]);
  const [showMap, setShowMap] = useState(false);
  const [isEditing, setIsEditing] = useState<string | null>(null);
+ const [isSubmitting, setIsSubmitting] = useState(false);
 
  const [propertyData, setPropertyData] = useState<PropertyData>({
  name: '',
@@ -241,6 +243,38 @@ export function PropertyUpload() {
  };
 
  const documentRequirements = getDocumentRequirements();
+ const trustScore = (() => {
+ let totalScore = 0;
+ let requiredCount = 0;
+ let verifiedRequiredCount = 0;
+ let completedCoreSections = 0;
+ let coreSections = 0;
+
+ Object.entries(documentRequirements.categories).forEach(([, cat]) => {
+ const uploaded = cat.documents.filter(doc =>
+ uploadedDocs.find(d => d.documentType === doc && d.status === 'verified')
+ ).length;
+
+ if (cat.weight > 0) {
+ coreSections += 1;
+ requiredCount += cat.documents.length;
+ verifiedRequiredCount += uploaded;
+ if (uploaded === cat.documents.length) completedCoreSections += 1;
+ totalScore += (uploaded / cat.documents.length) * (cat.weight * 100);
+ }
+ });
+
+ const score = Math.round(totalScore);
+
+ return {
+ score,
+ requiredCount,
+ verifiedRequiredCount,
+ completedCoreSections,
+ coreSections,
+ label: score >= 90 ? 'Review ready' : score >= 60 ? 'Almost ready' : 'Needs documents',
+ };
+ })();
 
  const requiredDocuments = [
  { type: 'sale-deed', label: 'Sale Deed', required: true },
@@ -340,7 +374,6 @@ export function PropertyUpload() {
  };
 
  const handleMapClick = () => {
- // Simulate reverse geocoding from map coordinates
  setPropertyData({
  ...propertyData,
  latitude: '12.9716',
@@ -351,6 +384,8 @@ export function PropertyUpload() {
  address: 'Survey No. 42, Whitefield Main Road, Bangalore',
  district: 'Bangalore Urban',
  });
+ setShowMap(false);
+ toast.success('Address auto-filled', { description: 'Location fields populated from map pin.' });
  };
 
  const getStepNumber = (stepName: Step): number => {
@@ -369,17 +404,17 @@ export function PropertyUpload() {
  {/* Back */}
  <div className="flex items-center mb-4">
  <Link
- to="/properties"
+ to="/my-properties"
  className="flex items-center gap-2 text-white/60 active:text-white transition-colors duration-200"
  >
  <ArrowLeft className="w-4 h-4" />
- <span className="text-sm">Back</span>
+ <span className="text-small">Back</span>
  </Link>
  </div>
 
  {/* Title */}
- <p className="text-xs tracking-[0.16em] uppercase text-white/40 mb-2">Add Property</p>
- <h1 className="text-3xl font-normal tracking-tight text-white leading-none mb-3">
+ <p className="text-caption tracking-[0.16em] uppercase text-white/40 mb-2">Add Property</p>
+ <h1 className="text-h1 font-semibold tracking-tight text-white leading-none mb-3">
  New Property Case
  </h1>
 
@@ -391,14 +426,14 @@ export function PropertyUpload() {
  const active = num === currentStepNumber;
  return (
  <div key={s} className="flex items-center gap-1.5">
- <div className={`w-5 h-5 rounded-full flex items-center justify-center text-xs flex-shrink-0 ${
+ <div className={`w-5 h-5 rounded-full flex items-center justify-center text-caption flex-shrink-0 ${
  done ? 'bg-white text-brand-navy' :
  active ? 'bg-white/20 text-white ring-1 ring-white/40' :
  'bg-white/10 text-white/30'
  }`}>
  {done ? '✓' : num}
  </div>
- <span className={`text-xs ${active ? 'text-white' : done ? 'text-white/60' : 'text-white/30'}`}>
+ <span className={`text-caption ${active ? 'text-white' : done ? 'text-white/60' : 'text-white/30'}`}>
  {s === 'details' ? 'Details' : s === 'documents' ? 'Docs' : 'Review'}
  </span>
  {i < 2 && <div className="w-4 h-px bg-white/20 ml-1" />}
@@ -412,16 +447,15 @@ export function PropertyUpload() {
  </div>
 
  {/* ── Desktop Header (hidden md:block) ────────────── */}
- <div className="hidden md:block bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] sticky md:top-0 z-30">
- <div className="max-w-[1200px] mx-auto container-padding py-6">
+ <div className="hidden md:block bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] shadow-header sticky md:top-0 z-30">
+ <div className="max-w-[1500px] mx-auto container-padding py-6">
  <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
- <div className="flex flex-col gap-2">
+ <div className="flex items-start gap-4">
  <Link
  to="/properties"
- className="flex items-center gap-2 text-small text-gray-500 dark:text-white/50 hover:text-gray-900 dark:hover:text-white transition-colors w-fit"
+ className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-brand-navy/[0.04] dark:bg-white/[0.04] hover:bg-brand-navy/[0.08] dark:hover:bg-white/[0.08] flex-shrink-0 transition-colors"
  >
- <ArrowLeft className="w-4 h-4" />
- Back to Properties
+ <ArrowLeft className="w-4 h-4 text-gray-500 dark:text-white/50" />
  </Link>
  <div>
  <h1 className="text-caption tracking-wider uppercase text-gray-400 dark:text-white/50 mb-2">
@@ -447,7 +481,7 @@ export function PropertyUpload() {
  </div>
 
  {/* Main Content */}
- <div className="max-w-[1200px] mx-auto container-padding py-6 md:py-8 lg:py-10">
+ <div className="max-w-[1500px] mx-auto container-padding py-6 md:py-8 lg:py-10">
  {/* Progress Indicator — desktop only */}
  <div className="hidden md:block mb-16">
  <div className="flex items-center gap-3">
@@ -461,7 +495,7 @@ export function PropertyUpload() {
  <div className={`flex items-center gap-4 flex-1 ${
  isActive ? 'opacity-100' : isCompleted ? 'opacity-60' : 'opacity-30'
  }`}>
- <div className={`w-10 h-10 rounded-full flex items-center justify-center text-small font-normal transition-all ${
+ <div className={`w-10 h-10 rounded-full flex items-center justify-center text-small font-semibold transition-all ${
  isActive 
  ? 'bg-brand-navy dark:bg-white text-white dark:text-gray-900' 
  : isCompleted
@@ -492,13 +526,13 @@ export function PropertyUpload() {
  {/* Step 1: Location Details */}
  {step === 'details' && (
  <div className="space-y-6">
- <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl card-padding">
+ <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl card-padding shadow-card">
  <div className="flex items-center gap-4 mb-8">
  <div className="w-12 h-12 rounded-xl bg-emerald-500/10 dark:bg-gradient-to-br dark:from-emerald-500/20 dark:to-blue-500/20 flex items-center justify-center">
  <Building2 className="w-6 h-6 text-emerald-500 dark:text-emerald-400" />
  </div>
  <div>
- <h2 className="text-base font-normal tracking-tight text-gray-900 dark:text-white/95">
+ <h2 className="text-body font-semibold tracking-tight text-gray-900 dark:text-white/95">
  Property Details
  </h2>
  <p className="text-small text-gray-400 dark:text-white/40">
@@ -563,14 +597,14 @@ export function PropertyUpload() {
 
  {/* Text Content */}
  <div className="text-left">
- <h3 className={`text-small font-normal mb-1 transition-colors duration-300 ${
+ <h3 className={`text-small font-semibold mb-1 transition-colors duration-300 ${
  propertyData.buildingType === 'residential'
  ? 'text-brand-gold dark:text-brand-gold'
  : 'text-gray-900/80 dark:text-white/80 group-hover:text-gray-900 dark:group-hover:text-white'
  }`}>
  Residential
  </h3>
- <p className={`text-[11px] leading-relaxed transition-colors duration-300 hidden sm:block ${
+ <p className={`text-h3 font-semibold leading-snug transition-colors duration-300 hidden sm:block ${
  propertyData.buildingType === 'residential'
  ? 'text-gray-600 dark:text-white/60'
  : 'text-gray-600 dark:text-white/50 group-hover:text-gray-900/70 dark:group-hover:text-white/70'
@@ -629,14 +663,14 @@ export function PropertyUpload() {
 
  {/* Text Content */}
  <div className="text-left">
- <h3 className={`text-small font-normal mb-1 transition-colors duration-300 ${
+ <h3 className={`text-small font-semibold mb-1 transition-colors duration-300 ${
  propertyData.buildingType === 'commercial'
  ? 'text-brand-gold dark:text-brand-gold'
  : 'text-gray-900/80 dark:text-white/80 group-hover:text-gray-900 dark:group-hover:text-white'
  }`}>
  Commercial
  </h3>
- <p className={`text-[11px] leading-relaxed transition-colors duration-300 hidden sm:block ${
+ <p className={`text-h3 font-semibold leading-snug transition-colors duration-300 hidden sm:block ${
  propertyData.buildingType === 'commercial'
  ? 'text-gray-600 dark:text-white/60'
  : 'text-gray-600 dark:text-white/50 group-hover:text-gray-900/70 dark:group-hover:text-white/70'
@@ -655,7 +689,7 @@ export function PropertyUpload() {
  Property Type <span className="text-red-400">*</span>
  </label>
  {!propertyData.buildingType ? (
- <div className="w-full bg-brand-navy/[0.02] dark:bg-white/[0.02] shadow-card rounded-xl px-6 py-2.5 text-center">
+ <div className="w-full bg-brand-navy/[0.02] dark:bg-white/[0.02] rounded-xl px-6 py-2.5 text-center">
  <p className="text-small text-gray-400 dark:text-white/30">
  Please select a building type first
  </p>
@@ -674,7 +708,7 @@ export function PropertyUpload() {
  }`}
  >
  {/* Background Gradient Orb */}
- <div className={`absolute -top-8 -right-8 w-24 h-24 rounded-full blur-2xl transition-opacity duration-300 ${ 
+ <div className={`absolute -top-8 -right-8 w-24 h-24 rounded-full blur-2xl transition-opacity duration-300 ${
  propertyData.propertyType === type ? 'opacity-30' : 'opacity-0 group-hover:opacity-10'
  }`} style={{ background: 'radial-gradient(circle, rgba(var(--brand-gold-rgb), 0.35) 0%, transparent 70%)' }} />
  
@@ -698,7 +732,7 @@ export function PropertyUpload() {
  </div>
  
  {/* Text Content */}
- <h3 className={`text-small font-normal transition-colors duration-300 ${ 
+ <h3 className={`text-small font-semibold transition-colors duration-300 ${
  propertyData.propertyType === type
  ? 'text-brand-gold dark:text-brand-gold'
  : 'text-gray-900/80 dark:text-white/80 group-hover:text-gray-900 dark:group-hover:text-white'
@@ -722,7 +756,7 @@ export function PropertyUpload() {
  value={propertyData.name}
  onChange={(e) => setPropertyData({ ...propertyData, name: e.target.value })}
  placeholder="e.g., Whitefield Prime Land"
- className="w-full bg-brand-navy/[0.02] dark:bg-white/[0.02] shadow-card rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-gray-200 dark:focus:border-white/20 focus:bg-brand-navy/[0.04] dark:focus:bg-brand-navy/40 transition-all"
+ className="w-full bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-brand-primary/30 dark:focus:border-white/20 focus:bg-white dark:focus:bg-white/[0.06] transition-all"
  />
  <p className="text-caption text-gray-400 dark:text-white/30 mt-2">
  Give your property a memorable name for easy identification
@@ -746,7 +780,7 @@ export function PropertyUpload() {
  value={propertyData.plotSize}
  onChange={(e) => setPropertyData({ ...propertyData, plotSize: e.target.value })}
  placeholder="e.g., 5000 sq ft"
- className="w-full bg-brand-navy/[0.02] dark:bg-white/[0.02] shadow-card rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-gray-200 dark:focus:border-white/20 focus:bg-brand-navy/[0.04] dark:focus:bg-brand-navy/40 transition-all"
+ className="w-full bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-brand-primary/30 dark:focus:border-white/20 focus:bg-white dark:focus:bg-white/[0.06] transition-all"
  />
  <p className="text-caption text-gray-400 dark:text-white/30 mt-2">
  Purpose: HABU calculation
@@ -764,7 +798,7 @@ export function PropertyUpload() {
  value={propertyData.builtUpArea}
  onChange={(e) => setPropertyData({ ...propertyData, builtUpArea: e.target.value })}
  placeholder="e.g., 3000 sq ft"
- className="w-full bg-brand-navy/[0.02] dark:bg-white/[0.02] shadow-card rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-gray-200 dark:focus:border-white/20 focus:bg-brand-navy/[0.04] dark:focus:bg-brand-navy/40 transition-all"
+ className="w-full bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-brand-primary/30 dark:focus:border-white/20 focus:bg-white dark:focus:bg-white/[0.06] transition-all"
  />
  <p className="text-caption text-gray-400 dark:text-white/30 mt-2">
  Purpose: Development potential
@@ -780,7 +814,7 @@ export function PropertyUpload() {
  <select
  value={propertyData.yearOfConstruction}
  onChange={(e) => setPropertyData({ ...propertyData, yearOfConstruction: e.target.value })}
- className="w-full bg-brand-navy/[0.02] dark:bg-white/[0.02] shadow-card rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small focus:outline-none focus:border-gray-200 dark:focus:border-white/20 focus:bg-brand-navy/[0.04] dark:focus:bg-brand-navy/40 transition-all appearance-none cursor-pointer"
+ className="w-full bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small focus:outline-none focus:border-brand-primary/30 dark:focus:border-white/20 focus:bg-white dark:focus:bg-white/[0.06] transition-all appearance-none cursor-pointer"
  style={{
  backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238E8E93' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
  backgroundRepeat: 'no-repeat',
@@ -795,6 +829,12 @@ export function PropertyUpload() {
  <p className="text-caption text-gray-400 dark:text-white/30 mt-2">
  Purpose: {fieldConfig.yearLabel === 'Year of Construction' ? 'Redevelopment feasibility' : 'Ownership history'}
  </p>
+ {fieldConfig.yearLabel !== 'Year of Construction' && (
+ <p className="text-caption text-amber-500/70 dark:text-amber-400/60 mt-1 flex items-center gap-1">
+ <Info className="w-3 h-3 flex-shrink-0" />
+ Label changed from "Year of Construction" — this property type has no built structure
+ </p>
+ )}
  </div>
 
  {/* Number of Floors - Conditionally rendered */}
@@ -808,7 +848,7 @@ export function PropertyUpload() {
  value={propertyData.numberOfFloors}
  onChange={(e) => setPropertyData({ ...propertyData, numberOfFloors: e.target.value })}
  placeholder="e.g., G+2"
- className="w-full bg-brand-navy/[0.02] dark:bg-white/[0.02] shadow-card rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-gray-200 dark:focus:border-white/20 focus:bg-brand-navy/[0.04] dark:focus:bg-brand-navy/40 transition-all"
+ className="w-full bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-brand-primary/30 dark:focus:border-white/20 focus:bg-white dark:focus:bg-white/[0.06] transition-all"
  />
  <p className="text-caption text-gray-400 dark:text-white/30 mt-2">
  Purpose: Density evaluation
@@ -826,7 +866,7 @@ export function PropertyUpload() {
  value={propertyData.surveyNumber}
  onChange={(e) => setPropertyData({ ...propertyData, surveyNumber: e.target.value })}
  placeholder="e.g., 42/1A"
- className="w-full bg-brand-navy/[0.02] dark:bg-white/[0.02] shadow-card rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-gray-200 dark:focus:border-white/20 focus:bg-brand-navy/[0.04] dark:focus:bg-brand-navy/40 transition-all"
+ className="w-full bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-brand-primary/30 dark:focus:border-white/20 focus:bg-white dark:focus:bg-white/[0.06] transition-all"
  />
  <p className="text-caption text-gray-400 dark:text-white/30 mt-2">
  Purpose: Land registry lookup
@@ -841,7 +881,7 @@ export function PropertyUpload() {
  <select
  value={propertyData.currentUsage}
  onChange={(e) => setPropertyData({ ...propertyData, currentUsage: e.target.value })}
- className="w-full bg-brand-navy/[0.02] dark:bg-white/[0.02] shadow-card rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small focus:outline-none focus:border-gray-200 dark:focus:border-white/20 focus:bg-brand-navy/[0.04] dark:focus:bg-brand-navy/40 transition-all appearance-none cursor-pointer"
+ className="w-full bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small focus:outline-none focus:border-brand-primary/30 dark:focus:border-white/20 focus:bg-white dark:focus:bg-white/[0.06] transition-all appearance-none cursor-pointer"
  style={{
  backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238E8E93' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
  backgroundRepeat: 'no-repeat',
@@ -868,7 +908,7 @@ export function PropertyUpload() {
  value={propertyData.rentalIncome}
  onChange={(e) => setPropertyData({ ...propertyData, rentalIncome: e.target.value })}
  placeholder="e.g., ₹50,000/month"
- className="w-full bg-brand-navy/[0.02] dark:bg-white/[0.02] shadow-card rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-gray-200 dark:focus:border-white/20 focus:bg-brand-navy/[0.04] dark:focus:bg-brand-navy/40 transition-all"
+ className="w-full bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-brand-primary/30 dark:focus:border-white/20 focus:bg-white dark:focus:bg-white/[0.06] transition-all"
  />
  <p className="text-caption text-gray-400 dark:text-white/30 mt-2">
  Purpose: Yield estimation
@@ -917,7 +957,7 @@ export function PropertyUpload() {
  value={propertyData.country}
  onChange={(e) => setPropertyData({ ...propertyData, country: e.target.value })}
  placeholder="e.g., India"
- className="w-full bg-brand-navy/[0.02] dark:bg-white/[0.02] shadow-card rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-gray-200 dark:focus:border-white/20 focus:bg-brand-navy/[0.04] dark:focus:bg-brand-navy/40 transition-all"
+ className="w-full bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-brand-primary/30 dark:focus:border-white/20 focus:bg-white dark:focus:bg-white/[0.06] transition-all"
  />
  </div>
 
@@ -931,7 +971,7 @@ export function PropertyUpload() {
  value={propertyData.state}
  onChange={(e) => setPropertyData({ ...propertyData, state: e.target.value })}
  placeholder="e.g., Karnataka"
- className="w-full bg-brand-navy/[0.02] dark:bg-white/[0.02] shadow-card rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-gray-200 dark:focus:border-white/20 focus:bg-brand-navy/[0.04] dark:focus:bg-brand-navy/40 transition-all"
+ className="w-full bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-brand-primary/30 dark:focus:border-white/20 focus:bg-white dark:focus:bg-white/[0.06] transition-all"
  />
  </div>
 
@@ -945,7 +985,7 @@ export function PropertyUpload() {
  value={propertyData.city}
  onChange={(e) => setPropertyData({ ...propertyData, city: e.target.value })}
  placeholder="e.g., Bangalore"
- className="w-full bg-brand-navy/[0.02] dark:bg-white/[0.02] shadow-card rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-gray-200 dark:focus:border-white/20 focus:bg-brand-navy/[0.04] dark:focus:bg-brand-navy/40 transition-all"
+ className="w-full bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-brand-primary/30 dark:focus:border-white/20 focus:bg-white dark:focus:bg-white/[0.06] transition-all"
  />
  </div>
  </div>
@@ -961,7 +1001,7 @@ export function PropertyUpload() {
  value={propertyData.address}
  onChange={(e) => setPropertyData({ ...propertyData, address: e.target.value })}
  placeholder="e.g., Survey No. 42, Whitefield Main Road"
- className="w-full bg-brand-navy/[0.02] dark:bg-white/[0.02] shadow-card rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-gray-200 dark:focus:border-white/20 focus:bg-brand-navy/[0.04] dark:focus:bg-brand-navy/40 transition-all"
+ className="w-full bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-brand-primary/30 dark:focus:border-white/20 focus:bg-white dark:focus:bg-white/[0.06] transition-all"
  />
  <div className="absolute right-4 top-1/2 -translate-y-1/2">
  <MapPin className="w-5 h-5 text-gray-400 dark:text-white/30" />
@@ -983,14 +1023,14 @@ export function PropertyUpload() {
  value={propertyData.latitude}
  onChange={(e) => setPropertyData({ ...propertyData, latitude: e.target.value })}
  placeholder="Latitude (e.g., 12.9716)"
- className="bg-brand-navy/[0.02] dark:bg-white/[0.02] shadow-card rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-gray-200 dark:focus:border-white/20 transition-all"
+ className="bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-brand-primary/30 dark:focus:border-white/20 focus:bg-white dark:focus:bg-white/[0.06] transition-all"
  />
  <input
  type="text"
  value={propertyData.longitude}
  onChange={(e) => setPropertyData({ ...propertyData, longitude: e.target.value })}
  placeholder="Longitude (e.g., 77.5946)"
- className="bg-brand-navy/[0.02] dark:bg-white/[0.02] shadow-card rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-gray-200 dark:focus:border-white/20 transition-all"
+ className="bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-5 py-2.5 text-gray-900 dark:text-white/95 text-small placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:border-brand-primary/30 dark:focus:border-white/20 focus:bg-white dark:focus:bg-white/[0.06] transition-all"
  />
  </div>
  </div>
@@ -1054,93 +1094,93 @@ export function PropertyUpload() {
  {/* Document Requirements - Compact */}
  <div className="bg-white dark:bg-card border border-gray-100 dark:border-white/[0.06] rounded-2xl card-padding relative overflow-hidden">
  
- {/* Header with Integrated Score Ring */}
- <div className="flex items-start justify-between mb-8">
- <div className="flex items-start gap-4">
- <div className="w-10 h-10 rounded-[12px] bg-blue-500/10 flex items-center justify-center flex-shrink-0 shadow-inner">
- <FileText className="w-5 h-5 text-blue-500" />
- </div>
- <div>
+ {/* Header */}
+ <div className="flex flex-col lg:flex-row lg:items-start gap-5 lg:gap-8 mb-8">
+ <div className="flex items-start min-w-0 lg:flex-1">
+ <div className="min-w-0 flex-1">
  {/* Property Type Header */}
  <div className="mb-4">
- <h3 className="text-base font-normal tracking-tight text-gray-900 dark:text-white mb-2">
+ <h3 className="text-small font-semibold tracking-tight text-gray-900 dark:text-white mb-2">
  {propertyData.buildingType === 'residential' ? 'Residential' : 'Commercial'} {propertyData.propertyType}
  </h3>
- <p className="text-small font-normal text-gray-600 dark:text-white/50 leading-relaxed">
+ <p className="text-small text-gray-600 dark:text-white/50 leading-relaxed max-w-3xl">
  Submit documentation for comprehensive due diligence and institutional-grade analysis. 
  All files are encrypted and securely stored in your AI Vault with automatic backup.
  </p>
  </div>
 
  {/* Security Features Grid */}
- <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
- <div className="flex items-center gap-2 bg-white/85 dark:bg-white/[0.03] backdrop-blur-[20px] border border-white/40 dark:border-white/[0.08] rounded-[12px] px-3 py-2.5">
+ <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-2">
+ <div className="flex items-center gap-2 bg-gray-50/80 dark:bg-white/[0.03] border border-gray-100 dark:border-white/[0.08] rounded-[12px] px-3 py-2.5">
  <div className="flex items-center justify-center w-7 h-7 rounded-full bg-emerald-500/10">
  <Shield className="w-3.5 h-3.5 text-emerald-500" strokeWidth={1.5} />
  </div>
  <div>
  <div className="text-caption font-normal uppercase tracking-[0.05em] text-gray-400 dark:text-white/40">Security</div>
- <div className="text-caption font-normal text-gray-900 dark:text-white/90">Bank-Grade</div>
+ <div className="text-caption font-semibold text-gray-900 dark:text-white/90">Bank-Grade</div>
  </div>
  </div>
 
- <div className="flex items-center gap-2 bg-white/85 dark:bg-white/[0.03] backdrop-blur-[20px] border border-white/40 dark:border-white/[0.08] rounded-[12px] px-3 py-2.5">
+ <div className="flex items-center gap-2 bg-gray-50/80 dark:bg-white/[0.03] border border-gray-100 dark:border-white/[0.08] rounded-[12px] px-3 py-2.5">
  <div className="flex items-center justify-center w-7 h-7 rounded-full bg-purple-500/10">
  <Sparkles className="w-3.5 h-3.5 text-purple-500" strokeWidth={1.5} />
  </div>
  <div>
  <div className="text-caption font-normal uppercase tracking-[0.05em] text-gray-400 dark:text-white/40">Storage</div>
- <div className="text-caption font-normal text-gray-900 dark:text-white/90">AI Vault</div>
+ <div className="text-caption font-semibold text-gray-900 dark:text-white/90">AI Vault</div>
  </div>
  </div>
 
- <div className="flex items-center gap-2 bg-white/85 dark:bg-white/[0.03] backdrop-blur-[20px] border border-white/40 dark:border-white/[0.08] rounded-[12px] px-3 py-2.5">
+ <div className="flex items-center gap-2 bg-gray-50/80 dark:bg-white/[0.03] border border-gray-100 dark:border-white/[0.08] rounded-[12px] px-3 py-2.5">
  <div className="flex items-center justify-center w-7 h-7 rounded-full bg-blue-500/10">
  <Lock className="w-3.5 h-3.5 text-blue-500" strokeWidth={1.5} />
  </div>
  <div>
  <div className="text-caption font-normal uppercase tracking-[0.05em] text-gray-400 dark:text-white/40">Privacy</div>
- <div className="text-caption font-normal text-gray-900 dark:text-white/90">Encrypted</div>
+ <div className="text-caption font-semibold text-gray-900 dark:text-white/90">Encrypted</div>
  </div>
  </div>
 
- <div className="flex items-center gap-2 bg-white/85 dark:bg-white/[0.03] backdrop-blur-[20px] border border-white/40 dark:border-white/[0.08] rounded-[12px] px-3 py-2.5">
+ <div className="flex items-center gap-2 bg-gray-50/80 dark:bg-white/[0.03] border border-gray-100 dark:border-white/[0.08] rounded-[12px] px-3 py-2.5">
  <div className="flex items-center justify-center w-7 h-7 rounded-full bg-indigo-500/10">
  <CheckCircle2 className="w-3.5 h-3.5 text-indigo-500" strokeWidth={1.5} />
  </div>
  <div>
  <div className="text-caption font-normal uppercase tracking-[0.05em] text-gray-400 dark:text-white/40">Backup</div>
- <div className="text-caption font-normal text-gray-900 dark:text-white/90">Automatic</div>
+ <div className="text-caption font-semibold text-gray-900 dark:text-white/90">Automatic</div>
  </div>
  </div>
  </div>
  </div>
  </div>
  
- {/* Score Ring moved to top right */}
- <div className="flex flex-col items-center gap-2">
- <div className="w-14 h-14 rounded-full border-[3px] border-gray-200 dark:border-white/[0.06] flex items-center justify-center relative shadow-inner bg-white/50 dark:bg-brand-navy/50">
- {(() => {
- let totalScore = 0;
- Object.entries(documentRequirements.categories).forEach(([key, cat]) => {
- const uploaded = cat.documents.filter(doc => 
- uploadedDocs.find(d => d.documentType === doc && d.status === 'verified')
- ).length;
- const categoryCompletion = uploaded / cat.documents.length;
- totalScore += categoryCompletion * (cat.weight * 100);
- });
- const currentScore = Math.round(totalScore);
- return (
- <>
- <svg className="absolute inset-0 w-full h-full -rotate-90 scale-[1.05]" viewBox="0 0 100 100">
- <circle cx="50" cy="50" r="46" className="stroke-emerald-500 transition-all duration-1000" strokeWidth="6" fill="none" strokeDasharray="289.02" strokeDashoffset={289.02 - (289.02 * currentScore) / 100} strokeLinecap="round" />
- </svg>
- <span className="text-small font-normal text-brand-gold">{currentScore}%</span>
- </>
- );
- })()}
+ {/* Review-style Trust Score */}
+ <div className="w-full lg:w-[240px] flex-shrink-0 rounded-2xl border border-emerald-500/20 bg-emerald-500/[0.04] dark:bg-emerald-500/[0.08] p-4">
+ <div className="mb-4">
+ <div>
+ <div className="text-caption uppercase tracking-[0.08em] text-emerald-700 dark:text-emerald-300 mb-1">Trust Score</div>
+ <div className="flex items-end gap-2">
+ <span className="text-h2 font-semibold leading-none text-gray-900 dark:text-white">{trustScore.score}%</span>
+ <span className="text-caption text-gray-500 dark:text-white/50 mb-0.5">{trustScore.label}</span>
  </div>
- <span className="text-xs font-normal uppercase tracking-[0.05em] text-gray-400 dark:text-white/40">Document Score</span>
+ </div>
+ </div>
+ <div className="h-2 rounded-full bg-emerald-500/10 overflow-hidden mb-3">
+ <div
+ className="h-full rounded-full bg-emerald-500 transition-all duration-700"
+ style={{ width: `${trustScore.score}%` }}
+ />
+ </div>
+ <div className="space-y-1">
+ <div className="flex items-center justify-between gap-3">
+ <span className="text-caption text-gray-500 dark:text-white/50">Documents verified</span>
+ <span className="text-caption font-semibold text-gray-900 dark:text-white">{trustScore.verifiedRequiredCount}/{trustScore.requiredCount}</span>
+ </div>
+ <div className="flex items-center justify-between gap-3">
+ <span className="text-caption text-gray-500 dark:text-white/50">Core sections</span>
+ <span className="text-caption font-semibold text-gray-900 dark:text-white">{trustScore.completedCoreSections}/{trustScore.coreSections}</span>
+ </div>
+ </div>
  </div>
  </div>
 
@@ -1227,7 +1267,7 @@ export function PropertyUpload() {
  const uploaded = !!uploadedDoc;
  return (
  <div key={index}>
- <label className="block text-small font-normal text-gray-900/80 dark:text-white/80 mb-2 tracking-wide">
+ <label className="block text-small font-semibold text-gray-900/80 dark:text-white/80 mb-2 tracking-wide">
  {doc}
  </label>
  <div className={`relative border rounded-[12px] transition-all duration-200 overflow-hidden ${
@@ -1249,7 +1289,7 @@ export function PropertyUpload() {
  )}
  </div>
  <div>
- <p className={`text-small font-normal mb-0.5 transition-colors ${
+ <p className={`text-small font-semibold mb-0.5 transition-colors ${
  uploaded 
  ? 'text-emerald-600 dark:text-emerald-400' 
  : 'text-gray-900/80 dark:text-white/80 group-hover:text-gray-900 dark:group-hover:text-white'
@@ -1263,7 +1303,7 @@ export function PropertyUpload() {
  </div>
  {!uploaded && (
  <div className="px-3.5 py-1.5 rounded-[6px] bg-brand-navy/5 dark:bg-white/5 shadow-card group-hover:bg-emerald-500/10 group-hover:border-emerald-500/30 transition-all duration-200">
- <span className="text-caption font-normal text-gray-900/70 dark:text-white/70 group-hover:text-emerald-600 dark:group-hover:text-brand-gold transition-colors">
+ <span className="text-caption font-semibold text-gray-900/70 dark:text-white/70 group-hover:text-emerald-600 dark:group-hover:text-brand-gold transition-colors">
  Choose file
  </span>
  </div>
@@ -1342,7 +1382,7 @@ export function PropertyUpload() {
  <div className="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
  <MapPin className="w-5 h-5 text-emerald-400" />
  </div>
- <h3 className="text-small font-normal tracking-tight text-gray-900 dark:text-white/95">Location Snapshot</h3>
+ <h3 className="text-small font-semibold tracking-tight text-gray-900 dark:text-white/95">Location Snapshot</h3>
  </div>
 
  {/* Mini Map Preview */}
@@ -1381,7 +1421,7 @@ export function PropertyUpload() {
  <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
  <Building2 className="w-5 h-5 text-blue-400" />
  </div>
- <h3 className="text-small font-normal tracking-tight text-gray-900 dark:text-white/95">Property Details</h3>
+ <h3 className="text-small font-semibold tracking-tight text-gray-900 dark:text-white/95">Property Details</h3>
  </div>
  <button
  onClick={() => setStep('details')}
@@ -1396,7 +1436,7 @@ export function PropertyUpload() {
  {/* Property Name */}
  <div>
  <label className="block text-caption text-gray-600 dark:text-white/50 mb-2 tracking-wide uppercase">Property Name</label>
- <div className="text-body text-gray-900 dark:text-white/95 font-normal">
+ <div className="text-body text-gray-900 dark:text-white/95 font-semibold">
  {propertyData.name || 'Not provided'}
  </div>
  </div>
@@ -1510,30 +1550,39 @@ export function PropertyUpload() {
  <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
  <FileText className="w-5 h-5 text-purple-400" />
  </div>
- <h3 className="text-small font-normal tracking-tight text-gray-900 dark:text-white/95">Uploaded Documents</h3>
+ <h3 className="text-small font-semibold tracking-tight text-gray-900 dark:text-white/95">Uploaded Documents</h3>
  </div>
+ <div className="flex items-center gap-4">
+ <button
+ onClick={() => setStep('documents')}
+ className="text-small text-emerald-400 hover:text-emerald-300 flex items-center gap-2 transition-colors"
+ >
+ <Edit2 className="w-4 h-4" />
+ Edit
+ </button>
  {/* Score display */}
  {(() => {
  let totalScore = 0;
  Object.entries(documentRequirements.categories).forEach(([key, cat]) => {
- const uploaded = cat.documents.filter(doc => 
+ const uploaded = cat.documents.filter(doc =>
  uploadedDocs.find(d => d.documentType === doc && d.status === 'verified')
  ).length;
  const categoryCompletion = uploaded / cat.documents.length;
  totalScore += categoryCompletion * (cat.weight * 100);
  });
  const currentScore = Math.round(totalScore);
- 
+
  return (
  <div className="flex flex-col items-end">
  <span className="text-caption text-gray-400 dark:text-white/40 mb-1 font-normal tracking-wide uppercase">Trust Score</span>
  <div className="flex items-end gap-1">
- <span className="text-2xl font-normal leading-none text-gray-900 dark:text-white">{currentScore}</span>
+ <span className="text-h2 font-semibold leading-none text-gray-900 dark:text-white">{currentScore}</span>
  <span className="text-small text-gray-600 dark:text-white/50 mb-0.5">/ 100</span>
  </div>
  </div>
  );
  })()}
+ </div>
  </div>
 
  {uploadedDocs.length > 0 ? (
@@ -1553,7 +1602,7 @@ export function PropertyUpload() {
  : 'border-transparent text-gray-400 dark:text-white/40 hover:text-gray-600 dark:hover:text-white/60'
  }`}
  >
- <span className="text-small font-normal tracking-wide">
+ <span className="text-small font-semibold tracking-wide">
  {cat.title}
  </span>
  </button>
@@ -1583,7 +1632,7 @@ export function PropertyUpload() {
  : 'border-transparent text-gray-400 dark:text-white/40 hover:text-gray-600 dark:hover:text-white/60'
  }`}
  >
- <span className="text-small font-normal tracking-wide">
+ <span className="text-small font-semibold tracking-wide">
  Other
  </span>
  </button>
@@ -1733,13 +1782,25 @@ export function PropertyUpload() {
  },
  };
  
+ if (isSubmitting) return;
+ setIsSubmitting(true);
  addProperty(newProperty);
  localStorage.setItem('vybeHasProperties', 'true');
- navigate('/my-properties');
+ toast.success('Property added', { description: `${newProperty.name} is now in your portfolio.` });
+ setTimeout(() => navigate('/my-properties'), 800);
  }}
- className="bg-brand-navy dark:bg-white text-white dark:text-gray-900 hover:bg-brand-navy/90 dark:hover:bg-white/90 px-10 py-2.5 rounded-lg text-small tracking-wide transition-all w-full sm:w-auto"
+ disabled={isSubmitting}
+ className="bg-brand-navy dark:bg-white text-white dark:text-gray-900 hover:bg-brand-navy/90 dark:hover:bg-white/90 px-10 py-2.5 rounded-lg text-small tracking-wide transition-all w-full sm:w-auto disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
  >
- Finish
+ {isSubmitting ? (
+ <>
+ <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+ <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+ <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+ </svg>
+ Saving…
+ </>
+ ) : 'Finish'}
  </button>
  </div>
  </div>

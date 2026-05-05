@@ -216,7 +216,7 @@ export function Settings() {
  case 'strategic-investor':
  return 'Strategic Investor';
  case 'both':
- return 'Dual Mandate';
+ return 'Owner & Buyer';
  default:
  return 'Not set';
  }
@@ -342,7 +342,7 @@ export function Settings() {
  <img src={profileData.avatarUrl} alt="Profile" className="w-full h-full object-cover" />
  ) : (
  <div className="w-full h-full bg-white/10 flex items-center justify-center">
- <span className="text-3xl font-normal text-white">
+ <span className="text-h1 font-semibold text-white">
  {(profileData.firstName || 'U').charAt(0).toUpperCase()}
  </span>
  </div>
@@ -358,19 +358,19 @@ export function Settings() {
  </div>
 
  {/* Name */}
- <h2 className="text-xl font-normal text-white tracking-tight mb-1">
+ <h2 className="text-h3 font-semibold text-white tracking-tight mb-1">
  {profileData.firstName || profileData.lastName
  ? `${profileData.firstName} ${profileData.lastName}`.trim()
  : 'Your Name'}
  </h2>
- <p className="text-xs text-white/50 mb-3 truncate max-w-[240px]">
+ <p className="text-caption text-white/50 mb-3 truncate max-w-[240px]">
  {profileData.email || 'No email set'}
  </p>
 
  {/* Verified badge */}
  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10">
  <CheckCircle2 className="w-3 h-3 text-brand-secondary" strokeWidth={1.5} />
- <span className="text-xs font-normal text-white/80 tracking-wide">
+ <span className="text-caption font-normal text-white/80 tracking-wide">
  {getRoleLabel(profileData.primaryRole)}
  </span>
  </div>
@@ -382,11 +382,11 @@ export function Settings() {
  <div className="bg-white dark:bg-card rounded-2xl overflow-hidden border border-black/5 dark:border-white/5">
  <div className="flex items-center gap-4 px-5 py-4">
  <div className="w-10 h-10 rounded-full bg-brand-primary/10 dark:bg-brand-primary/20 flex items-center justify-center flex-shrink-0">
- <span className="text-sm font-normal text-brand-primary">PS</span>
+ <span className="text-small font-semibold text-brand-primary">PS</span>
  </div>
  <div className="flex-1 min-w-0">
- <p className="text-sm font-normal text-gray-900 dark:text-white">Priya Sharma</p>
- <p className="text-xs text-gray-400 dark:text-white/40">Relationship Manager</p>
+ <p className="text-small font-semibold text-gray-900 dark:text-white">Priya Sharma</p>
+ <p className="text-caption text-gray-400 dark:text-white/40">Relationship Manager</p>
  </div>
  <RMAccess />
  </div>
@@ -397,7 +397,7 @@ export function Settings() {
  <div className="px-4 pt-5 pb-6 space-y-5">
  {menuGroups.map((group) => (
  <div key={group.title}>
- <p className="text-xs font-normal uppercase tracking-[0.12em] text-gray-400 dark:text-white/40 mb-2 px-1">
+ <p className="text-caption font-normal uppercase tracking-[0.12em] text-gray-400 dark:text-white/40 mb-2 px-1">
  {group.title}
  </p>
  <div className="bg-white dark:bg-card rounded-2xl overflow-hidden border border-black/5 dark:border-white/5">
@@ -415,8 +415,8 @@ export function Settings() {
  <Icon className="w-[18px] h-[18px] text-brand-primary" strokeWidth={1.5} />
  </div>
  <div className="flex-1 min-w-0">
- <p className="text-sm font-normal text-gray-900 dark:text-white">{item.label}</p>
- <p className="text-xs text-gray-400 dark:text-white/40">{item.desc}</p>
+ <p className="text-small font-semibold text-gray-900 dark:text-white">{item.label}</p>
+ <p className="text-caption text-gray-400 dark:text-white/40">{item.desc}</p>
  </div>
  <ChevronRight className="w-4 h-4 text-gray-300 dark:text-white/20 flex-shrink-0" strokeWidth={1.5} />
  </button>
@@ -432,7 +432,7 @@ export function Settings() {
  className="w-full flex items-center justify-center gap-2 py-4 rounded-2xl
  bg-white dark:bg-card border border-black/5 dark:border-white/5
  text-red-500 dark:text-red-400
- text-sm font-normal
+ text-small font-semibold
  active:bg-red-50 dark:active:bg-red-500/10 transition-colors duration-150"
  >
  <LogOut className="w-4 h-4" strokeWidth={1.5} />
@@ -452,7 +452,7 @@ export function Settings() {
  >
  <ChevronLeft className="w-5 h-5 text-white" strokeWidth={1.5} />
  </button>
- <h2 className="text-base font-normal text-white">
+ <h2 className="text-body font-semibold text-white">
  {menuGroups.flatMap(g => g.items).find(i => i.id === mobileSection)?.label ?? mobileSection}
  </h2>
  </div>
@@ -463,7 +463,7 @@ export function Settings() {
  {showSaved && (
  <div className="mb-4 p-3.5 bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 rounded-2xl flex items-center gap-2.5">
  <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" strokeWidth={1.5} />
- <span className="text-sm text-emerald-700 dark:text-emerald-400 font-normal">Saved successfully</span>
+ <span className="text-small text-emerald-700 dark:text-emerald-400 font-normal">Saved successfully</span>
  </div>
  )}
  {mobileSection === 'profile' && renderProfileTab()}
@@ -483,16 +483,16 @@ export function Settings() {
  <div className="hidden md:block">
 
  {/* Header - Hidden on inner tabs for mobile/tablet */}
- <div className={`bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] ${
+ <div className={`bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.06] shadow-header ${
  activeTab === 'profile' ? '' : 'hidden lg:block'
  }`}>
- <div className="max-w-[1200px] mx-auto container-padding py-5 md:py-6">
+ <div className="max-w-[1500px] mx-auto container-padding py-5 md:py-6">
  <div className="flex items-center justify-between gap-4">
  <div>
- <div className="text-xs font-normal tracking-[0.12em] uppercase text-brand-primary mb-2">
+ <div className="text-caption font-medium tracking-[0.12em] uppercase text-brand-primary mb-2">
  Account
  </div>
- <h1 className="text-h1 font-normal tracking-tight text-gray-900 dark:text-white">
+ <h1 className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white">
  My Profile
  </h1>
  <p className="text-small text-gray-500 dark:text-white/50 mt-1">
@@ -508,7 +508,7 @@ export function Settings() {
  </div>
 
  {/* Settings Content */}
- <div className="max-w-[1200px] mx-auto container-padding py-6 md:py-8 lg:py-10">
+ <div className="max-w-[1500px] mx-auto container-padding py-6 md:py-8 lg:py-10">
  {/* Tab Bar - desktop/tablet only */}
  <div className="lg:hidden mb-6">
  <div className="bg-white dark:bg-card border border-black/5 dark:border-white/5 rounded-2xl p-1 overflow-x-auto scrollbar-hide">
@@ -524,7 +524,7 @@ export function Settings() {
  }`}
  >
  <tab.icon className="w-5 h-5 flex-shrink-0" strokeWidth={activeTab === tab.id ? 2 : 1.5} />
- <span className="text-xs tracking-tight whitespace-nowrap">{tab.label}</span>
+ <span className="text-caption tracking-tight whitespace-nowrap">{tab.label}</span>
  </button>
  ))}
  </div>
@@ -534,7 +534,7 @@ export function Settings() {
  <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
  {/* Desktop Sidebar Tabs */}
  <div className="hidden lg:block w-64 flex-shrink-0">
- <div className="bg-white dark:bg-card border border-black/5 dark:border-white/5 rounded-2xl p-2">
+ <div className="bg-white dark:bg-card border border-black/5 dark:border-white/5 rounded-2xl p-2 shadow-card">
  {tabs.map((tab) => (
  <button
  key={tab.id}
@@ -546,7 +546,7 @@ export function Settings() {
  }`}
  >
  <tab.icon className="w-4 h-4" />
- <span className="text-small">{tab.label}</span>
+ <span className={`text-small ${activeTab === tab.id ? "md:font-semibold" : ""}`}>{tab.label}</span>
  </button>
  ))}
 
@@ -568,12 +568,12 @@ export function Settings() {
 
  {/* Main Content Area */}
  <div className="flex-1">
- <div className="bg-white dark:bg-card border border-black/5 dark:border-white/5 rounded-2xl p-5 md:p-6">
+ <div className="bg-white dark:bg-card border border-black/5 dark:border-white/5 rounded-2xl p-5 md:p-6 shadow-card">
  {/* Success Message */}
  {showSaved && (
  <div className="mb-6 p-4 bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 rounded-2xl flex items-center gap-3">
  <CheckCircle2 className="w-5 h-5 text-emerald-500" />
- <span className="text-small text-emerald-700 dark:text-emerald-400 font-normal">Settings saved successfully</span>
+ <span className="text-small text-emerald-700 dark:text-emerald-400 font-medium">Settings saved successfully</span>
  </div>
  )}
 
@@ -607,16 +607,16 @@ export function Settings() {
  {/* Personal Information */}
  <div>
  <div className="flex items-center justify-between px-1 mb-2">
- <p className="text-xs font-normal uppercase tracking-[0.12em] text-gray-400 dark:text-white/40">Personal Information</p>
+ <p className="text-caption font-medium uppercase tracking-[0.12em] text-gray-400 dark:text-white/40">Personal Information</p>
  {!isEditingPersonalInfo ? (
  <button
  onClick={() => { setIsEditingPersonalInfo(true); setTempProfileData({ firstName: profileData.firstName, lastName: profileData.lastName, email: profileData.email, phone: profileData.phone, primaryRole: profileData.primaryRole, portfolioSize: profileData.portfolioSize, referralCode: profileData.referralCode, country: profileData.country }); }}
- className="text-xs font-normal text-brand-primary"
+ className="text-caption font-normal leading-none text-brand-primary hover:text-brand-primary-hover transition-colors"
  >Edit</button>
  ) : (
  <div className="flex items-center gap-3">
- <button onClick={() => { setIsEditingPersonalInfo(false); setValidationErrors({}); }} className="text-xs font-normal text-gray-400">Cancel</button>
- <button onClick={handleSaveProfile} disabled={isSaving} className="text-xs font-normal text-brand-primary flex items-center gap-1">
+ <button onClick={() => { setIsEditingPersonalInfo(false); setValidationErrors({}); }} className="text-caption font-normal leading-none text-gray-400 hover:text-gray-600 dark:hover:text-white/60 transition-colors">Cancel</button>
+ <button onClick={handleSaveProfile} disabled={isSaving} className="text-caption font-normal leading-none text-brand-primary hover:text-brand-primary-hover transition-colors flex items-center gap-1">
  {isSaving ? <Loader2 className="w-3 h-3 animate-spin" /> : null}
  {isSaving ? 'Saving…' : 'Save'}
  </button>
@@ -627,7 +627,7 @@ export function Settings() {
  {fields.map(({ key, label, type }, idx) => (
  <div key={key} className={`flex items-center gap-4 px-5 py-4 ${idx < fields.length - 1 ? 'border-b border-gray-100 dark:border-white/[0.05]' : ''}`}>
  <div className="w-28 flex-shrink-0">
- <p className="text-xs text-gray-400 dark:text-white/40">{label}</p>
+ <p className="text-small text-gray-400 dark:text-white/40">{label}</p>
  </div>
  {isEditingPersonalInfo ? (
  <div className="flex-1">
@@ -635,40 +635,40 @@ export function Settings() {
  type={type}
  value={tempProfileData[key as keyof typeof tempProfileData]}
  onChange={(e) => setTempProfileData({ ...tempProfileData, [key]: e.target.value })}
- className="w-full bg-gray-50 dark:bg-white/[0.04] rounded-xl px-3 py-2 text-sm text-gray-900 dark:text-white shadow-none focus:shadow-none focus:outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all"
+ className="w-full bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-3 py-2 text-small text-gray-900 dark:text-white focus:outline-none focus:border-brand-primary/30 dark:focus:border-white/20 focus:bg-white dark:focus:bg-white/[0.06] transition-all"
  />
- {validationErrors[key] && <p className="text-xs text-red-500 mt-1">{validationErrors[key]}</p>}
+ {validationErrors[key] && <p className="text-caption text-red-500 mt-1">{validationErrors[key]}</p>}
  </div>
  ) : (
- <p className="flex-1 text-sm font-normal text-gray-900 dark:text-white truncate">{(profileData as any)[key] || <span className="text-gray-300 dark:text-white/20">Not set</span>}</p>
+ <p className="flex-1 text-small font-semibold text-gray-900 dark:text-white truncate">{(profileData as any)[key] || <span className="text-gray-300 dark:text-white/20">Not set</span>}</p>
  )}
  </div>
  ))}
  {/* Role row */}
  <div className={`flex items-center gap-4 px-5 py-4 border-t border-gray-100 dark:border-white/[0.05]`}>
- <div className="w-28 flex-shrink-0"><p className="text-xs text-gray-400 dark:text-white/40">Role</p></div>
+ <div className="w-28 flex-shrink-0"><p className="text-small text-gray-400 dark:text-white/40">Role</p></div>
  {isEditingPersonalInfo ? (
- <select value={tempProfileData.primaryRole} onChange={(e) => setTempProfileData({ ...tempProfileData, primaryRole: e.target.value })} className="flex-1 bg-gray-50 dark:bg-white/[0.04] rounded-xl px-3 py-2 text-sm text-gray-900 dark:text-white shadow-none focus:shadow-none focus:outline-none">
+ <select value={tempProfileData.primaryRole} onChange={(e) => setTempProfileData({ ...tempProfileData, primaryRole: e.target.value })} className="flex-1 bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-3 py-2 text-small text-gray-900 dark:text-white focus:outline-none focus:border-brand-primary/30 dark:focus:border-white/20 focus:bg-white dark:focus:bg-white/[0.06]">
  <option value="land-owner">Land Owner</option>
  <option value="strategic-investor">Strategic Investor</option>
- <option value="both">Dual Mandate</option>
+ <option value="both">Owner & Buyer</option>
  </select>
  ) : (
- <p className="flex-1 text-sm font-normal text-gray-900 dark:text-white">{getRoleLabel(profileData.primaryRole)}</p>
+ <p className="flex-1 text-small font-semibold text-gray-900 dark:text-white">{getRoleLabel(profileData.primaryRole)}</p>
  )}
  </div>
  {/* Portfolio size row */}
  <div className={`flex items-center gap-4 px-5 py-4 border-t border-gray-100 dark:border-white/[0.05]`}>
- <div className="w-28 flex-shrink-0"><p className="text-xs text-gray-400 dark:text-white/40">Portfolio</p></div>
+ <div className="w-28 flex-shrink-0"><p className="text-small text-gray-400 dark:text-white/40">Portfolio</p></div>
  {isEditingPersonalInfo ? (
- <select value={tempProfileData.portfolioSize} onChange={(e) => setTempProfileData({ ...tempProfileData, portfolioSize: e.target.value })} className="flex-1 bg-gray-50 dark:bg-white/[0.04] rounded-xl px-3 py-2 text-sm text-gray-900 dark:text-white shadow-none focus:shadow-none focus:outline-none">
+ <select value={tempProfileData.portfolioSize} onChange={(e) => setTempProfileData({ ...tempProfileData, portfolioSize: e.target.value })} className="flex-1 bg-gray-50 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-3 py-2 text-small text-gray-900 dark:text-white focus:outline-none focus:border-brand-primary/30 dark:focus:border-white/20 focus:bg-white dark:focus:bg-white/[0.06]">
  <option value="1">1 Property</option>
  <option value="2-5">2-5 Properties</option>
  <option value="6-20">6-20 Properties</option>
  <option value="20+">20+ Properties</option>
  </select>
  ) : (
- <p className="flex-1 text-sm font-normal text-gray-900 dark:text-white">{getPortfolioSizeLabel(profileData.portfolioSize)}</p>
+ <p className="flex-1 text-small font-semibold text-gray-900 dark:text-white">{getPortfolioSizeLabel(profileData.portfolioSize)}</p>
  )}
  </div>
  </div>
@@ -676,15 +676,15 @@ export function Settings() {
 
  {/* Relationship Manager */}
  <div>
- <p className="text-xs font-normal uppercase tracking-[0.12em] text-gray-400 dark:text-white/40 mb-2 px-1">Relationship Manager</p>
+ <p className="text-caption font-medium uppercase tracking-[0.12em] text-gray-400 dark:text-white/40 mb-2 px-1">Relationship Manager</p>
  <div className="bg-white dark:bg-card rounded-2xl overflow-hidden border border-black/5 dark:border-white/5">
  <div className="flex items-center gap-4 px-5 py-4">
  <div className="w-10 h-10 rounded-full bg-brand-primary/10 flex items-center justify-center flex-shrink-0">
- <span className="text-sm font-normal text-brand-primary">PS</span>
+ <span className="text-small font-semibold text-brand-primary">PS</span>
  </div>
  <div className="flex-1 min-w-0">
- <p className="text-sm font-normal text-gray-900 dark:text-white">Priya Sharma</p>
- <p className="text-xs text-gray-400 dark:text-white/40">Mon–Sat, 9am–7pm IST</p>
+ <p className="text-body font-semibold text-gray-900 dark:text-white">Priya Sharma</p>
+ <p className="text-caption text-gray-400 dark:text-white/40">Mon-Sat, 9am-7pm IST</p>
  </div>
  <RMAccess />
  </div>
@@ -693,7 +693,7 @@ export function Settings() {
 
  {/* Identity Verification */}
  <div>
- <p className="text-xs font-normal uppercase tracking-[0.12em] text-gray-400 dark:text-white/40 mb-2 px-1">Identity Verification</p>
+ <p className="text-caption font-medium uppercase tracking-[0.12em] text-gray-400 dark:text-white/40 mb-2 px-1">Identity Verification</p>
  <div className="bg-white dark:bg-card rounded-2xl overflow-hidden border border-black/5 dark:border-white/5">
  {profileData.documentType ? (
  <div className="flex items-center gap-4 px-5 py-4">
@@ -701,16 +701,16 @@ export function Settings() {
  <FileText className="w-5 h-5 text-brand-primary" strokeWidth={1.5} />
  </div>
  <div className="flex-1 min-w-0">
- <p className="text-sm font-normal text-gray-900 dark:text-white">
+ <p className="text-body font-semibold text-gray-900 dark:text-white">
  {profileData.documentType === 'aadhaar' ? 'Aadhaar Card' : 'PAN Card'}
  </p>
- <p className="text-xs text-gray-400 dark:text-white/40">
+ <p className="text-caption text-gray-400 dark:text-white/40">
  {profileData.documentNumber ? (profileData.documentType === 'aadhaar' ? `XXXX XXXX ${profileData.documentNumber.slice(-4)}` : `XXXXX${profileData.documentNumber.slice(-4)}`) : 'Not provided'}
  </p>
  </div>
  {profileData.documentVerified
  ? <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" strokeWidth={1.5} />
- : <span className="text-xs text-amber-500 flex-shrink-0">Pending</span>}
+ : <span className="text-caption text-amber-500 flex-shrink-0">Pending</span>}
  </div>
  ) : (
  <div className="flex items-center gap-4 px-5 py-4">
@@ -718,8 +718,8 @@ export function Settings() {
  <Shield className="w-5 h-5 text-amber-500" strokeWidth={1.5} />
  </div>
  <div className="flex-1 min-w-0">
- <p className="text-sm font-normal text-gray-900 dark:text-white">Verification Required</p>
- <p className="text-xs text-gray-400 dark:text-white/40">Complete KYC to unlock all features</p>
+ <p className="text-body font-semibold text-gray-900 dark:text-white">Verification Required</p>
+ <p className="text-caption text-gray-400 dark:text-white/40">Complete KYC to unlock all features</p>
  </div>
  <ChevronRight className="w-4 h-4 text-gray-300 dark:text-white/20" strokeWidth={1.5} />
  </div>
@@ -729,22 +729,22 @@ export function Settings() {
 
  {/* Refer & Earn */}
  <div>
- <p className="text-xs font-normal uppercase tracking-[0.12em] text-gray-400 dark:text-white/40 mb-2 px-1">Refer & Earn</p>
+ <p className="text-caption font-medium uppercase tracking-[0.12em] text-gray-400 dark:text-white/40 mb-2 px-1">Refer & Earn</p>
  <div className="bg-white dark:bg-card rounded-2xl overflow-hidden border border-black/5 dark:border-white/5">
  <div className="flex items-center gap-4 px-5 py-4">
  <div className="flex-1 min-w-0">
- <p className="text-xs text-gray-400 dark:text-white/40 mb-1">Your referral code</p>
- <p className="text-base font-normal text-brand-primary tracking-widest">
+ <p className="text-caption text-gray-400 dark:text-white/40 mb-1">Your referral code</p>
+ <p className="text-body font-semibold text-brand-primary tracking-widest">
  {profileData.referralCode || `VYBE${profileData.firstName.substring(0, 4).toUpperCase() || 'USER'}`}
  </p>
  </div>
- <button onClick={() => copyToClipboard(profileData.referralCode)} className="flex items-center gap-1.5 px-4 py-2 bg-brand-primary/[0.08] text-brand-primary rounded-xl text-xs font-normal active:scale-95 transition-transform flex-shrink-0">
+ <button onClick={() => copyToClipboard(profileData.referralCode)} className="flex items-center gap-1.5 px-4 py-2 bg-brand-primary/[0.08] text-brand-primary rounded-xl text-caption font-semibold active:scale-95 transition-transform flex-shrink-0">
  <Copy className="w-3.5 h-3.5" strokeWidth={1.5} />
  {copySuccess ? 'Copied!' : 'Copy'}
  </button>
  </div>
  <div className="border-t border-gray-100 dark:border-white/[0.05] px-5 py-3">
- <p className="text-xs text-gray-400 dark:text-white/40">12 referrals · Invite friends to VYBE</p>
+ <p className="text-caption text-gray-400 dark:text-white/40">12 referrals · Invite friends to VYBE</p>
  </div>
  </div>
  </div>
@@ -763,13 +763,13 @@ export function Settings() {
  return (
  <div className="space-y-5">
  <div>
- <p className="text-xs font-normal uppercase tracking-[0.12em] text-gray-400 dark:text-white/40 mb-2 px-1">Preferences</p>
+ <p className="text-caption font-normal uppercase tracking-[0.12em] text-gray-400 dark:text-white/40 mb-2 px-1">Preferences</p>
  <div className="bg-white dark:bg-card rounded-2xl overflow-hidden border border-black/5 dark:border-white/5">
  {items.map((item, idx) => (
  <div key={item.key} className={`flex items-center gap-4 px-5 py-4 ${idx < items.length - 1 ? 'border-b border-gray-100 dark:border-white/[0.05]' : ''}`}>
  <div className="flex-1 min-w-0">
- <p className="text-sm font-normal text-gray-900 dark:text-white">{item.label}</p>
- <p className="text-xs text-gray-400 dark:text-white/40">{item.desc}</p>
+ <p className="text-small font-semibold text-gray-900 dark:text-white">{item.label}</p>
+ <p className="text-caption text-gray-400 dark:text-white/40">{item.desc}</p>
  </div>
  <label className="relative inline-block w-11 h-6 flex-shrink-0 cursor-pointer">
  <input type="checkbox" checked={notificationSettings[item.key as keyof typeof notificationSettings]} onChange={(e) => setNotificationSettings({ ...notificationSettings, [item.key]: e.target.checked })} className="sr-only peer" />
@@ -779,7 +779,7 @@ export function Settings() {
  ))}
  </div>
  </div>
- <button onClick={() => { setShowSaved(true); setTimeout(() => setShowSaved(false), 3000); }} className="w-full py-4 bg-brand-primary text-white rounded-2xl text-sm font-normal active:scale-[0.98] transition-transform">
+ <button onClick={() => { setShowSaved(true); setTimeout(() => setShowSaved(false), 3000); }} className="w-full py-4 bg-brand-primary text-white rounded-2xl text-small font-semibold active:scale-[0.98] transition-transform">
  Save Preferences
  </button>
  </div>
@@ -800,16 +800,16 @@ export function Settings() {
  return (
  <div className="space-y-5">
  <div>
- <p className="text-xs font-normal uppercase tracking-[0.12em] text-gray-400 dark:text-white/40 mb-2 px-1">{orders.length} orders</p>
+ <p className="text-caption font-normal uppercase tracking-[0.12em] text-gray-400 dark:text-white/40 mb-2 px-1">{orders.length} orders</p>
  <div className="bg-white dark:bg-card rounded-2xl overflow-hidden border border-black/5 dark:border-white/5">
  {orders.map((o, idx) => (
  <div key={o.id} className={`flex items-start gap-4 px-5 py-4 ${idx < orders.length - 1 ? 'border-b border-gray-100 dark:border-white/[0.05]' : ''}`}>
  <div className={`w-2 h-2 rounded-full mt-1.5 flex-shrink-0 ${o.dot}`} />
  <div className="flex-1 min-w-0">
- <p className="text-sm font-normal text-gray-900 dark:text-white mb-0.5 leading-snug">{o.service}</p>
- <p className="text-xs text-gray-400 dark:text-white/40 truncate">{o.property} · {o.date}</p>
+ <p className="text-small font-semibold text-gray-900 dark:text-white mb-0.5 leading-snug">{o.service}</p>
+ <p className="text-caption text-gray-400 dark:text-white/40 truncate">{o.property} · {o.date}</p>
  </div>
- <span className={`text-xs flex-shrink-0 ${
+ <span className={`text-caption flex-shrink-0 ${
  o.status === 'Completed' ? 'text-emerald-500' :
  o.status === 'Processing' ? 'text-brand-primary' : 'text-amber-500'
  }`}>{o.status}</span>
@@ -824,21 +824,21 @@ export function Settings() {
  function renderHelpTab() {
  return (
  <div>
- <h2 className="text-h2 font-normal text-gray-900 dark:text-white mb-1">Help & Support</h2>
+ <h2 className="text-h2 font-semibold text-gray-900 dark:text-white mb-1">Help & Support</h2>
  <p className="text-small text-gray-600 dark:text-white/50 mb-5">We're here to assist you</p>
  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
  <div className="p-4 rounded-xl bg-brand-gold/5 border border-brand-gold/20">
  <div className="w-10 h-10 rounded-xl bg-brand-gold/8 flex items-center justify-center mb-3">
  <HeadphonesIcon className="w-5 h-5 text-brand-gold" />
  </div>
- <p className="text-small font-normal text-gray-900 dark:text-white mb-1">Contact Support</p>
+ <p className="text-small font-semibold text-gray-900 dark:text-white mb-1">Contact Support</p>
  <a href="mailto:support@vybe.app" className="text-caption text-brand-gold flex items-center gap-1">support@vybe.app <ArrowRight className="w-3 h-3" /></a>
  </div>
  <div className="p-4 rounded-xl bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20">
  <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center mb-3">
  <FileText className="w-5 h-5 text-blue-600 dark:text-blue-400" />
  </div>
- <p className="text-small font-normal text-gray-900 dark:text-white mb-1">Documentation</p>
+ <p className="text-small font-semibold text-gray-900 dark:text-white mb-1">Documentation</p>
  <button className="text-caption text-blue-600 dark:text-blue-400 flex items-center gap-1">View Docs <ArrowRight className="w-3 h-3" /></button>
  </div>
  </div>
@@ -850,8 +850,8 @@ export function Settings() {
  { q: 'How can I track my case progress?', a: 'Visit Case Management to view all your active and closed cases with real-time updates.' },
  ].map((faq, i) => (
  <div key={i} className="p-4 rounded-xl bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06]">
- <p className="text-sm font-normal text-gray-900 dark:text-white mb-1.5">{faq.q}</p>
- <p className="text-xs text-[#64748B] dark:text-white/50 leading-relaxed">{faq.a}</p>
+ <p className="text-small font-semibold text-gray-900 dark:text-white mb-1.5">{faq.q}</p>
+ <p className="text-caption text-[#64748B] dark:text-white/50 leading-relaxed">{faq.a}</p>
  </div>
  ))}
  </div>
@@ -869,13 +869,13 @@ export function Settings() {
  ];
  return (
  <div>
- <h2 className="text-h2 font-normal text-gray-900 dark:text-white mb-1">Terms of Service</h2>
+ <h2 className="text-h2 font-semibold text-gray-900 dark:text-white mb-1">Terms of Service</h2>
  <p className="text-caption text-gray-400 dark:text-white/40 mb-5">Last updated: April 15, 2026</p>
  <div className="space-y-3">
  {sections.map((s, i) => (
  <div key={i} className="p-4 rounded-xl bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06]">
- <p className="text-sm font-normal text-gray-900 dark:text-white mb-1.5">{s.title}</p>
- <p className="text-xs text-[#64748B] dark:text-white/50 leading-relaxed">{s.body}</p>
+ <p className="text-small font-semibold text-gray-900 dark:text-white mb-1.5">{s.title}</p>
+ <p className="text-caption text-[#64748B] dark:text-white/50 leading-relaxed">{s.body}</p>
  </div>
  ))}
  <div className="p-3 bg-blue-50 dark:bg-blue-500/5 border border-blue-200 dark:border-blue-500/20 rounded-xl">
@@ -901,16 +901,16 @@ export function Settings() {
  <ShieldCheck className="w-5 h-5 text-brand-gold" />
  </div>
  <div>
- <p className="text-sm font-normal text-gray-900 dark:text-white mb-0.5">Your Privacy Matters</p>
- <p className="text-xs text-[#64748B] dark:text-white/50">All data is encrypted with bank-grade security.</p>
+ <p className="text-small font-semibold text-gray-900 dark:text-white mb-0.5">Your Privacy Matters</p>
+ <p className="text-caption text-[#64748B] dark:text-white/50">All data is encrypted with bank-grade security.</p>
  </div>
  </div>
  <p className="text-caption text-gray-400 dark:text-white/40 mb-4">Last updated: April 15, 2026</p>
  <div className="space-y-3">
  {sections.map((s, i) => (
  <div key={i} className="p-4 rounded-xl bg-gray-50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06]">
- <p className="text-sm font-normal text-gray-900 dark:text-white mb-1.5">{s.title}</p>
- <p className="text-xs text-[#64748B] dark:text-white/50 leading-relaxed">{s.body}</p>
+ <p className="text-small font-semibold text-gray-900 dark:text-white mb-1.5">{s.title}</p>
+ <p className="text-caption text-[#64748B] dark:text-white/50 leading-relaxed">{s.body}</p>
  </div>
  ))}
  </div>
