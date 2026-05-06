@@ -415,7 +415,7 @@ export function PropertyUpload() {
  {/* Title */}
  <p className="text-caption tracking-[0.16em] uppercase text-white/40 mb-2">Add Property</p>
  <h1 className="text-h1 font-semibold tracking-tight text-white leading-none mb-3">
- New Property Case
+ New Property
  </h1>
 
  {/* Step progress */}
@@ -462,10 +462,10 @@ export function PropertyUpload() {
  Add Property
  </h1>
  <div className="text-h1 tracking-tight text-gray-900 dark:text-white">
- New Property Case
+ New Property
  </div>
  <p className="text-small text-gray-600 dark:text-white/60 mt-1">
- Submit property details and documents for intelligent HABU analysis
+ Add property details and documents to enable portfolio insights, document vault, and services
  </p>
  </div>
  </div>
