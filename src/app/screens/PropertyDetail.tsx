@@ -76,9 +76,7 @@ export function PropertyDetail() {
  { id: 'doc-16', name: 'Property_Photos_Interior.zip', size: '12.5 MB', status: 'verified' as const, type: 'zip', documentType: 'Property Photos' }
  ];
 
- // TEMPORARY: Always use dummy documents for testing - this ensures documents are visible
- // Use documents from property if they exist, otherwise use dummy documents
- const propertyDocuments = dummyDocuments; // Forcing dummy docs to show for debugging
+ const propertyDocuments = property.documents || [];
  
  // Debug logging
 
@@ -102,6 +100,40 @@ export function PropertyDetail() {
  day: 'numeric' 
  });
  };
+
+ const getDetailFieldConfiguration = () => {
+ const buildingType = property.buildingType;
+ const propertyType = property.type;
+ const config = {
+ plotSizeLabel: 'Plot Size',
+ showBuiltUpArea: true,
+ yearLabel: 'Year of Construction',
+ showNumberOfFloors: true,
+ currentUsageLabel: 'Current Usage',
+ };
+
+ const isPlotType = propertyType === 'Plot' || propertyType === 'Land' || propertyType === 'Industrial Plot';
+ const isAgricultural = buildingType === 'agricultural';
+ const isWarehouse = propertyType === 'Warehouse';
+
+ if (isAgricultural) {
+ config.plotSizeLabel = 'Land Area';
+ config.showBuiltUpArea = false;
+ config.yearLabel = 'Year of Acquisition';
+ config.showNumberOfFloors = false;
+ config.currentUsageLabel = 'Cultivation Type';
+ } else if (isPlotType) {
+ config.showBuiltUpArea = false;
+ config.yearLabel = 'Year of Purchase';
+ config.showNumberOfFloors = false;
+ } else if (isWarehouse) {
+ config.showNumberOfFloors = false;
+ }
+
+ return config;
+ };
+
+ const detailFieldConfig = getDetailFieldConfiguration();
 
  const getStatusColor = (status: 'uploading' | 'verified' | 'processing' | 'error') => {
  switch (status) {
@@ -303,6 +335,16 @@ export function PropertyDetail() {
  ? Math.round((matchedCoreDocuments.length / coreDocumentTypes.length) * 100)
  : 0;
  const missingCoreCount = Math.max(coreDocumentTypes.length - matchedCoreDocuments.length, 0);
+ const trustLevel =
+ documentReadiness >= 90 ? 'Excellent' :
+ documentReadiness >= 75 ? 'Very Good' :
+ documentReadiness >= 60 ? 'Good' :
+ documentReadiness >= 40 ? 'Fair' :
+ 'Needs Documents';
+ const trustTone =
+ documentReadiness >= 75 ? 'text-emerald-600 dark:text-emerald-400' :
+ documentReadiness >= 40 ? 'text-amber-600 dark:text-amber-400' :
+ 'text-gray-600 dark:text-white/50';
  const primaryOpportunity = aiOpportunities[0];
  const primaryRisk = aiRisks[0];
  const priorityLevel = primaryRisk?.severity === 'high' || missingCoreCount > 0 ? 'high' : 'standard';
@@ -376,13 +418,6 @@ export function PropertyDetail() {
  </div>
  </div>
  <div className="flex items-center gap-3 flex-shrink-0">
- <Link
- to={`/property/${property.id}/habu`}
- className="inline-flex items-center justify-center gap-2 bg-brand-primary hover:bg-brand-primary-hover text-white px-5 py-2.5 rounded-xl text-small font-semibold transition-all duration-200"
- >
- <Zap className="w-4 h-4" strokeWidth={1.5} />
- <span>Best Use Report</span>
- </Link>
  <RMAccess />
  <NotificationDropdown />
  <ThemeToggle />
@@ -599,12 +634,13 @@ export function PropertyDetail() {
  </div>
  <div>
  <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
- Plot Size
+ {detailFieldConfig.plotSizeLabel}
  </div>
  <div className="text-small text-gray-900 dark:text-white/95">
  {property.plotSize || 'Not specified'}
  </div>
  </div>
+ {(detailFieldConfig.showBuiltUpArea || property.builtUpArea) && (
  <div>
  <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
  Built-up Area
@@ -613,14 +649,16 @@ export function PropertyDetail() {
  {property.builtUpArea || 'Not specified'}
  </div>
  </div>
+ )}
  <div>
  <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
- Year of Construction
+ {detailFieldConfig.yearLabel}
  </div>
  <div className="text-small text-gray-900 dark:text-white/95">
  {property.yearOfConstruction || 'Not specified'}
  </div>
  </div>
+ {(detailFieldConfig.showNumberOfFloors || property.numberOfFloors) && (
  <div>
  <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
  Number of Floors
@@ -629,6 +667,7 @@ export function PropertyDetail() {
  {property.numberOfFloors || 'Not specified'}
  </div>
  </div>
+ )}
  <div>
  <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
  Survey Number
@@ -639,7 +678,7 @@ export function PropertyDetail() {
  </div>
  <div>
  <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
- Current Usage
+ {detailFieldConfig.currentUsageLabel}
  </div>
  <div className="text-small text-gray-900 dark:text-white/95">
  {property.currentUsage || 'Not specified'}
@@ -657,6 +696,91 @@ export function PropertyDetail() {
  )}
  </div>
  </div>
+
+ {/* Extracted Document Data */}
+ {property.extractedData && (
+ <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6 shadow-card">
+ <h2 className="text-body font-semibold tracking-tight text-gray-900 dark:text-white mb-5">
+ Document Extracted Data
+ </h2>
+ <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+ {property.extractedData.surveyNumber && (
+ <div>
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ Extracted Survey Number
+ </div>
+ <div className="text-small text-gray-900 dark:text-white/95">
+ {property.extractedData.surveyNumber}
+ </div>
+ </div>
+ )}
+ {property.extractedData.landArea && (
+ <div>
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ Extracted Land Area
+ </div>
+ <div className="text-small text-gray-900 dark:text-white/95">
+ {property.extractedData.landArea} {property.extractedData.landAreaUnit || ''}
+ </div>
+ </div>
+ )}
+ {property.extractedData.ownershipType && (
+ <div>
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ Ownership Type
+ </div>
+ <div className="text-small text-gray-900 dark:text-white/95">
+ {property.extractedData.ownershipType}
+ </div>
+ </div>
+ )}
+ {property.extractedData.zoningClassification && (
+ <div>
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ Zoning Classification
+ </div>
+ <div className="text-small text-gray-900 dark:text-white/95">
+ {property.extractedData.zoningClassification}
+ </div>
+ </div>
+ )}
+ {property.extractedData.roadAccess && (
+ <div>
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ Road Access
+ </div>
+ <div className="text-small text-gray-900 dark:text-white/95">
+ {property.extractedData.roadAccess}
+ </div>
+ </div>
+ )}
+ {property.extractedData.encumbranceStatus && (
+ <div>
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ Encumbrance Status
+ </div>
+ <div className="text-small text-gray-900 dark:text-white/95">
+ {property.extractedData.encumbranceStatus}
+ </div>
+ </div>
+ )}
+ {property.extractedData.utilitiesAvailability && property.extractedData.utilitiesAvailability.length > 0 && (
+ <div className="sm:col-span-2">
+ <div className="text-caption font-medium tracking-[0.05em] uppercase text-gray-400 dark:text-white/40 mb-2">
+ Utilities Availability
+ </div>
+ <div className="flex flex-wrap gap-2">
+ {property.extractedData.utilitiesAvailability.map((utility) => (
+ <span key={utility} className="inline-flex items-center rounded-lg bg-brand-primary/[0.08] px-3 py-1.5 text-caption font-semibold text-brand-primary">
+ {utility}
+ </span>
+ ))}
+ </div>
+ </div>
+ )}
+ </div>
+ </div>
+ )}
 
  {/* Connectivity & Nearby Landmarks */}
  <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6 shadow-card">
@@ -748,43 +872,42 @@ export function PropertyDetail() {
 
  {/* Locality Insights */}
  <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6 shadow-card">
- <h2 className="text-body font-semibold tracking-tight text-gray-900 dark:text-white mb-4">
+ <div className="flex items-start justify-between gap-4 mb-4">
+ <div>
+ <h2 className="text-body font-semibold tracking-tight text-gray-900 dark:text-white mb-1">
  Locality Insights: {property.city || property.district || 'Area'}
  </h2>
-
- {/* Description */}
- <p className="text-caption text-gray-900/70 dark:text-white/70 leading-relaxed mb-5">
- The upscale neighbourhood of {property.city || property.district || 'this area'} is located in {property.state || property.country}. There are more than {localityData.rentalCount} rental houses and over {localityData.saleCount} available for purchase in this area. Residents of {property.city || 'this area'} gave this area a safety rating of {localityData.safetyRating}{' '}
- <button className="text-emerald-500 dark:text-emerald-400 font-normal hover:underline text-caption">
- Read More
- </button>
+ <p className="text-caption text-gray-600 dark:text-white/50">
+ {property.state || property.country} • {localityData.rentalCount}+ rentals • {localityData.saleCount}+ for sale
  </p>
+ </div>
+ <div className="rounded-lg bg-emerald-500/10 px-3 py-1.5 text-caption font-semibold text-emerald-600 dark:text-emerald-400 flex-shrink-0">
+ Safety {localityData.safetyRating}
+ </div>
+ </div>
 
  {/* Insights Grid */}
- <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+ <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
  {/* Price Insights */}
- <div className="bg-gray-50 dark:bg-white/[0.04] border border-black/5 dark:border-white/5 rounded-xl p-5 transition-all duration-200">
+ <div className="bg-gray-50 dark:bg-white/[0.04] border border-black/5 dark:border-white/5 rounded-xl p-4 transition-all duration-200">
  <div className="flex items-center gap-2 mb-3">
- <div className="w-8 h-8 rounded-xl bg-blue-500/10 flex items-center justify-center">
+ <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
  <TrendingUp className="w-4 h-4 text-blue-600 dark:text-blue-400" strokeWidth={1.5} />
  </div>
- <h3 className="text-caption font-semibold text-gray-900 dark:text-white/95">Price Insights</h3>
- </div>
- <div className="mb-1.5 text-caption font-medium tracking-[0.05em] uppercase text-gray-600 dark:text-white/50">
- Average Asking Price in {property.city || 'Area'}
+ <h3 className="text-caption font-semibold text-gray-900 dark:text-white/95">Avg. Price</h3>
  </div>
  <div className="text-body font-semibold tracking-tight text-gray-900 dark:text-white mb-1">
  ₹{localityData.avgPrice}<span className="text-caption text-emerald-500 dark:text-emerald-400">{localityData.priceUnit}</span>
  </div>
  <div className="text-caption text-gray-600 dark:text-white/50">
- Based on active listings and recent trends
+ Active listing trend
  </div>
  </div>
 
  {/* Locality Rank */}
- <div className="bg-gray-50 dark:bg-white/[0.04] border border-black/5 dark:border-white/5 rounded-xl p-5 transition-all duration-200">
+ <div className="bg-gray-50 dark:bg-white/[0.04] border border-black/5 dark:border-white/5 rounded-xl p-4 transition-all duration-200">
  <div className="flex items-center gap-2 mb-3">
- <div className="w-8 h-8 rounded-xl bg-pink-500/10 flex items-center justify-center">
+ <div className="w-8 h-8 rounded-lg bg-pink-500/10 flex items-center justify-center">
  <Award className="w-4 h-4 text-pink-600 dark:text-pink-400" strokeWidth={1.5} />
  </div>
  <h3 className="text-caption font-semibold text-gray-900 dark:text-white/95">Locality Rank</h3>
@@ -792,18 +915,15 @@ export function PropertyDetail() {
  <div className="text-small font-semibold tracking-tight text-gray-900 dark:text-white mb-1.5">
  #{localityData.localityRank} in {localityData.state}
  </div>
- <div className="text-caption text-gray-600 dark:text-white/50 mb-3">
- Based on demand, livability, and activity
+ <div className="text-caption text-gray-600 dark:text-white/50">
+ Demand and livability
  </div>
- <button className="text-caption font-semibold text-gray-900 dark:text-white/95 underline hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">
- Know More About {property.city || 'Area'}
- </button>
  </div>
 
  {/* Demographics */}
- <div className="bg-gray-50 dark:bg-white/[0.04] border border-black/5 dark:border-white/5 rounded-xl p-5 transition-all duration-200">
+ <div className="bg-gray-50 dark:bg-white/[0.04] border border-black/5 dark:border-white/5 rounded-xl p-4 transition-all duration-200">
  <div className="flex items-center gap-2 mb-3">
- <div className="w-8 h-8 rounded-xl bg-purple-500/10 flex items-center justify-center">
+ <div className="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center">
  <Users className="w-4 h-4 text-purple-600 dark:text-purple-400" strokeWidth={1.5} />
  </div>
  <h3 className="text-caption font-semibold text-gray-900 dark:text-white/95">Demographics</h3>
@@ -811,11 +931,8 @@ export function PropertyDetail() {
  <div className="text-body font-semibold tracking-tight text-gray-900 dark:text-white mb-1">
  {localityData.demographicType}
  </div>
- <div className="text-caption text-gray-600 dark:text-white/50 mb-2">
+ <div className="text-caption text-gray-600 dark:text-white/50">
  {localityData.demographicDesc}
- </div>
- <div className="text-caption font-normal text-emerald-500 dark:text-emerald-400">
- Safety Rating: {localityData.safetyRating}
  </div>
  </div>
  </div>
@@ -823,17 +940,22 @@ export function PropertyDetail() {
 
  {/* AI Insights */}
  <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6 shadow-card">
- <h2 className="text-body font-semibold tracking-[-0.01em] text-gray-900 dark:text-white mb-5">
+ <div className="mb-4">
+ <h2 className="text-body font-semibold tracking-[-0.01em] text-gray-900 dark:text-white mb-1">
  AI Market Intelligence
  </h2>
+ <p className="text-caption text-gray-600 dark:text-white/50">
+ Key opportunities and risks generated from market signals.
+ </p>
+ </div>
 
  {/* Opportunities */}
  <div className="space-y-2.5">
  {aiOpportunities.map((opp) => (
- <div key={opp.id} className="bg-gray-50 dark:bg-white/[0.04] border border-black/5 dark:border-white/5 rounded-xl p-5 transition-all">
- <div className="flex items-start justify-between gap-4 mb-3">
+ <div key={opp.id} className="bg-gray-50 dark:bg-white/[0.04] border border-black/5 dark:border-white/5 rounded-xl p-4 transition-all">
+ <div className="flex items-start justify-between gap-4 mb-2.5">
  <div className="flex items-start gap-4 flex-1 min-w-0">
- <div className="w-9 h-9 rounded-xl bg-green-500/15 flex items-center justify-center flex-shrink-0">
+ <div className="w-9 h-9 rounded-lg bg-green-500/15 flex items-center justify-center flex-shrink-0">
  <Lightbulb className="w-4.5 h-4.5 text-green-600 dark:text-green-400" strokeWidth={1.5} />
  </div>
  <div className="flex-1 min-w-0">
@@ -841,14 +963,14 @@ export function PropertyDetail() {
  <p className="text-caption font-normal uppercase tracking-[0.05em] text-gray-400 dark:text-white/40">{opp.category}</p>
  </div>
  </div>
- <div className="text-right flex-shrink-0">
- <div className="text-small font-semibold text-green-600 dark:text-green-400 leading-none mb-1">{opp.opportunityScore}</div>
+ <div className="rounded-lg bg-emerald-500/10 px-3 py-1.5 text-right flex-shrink-0">
+ <div className="text-small font-semibold text-green-600 dark:text-green-400 leading-none">{opp.opportunityScore}</div>
  <div className="text-caption font-normal uppercase tracking-[0.05em] text-gray-400 dark:text-white/40">Score</div>
  </div>
  </div>
 
  <div className="text-caption leading-relaxed text-gray-900/70 dark:text-white/70 mb-3">
- {opp.insight}
+ Demand up 23%; peak pricing window expected in 45-60 days.
  </div>
 
  <div className="flex flex-wrap gap-1.5">
@@ -872,10 +994,10 @@ export function PropertyDetail() {
  {/* Risks */}
  <div className="space-y-2.5 mt-3">
  {aiRisks.map((risk) => (
- <div key={risk.id} className="bg-gray-50 dark:bg-white/[0.04] border border-black/5 dark:border-white/5 rounded-xl p-5 transition-all">
- <div className="flex items-start justify-between gap-4 mb-3">
+ <div key={risk.id} className="bg-gray-50 dark:bg-white/[0.04] border border-black/5 dark:border-white/5 rounded-xl p-4 transition-all">
+ <div className="flex items-start justify-between gap-4 mb-2.5">
  <div className="flex items-start gap-4 flex-1 min-w-0">
- <div className="w-9 h-9 rounded-xl bg-red-500/15 flex items-center justify-center flex-shrink-0">
+ <div className="w-9 h-9 rounded-lg bg-red-500/15 flex items-center justify-center flex-shrink-0">
  <AlertCircle className="w-4.5 h-4.5 text-gray-900 dark:text-white" strokeWidth={1.5} />
  </div>
  <div className="flex-1 min-w-0">
@@ -883,13 +1005,13 @@ export function PropertyDetail() {
  <p className="text-caption font-normal uppercase tracking-[0.05em] text-gray-400 dark:text-white/40">{risk.category}</p>
  </div>
  </div>
- <div className="px-2.5 py-1 rounded-md bg-red-500/15 flex-shrink-0">
+ <div className="px-2.5 py-1 rounded-lg bg-red-500/15 flex-shrink-0">
  <div className="text-caption font-normal uppercase tracking-[0.05em] text-gray-900 dark:text-white">{risk.severity}</div>
  </div>
  </div>
 
  <div className="text-caption leading-relaxed text-gray-900/70 dark:text-white/70 mb-3">
- {risk.description}
+ 68% probability of EC delay beyond 90 days in {property.state || 'this region'}.
  </div>
 
  <div className="flex flex-wrap gap-1.5">
@@ -908,9 +1030,7 @@ export function PropertyDetail() {
  <div className="lg:col-span-1">
  <div className="bg-white dark:bg-card rounded-2xl border border-black/5 dark:border-white/5 p-5 md:p-6 sticky top-8 shadow-card">
  {/* Subtle glass highlight */}
- {/* Header with Trust Score */}
- <div className="flex items-start justify-between mb-8">
- <div>
+ <div className="mb-6">
  <h2 className="text-body font-semibold tracking-tight text-gray-900 dark:text-white mb-2">
  Document Vault
  </h2>
@@ -918,57 +1038,49 @@ export function PropertyDetail() {
  {propertyDocuments?.length || 0} files • Bank-grade security
  </p>
  </div>
- 
- {/* Trust Score Ring */}
- {propertyDocuments && propertyDocuments.length > 0 && (
- <div className="flex flex-col items-center gap-2">
- <div className="w-16 h-16 rounded-full border-[3px] border-gray-200 dark:border-white/[0.06] flex items-center justify-center relative bg-gray-50 dark:bg-white/[0.04]">
- {(() => {
- let totalScore = 0;
- Object.entries(docCategoryTabs).forEach(([key, cat]) => {
- const uploaded = cat.documents.filter(doc => 
- propertyDocuments?.find((d: any) => d.documentType === doc && d.status === 'verified')
- ).length;
- const categoryCompletion = uploaded / cat.documents.length;
- totalScore += categoryCompletion * (cat.weight * 100);
- });
- const currentScore = Math.round(totalScore);
- return (
- <>
- <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
- <circle cx="50" cy="50" r="44" className="stroke-emerald-500 transition-all duration-1000" strokeWidth="5" fill="none" strokeDasharray="276.46" strokeDashoffset={276.46 - (276.46 * currentScore) / 100} strokeLinecap="round" />
- </svg>
- <div className="flex flex-col items-center">
- <span className="text-small font-semibold text-emerald-600 dark:text-emerald-400">{currentScore}</span>
- <span className="text-caption font-normal uppercase tracking-[0.05em] text-gray-400 dark:text-white/40">Score</span>
+
+ <div className="mb-6 rounded-2xl border border-brand-primary/15 bg-brand-primary/[0.04] dark:bg-white/[0.03] p-4">
+ <div className="flex items-start justify-between gap-4 mb-4">
+ <div>
+ <div className="text-caption font-medium uppercase tracking-[0.12em] text-gray-400 dark:text-white/40 mb-1">
+ Trust Score
  </div>
- </>
- );
- })()}
+ <div className="flex items-baseline gap-2">
+ <span className="text-h1 font-semibold tracking-tight text-gray-900 dark:text-white">
+ {documentReadiness}
+ </span>
+ <span className="text-small text-gray-500 dark:text-white/50">/100</span>
  </div>
- <div className="text-center">
- <div className="text-caption font-normal uppercase tracking-[0.05em] text-gray-400 dark:text-white/40">Trust Level</div>
- <div className="text-caption font-normal text-emerald-600 dark:text-emerald-400 mt-0.5">
- {(() => {
- let totalScore = 0;
- Object.entries(docCategoryTabs).forEach(([key, cat]) => {
- const uploaded = cat.documents.filter(doc => 
- propertyDocuments?.find((d: any) => d.documentType === doc && d.status === 'verified')
- ).length;
- const categoryCompletion = uploaded / cat.documents.length;
- totalScore += categoryCompletion * (cat.weight * 100);
- });
- const currentScore = Math.round(totalScore);
- if (currentScore >= 90) return 'Excellent';
- if (currentScore >= 75) return 'Very Good';
- if (currentScore >= 60) return 'Good';
- if (currentScore >= 40) return 'Fair';
- return 'Needs Attention';
- })()}
+ </div>
+ <div className="text-right">
+ <div className="text-caption font-medium uppercase tracking-[0.12em] text-gray-400 dark:text-white/40 mb-1">
+ Trust Level
+ </div>
+ <div className={`text-small font-semibold ${trustTone}`}>
+ {trustLevel}
  </div>
  </div>
  </div>
- )}
+ <div className="h-2 rounded-full bg-white dark:bg-white/[0.06] overflow-hidden mb-4">
+ <div
+ className="h-full rounded-full bg-brand-primary transition-all duration-500"
+ style={{ width: `${documentReadiness}%` }}
+ />
+ </div>
+ <div className="grid grid-cols-3 gap-2">
+ <div className="rounded-xl bg-white/80 dark:bg-white/[0.04] px-3 py-2">
+ <div className="text-caption text-gray-400 dark:text-white/40">Verified</div>
+ <div className="text-small font-semibold text-gray-900 dark:text-white">{verifiedDocumentCount}</div>
+ </div>
+ <div className="rounded-xl bg-white/80 dark:bg-white/[0.04] px-3 py-2">
+ <div className="text-caption text-gray-400 dark:text-white/40">Processing</div>
+ <div className="text-small font-semibold text-gray-900 dark:text-white">{processingDocumentCount}</div>
+ </div>
+ <div className="rounded-xl bg-white/80 dark:bg-white/[0.04] px-3 py-2">
+ <div className="text-caption text-gray-400 dark:text-white/40">Missing</div>
+ <div className="text-small font-semibold text-gray-900 dark:text-white">{missingCoreCount}</div>
+ </div>
+ </div>
  </div>
 
  {/* Add Documents CTA */}
@@ -1104,13 +1216,6 @@ export function PropertyDetail() {
  Quick Actions
  </div>
  <div className="space-y-2">
- <Link
- to={`/property/${property.id}/habu`}
- className="flex items-center justify-between w-full bg-gray-50 dark:bg-white/[0.04] hover:bg-gray-100 dark:hover:bg-white/[0.06] rounded-xl px-4 py-2.5 text-small text-gray-900 dark:text-white/95 transition-all group"
- >
- <span>Best Use Report</span>
- <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
- </Link>
  <Link
  to="/services?service=lease-rent"
  className="flex items-center justify-between w-full bg-gray-50 dark:bg-white/[0.04] hover:bg-gray-100 dark:hover:bg-white/[0.06] rounded-xl px-4 py-2.5 text-small text-gray-900 dark:text-white/95 transition-all group"

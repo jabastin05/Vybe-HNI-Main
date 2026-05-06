@@ -1769,6 +1769,7 @@ export function PropertyUpload() {
  size: doc.size,
  status: doc.status,
  type: doc.type,
+ documentType: doc.documentType,
  })),
  extractedData: {
  surveyNumber: extractedData.surveyNumber,

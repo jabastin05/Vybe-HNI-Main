@@ -10,7 +10,8 @@ import { useProperties } from '../contexts/PropertiesContext';
 export function MyProperties() {
   const { properties } = useProperties();
   const navigate = useNavigate();
-  const [typeFilter, setTypeFilter] = useState('All');
+  const [buildingTypeFilter, setBuildingTypeFilter] = useState('All');
+  const [propertyTypeFilter, setPropertyTypeFilter] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
 
   const formatDate = (d: string) =>
@@ -22,25 +23,53 @@ export function MyProperties() {
     : p.state               ? p.state
     : 'N/A';
 
+  const propertyIdLabel = (p: any) => {
+    if (p.displayId) return p.displayId;
+    const rawId = String(p.id || '').replace(/^prop-/, '');
+    return `PROP-${rawId.slice(-6).toUpperCase()}`;
+  };
+
   const totalCities = new Set(
     properties.map(p => p.city || p.district || p.state).filter(Boolean)
   ).size;
 
-  const propertyTypes = ['All', ...Array.from(new Set(properties.map(p => p.type).filter(Boolean)))];
+  const buildingTypeLabels: Record<string, string> = {
+    residential: 'Residential',
+    commercial: 'Commercial',
+  };
+
+  const buildingTypeOrder = ['residential', 'commercial'];
+  const availableBuildingTypes = buildingTypeOrder.filter(type =>
+    properties.some(property => property.buildingType === type)
+  );
+  const buildingTypes = ['All', ...availableBuildingTypes];
+
+  const buildingFilteredProperties =
+    buildingTypeFilter === 'All'
+      ? properties
+      : properties.filter(p => p.buildingType === buildingTypeFilter);
+
+  const propertyTypes = ['All', ...Array.from(new Set(buildingFilteredProperties.map(p => p.type).filter(Boolean)))];
 
   const typeFilteredProperties =
-    typeFilter === 'All' ? properties : properties.filter(p => p.type === typeFilter);
+    propertyTypeFilter === 'All' ? buildingFilteredProperties : buildingFilteredProperties.filter(p => p.type === propertyTypeFilter);
 
   const filteredProperties = searchQuery.trim()
     ? typeFilteredProperties.filter(p =>
         p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        propertyIdLabel(p).toLowerCase().includes(searchQuery.toLowerCase()) ||
         locationLabel(p).toLowerCase().includes(searchQuery.toLowerCase()) ||
         (p.type || '').toLowerCase().includes(searchQuery.toLowerCase())
       )
     : typeFilteredProperties;
 
-  const typeCount = (type: string) =>
-    type === 'All' ? properties.length : properties.filter(p => p.type === type).length;
+  const buildingTypeCount = (type: string) =>
+    type === 'All' ? properties.length : properties.filter(p => p.buildingType === type).length;
+
+  const propertyTypeCount = (type: string) =>
+    type === 'All' ? buildingFilteredProperties.length : buildingFilteredProperties.filter(p => p.type === type).length;
+
+  const buildingTypeLabel = (type: string) => type === 'All' ? 'All' : buildingTypeLabels[type] || type;
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-background transition-colors duration-300">
@@ -83,20 +112,23 @@ export function MyProperties() {
         </div>
 
         {/* ── Filter tabs ── */}
-        {properties.length > 0 && propertyTypes.length > 1 && (
+        {properties.length > 0 && buildingTypes.length > 1 && (
           <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.05]">
             <div className="flex gap-0 overflow-x-auto scrollbar-hide">
-              {propertyTypes.map((type) => (
+              {buildingTypes.map((type) => (
                 <button
                   key={type}
-                  onClick={() => setTypeFilter(type)}
+                  onClick={() => {
+                    setBuildingTypeFilter(type);
+                    setPropertyTypeFilter('All');
+                  }}
                   className={`flex-shrink-0 px-5 py-3.5 text-caption whitespace-nowrap transition-all duration-200 border-b-2 ${
-                    typeFilter === type
+                    buildingTypeFilter === type
                       ? 'text-brand-primary border-brand-primary font-semibold'
                       : 'text-gray-400 border-transparent'
                   }`}
                 >
-                  {type}
+                  {buildingTypeLabel(type)}
                 </button>
               ))}
             </div>
@@ -119,6 +151,26 @@ export function MyProperties() {
                   focus:outline-none focus:ring-2 focus:ring-brand-primary/20
                   transition-all duration-200"
               />
+            </div>
+          </div>
+        )}
+
+        {properties.length > 0 && propertyTypes.length > 1 && (
+          <div className="bg-white dark:bg-card border-b border-gray-100 dark:border-white/[0.05] px-4 py-3">
+            <div className="flex gap-2 overflow-x-auto scrollbar-hide">
+              {propertyTypes.map((type) => (
+                <button
+                  key={type}
+                  onClick={() => setPropertyTypeFilter(type)}
+                  className={`flex-shrink-0 rounded-xl px-3.5 py-2 text-caption transition-all ${
+                    propertyTypeFilter === type
+                      ? 'bg-brand-primary text-white font-semibold'
+                      : 'bg-gray-50 text-gray-500 dark:bg-white/[0.04] dark:text-white/50'
+                  }`}
+                >
+                  {type}
+                </button>
+              ))}
             </div>
           </div>
         )}
@@ -176,6 +228,9 @@ export function MyProperties() {
                       <Building2 className="w-5 h-5 text-brand-primary" strokeWidth={1.5} />
                     </div>
                     <div className="flex-1 min-w-0">
+                      <div className="text-caption font-semibold tracking-[0.06em] uppercase text-brand-primary mb-0.5">
+                        {propertyIdLabel(property)}
+                      </div>
                   <h3 className="text-small font-semibold text-gray-900 dark:text-white truncate mb-1">
                         {property.name}
                       </h3>
@@ -307,25 +362,51 @@ export function MyProperties() {
             </div>
           ) : (
             <div className="bg-white dark:bg-card rounded-2xl overflow-hidden shadow-card">
-              {/* Filter tabs */}
+              {/* Building type tabs */}
               <div className="flex overflow-x-auto scrollbar-hide border-b border-gray-100 dark:border-white/[0.05]">
-                {propertyTypes.map((type) => (
+                {buildingTypes.map((type) => (
                   <button
                     key={type}
-                    onClick={() => setTypeFilter(type)}
+                    onClick={() => {
+                      setBuildingTypeFilter(type);
+                      setPropertyTypeFilter('All');
+                    }}
                     className={`flex-shrink-0 flex items-center gap-1.5 px-5 py-3.5 text-small whitespace-nowrap transition-all duration-200 border-b-2 ${
-                      typeFilter === type
+                      buildingTypeFilter === type
                         ? 'text-brand-primary border-brand-primary md:font-semibold'
                         : 'text-gray-400 dark:text-white/40 border-transparent hover:text-gray-600 dark:hover:text-white/60'
                     }`}
                   >
-                    {type}
-                    <span className={`text-caption ${typeFilter === type ? 'text-brand-primary/60' : 'text-gray-300 dark:text-white/20'}`}>
-                      {typeCount(type)}
+                    {buildingTypeLabel(type)}
+                    <span className={`text-caption ${buildingTypeFilter === type ? 'text-brand-primary/60' : 'text-gray-300 dark:text-white/20'}`}>
+                      {buildingTypeCount(type)}
                     </span>
                   </button>
                 ))}
               </div>
+
+              {/* Property type filter */}
+              {propertyTypes.length > 1 && (
+                <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide px-4 py-3 border-b border-gray-100 dark:border-white/[0.05]">
+                  {propertyTypes.map((type) => (
+                    <button
+                      key={type}
+                      onClick={() => setPropertyTypeFilter(type)}
+                      className={`flex-shrink-0 rounded-xl px-3.5 py-2 text-caption transition-all ${
+                        propertyTypeFilter === type
+                          ? 'bg-brand-primary text-white font-semibold'
+                          : 'bg-gray-50 text-gray-500 dark:bg-white/[0.04] dark:text-white/50 hover:text-gray-700 dark:hover:text-white/70'
+                      }`}
+                    >
+                      {type}
+                      <span className={`ml-1 ${propertyTypeFilter === type ? 'text-white/70' : 'text-gray-300 dark:text-white/20'}`}>
+                        {propertyTypeCount(type)}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              )}
+
               {/* Search row */}
               <div className="px-4 py-3 border-b border-gray-100 dark:border-white/[0.05]">
                 <div className="relative">
@@ -357,12 +438,17 @@ export function MyProperties() {
                 >
                   <div className="w-10 h-10 rounded-xl bg-brand-primary/[0.08] dark:bg-brand-primary/[0.15] flex items-center justify-center flex-shrink-0">
                     <Building2 className="w-5 h-5 text-brand-primary" strokeWidth={1.5} />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-small font-semibold text-gray-900 dark:text-white truncate mb-0.5">
-                      {property.name}
-                    </h3>
-                    <div className="flex items-center gap-2 text-caption text-gray-500 dark:text-white/40">
+	                  </div>
+	                  <div className="flex-1 min-w-0">
+	                    <div className="flex items-center gap-2 mb-0.5">
+	                      <span className="text-caption font-semibold tracking-[0.06em] uppercase text-brand-primary flex-shrink-0">
+	                        {propertyIdLabel(property)}
+	                      </span>
+	                      <h3 className="text-small font-semibold text-gray-900 dark:text-white truncate">
+	                        {property.name}
+	                      </h3>
+	                    </div>
+	                    <div className="flex items-center gap-2 text-caption text-gray-500 dark:text-white/40">
                       <span className="truncate">{locationLabel(property)}</span>
                       {property.type && (
                         <>
